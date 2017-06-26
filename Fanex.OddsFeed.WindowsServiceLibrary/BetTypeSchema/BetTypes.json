@@ -1,0 +1,5103 @@
+﻿[
+  {
+    "BetTypeId": 1,
+    "Tag": "ah",
+    "Reserve": {
+      "FirstHdp": "Hdp1",
+      "SecondHdp": "Hdp2"
+    },
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "Odds1A"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "Odds2A"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 2,
+    "Tag": "oe",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "e",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 3,
+    "Tag": "ou",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "Odds1A"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "Odds2A"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 4,
+    "Tag": "cs",
+    "BetChoices": [
+      {
+        "MatchAttribute": "cs00",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "cs11",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "cs22",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "cs33",
+        "DataAttribute": "cs33"
+      },
+      {
+        "MatchAttribute": "cs44",
+        "DataAttribute": "cs44"
+      },
+      {
+        "MatchAttribute": "cs10",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "cs20",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "cs21",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "cs30",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "cs31",
+        "DataAttribute": "cs31"
+      },
+      {
+        "MatchAttribute": "cs32",
+        "DataAttribute": "cs32"
+      },
+      {
+        "MatchAttribute": "cs40",
+        "DataAttribute": "cs40"
+      },
+      {
+        "MatchAttribute": "cs41",
+        "DataAttribute": "cs41"
+      },
+      {
+        "MatchAttribute": "cs42",
+        "DataAttribute": "cs42"
+      },
+      {
+        "MatchAttribute": "cs43",
+        "DataAttribute": "cs43"
+      },
+      {
+        "MatchAttribute": "cs50",
+        "DataAttribute": "cs50"
+      },
+      {
+        "MatchAttribute": "cs01",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "cs02",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "cs12",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "cs03",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "cs13",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "cs23",
+        "DataAttribute": "cs23"
+      },
+      {
+        "MatchAttribute": "cs04",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "cs14",
+        "DataAttribute": "cs14"
+      },
+      {
+        "MatchAttribute": "cs24",
+        "DataAttribute": "cs24"
+      },
+      {
+        "MatchAttribute": "cs34",
+        "DataAttribute": "cs34"
+      },
+      {
+        "MatchAttribute": "cs05",
+        "DataAttribute": "cs05"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 5,
+    "Tag": "st",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "Com1"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "ComX"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "Com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 6,
+    "Tag": "tg",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs11"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 7,
+    "Tag": "ah_1",
+    "Reserve": {
+      "FirstHdp": "Hdp1",
+      "SecondHdp": "Hdp2"
+    },
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "Odds1A"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "Odds2A"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 8,
+    "Tag": "ou_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "Hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "Odds1A"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "Odds2A"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 10,
+    "Tag": "outright",
+    "BetChoices": [
+    ]
+  },
+  {
+    "BetTypeId": 11,
+    "Tag": "tc",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 12,
+    "Tag": "oe_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "Odds1A"
+      },
+      {
+        "MatchAttribute": "e",
+        "DataAttribute": "Odds2A"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 13,
+    "Tag": "so",
+    "BetChoices": [
+      {
+        "MatchAttribute": "hy",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "hn",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "ay",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "an",
+        "DataAttribute": "cs20"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 14,
+    "Tag": "fglg",
+    "BetChoices": [
+      {
+        "MatchAttribute": "hf",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "hl",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "af",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "al",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "ng",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 15,
+    "Tag": "st_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "Com1"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "ComX"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "Com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 16,
+    "Tag": "htft",
+    "BetChoices": [
+      {
+        "MatchAttribute": "hh",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "hd",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "ha",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "dh",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "dd",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "da",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "ah",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "ad",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "aa",
+        "DataAttribute": "cs22"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 17,
+    "Tag": "ah_2",
+    "Reserve": {
+      "FirstHdp": "Hdp1",
+      "SecondHdp": "Hdp2"
+    },
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 18,
+    "Tag": "ou_2",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 20,
+    "Tag": "ml",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "Odds1A"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "Odds2A"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 21,
+    "Tag": "ml_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "Odds1A"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "Odds2A"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 22,
+    "Tag": "ng",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 24,
+    "Tag": "x2",
+    "BetChoices": [
+      {
+        "MatchAttribute": "hd",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "ha",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "ad",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 25,
+    "Tag": "dnb",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 26,
+    "Tag": "bon",
+    "BetChoices": [
+      {
+        "MatchAttribute": "b",
+        "DataAttribute": "com2"
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "comx"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 27,
+    "Tag": "twtn",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 28,
+    "Tag": "3h",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 30,
+    "Tag": "cs_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "c10",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "c20",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "c21",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "c30",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "c31",
+        "DataAttribute": "cs31"
+      },
+      {
+        "MatchAttribute": "c32",
+        "DataAttribute": "cs32"
+      },
+      {
+        "MatchAttribute": "c40",
+        "DataAttribute": "cs40"
+      },
+      {
+        "MatchAttribute": "c01",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "c02",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "c12",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "c03",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "c13",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "c23",
+        "DataAttribute": "cs23"
+      },
+      {
+        "MatchAttribute": "c04",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "c00",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "c11",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "c22",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "c33",
+        "DataAttribute": "cs33"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 121,
+    "Tag": "hnb",
+    "BetChoices": [
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "odds1a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 122,
+    "Tag": "anb",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 123,
+    "Tag": "dnd",
+    "BetChoices": [
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 126,
+    "Tag": "tg_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs10"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 127,
+    "Tag": "fglg_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "hf",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "hl",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "af",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "al",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "ng",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 128,
+    "Tag": "oe_12",
+    "BetChoices": [
+      {
+        "MatchAttribute": "oe",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "eo",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "oo",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "ee",
+        "DataAttribute": "cs22"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 133,
+    "Tag": "h2h",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 134,
+    "Tag": "a2h",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 135,
+    "Tag": "pen",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 140,
+    "Tag": "high",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "tie",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 141,
+    "Tag": "hhigh",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "tie",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 142,
+    "Tag": "ahigh",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "tie",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 144,
+    "Tag": "sttg",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "ho",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "hu",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "ao",
+        "DataAttribute": "cs05"
+      },
+      {
+        "MatchAttribute": "au",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "do",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "du",
+        "DataAttribute": "cs02"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 145,
+    "Tag": "bs",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 146,
+    "Tag": "bs_2",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 147,
+    "Tag": "hs",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 148,
+    "Tag": "as",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 149,
+    "Tag": "hw",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 150,
+    "Tag": "aw",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 151,
+    "Tag": "x2_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "hd",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "ha",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "ad",
+        "DataAttribute": "cs20"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 153,
+    "Tag": "tah",
+    "Reserve": {
+      "FirstHdp": "hdp1",
+      "SecondHdp": "hdp2"
+    },
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 154,
+    "Tag": "sw",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "resourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 155,
+    "Tag": "gh",
+    "Reserve": {
+      "FirstHdp": "hdp1",
+      "SecondHdp": "hdp2"
+    },
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "resourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 156,
+    "Tag": "gou",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "resourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 157,
+    "Tag": "oe",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "e",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 159,
+    "Tag": "etg",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o01",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o02",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o03",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "o04",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "o05",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o06",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "o07",
+        "DataAttribute": "cs30"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 160,
+    "Tag": "ng",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 161,
+    "Tag": "heg",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 162,
+    "Tag": "aeg",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 163,
+    "Tag": "sttg",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "ho",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "hu",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "ao",
+        "DataAttribute": "cs05"
+      },
+      {
+        "MatchAttribute": "au",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "do",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "du",
+        "DataAttribute": "cs02"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 164,
+    "Tag": "nxtg_ex",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 165,
+    "Tag": "cs_ex1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "cs00",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "cs10",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "cs01",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "cs11",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "cs20",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "cs02",
+        "DataAttribute": "cs05"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 166,
+    "Tag": "cs_ex",
+    "BetChoices": [
+      {
+        "MatchAttribute": "cs00",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "cs10",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "cs01",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "cs11",
+        "DataAttribute": "cs32"
+      },
+      {
+        "MatchAttribute": "cs20",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "cs02",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "cs21",
+        "DataAttribute": "cs31"
+      },
+      {
+        "MatchAttribute": "cs12",
+        "DataAttribute": "cs32"
+      },
+      {
+        "MatchAttribute": "cs30",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "cs03",
+        "DataAttribute": "cs23"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 167,
+    "Tag": "st_ex1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 168,
+    "Tag": "nxtrnd",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 169,
+    "Tag": "nxtg",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "o5",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o6",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "o7",
+        "DataAttribute": "cs30"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 170,
+    "Tag": "ts",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "b",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 171,
+    "Tag": "win",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "h3",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "a1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "a2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "a3",
+        "DataAttribute": "cs30"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 172,
+    "Tag": "stts",
+    "BetChoices": [
+      {
+        "MatchAttribute": "hh",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "dh",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "ah",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "ha",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "da",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "aa",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs30"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 173,
+    "Tag": "ex",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 174,
+    "Tag": "exg",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 175,
+    "Tag": "mtd",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "h3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "a1",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "a2",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "a3",
+        "DataAttribute": "cs05"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 176,
+    "Tag": "st_10",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 177,
+    "Tag": "st_2",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 178,
+    "Tag": "ou_2",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 179,
+    "Tag": "egs_1",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "o0",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "o4o",
+        "DataAttribute": "cs22"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 180,
+    "Tag": "ng_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 181,
+    "Tag": "heg_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 182,
+    "Tag": "aeg_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 183,
+    "Tag": "ah_2",
+    "IsChildBetType": true,
+    "Reserve": {
+      "FirstHdp": "hdp1",
+      "SecondHdp": "hdp2"
+    },
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 184,
+    "Tag": "oe_2",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "e",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 185,
+    "Tag": "dnb_2",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 186,
+    "Tag": "x2_2",
+    "BetChoices": [
+      {
+        "MatchAttribute": "hd",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "ha",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "ad",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 187,
+    "Tag": "egs_2",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "o0",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "o2o",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 188,
+    "Tag": "b_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 189,
+    "Tag": "oyn",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 190,
+    "Tag": "uyn",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 191,
+    "Tag": "dnb_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 192,
+    "Tag": "fg10",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o5",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "o6",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "o7",
+        "DataAttribute": "cs31"
+      },
+      {
+        "MatchAttribute": "o8",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "o9",
+        "DataAttribute": "cs32"
+      },
+      {
+        "MatchAttribute": "o10",
+        "DataAttribute": "cs23"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 193,
+    "Tag": "fg15",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "o5",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o6",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "o7",
+        "DataAttribute": "cs30"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 194,
+    "Tag": "coe",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "e",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 195,
+    "Tag": "hc",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 196,
+    "Tag": "ac",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 197,
+    "Tag": "hcou",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 198,
+    "Tag": "acou",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 199,
+    "Tag": "tc",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 200,
+    "Tag": "ec",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 201,
+    "Tag": "ec_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 202,
+    "Tag": "tc_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 203,
+    "Tag": "coe_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "e",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 204,
+    "Tag": "hcou_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 205,
+    "Tag": "acou_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 206,
+    "Tag": "fc",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "cs20"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 207,
+    "Tag": "fc_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "cs20"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 208,
+    "Tag": "lc",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "cs20"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 209,
+    "Tag": "lc_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "cs20"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 210,
+    "Tag": "sent",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 211,
+    "Tag": "sent_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 212,
+    "Tag": "hsent",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 213,
+    "Tag": "hsent_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 214,
+    "Tag": "asent",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 215,
+    "Tag": "asent_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 152,
+    "Tag": "cs_12",
+    "IsOddsFlex": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "o001",
+        "DataAttribute": "0:0/0:0"
+      },
+      {
+        "MatchAttribute": "o002",
+        "DataAttribute": "0:0/1:0"
+      },
+      {
+        "MatchAttribute": "o003",
+        "DataAttribute": "0:0/0:1"
+      },
+      {
+        "MatchAttribute": "o004",
+        "DataAttribute": "0:0/2:0"
+      },
+      {
+        "MatchAttribute": "o005",
+        "DataAttribute": "0:0/1:1"
+      },
+      {
+        "MatchAttribute": "o006",
+        "DataAttribute": "0:0/0:2"
+      },
+      {
+        "MatchAttribute": "o007",
+        "DataAttribute": "0:0/3:0"
+      },
+      {
+        "MatchAttribute": "o008",
+        "DataAttribute": "0:0/2:1"
+      },
+      {
+        "MatchAttribute": "o009",
+        "DataAttribute": "0:0/1:2"
+      },
+      {
+        "MatchAttribute": "o010",
+        "DataAttribute": "0:0/0:3"
+      },
+      {
+        "MatchAttribute": "o011",
+        "DataAttribute": "0:0/4+"
+      },
+      {
+        "MatchAttribute": "o012",
+        "DataAttribute": "1:0/1:0"
+      },
+      {
+        "MatchAttribute": "o013",
+        "DataAttribute": "1:0/2:0"
+      },
+      {
+        "MatchAttribute": "o014",
+        "DataAttribute": "1:0/1:1"
+      },
+      {
+        "MatchAttribute": "o015",
+        "DataAttribute": "1:0/3:0"
+      },
+      {
+        "MatchAttribute": "o016",
+        "DataAttribute": "1:0/2:1"
+      },
+      {
+        "MatchAttribute": "o017",
+        "DataAttribute": "1:0/1:2"
+      },
+      {
+        "MatchAttribute": "o018",
+        "DataAttribute": "1:0/4+"
+      },
+      {
+        "MatchAttribute": "o019",
+        "DataAttribute": "0:1/0:1"
+      },
+      {
+        "MatchAttribute": "o020",
+        "DataAttribute": "0:1/1:1"
+      },
+      {
+        "MatchAttribute": "o021",
+        "DataAttribute": "0:1/0:2"
+      },
+      {
+        "MatchAttribute": "o022",
+        "DataAttribute": "0:1/2:1"
+      },
+      {
+        "MatchAttribute": "o023",
+        "DataAttribute": "0:1/1:2"
+      },
+      {
+        "MatchAttribute": "o024",
+        "DataAttribute": "0:1/0:3"
+      },
+      {
+        "MatchAttribute": "o025",
+        "DataAttribute": "0:1/4+"
+      },
+      {
+        "MatchAttribute": "o026",
+        "DataAttribute": "1:1/1:1"
+      },
+      {
+        "MatchAttribute": "o027",
+        "DataAttribute": "1:1/2:1"
+      },
+      {
+        "MatchAttribute": "o028",
+        "DataAttribute": "1:1/1:2"
+      },
+      {
+        "MatchAttribute": "o029",
+        "DataAttribute": "1:1/4+"
+      },
+      {
+        "MatchAttribute": "o030",
+        "DataAttribute": "2:0/2:0"
+      },
+      {
+        "MatchAttribute": "o031",
+        "DataAttribute": "2:0/3:0"
+      },
+      {
+        "MatchAttribute": "o032",
+        "DataAttribute": "2:0/2:1"
+      },
+      {
+        "MatchAttribute": "o033",
+        "DataAttribute": "2:0/4+"
+      },
+      {
+        "MatchAttribute": "o034",
+        "DataAttribute": "0:2/0:2"
+      },
+      {
+        "MatchAttribute": "o035",
+        "DataAttribute": "0:2/1:2"
+      },
+      {
+        "MatchAttribute": "o036",
+        "DataAttribute": "0:2/0:3"
+      },
+      {
+        "MatchAttribute": "o037",
+        "DataAttribute": "0:2/4+"
+      },
+      {
+        "MatchAttribute": "o038",
+        "DataAttribute": "2:1/2:1"
+      },
+      {
+        "MatchAttribute": "o039",
+        "DataAttribute": "2:1/4+"
+      },
+      {
+        "MatchAttribute": "o040",
+        "DataAttribute": "1:2/1:2"
+      },
+      {
+        "MatchAttribute": "o041",
+        "DataAttribute": "1:2/4+"
+      },
+      {
+        "MatchAttribute": "o042",
+        "DataAttribute": "3:0/3:0"
+      },
+      {
+        "MatchAttribute": "o043",
+        "DataAttribute": "3:0/4+"
+      },
+      {
+        "MatchAttribute": "o044",
+        "DataAttribute": "0:3/0:3"
+      },
+      {
+        "MatchAttribute": "o045",
+        "DataAttribute": "0:3/4+"
+      },
+      {
+        "MatchAttribute": "o046",
+        "DataAttribute": "4+/4+"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 416,
+    "Tag": "cs_12",
+    "IsOddsFlex": true,
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "o001",
+        "DataAttribute": "0:0/0:0"
+      },
+      {
+        "MatchAttribute": "o003",
+        "DataAttribute": "0:0/0:1"
+      },
+      {
+        "MatchAttribute": "o006",
+        "DataAttribute": "0:0/0:2"
+      },
+      {
+        "MatchAttribute": "o010",
+        "DataAttribute": "0:0/0:3"
+      },
+      {
+        "MatchAttribute": "o047",
+        "DataAttribute": "0:0/0:4"
+      },
+      {
+        "MatchAttribute": "o002",
+        "DataAttribute": "0:0/1:0"
+      },
+      {
+        "MatchAttribute": "o005",
+        "DataAttribute": "0:0/1:1"
+      },
+      {
+        "MatchAttribute": "o009",
+        "DataAttribute": "0:0/1:2"
+      },
+      {
+        "MatchAttribute": "o048",
+        "DataAttribute": "0:0/1:3"
+      },
+      {
+        "MatchAttribute": "o049",
+        "DataAttribute": "0:0/1:4"
+      },
+      {
+        "MatchAttribute": "o004",
+        "DataAttribute": "0:0/2:0"
+      },
+      {
+        "MatchAttribute": "o008",
+        "DataAttribute": "0:0/2:1"
+      },
+      {
+        "MatchAttribute": "o050",
+        "DataAttribute": "0:0/2:2"
+      },
+      {
+        "MatchAttribute": "o051",
+        "DataAttribute": "0:0/2:3"
+      },
+      {
+        "MatchAttribute": "o052",
+        "DataAttribute": "0:0/2:4"
+      },
+      {
+        "MatchAttribute": "o007",
+        "DataAttribute": "0:0/3:0"
+      },
+      {
+        "MatchAttribute": "o053",
+        "DataAttribute": "0:0/3:1"
+      },
+      {
+        "MatchAttribute": "o054",
+        "DataAttribute": "0:0/3:2"
+      },
+      {
+        "MatchAttribute": "o055",
+        "DataAttribute": "0:0/3:3"
+      },
+      {
+        "MatchAttribute": "o056",
+        "DataAttribute": "0:0/3:4"
+      },
+      {
+        "MatchAttribute": "o057",
+        "DataAttribute": "0:0/4:0"
+      },
+      {
+        "MatchAttribute": "o058",
+        "DataAttribute": "0:0/4:1"
+      },
+      {
+        "MatchAttribute": "o059",
+        "DataAttribute": "0:0/4:2"
+      },
+      {
+        "MatchAttribute": "o060",
+        "DataAttribute": "0:0/4:3"
+      },
+      {
+        "MatchAttribute": "o061",
+        "DataAttribute": "0:0/4:4"
+      },
+      {
+        "MatchAttribute": "o062",
+        "DataAttribute": "0:0/AOS"
+      },
+      {
+        "MatchAttribute": "o019",
+        "DataAttribute": "0:1/0:1"
+      },
+      {
+        "MatchAttribute": "o021",
+        "DataAttribute": "0:1/0:2"
+      },
+      {
+        "MatchAttribute": "o024",
+        "DataAttribute": "0:1/0:3"
+      },
+      {
+        "MatchAttribute": "o063",
+        "DataAttribute": "0:1/0:4"
+      },
+      {
+        "MatchAttribute": "o020",
+        "DataAttribute": "0:1/1:1"
+      },
+      {
+        "MatchAttribute": "o023",
+        "DataAttribute": "0:1/1:2"
+      },
+      {
+        "MatchAttribute": "o064",
+        "DataAttribute": "0:1/1:3"
+      },
+      {
+        "MatchAttribute": "o065",
+        "DataAttribute": "0:1/1:4"
+      },
+      {
+        "MatchAttribute": "o022",
+        "DataAttribute": "0:1/2:1"
+      },
+      {
+        "MatchAttribute": "o066",
+        "DataAttribute": "0:1/2:2"
+      },
+      {
+        "MatchAttribute": "o067",
+        "DataAttribute": "0:1/2:3"
+      },
+      {
+        "MatchAttribute": "o068",
+        "DataAttribute": "0:1/2:4"
+      },
+      {
+        "MatchAttribute": "o069",
+        "DataAttribute": "0:1/3:1"
+      },
+      {
+        "MatchAttribute": "o070",
+        "DataAttribute": "0:1/3:2"
+      },
+      {
+        "MatchAttribute": "o071",
+        "DataAttribute": "0:1/3:3"
+      },
+      {
+        "MatchAttribute": "o072",
+        "DataAttribute": "0:1/3:4"
+      },
+      {
+        "MatchAttribute": "o073",
+        "DataAttribute": "0:1/4:1"
+      },
+      {
+        "MatchAttribute": "o074",
+        "DataAttribute": "0:1/4:2"
+      },
+      {
+        "MatchAttribute": "o075",
+        "DataAttribute": "0:1/4:3"
+      },
+      {
+        "MatchAttribute": "o076",
+        "DataAttribute": "0:1/4:4"
+      },
+      {
+        "MatchAttribute": "o077",
+        "DataAttribute": "0:1/AOS"
+      },
+      {
+        "MatchAttribute": "o034",
+        "DataAttribute": "0:2/0:2"
+      },
+      {
+        "MatchAttribute": "o036",
+        "DataAttribute": "0:2/0:3"
+      },
+      {
+        "MatchAttribute": "o078",
+        "DataAttribute": "0:2/0:4"
+      },
+      {
+        "MatchAttribute": "o035",
+        "DataAttribute": "0:2/1:2"
+      },
+      {
+        "MatchAttribute": "o079",
+        "DataAttribute": "0:2/1:3"
+      },
+      {
+        "MatchAttribute": "o080",
+        "DataAttribute": "0:2/1:4"
+      },
+      {
+        "MatchAttribute": "o081",
+        "DataAttribute": "0:2/2:2"
+      },
+      {
+        "MatchAttribute": "o082",
+        "DataAttribute": "0:2/2:3"
+      },
+      {
+        "MatchAttribute": "o083",
+        "DataAttribute": "0:2/2:4"
+      },
+      {
+        "MatchAttribute": "o084",
+        "DataAttribute": "0:2/3:2"
+      },
+      {
+        "MatchAttribute": "o085",
+        "DataAttribute": "0:2/3:3"
+      },
+      {
+        "MatchAttribute": "o086",
+        "DataAttribute": "0:2/3:4"
+      },
+      {
+        "MatchAttribute": "o087",
+        "DataAttribute": "0:2/4:2"
+      },
+      {
+        "MatchAttribute": "o088",
+        "DataAttribute": "0:2/4:3"
+      },
+      {
+        "MatchAttribute": "o089",
+        "DataAttribute": "0:2/4:4"
+      },
+      {
+        "MatchAttribute": "o090",
+        "DataAttribute": "0:2/AOS"
+      },
+      {
+        "MatchAttribute": "o044",
+        "DataAttribute": "0:3/0:3"
+      },
+      {
+        "MatchAttribute": "o091",
+        "DataAttribute": "0:3/0:4"
+      },
+      {
+        "MatchAttribute": "o092",
+        "DataAttribute": "0:3/1:3"
+      },
+      {
+        "MatchAttribute": "o093",
+        "DataAttribute": "0:3/1:4"
+      },
+      {
+        "MatchAttribute": "o094",
+        "DataAttribute": "0:3/2:3"
+      },
+      {
+        "MatchAttribute": "o095",
+        "DataAttribute": "0:3/2:4"
+      },
+      {
+        "MatchAttribute": "o096",
+        "DataAttribute": "0:3/3:3"
+      },
+      {
+        "MatchAttribute": "o097",
+        "DataAttribute": "0:3/3:4"
+      },
+      {
+        "MatchAttribute": "o098",
+        "DataAttribute": "0:3/4:3"
+      },
+      {
+        "MatchAttribute": "o099",
+        "DataAttribute": "0:3/4:4"
+      },
+      {
+        "MatchAttribute": "o100",
+        "DataAttribute": "0:3/AOS"
+      },
+      {
+        "MatchAttribute": "o012",
+        "DataAttribute": "1:0/1:0"
+      },
+      {
+        "MatchAttribute": "o014",
+        "DataAttribute": "1:0/1:1"
+      },
+      {
+        "MatchAttribute": "o017",
+        "DataAttribute": "1:0/1:2"
+      },
+      {
+        "MatchAttribute": "o101",
+        "DataAttribute": "1:0/1:3"
+      },
+      {
+        "MatchAttribute": "o102",
+        "DataAttribute": "1:0/1:4"
+      },
+      {
+        "MatchAttribute": "o013",
+        "DataAttribute": "1:0/2:0"
+      },
+      {
+        "MatchAttribute": "o016",
+        "DataAttribute": "1:0/2:1"
+      },
+      {
+        "MatchAttribute": "o103",
+        "DataAttribute": "1:0/2:2"
+      },
+      {
+        "MatchAttribute": "o104",
+        "DataAttribute": "1:0/2:3"
+      },
+      {
+        "MatchAttribute": "o105",
+        "DataAttribute": "1:0/2:4"
+      },
+      {
+        "MatchAttribute": "o015",
+        "DataAttribute": "1:0/3:0"
+      },
+      {
+        "MatchAttribute": "o106",
+        "DataAttribute": "1:0/3:1"
+      },
+      {
+        "MatchAttribute": "o107",
+        "DataAttribute": "1:0/3:2"
+      },
+      {
+        "MatchAttribute": "o108",
+        "DataAttribute": "1:0/3:3"
+      },
+      {
+        "MatchAttribute": "o109",
+        "DataAttribute": "1:0/3:4"
+      },
+      {
+        "MatchAttribute": "o110",
+        "DataAttribute": "1:0/4:0"
+      },
+      {
+        "MatchAttribute": "o111",
+        "DataAttribute": "1:0/4:1"
+      },
+      {
+        "MatchAttribute": "o112",
+        "DataAttribute": "1:0/4:2"
+      },
+      {
+        "MatchAttribute": "o113",
+        "DataAttribute": "1:0/4:3"
+      },
+      {
+        "MatchAttribute": "o114",
+        "DataAttribute": "1:0/4:4"
+      },
+      {
+        "MatchAttribute": "o115",
+        "DataAttribute": "1:0/AOS"
+      },
+      {
+        "MatchAttribute": "o026",
+        "DataAttribute": "1:1/1:1"
+      },
+      {
+        "MatchAttribute": "o028",
+        "DataAttribute": "1:1/1:2"
+      },
+      {
+        "MatchAttribute": "o116",
+        "DataAttribute": "1:1/1:3"
+      },
+      {
+        "MatchAttribute": "o117",
+        "DataAttribute": "1:1/1:4"
+      },
+      {
+        "MatchAttribute": "o027",
+        "DataAttribute": "1:1/2:1"
+      },
+      {
+        "MatchAttribute": "o118",
+        "DataAttribute": "1:1/2:2"
+      },
+      {
+        "MatchAttribute": "o119",
+        "DataAttribute": "1:1/2:3"
+      },
+      {
+        "MatchAttribute": "o120",
+        "DataAttribute": "1:1/2:4"
+      },
+      {
+        "MatchAttribute": "o121",
+        "DataAttribute": "1:1/3:1"
+      },
+      {
+        "MatchAttribute": "o122",
+        "DataAttribute": "1:1/3:2"
+      },
+      {
+        "MatchAttribute": "o123",
+        "DataAttribute": "1:1/3:3"
+      },
+      {
+        "MatchAttribute": "o124",
+        "DataAttribute": "1:1/3:4"
+      },
+      {
+        "MatchAttribute": "o125",
+        "DataAttribute": "1:1/4:1"
+      },
+      {
+        "MatchAttribute": "o126",
+        "DataAttribute": "1:1/4:2"
+      },
+      {
+        "MatchAttribute": "o127",
+        "DataAttribute": "1:1/4:3"
+      },
+      {
+        "MatchAttribute": "o128",
+        "DataAttribute": "1:1/4:4"
+      },
+      {
+        "MatchAttribute": "o129",
+        "DataAttribute": "1:1/AOS"
+      },
+      {
+        "MatchAttribute": "o040",
+        "DataAttribute": "1:2/1:2"
+      },
+      {
+        "MatchAttribute": "o130",
+        "DataAttribute": "1:2/1:3"
+      },
+      {
+        "MatchAttribute": "o131",
+        "DataAttribute": "1:2/1:4"
+      },
+      {
+        "MatchAttribute": "o132",
+        "DataAttribute": "1:2/2:2"
+      },
+      {
+        "MatchAttribute": "o133",
+        "DataAttribute": "1:2/2:3"
+      },
+      {
+        "MatchAttribute": "o134",
+        "DataAttribute": "1:2/2:4"
+      },
+      {
+        "MatchAttribute": "o135",
+        "DataAttribute": "1:2/3:2"
+      },
+      {
+        "MatchAttribute": "o136",
+        "DataAttribute": "1:2/3:3"
+      },
+      {
+        "MatchAttribute": "o137",
+        "DataAttribute": "1:2/3:4"
+      },
+      {
+        "MatchAttribute": "o138",
+        "DataAttribute": "1:2/4:2"
+      },
+      {
+        "MatchAttribute": "o139",
+        "DataAttribute": "1:2/4:3"
+      },
+      {
+        "MatchAttribute": "o140",
+        "DataAttribute": "1:2/4:4"
+      },
+      {
+        "MatchAttribute": "o141",
+        "DataAttribute": "1:2/AOS"
+      },
+      {
+        "MatchAttribute": "o142",
+        "DataAttribute": "1:3/1:3"
+      },
+      {
+        "MatchAttribute": "o143",
+        "DataAttribute": "1:3/1:4"
+      },
+      {
+        "MatchAttribute": "o144",
+        "DataAttribute": "1:3/2:3"
+      },
+      {
+        "MatchAttribute": "o145",
+        "DataAttribute": "1:3/2:4"
+      },
+      {
+        "MatchAttribute": "o146",
+        "DataAttribute": "1:3/3:3"
+      },
+      {
+        "MatchAttribute": "o147",
+        "DataAttribute": "1:3/3:4"
+      },
+      {
+        "MatchAttribute": "o148",
+        "DataAttribute": "1:3/4:3"
+      },
+      {
+        "MatchAttribute": "o149",
+        "DataAttribute": "1:3/4:4"
+      },
+      {
+        "MatchAttribute": "o150",
+        "DataAttribute": "1:3/AOS"
+      },
+      {
+        "MatchAttribute": "o030",
+        "DataAttribute": "2:0/2:0"
+      },
+      {
+        "MatchAttribute": "o032",
+        "DataAttribute": "2:0/2:1"
+      },
+      {
+        "MatchAttribute": "o151",
+        "DataAttribute": "2:0/2:2"
+      },
+      {
+        "MatchAttribute": "o152",
+        "DataAttribute": "2:0/2:3"
+      },
+      {
+        "MatchAttribute": "o153",
+        "DataAttribute": "2:0/2:4"
+      },
+      {
+        "MatchAttribute": "o031",
+        "DataAttribute": "2:0/3:0"
+      },
+      {
+        "MatchAttribute": "o154",
+        "DataAttribute": "2:0/3:1"
+      },
+      {
+        "MatchAttribute": "o155",
+        "DataAttribute": "2:0/3:2"
+      },
+      {
+        "MatchAttribute": "o156",
+        "DataAttribute": "2:0/3:3"
+      },
+      {
+        "MatchAttribute": "o157",
+        "DataAttribute": "2:0/3:4"
+      },
+      {
+        "MatchAttribute": "o158",
+        "DataAttribute": "2:0/4:0"
+      },
+      {
+        "MatchAttribute": "o159",
+        "DataAttribute": "2:0/4:1"
+      },
+      {
+        "MatchAttribute": "o160",
+        "DataAttribute": "2:0/4:2"
+      },
+      {
+        "MatchAttribute": "o161",
+        "DataAttribute": "2:0/4:3"
+      },
+      {
+        "MatchAttribute": "o162",
+        "DataAttribute": "2:0/4:4"
+      },
+      {
+        "MatchAttribute": "o163",
+        "DataAttribute": "2:0/AOS"
+      },
+      {
+        "MatchAttribute": "o038",
+        "DataAttribute": "2:1/2:1"
+      },
+      {
+        "MatchAttribute": "o164",
+        "DataAttribute": "2:1/2:2"
+      },
+      {
+        "MatchAttribute": "o165",
+        "DataAttribute": "2:1/2:3"
+      },
+      {
+        "MatchAttribute": "o166",
+        "DataAttribute": "2:1/2:4"
+      },
+      {
+        "MatchAttribute": "o167",
+        "DataAttribute": "2:1/3:1"
+      },
+      {
+        "MatchAttribute": "o168",
+        "DataAttribute": "2:1/3:2"
+      },
+      {
+        "MatchAttribute": "o169",
+        "DataAttribute": "2:1/3:3"
+      },
+      {
+        "MatchAttribute": "o170",
+        "DataAttribute": "2:1/3:4"
+      },
+      {
+        "MatchAttribute": "o171",
+        "DataAttribute": "2:1/4:1"
+      },
+      {
+        "MatchAttribute": "o172",
+        "DataAttribute": "2:1/4:2"
+      },
+      {
+        "MatchAttribute": "o173",
+        "DataAttribute": "2:1/4:3"
+      },
+      {
+        "MatchAttribute": "o174",
+        "DataAttribute": "2:1/4:4"
+      },
+      {
+        "MatchAttribute": "o175",
+        "DataAttribute": "2:1/AOS"
+      },
+      {
+        "MatchAttribute": "o176",
+        "DataAttribute": "2:2/2:2"
+      },
+      {
+        "MatchAttribute": "o177",
+        "DataAttribute": "2:2/2:3"
+      },
+      {
+        "MatchAttribute": "o178",
+        "DataAttribute": "2:2/2:4"
+      },
+      {
+        "MatchAttribute": "o179",
+        "DataAttribute": "2:2/3:2"
+      },
+      {
+        "MatchAttribute": "o180",
+        "DataAttribute": "2:2/3:3"
+      },
+      {
+        "MatchAttribute": "o181",
+        "DataAttribute": "2:2/3:4"
+      },
+      {
+        "MatchAttribute": "o182",
+        "DataAttribute": "2:2/4:2"
+      },
+      {
+        "MatchAttribute": "o183",
+        "DataAttribute": "2:2/4:3"
+      },
+      {
+        "MatchAttribute": "o184",
+        "DataAttribute": "2:2/4:4"
+      },
+      {
+        "MatchAttribute": "o185",
+        "DataAttribute": "2:2/AOS"
+      },
+      {
+        "MatchAttribute": "o186",
+        "DataAttribute": "2:3/2:3"
+      },
+      {
+        "MatchAttribute": "o187",
+        "DataAttribute": "2:3/2:4"
+      },
+      {
+        "MatchAttribute": "o188",
+        "DataAttribute": "2:3/3:3"
+      },
+      {
+        "MatchAttribute": "o189",
+        "DataAttribute": "2:3/3:4"
+      },
+      {
+        "MatchAttribute": "o190",
+        "DataAttribute": "2:3/4:3"
+      },
+      {
+        "MatchAttribute": "o191",
+        "DataAttribute": "2:3/4:4"
+      },
+      {
+        "MatchAttribute": "o192",
+        "DataAttribute": "2:3/AOS"
+      },
+      {
+        "MatchAttribute": "o042",
+        "DataAttribute": "3:0/3:0"
+      },
+      {
+        "MatchAttribute": "o193",
+        "DataAttribute": "3:0/3:1"
+      },
+      {
+        "MatchAttribute": "o194",
+        "DataAttribute": "3:0/3:2"
+      },
+      {
+        "MatchAttribute": "o195",
+        "DataAttribute": "3:0/3:3"
+      },
+      {
+        "MatchAttribute": "o196",
+        "DataAttribute": "3:0/3:4"
+      },
+      {
+        "MatchAttribute": "o197",
+        "DataAttribute": "3:0/4:0"
+      },
+      {
+        "MatchAttribute": "o198",
+        "DataAttribute": "3:0/4:1"
+      },
+      {
+        "MatchAttribute": "o199",
+        "DataAttribute": "3:0/4:2"
+      },
+      {
+        "MatchAttribute": "o200",
+        "DataAttribute": "3:0/4:3"
+      },
+      {
+        "MatchAttribute": "o201",
+        "DataAttribute": "3:0/4:4"
+      },
+      {
+        "MatchAttribute": "o202",
+        "DataAttribute": "3:0/AOS"
+      },
+      {
+        "MatchAttribute": "o203",
+        "DataAttribute": "3:1/3:1"
+      },
+      {
+        "MatchAttribute": "o204",
+        "DataAttribute": "3:1/3:2"
+      },
+      {
+        "MatchAttribute": "o205",
+        "DataAttribute": "3:1/3:3"
+      },
+      {
+        "MatchAttribute": "o206",
+        "DataAttribute": "3:1/3:4"
+      },
+      {
+        "MatchAttribute": "o207",
+        "DataAttribute": "3:1/4:1"
+      },
+      {
+        "MatchAttribute": "o208",
+        "DataAttribute": "3:1/4:2"
+      },
+      {
+        "MatchAttribute": "o209",
+        "DataAttribute": "3:1/4:3"
+      },
+      {
+        "MatchAttribute": "o210",
+        "DataAttribute": "3:1/4:4"
+      },
+      {
+        "MatchAttribute": "o211",
+        "DataAttribute": "3:1/AOS"
+      },
+      {
+        "MatchAttribute": "o212",
+        "DataAttribute": "3:2/3:2"
+      },
+      {
+        "MatchAttribute": "o213",
+        "DataAttribute": "3:2/3:3"
+      },
+      {
+        "MatchAttribute": "o214",
+        "DataAttribute": "3:2/3:4"
+      },
+      {
+        "MatchAttribute": "o215",
+        "DataAttribute": "3:2/4:2"
+      },
+      {
+        "MatchAttribute": "o216",
+        "DataAttribute": "3:2/4:3"
+      },
+      {
+        "MatchAttribute": "o217",
+        "DataAttribute": "3:2/4:4"
+      },
+      {
+        "MatchAttribute": "o218",
+        "DataAttribute": "3:2/AOS"
+      },
+      {
+        "MatchAttribute": "o219",
+        "DataAttribute": "3:3/3:3"
+      },
+      {
+        "MatchAttribute": "o220",
+        "DataAttribute": "3:3/3:4"
+      },
+      {
+        "MatchAttribute": "o221",
+        "DataAttribute": "3:3/4:3"
+      },
+      {
+        "MatchAttribute": "o222",
+        "DataAttribute": "3:3/4:4"
+      },
+      {
+        "MatchAttribute": "o223",
+        "DataAttribute": "3:3/AOS"
+      },
+      {
+        "MatchAttribute": "o224",
+        "DataAttribute": "AOS/3:4"
+      },
+      {
+        "MatchAttribute": "o225",
+        "DataAttribute": "AOS/4:3"
+      },
+      {
+        "MatchAttribute": "o226",
+        "DataAttribute": "AOS/4:4"
+      },
+      {
+        "MatchAttribute": "o227",
+        "DataAttribute": "AOS/AOS"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 417,
+    "Tag": "bsst",
+    "BetChoices": [
+      {
+        "MatchAttribute": "yh",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "ya",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "yd",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "nh",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "na",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "nd",
+        "DataAttribute": "cs30"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 418,
+    "Tag": "bstg",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "yo",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "yu",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "no",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "nu",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 419,
+    "Tag": "fgwh",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs11"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 420,
+    "Tag": "fgwh_h",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs11"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 421,
+    "Tag": "fgwh_a",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs11"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 422,
+    "Tag": "f2g",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs11"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 423,
+    "Tag": "f3g",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs11"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 424,
+    "Tag": "fghow",
+    "BetChoices": [
+      {
+        "MatchAttribute": "s",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "p",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "fk",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "og",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "ng",
+        "DataAttribute": "cs21"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 425,
+    "Tag": "bhi",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 426,
+    "Tag": "win_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "a1",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "a2",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "ng",
+        "DataAttribute": "cs21"
+      }
+
+    ]
+  },
+  {
+    "BetTypeId": 429,
+    "Tag": "egs_2",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o0",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs11"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 445,
+    "Tag": "bs_12",
+    "BetChoices": [
+      {
+        "MatchAttribute": "yy",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "yn",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "ny",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "nn",
+        "DataAttribute": "cs22"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 446,
+    "Tag": "hs_12",
+    "BetChoices": [
+      {
+        "MatchAttribute": "yy",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "yn",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "ny",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "nn",
+        "DataAttribute": "cs22"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 447,
+    "Tag": "as_12",
+    "BetChoices": [
+      {
+        "MatchAttribute": "yy",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "yn",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "ny",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "nn",
+        "DataAttribute": "cs22"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 221,
+    "Tag": "nxt1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "g",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "c",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "fk",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "gk",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "ti",
+        "DataAttribute": "cs05"
+      },
+      {
+        "MatchAttribute": "intervals",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 222,
+    "Tag": "nxt5",
+    "BetChoices": [
+      {
+        "MatchAttribute": "gy",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "gn",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "cy",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "cn",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "py",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "pn",
+        "DataAttribute": "cs31"
+      },
+      {
+        "MatchAttribute": "intervals",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 223,
+    "Tag": "1nxt1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "g",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "c",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "fk",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "gk",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "ti",
+        "DataAttribute": "cs05"
+      },
+      {
+        "MatchAttribute": "intervals",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 224,
+    "Tag": "1nxt5",
+    "BetChoices": [
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "g",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "c",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "b",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "p",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "intervals",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 225,
+    "Tag": "nxt1yn",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs01"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 401,
+    "Tag": "ou_h",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 402,
+    "Tag": "ou_a",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 403,
+    "Tag": "ou_h1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 404,
+    "Tag": "ou_a1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 405,
+    "Tag": "cs_2",
+    "BetChoices": [
+      {
+        "MatchAttribute": "cs10",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "cs20",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "cs21",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "cs30",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "cs31",
+        "DataAttribute": "cs31"
+      },
+      {
+        "MatchAttribute": "cs32",
+        "DataAttribute": "cs32"
+      },
+      {
+        "MatchAttribute": "cs01",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "cs02",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "cs12",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "cs03",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "cs13",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "cs23",
+        "DataAttribute": "cs23"
+      },
+      {
+        "MatchAttribute": "cs00",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "cs11",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "cs22",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "cs33",
+        "DataAttribute": "cs33"
+      },
+      {
+        "MatchAttribute": "csaos",
+        "DataAttribute": "cs99"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 406,
+    "Tag": "etg",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "o01",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o02",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o03",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "o04",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "o05",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o06",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "o07",
+        "DataAttribute": "cs30"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 407,
+    "Tag": "heg",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 408,
+    "Tag": "win",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "h3",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "a1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "a2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "a3",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "ng",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 409,
+    "Tag": "aeg",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o3",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o4",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 410,
+    "Tag": "x2_1",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "hd",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "ha",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "ad",
+        "DataAttribute": "cs20"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 411,
+    "Tag": "dnb_1",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 412,
+    "Tag": "egs_1",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o0",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "o1",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o2",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o3o",
+        "DataAttribute": "cs11"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 413,
+    "Tag": "cs",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "cs10",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "cs20",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "cs21",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "cs30",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "cs31",
+        "DataAttribute": "cs31"
+      },
+      {
+        "MatchAttribute": "cs32",
+        "DataAttribute": "cs32"
+      },
+      {
+        "MatchAttribute": "cs40",
+        "DataAttribute": "cs40"
+      },
+      {
+        "MatchAttribute": "cs41",
+        "DataAttribute": "cs41"
+      },
+      {
+        "MatchAttribute": "cs42",
+        "DataAttribute": "cs42"
+      },
+      {
+        "MatchAttribute": "cs43",
+        "DataAttribute": "cs43"
+      },
+      {
+        "MatchAttribute": "cs01",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "cs02",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "cs12",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "cs03",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "cs13",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "cs23",
+        "DataAttribute": "cs23"
+      },
+      {
+        "MatchAttribute": "cs04",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "cs14",
+        "DataAttribute": "cs14"
+      },
+      {
+        "MatchAttribute": "cs24",
+        "DataAttribute": "cs24"
+      },
+      {
+        "MatchAttribute": "cs34",
+        "DataAttribute": "cs34"
+      },
+      {
+        "MatchAttribute": "cs00",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "cs11",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "cs22",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "cs33",
+        "DataAttribute": "cs33"
+      },
+      {
+        "MatchAttribute": "cs44",
+        "DataAttribute": "cs44"
+      },
+      {
+        "MatchAttribute": "csaos",
+        "DataAttribute": "cs99"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 414,
+    "Tag": "cs_1",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "c10",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "c20",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "c21",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "c30",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "c31",
+        "DataAttribute": "cs31"
+      },
+      {
+        "MatchAttribute": "c32",
+        "DataAttribute": "cs32"
+      },
+      {
+        "MatchAttribute": "c01",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "c02",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "c12",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "c03",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "c13",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "c23",
+        "DataAttribute": "cs23"
+      },
+      {
+        "MatchAttribute": "c00",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "c11",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "c22",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "c33",
+        "DataAttribute": "cs33"
+      },
+      {
+        "MatchAttribute": "caos",
+        "DataAttribute": "cs99"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 415,
+    "Tag": "stts",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "hh",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "dh",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "ah",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "ha",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "da",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "aa",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "cs30"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 427,
+    "Tag": "b_1",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 428,
+    "Tag": "oe_2",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "e",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 430,
+    "Tag": "st_2",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 431,
+    "Tag": "x2_2",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "hd",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "ha",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "ad",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 432,
+    "Tag": "dnb_2",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 433,
+    "Tag": "bs_2",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 434,
+    "Tag": "oyn",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 435,
+    "Tag": "uyn",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 436,
+    "Tag": "hs",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 437,
+    "Tag": "as",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 438,
+    "Tag": "h2h",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 439,
+    "Tag": "a2h",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 440,
+    "Tag": "hw",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 441,
+    "Tag": "aw",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "n",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 442,
+    "Tag": "high",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "tie",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 443,
+    "Tag": "hhigh",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "tie",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 444,
+    "Tag": "ahigh",
+    "IsChildBetType": true,
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "tie",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 601,
+    "Tag": "bkb_601",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1-2",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "h3-6",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "h7-9",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "h10-13",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "h14-16",
+        "DataAttribute": "cs05"
+      },
+      {
+        "MatchAttribute": "h17-20",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "h21",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "a1-2",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "a3-6",
+        "DataAttribute": "cs14"
+      },
+      {
+        "MatchAttribute": "a7-9",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "a10-13",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "a14-16",
+        "DataAttribute": "cs23"
+      },
+      {
+        "MatchAttribute": "a17-20",
+        "DataAttribute": "cs24"
+      },
+      {
+        "MatchAttribute": "a21",
+        "DataAttribute": "cs30"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 602,
+    "Tag": "bkb_602",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1-5",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "h6-10",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "h11-15",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "h16-20",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "h21-25",
+        "DataAttribute": "cs05"
+      },
+      {
+        "MatchAttribute": "h26",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "a1-5",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "a6-10",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "a11-15",
+        "DataAttribute": "cs14"
+      },
+      {
+        "MatchAttribute": "a16-20",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "a21-25",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "a26",
+        "DataAttribute": "cs23"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 603,
+    "Tag": "bkb_603",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 604,
+    "Tag": "bkb_604",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 605,
+    "Tag": "bkb_605",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 606,
+    "Tag": "bkb_606",
+    "BetChoices": [      
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 607,
+    "Tag": "bkb_607",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 608,
+    "Tag": "bkb_608",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1-5",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "h6-10",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "h11-15",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "h16-20",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "h21-25",
+        "DataAttribute": "cs05"
+      },
+      {
+        "MatchAttribute": "h26",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "a1-5",
+        "DataAttribute": "cs13"
+      },
+      {
+        "MatchAttribute": "a6-10",
+        "DataAttribute": "cs14"
+      },
+      {
+        "MatchAttribute": "a11-15",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "a16-20",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "a21-25",
+        "DataAttribute": "cs23"
+      },
+      {
+        "MatchAttribute": "a26",
+        "DataAttribute": "cs24"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 609,
+    "Tag": "bkb_609",
+    "Reserve": {
+      "FirstHdp": "hdp1",
+      "SecondHdp": "hdp2"
+    },    
+    "BetChoices": [
+       {
+        "MatchAttribute": "h",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "home",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 610,
+    "Tag": "bkb_610",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 611,
+    "Tag": "bkb_611",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 612,
+    "Tag": "bkb_612",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 613,
+    "Tag": "bkb_613",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID.x",
+        "IsResourceX":  true
+      },
+      {
+        "MatchAttribute": "y",
+        "DataAttribute": "ResourceID.yy",
+        "IsResourceY":  true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 614,
+    "Tag": "bkb_614",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1-4",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "h5-8",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "h9",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "cs04"
+      },
+      {
+        "MatchAttribute": "a1-4",
+        "DataAttribute": "cs05"
+      },
+      {
+        "MatchAttribute": "a5-8",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "a9",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 615,
+    "Tag": "bkb_615",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 616,
+    "Tag": "bkb_616",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "hdp1",
+        "NotConvert": true
+      },
+      {
+        "MatchAttribute": "o",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "u",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BetTypeId": 617,
+    "Tag": "bkb_617",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "odds1a"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "odds2a"
+      },
+      {
+        "MatchAttribute": "x",
+        "DataAttribute": "ResourceID",
+        "IsResource": true
+      }
+    ]
+  }
+]
+

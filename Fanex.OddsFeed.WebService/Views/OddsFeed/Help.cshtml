@@ -1,0 +1,442 @@
+﻿@model Fanex.OddsFeed.Common.DTO.UserProfile
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Odds feed user manual</title>    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <link rel="shortcut icon" href="@ViewBag.FullDomainName/content/images/favicon.ico">
+    <link href= "@ViewBag.FullDomainName/content/usermanual.css?v=1.0" rel="stylesheet" type="text/css" />
+    <link href= "@ViewBag.FullDomainName/content/shCore.css" rel="stylesheet" type="text/css" />
+    <link href= "@ViewBag.FullDomainName/content/shThemeDefault.css" rel="stylesheet" type="text/css" />    
+    <script src= "@ViewBag.FullDomainName/Scripts/shCore.js" type="text/javascript"></script>
+    <script src= "@ViewBag.FullDomainName/Scripts/shBrushXml.js" type="text/javascript"></script>
+    
+</head>
+<body>
+    <div id="main">
+        <div id="left">
+            <div id="logo">
+            </div>
+            <div id="toci">
+            </div>
+            <div id="toct">
+                Table of Contents</div>
+            <ul id="index">
+                <li><a href="#1">1. Introduction</a></li>
+                <li><a href="#2">2. Supported sports</a></li>
+                <li><a href="#3">3. Supported bet types</a></li>
+                <li><a href="#4">4. XML Odds sample</a>
+                    <ul class="subindex">
+                        @if (Model.OddsType.Count == 3 || (Model.OddsType.Sum() > 8))
+                        { 
+                            <li><a href="#41">4.1 Term and definition for Outright bet type</a> </li>
+                            <li><a href="#42">4.2 Term and definition for Match</a> </li>
+                        }
+                        else if (Model.OddsType.Contains(8))
+                        {
+                            <li><a href="#41">4.1 Term and definition for Outright bet type</a> </li>
+                        }
+                        else
+                        { 
+                            <li><a href="#42">4.1 Term and definition for Match</a> </li>
+                        }
+                    </ul>
+                </li>
+                <li><a href="#5">5. How to</a>
+                    <ul class="subindex">
+                        <li><a href="#51">5.1 Using timestamp</a> </li>
+                        <li><a href="#52">5.2 Using compression algorithm</a> </li>
+                    </ul>
+                </li>
+                <li><a href="#6">6. Experimental error</a></li>
+            </ul>
+        </div>
+        <div id="right">
+            <div id="textlogo">
+            </div>
+            <div class="section">
+                <div class="title">
+                    <a name="1"></a><span>1</span>Introduction</div>
+                @if (Model.OddsType.Contains(4))
+                {
+                    <div class="content">
+                        Odds feed is an automated service which enables your betting system or website access
+                        to our Live Odds on all major sporting events through XML Odds feed. This service
+                        is already being used successfully by other customers who confidently give their
+                        full approval and praise the time savings and accuracy of the content.
+                    </div>
+                }
+                else
+                {
+                    <div class="content">
+                        Odds feed is an automated service which enables your betting system or website access
+                        to our Odds data on all major sporting events through XML Odds feed. This service
+                        is already being used successfully by other customers who confidently give their
+                        full approval and praise the time savings and accuracy of the content.
+                    </div>
+                }
+            </div>
+            <div class="section">
+                <div class="title">
+                    <a name="2"></a><span>2</span>Supported sports</div>
+                <div class="content">                    
+                    Below is the list of supported sports in your xml data:
+                    <ul>
+                    @foreach (System.Data.DataRow row in ViewBag.Sports)
+                    {
+                        <li>@row["SportName"].ToString()</li>
+                    }                 
+                    </ul>
+                </div>
+            </div>
+            <div class="section">
+                <div class="title">
+                    <a name="3"></a><span>3</span>Supported bet types</div>
+                <div class="content">
+                    Below is the list of supported bet types in your xml data:
+                     <ul>
+                    @foreach (System.Data.DataRow row in ViewBag.Bettypes)
+                    {
+                        <li>@row["BetTypeName"].ToString()</li>
+                    }
+                    </ul>                    
+                </div>
+            </div>
+            <div class="section">
+                <div class="title">
+                    <a name="4"></a><span>4</span>XML Odds sample</div>
+                <div class="content">
+                    This is a sample of our XML Odds Feeds which includes the some following field:
+                    <ul>
+                        <li>Match ID</li>
+                        <li>Match Kick-off time</li>
+                        <li>League name/Team name</li>
+                        <li>All major Sport type/ Bet Type</li>
+                        <li>Odd ID/Price</li>
+                    </ul>
+                    <pre class="brush: xml">
+@Html.Raw(ViewBag.Odds)
+</pre>
+                </div>
+                @if (Model.OddsType.Contains(8))
+                { 
+                    <div class="subsection">
+                        <div class="title">
+                            <a name="41"></a><span>4.1</span>Term and definition for Outright bet type</div>
+                        <div class="content">
+                            <ul>
+                                <li>ge: Event\League name in English.</li>
+                                <li>gt: Event\League name in Chinese Traditional.</li>
+                                <li>gs: Event\League name in Chinese Simplified.</li>
+                                <li>mt: Match Kick-off time.</li>
+                                <li>te: Team name in English.</li>
+                                <li>tt: Team name in Chinese Traditional.</li>
+                                <li>ts: Team name in Chinese Simplified.</li>
+                                <li>o: Price</li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+                @if (Model.OddsType.Contains(2) || Model.OddsType.Contains(4))
+                { 
+                    <div class="subsection">
+                        <div class="title">
+                            <a name="42"></a><span>
+                                @if (Model.OddsType.Contains(8))
+                                {
+                                    <text>4.2</text>
+                                }
+                                else
+                                {
+                                    <text>4.1</text>
+                                }
+                            </span>Term and definition for Match
+                        </div>
+                        <div class="content">
+                            <ul>
+                                <li>Lastupdate: last request date for Odds data. </li>
+                                <li>Timestamp: last request date convert to integer number. </li>
+                                <li>ge: Event\League name in English. </li>
+                                <li>gs: Event\League name in Chinese Simplified. </li>
+                                <li>gt: Event\League name in Chinese Traditional. </li>
+                                <li>he: Home team name in English. </li>
+                                <li>hs: Home team name in Chinese Simplified. </li>
+                                <li>ht: Home team name in Chinese Traditional. </li>
+                                <li>ae: Away team name in English. </li>
+                                <li>as: Away team name in Chinese Simplified. </li>
+                                <li>at: Away team name in Chinese Traditional. </li>
+                                <li>mt: Match Kick-off time </li>                                
+                                @if (Model.OddsType.Contains(4))
+                                {
+                                    <li>runing: Status (Live or Dead Ball) </li>
+                                }                                
+                                <li>bookie name: Provider of XML Odds Feed in English. </li>
+                                <li>simp: Provider of XML Odds Feed in Chinese Simplified </li>
+                                <li>trad: Provider of XML Odds Feed in Chinese Simplified </li>
+                                <li>time: Display time for this odd. </li>
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(1))
+                                {
+                                    <li>t="ah" : Full time Asian Handicap bet type
+                                        <ul>
+                                            <li>h: Handicap line </li>
+                                            <li>o: Price for favorite team </li>
+                                            <li>u: Price for underdog team </li>
+                                            <li>For indication of handicap “h”, please show the handicap for the favorite team, use
+                                                “+” or “-” to indicate the home team is the favorite or underdog i.e.</li>
+                                        </ul>
+                                    </li>
+                                    <div style="text-indent: 70px;">
+                                        + When h<=0, the home team is the favorite.<br />
+                                    </div>
+                                    <div style="text-indent: 70px;">
+                                        + When h>0, the away team is the favorite.
+                                    </div>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(7))
+                                {
+                                    <li>t="ah_1": First half Asian Handicap bet type
+                                        <ul>
+                                            <li>h: Handicap line </li>
+                                            <li>o: Price for favorite team </li>
+                                            <li>u: Price for underdog team </li>
+                                            <li>For indication of handicap “h”, please show the handicap for the favorite team, use
+                                                “+” or “-” to indicate the home team is the favorite or underdog i.e.</li>
+                                        </ul>
+                                    </li>
+                                    <div style="text-indent: 70px;">
+                                        + When h<=0, the home team is the favorite.<br />
+                                    </div>
+                                    <div style="text-indent: 70px;">
+                                        + When h>0, the away team is the favorite.
+                                    </div>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(2))
+                                {
+                                    <li>t="oe": Full Time Odd/Even bet type
+                                        <ul>
+                                            <li>o: Price for Odd </li>
+                                            <li>e: Price for Even </li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(12))
+                                {
+                                    <li>t="oe_1": First Half Time Odd/Even bet type
+                                        <ul>
+                                            <li>o: Price for Odd </li>
+                                            <li>e: Price for Even </li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(3))
+                                {
+                                    <li>t="ou": Full Time Over/Under bet type
+                                        <ul>
+                                            <li>h: Over/Under line </li>
+                                            <li>o: Price for Over </li>
+                                            <li>u: Price for Under </li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(8))
+                                {
+                                    <li>t="ou_1": First Half Over/Under bet type
+                                        <ul>
+                                            <li>h: Over/Under line </li>
+                                            <li>o: Price for Over </li>
+                                            <li>u: Price for Under </li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(4))
+                                {
+                                    <li>t="cs": Correct score
+                                        <ul>
+                                            <li>c00: Price for the score 0-0 </li>
+                                            <li>c11: Price for the score 1-1 </li>
+                                            <li>c22: Price for the score 2-2 </li>
+                                            <li>c33: Price for the score 3-3 </li>
+                                            <li>c44: Price for the score 4-4 </li>
+                                            <li>c01: Price for the score 0-1 </li>
+                                            <li>c02: Price for the score 0-2 </li>
+                                            <li>c03: Price for the score 0-3 </li>
+                                            <li>c04: Price for the score 0-4 </li>
+                                            <li>c05: Price for the score 0-5 UP </li>
+                                            <li>c10: Price for the score 1-0 </li>
+                                            <li>c20: Price for the score 2-0 </li>
+                                            <li>c30: Price for the score 3-0 </li>
+                                            <li>c40: Price for the score 4-0 </li>
+                                            <li>c50: Price for the score 5-0 UP </li>
+                                            <li>c12: Price for the score 1-2 </li>
+                                            <li>c13: Price for the score 1-3 </li>
+                                            <li>c23: Price for the score 2-3 </li>
+                                            <li>c14: Price for the score 1-4 </li>
+                                            <li>c24: Price for the score 2-4 </li>
+                                            <li>c34: Price for the score 3-4 </li>
+                                            <li>c21: Price for the score 2-1 </li>
+                                            <li>c31: Price for the score 3-1 </li>
+                                            <li>c32: Price for the score 3-2 </li>
+                                            <li>c41: Price for the score 4-1 </li>
+                                            <li>c42: Price for the score 4-2 </li>
+                                            <li>c43: Price for the score 4-3 </li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(5))
+                                {
+                                    <li>t="st": Full Time 1x2 bet type
+                                        <ul>
+                                            <li>o1: Home team win price </li>
+                                            <li>o2: Draw price </li>
+                                            <li>o3: Away team win price </li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(15))
+                                {
+                                    <li>t="st_1": First Half 1x2 bet type
+                                        <ul>
+                                            <li>o1: Home team win price </li>
+                                            <li>o2: Draw price </li>
+                                            <li>o3: Away team win price </li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(6))
+                                { 
+                                    <li>t="tg": Total Goal bet type
+                                        <ul>
+                                            <li>o1: Price for 0-1 </li>
+                                            <li>o2: Price for 2-3 </li>
+                                            <li>o3: Price for 4-6 </li>
+                                            <li>o4: Price for 7-over </li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(14))
+                                { 
+                                    <li>t="fl": First Goal/Last Goal bet type
+                                        <ul>
+                                            <li>hf: Home scores the first goal price</li>
+                                            <li>hl: Home scores the last goal price</li>
+                                            <li>af: Away scores the first goal price</li>
+                                            <li>al: Away scores the last goal price</li>
+                                            <li>ng: No goals being scored price</li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(16))
+                                { 
+                                    <li>t="htft": Half Time Full Time bet type
+                                        <ul>
+                                            <li>hh: Home/Home </li>
+                                            <li>hd: Home/Draw </li>
+                                            <li>ha: Home/Away </li>
+                                            <li>dh: Draw/Home </li>
+                                            <li>dd: Draw/Draw </li>
+                                            <li>da: Draw/Away </li>
+                                            <li>ah: Away/Home </li>
+                                            <li>ad: Away/Draw </li>
+                                            <li>aa: Away/Away </li>
+                                        </ul>
+                                    </li>
+                                }
+                                @if (Model.BetTypes == null || Model.BetTypes.Contains(20))
+                                {
+                                    <li>t="ml": Money Line bet type 
+                                        <ul>
+                                            <li>o1: Home team win price</li>
+                                            <li>o2: Away team win price</li>
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="section">
+                <div class="title">
+                    <a name="5"></a><span>5</span>How to</div>
+                <div class="content">
+                    You will be provided an XML Feed URL to get full Odds data with the format as below:
+                    <br />
+                    <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml">
+                        @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml </a>
+                </div>
+                <div class="subsection">
+                    <div class="title">
+                        <a name="51"></a><span>5.1</span>Using timestamp</div>
+                    <div class="content">
+                        To get the latest changes of Odds only, you need to specify the biggest timestamp
+                        in your previous data request then input this parameter in the query string. Please,
+                        note that this timestamp must be retrieved from child node only.
+                        <br />
+                        <a href="javascript:;">
+                            @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?t=[timestamp] </a>
+                        <p>
+                            <strong>Note</strong>: The biggest timestamp value stored in timestamp attribute
+                            of <strong>matches</strong> node
+                        </p>
+                        <div id="tamstamp">
+                            <pre class="brush: xml;">
+@Html.Raw(ViewBag.Odds)
+</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="subsection">
+                    <div class="title">
+                        <a name="52"></a><span>5.2</span>Using compression algorithm</div>
+                    <div class="content">
+                        To reduce the consumption of resources such as transmission bandwidth, you need
+                        to use the data compression algorithm and currently we support 2 algorithms:
+                        <ul>
+                            <li>zip=deflate: zip the xml stream using deflate algorithm</li>
+                            <li>zip=gzip: zip the xml stream using gzip algorithm</li>
+                        </ul>
+                        All you need to do is to input the algorithm name in the query string as below:
+                        <br />
+                        <a href="javascript:;">
+                            @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=[algorithm-name] </a>
+                        <div>
+                            <br />
+                            <strong>Note</strong>: In case of using both parameters: <a href="javascript:;">
+                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?t=[timestamp]&zip=[algorithm-name]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="title">
+                    <a name="6"></a><span>6</span>Experimental errors</div>
+                <div class="content">
+                    You might encounter some error message while accessing our XML Odds Feed, so please
+                    refer to the list of messages below for each type of errors:
+                    <ul>
+                        <li>Message "Invalid username" </li>
+                        <li>Message "Your account is disabled now. Please contact with Administrator" </li>
+                        <li>Message "Invalid profile. Please contact with Administrator" </li>
+                        <li>Message "You are not allowed to get odds feed from your location" </li>
+                        <li>Message "Invalid Domain name" </li>
+                        @*<li>Message "This Partner does not have permission to access this domain" </li>*@
+                        <li>Message ""Sorry! You don't have permission to access this domain. Please contact administrator" </li>                        
+                        <li>Message "You are not authorized to take this action" </li>
+                        <li>Message "Missing parameter"</li>
+                        <li>Message "Invalid URL" </li>
+                        <li>Message "Sorry for the inconvenience! We are not able to process your request this
+                            time. Please try again later"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        }); </script>
+</body>
+</html>

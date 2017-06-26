@@ -1,0 +1,898 @@
+﻿@using Fanex.OddsFeed.Common.DTO
+@using Fanex.OddsFeed.WebServiceLibrary.Helpers
+
+@model UserProfile
+@{
+    Layout = null;
+    var highlightSportType = (string[])ViewBag.HighlightSportType;
+    var highlightBetType = (string[])ViewBag.HighlightBetType;
+    var betTypeList = (IDictionary<int, BetType>)ViewBag.BetTypeList;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Odds feed user manual</title>
+    <script src="@ViewBag.FullDomainName/Scripts/jquery-latest.js" type="text/javascript"></script>
+    <link href="@ViewBag.FullDomainName/content/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="@ViewBag.FullDomainName/content/shThemeDefault.css" rel="stylesheet" type="text/css" />
+    <link href="@ViewBag.FullDomainName/stylesheets/Help/menu.css" rel="stylesheet" type="text/css" />
+    <link href="@ViewBag.FullDomainName/stylesheets/Help/content.css" rel="stylesheet" type="text/css" />
+    @*<link href="@ViewBag.FullDomainName/stylesheets/Help/style.css" rel="stylesheet" type="text/css" />*@
+    <script src="@ViewBag.FullDomainName/Scripts/shCore.js" type="text/javascript"></script>
+    <script src="@ViewBag.FullDomainName/Scripts/shBrushXml.js" type="text/javascript"></script>
+    <script src="@ViewBag.FullDomainName/Scripts/Help/menu.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        @*<section id="section_content">*@
+        <div class="content_wrap">
+            <section id="section_breadcrumb">
+                <div id="header" class="separator js-separator">
+                    <ul class="topnav">
+                        <li>
+                            <a id="getStared" class="noneChild" href="#" onclick="ActiveMenu(div_get_started)">
+                                Getting Started
+                            </a>
+                        </li>
+                        <li>
+                            <a class="hasChild" href="#" onclick="ActiveMenu(div_general_concepts)">
+                                General
+                                Concepts
+                            </a>
+                            <ul class="subNav1">
+                                <li>
+                                    <a href="#" onclick="ActiveMenu(div_general_concepts_bettype, '.general_concepts')">
+                                        Term and dedinition for Outright bet type
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="ActiveMenu(div_general_concepts_match, '.general_concepts')">
+                                        Term and definition for Match
+                                    </a>
+                                </li>
+                                <li class="endItem">
+                                    <a href="#" onclick="ActiveMenu(div_general_concepts_errors, '.general_concepts')">
+                                        Experimental errors
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="hasChild" href="#" onclick="ActiveMenu(div_commands)">Commands</a>
+                            <ul class="subNav1">
+                                <li><a href="#" onclick="ActiveMenu(div_commands_timestamp, '.commands')">Using timestamp</a></li>
+                                <li>
+                                    <a href="#" onclick="ActiveMenu(div_commands_algorithm, '.commands')">
+                                        Using compression
+                                        algorithrm
+                                    </a>
+                                </li>
+                                <li class="endItem">
+                                    <a class="haveSubMenu" href="#" onclick="ActiveMenu(div_commands_filters, '.commands')">
+                                        Filters
+                                    </a>
+                                    <ul class="subNav2">
+                                        <li>
+                                            <a href="#" onclick="ActiveMenu(div_commands_filters_sports, '.sub-commands', 2)">
+                                                Sports filter
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" onclick="ActiveMenu(div_commands_filters_bettypes, '.sub-commands', 2)">
+                                                Bet types filter
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" onclick="ActiveMenu(div_commands_filters_countries, '.sub-commands', 2)">
+                                                Countries filter
+                                            </a>
+                                        </li>
+                                        <li class="endItem">
+                                            <a href="#" onclick="ActiveMenu(div_commands_filters_leagues, '.sub-commands', 2)">
+                                                Leagues filter
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="noneChild FAQs" href="#" onclick="ActiveMenu(div_FAQ)">FAQs</a> </li>
+                        <li>
+                            <a class="noneChild" href="#" onclick="ActiveMenu(div_change_log)">Change Log</a>
+                        </li>
+                        <li>
+                            <a class="hasChild Appendix" href="#" onclick="ActiveMenu(div_appendix)">Appendix</a>
+                            <ul class="subNav1">
+                                <li><a href="#" onclick="ActiveMenu(div_appendix_sports, '.appendix')">Supported sports</a></li>
+                                <li>
+                                    <a href="#" onclick="ActiveMenu(div_appendix_bettypes, '.appendix')">
+                                        Supported bet
+                                        types
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="ActiveMenu(div_appendix_countries, '.appendix')">
+                                        Supported countries
+                                    </a>
+                                </li>
+                                <li class="endItem">
+                                    <a href="#" onclick="ActiveMenu(div_appendix_leagues, '.appendix')">
+                                        Supported leagues
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section id="section_body" class="content_scroll">
+                <div id="div_get_started" class="section">
+                    <div class="title">
+                        <span style="margin-left: 10px"></span>GETTING STARTTED
+                    </div>
+                    @if (Model.OddsType.Contains(4))
+                    {
+                        <div class="content">
+                            Odds feed is an automated service which enables your betting system or website access
+                            to our Live Odds on all major sporting events through XML Odds feed. This service
+                            is already being used successfully by other customers who confidently give their
+                            full approval and praise the time savings and accuracy of the content.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="content">
+                            Odds feed is an automated service which enables your betting system or website access
+                            to our Odds data on all major sporting events through XML Odds feed. This service
+                            is already being used successfully by other customers who confidently give their
+                            full approval and praise the time savings and accuracy of the content.
+                        </div>
+                    }
+                    <div class="content">
+                        <br />
+                        This is a sample of our XML Odds Feeds that includes following fields:
+                        <ul>
+                            <li>Match ID</li>
+                            <li>Match Kick-off time</li>
+                            <li>League name/Team name</li>
+                            <li>All major Sport type/ Bet Type</li>
+                            <li>Odd ID/Price</li>
+                        </ul>
+                        <pre class="brush: xml">
+@Html.Raw(ViewBag.Odds)
+</pre>
+                    </div>
+                    <div style="height: 20px">
+                    </div>
+                </div>
+                <div id="div_general_concepts" class="section">
+                    <div class="title">
+                        <span style="margin-left: 10px"></span>GENERAL CONCEPTS
+                    </div>
+                    <div id="div_general_concepts_bettype" class="content general_concepts">
+                        <span class="sub_title">TERM AND DEFINITION FOR OUTRIGHT BET TYPE</span>
+                        <hr />
+                        <ul>
+                            <li>ge: Event\League name in English.</li>
+                            <li>gt: Event\League name in Chinese Traditional.</li>
+                            <li>gs: Event\League name in Chinese Simplified.</li>
+                            <li>mt: Match Kick-off time.</li>
+                            <li>te: Team name in English.</li>
+                            <li>tt: Team name in Chinese Traditional.</li>
+                            <li>ts: Team name in Chinese Simplified.</li>
+                            <li>o: Price</li>
+                        </ul>
+                        <div style="height: 20px">
+                        </div>
+                    </div>
+                    <div id="div_general_concepts_match" class="content general_concepts">
+                        <span class="sub_title">TERM AND DEFINITION FOR MATCH</span>
+                        <hr />
+                        <ul>
+                            <li>Lastupdate: last request date for Odds data. </li>
+                            <li>Timestamp: last request date convert to integer number. </li>
+                            <li>ge: Event\League name in English. </li>
+                            <li>gs: Event\League name in Chinese Simplified. </li>
+                            <li>gt: Event\League name in Chinese Traditional. </li>
+                            <li>he: Home team name in English. </li>
+                            <li>hs: Home team name in Chinese Simplified. </li>
+                            <li>ht: Home team name in Chinese Traditional. </li>
+                            <li>ae: Away team name in English. </li>
+                            <li>as: Away team name in Chinese Simplified. </li>
+                            <li>at: Away team name in Chinese Traditional. </li>
+                            <li>mt: Match Kick-off time </li>
+                            @if (Model.OddsType.Contains(4))
+                            {
+                                <li>runing: Status (Live or Dead Ball) </li>
+                            }
+                            <li>bookie name: Provider of XML Odds Feed in English. </li>
+                            <li>simp: Provider of XML Odds Feed in Chinese Simplified </li>
+                            <li>trad: Provider of XML Odds Feed in Chinese Simplified </li>
+                            <li>time: Display time for this odd. </li>
+                            @Html.Partial("_BettypeDescription")
+                        </ul>
+                        <div style="color:Red">Note: When price is zero, it means we don't offer that bet choice.</div>
+                        <div style="height: 20px">
+                        </div>
+                    </div>
+                    <div id="div_general_concepts_errors" class="content general_concepts">
+                        <span class="sub_title">EXPERIMENTAL ERRORS</span>
+                        <hr />
+                        You might encounter some error messages while accessing our XML Odds Feed, so please
+                        refer to the list of messages below for each type of errors:
+                        <ul>
+                            <li>Message "Invalid username" </li>
+                            <li>Message "Your account is disabled now. Please contact with Administrator" </li>
+                            <li>Message "Invalid profile. Please contact with Administrator" </li>
+                            <li>Message "You are not allowed to get odds feed from your location" </li>
+                            <li>Message "You can only filter maximum 5 options. Please try again."</li>
+                            <li>Message "Invalid Domain name" </li>
+                            @*<li>Message "This Partner does not have permission to access this domain" </li>*@
+                            <li>
+                                Message ""Sorry! You do not have permission to access this domain. Please contact
+                                administrator"
+                            </li>
+                            <li>Message "You are not authorized to take this action" </li>
+                            <li>Message "Missing parameter"</li>
+                            <li>Message "Invalid URL" </li>
+                            <li>
+                                Message "Sorry for the inconvenience! We are not able to process your request this
+                                time. Please try again later"
+                            </li>
+                        </ul>
+                        <div style="height: 20px">
+                        </div>
+                    </div>
+                </div>
+                <div id="div_commands" class="section">
+                    <div class="title">
+                        <span style="margin-left: 10px"></span>Commands
+                    </div>
+                    <div id="div_commands_general" class="content commands">
+                        You will be provided an XML Feed URL to get full Odds data with the format as below:
+                        <br />
+                        <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml">
+                            @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml
+                        </a>
+                        <br />
+                        You can get list of supported sports, bet types and leagues in following links:
+                        <ul>
+                            <li>
+                                <a href="#" onclick="ActiveMenu(div_appendix_sports, '.appendix')">Get list of sports:</a>
+                                provides a list of supported sports.
+                            </li>
+                            <li>
+                                <a href="#" onclick="ActiveMenu(div_appendix_bettypes, '.appendix')">
+                                    Get list of
+                                    bet types:
+                                </a> provides a list of supported bet types.
+                            </li>
+                            <li>
+                                <a href="#" onclick="ActiveMenu(div_appendix_countries, '.appendix')">
+                                    Get list of
+                                    countries:
+                                </a> provides a list of supported countries.
+                            </li>
+                            <li>
+                                <a href="#" onclick="ActiveMenu(div_appendix_leagues, '.appendix')">
+                                    Get list of
+                                    leagues:
+                                </a> provides a list of supported leagues.
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="div_commands_timestamp" class="content commands">
+                        <span class="sub_title">USING TIMESTAMP</span>
+                        <hr />
+                        To get the latest changes of Odds only, you need to specify the biggest timestamp
+                        in your previous data request then input this parameter in the query string. Please,
+                        note that this timestamp must be retrieved from child node only.
+                        <br />
+                        <a href="javascript:;">
+                            @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?t=[timestamp]
+                        </a>
+                        <p>
+                            <strong>Note</strong>: The biggest timestamp value is stored in timestamp attribute
+                            of <strong>matches</strong> node
+                        </p>
+                        <div id="tamstamp">
+                            <pre class="brush: xml;">
+@Html.Raw(ViewBag.Odds)
+</pre>
+                        </div>
+                        <div style="height: 20px">
+                        </div>
+                    </div>
+                    <div id="div_commands_algorithm" class="content commands">
+                        <span class="sub_title">USING COMPRESSION ALGORITHM</span>
+                        <hr />
+                        To reduce the consumption of resources such as transmission bandwidth, you need
+                        to use the data compression algorithm and currently we support 2 algorithms:
+                        <ul>
+                            <li>zip=deflate: zip the xml stream using deflate algorithm</li>
+                            <li>zip=gzip: zip the xml stream using gzip algorithm</li>
+                        </ul>
+                        All you need to do is input the algorithm name in the query string as below:
+                        <br />
+                        <a href="javascript:;">
+                            @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=[algorithm-name]
+                        </a>
+                        <div>
+                            <br />
+                            <strong>Note</strong>: In case of using both parameters: <a href="javascript:;">
+                                <br />
+                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?t=[timestamp]&zip=[algorithm-name]
+                            </a>
+                        </div>
+                        <div style="height: 20px">
+                        </div>
+                    </div>
+                    <div id="div_commands_filters" class="content commands">
+                        <div id="div_commands_filters_general" class="content sub-commands">
+                            <span class="sub_title">FILTERS</span>
+                            <hr />
+                            If you just need odds data from some special events only, you can use our filtering
+                            commands to do that. This will return your preferred data and you do not need to
+                            download all data at the same time. Note that you can query multiple sports/bet
+                            types/countries/leagues by adding the character ‘,’ between options. However, you
+                            can only have maximum 5 options. If you inputs more than 5 options, you will receive
+                            an error message as below: "You can only filter maximum 5 options. Please try again."
+                            <div style="height: 20px">
+                            </div>
+                        </div>
+                        <div id="div_commands_filters_sports" class="content sub-commands">
+                            <span style="color: #33495F; font-size: 15px; font-weight: bold">Sports Filter</span>
+                            <hr />
+                            You can filter odds data from the list of your preferred sports by inputting '&sport='
+                            and sportID (refer <a href="#" onclick="ActiveMenu(div_appendix_sports, '.appendix')">
+                                here
+                            </a> to get defined sportID). Reminder that you can query multiple sports
+                            by adding the character ‘,’ between sports and the maximum options are 5.
+                            <br />
+                            For example: You want to query sport types: Soccer, Basketball, or Football.
+                            <br />
+                            <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip&sport=1,2,3">
+                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip<span style="color: Red">&sport=1,2,3</span>
+                            </a>
+                            <div style="height: 20px">
+                            </div>
+                        </div>
+                        <div id="div_commands_filters_bettypes" class="content sub-commands">
+                            <span style="color: #33495F; font-size: 15px; font-weight: bold">Bet Types Filter</span>
+                            <hr />
+                            You can filter odds data from the list of your preferred bet types by inputting
+                            '&bettype=' and bettypeID (refer <a href="#" onclick="ActiveMenu(div_appendix_bettypes, '.appendix')">
+                                here
+                            </a> to get defined betttypeID). Reminder that you can query multiple bet
+                            types by adding the character ‘,’ between bet types and the maximum options are
+                            5.
+                            <br />
+                            For example: You want to query bet types: Handicap, Over/Under, FT.1X2, or 1st Handicap.
+                            <br />
+                            <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip&bettype=1,3,5,7">
+                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip<span style="color: Red">&bettype=1,3,5,7</span>
+                            </a>
+                            <div style="height: 20px">
+                            </div>
+                        </div>
+                        <div id="div_commands_filters_countries" class="content sub-commands">
+                            <span style="color: #33495F; font-size: 15px; font-weight: bold">Countries Filter</span>
+                            <hr />
+                            You can filter odds data from the list of your preferred countries by inputting
+                            '&country=' and countryID (refer <a href="#" onclick="ActiveMenu(div_appendix_countries, '.appendix')">
+                                here
+                            </a> to get defined countryID). Reminder that you can query multiple countries
+                            by adding the character ‘,’ between countries and the maximum options are 5.
+                            <br />
+                            For example: You want to query countries: Austria, Switzerland, or Spain.<br />
+                            <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip&country=AT,CH,ES">
+                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip<span style="color: Red">&country=AT,CH,ES</span>
+                            </a>
+                            <div style="height: 20px">
+                            </div>
+                        </div>
+                        <div id="div_commands_filters_leagues" class="content sub-commands">
+                            <span style="color: #33495F; font-size: 15px; font-weight: bold">Leagues Filter</span>
+                            <hr />
+                            You can filter odds data from the list of your preferred leagues by inputting '&league='
+                            and League Name (English Name only). Reminder that you can query multiple leagues
+                            by adding the character ‘,’ between leagues and the maximum options are 5.
+                            <br />
+                            For example: You want to query all leagues that contain "UEFA", "FIFA", "Premier League", or "SPAIN".
+                            <br />
+                            <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip&league=UEFA,FIFA,PRIMIER LEAGUE,SPAIN">
+                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip<span style="color: Red">&league=UEFA,FIFA,Premier League,SPAIN</span>
+                            </a>
+                            <div style="height: 20px">
+                            </div>
+                        </div>
+                        <strong>Note:</strong> You can combine all above filters into one command to limit
+                        odds feed data as below:
+                        <br />
+                        For example: You want to query sport types (Soccer, Basketball, or Football), bet
+                        types (Handicap, Over/Under, FT.1X2, or 1st Handicap), countries Austria, Switzerland,
+                        or Spain), and all leagues that contain (UEFA, FIFA, Premier League, or SPAIN).
+                        <br />
+                        <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip&sport=1,2,3&bettype=1,3,5,7&country=AT,CH,ES&league=UEFA,FIFA,PRIMIER LEAGUE,SPAIN">
+                            @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip<span style="color: Red">&sport=1,2,3&bettype=1,3,5,7&country=AT,CH,ES&league=UEFA,FIFA,Premier League,SPAIN</span>
+                        </a>
+                        <div style="height: 20px">
+                        </div>
+                    </div>
+                </div>
+                <div id="div_FAQ" class="section">
+                    <div class="title">
+                        <span style="margin-left: 10px"></span>FAQs
+                    </div>
+                    <div class="content">
+                        <strong>How often can I refresh your odds?</strong>
+                        <br />
+                        You are able to make calls for any changes to the feed every five (5) seconds.
+                        <br />
+                        <br />
+                        <strong>Is my odds data delayed or real time? In addition, what is the delay time?</strong>
+                        <br />
+                        Your odds data is delayed 120 seconds.
+                        <br />
+                        <br />
+                        <strong>Can I access the XML Odds Feed data anywhere?</strong>
+                        <br />
+                        You can only access the XML Odds Feed data in the whitelist of IPs that you have
+                        registered with your administrator.
+                        <br />
+                        <br />
+                        <strong>What time zone is used for the feed?</strong>
+                        <br />
+                        All times displayed in the feed are in GMT+8.
+                        <br />
+                        <br />
+                        <strong>Other Questions?</strong>
+                        <br />
+                        If you have any questions regarding the implementation of our XML Feed please email
+                        <a href="mailto:@ViewBag.ContactEmail">@ViewBag.ContactEmail</a>
+                        <br />
+                        Please ensure you include as much details as possible about the issue, such as:
+                        <ul>
+                            <li>Your client ID used for the XML request</li>
+                            <li>Date and time (including time zone information)</li>
+                            <li>Request made</li>
+                            <li>Response XML output</li>
+                            <li>Screen shot</li>
+                        </ul>
+                        This will help us provide a quick and accurate response.
+                        <br />
+                        <br />
+                        <strong>Note:</strong> a working knowledge of XML is required, we do not provide
+                        technical implementation assistance.
+                    </div>
+                    <div style="height: 20px">
+                    </div>
+                </div>
+                <div id="div_change_log" class="section">
+                    <div class="title">
+                        <span style="margin-left: 10px"></span>CHANGE LOG
+                    </div>
+                    <div class="content">
+                        Below is the change log of your XML Odds Feed
+                        <br />
+                        <br />
+                        <table style="width: 800px">
+                            <tr>
+                                <th style="width: 30%">
+                                    Date
+                                </th>
+                                <th>
+                                    Change
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center">
+                                    16 - Oct - 2013
+                                </td>
+                                <td>
+                                    Support filtering by sports, bet types, countries and leagues.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center">
+                                    16 - Sep - 2015
+                                </td>
+                                <td>
+                                    Add E-Sports into XML odds feed.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center">
+                                    06 - Nov - 2015
+                                </td>
+                                <td>
+                                    Add more sports and bet types. Please refer to Appendix for more details.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center">
+                                    25 - Feb - 2016
+                                </td>
+                                <td>
+                                    Provide XML links to get sport types, bet types, leagues. Please refer to Appendix section.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center">
+                                    12 - Apr - 2016
+                                </td>
+                                <td>
+                                    Add more bet types. Please refer to Appendix for more details.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center">
+                                    23 - Aug - 2016
+                                </td>
+                                <td>
+                                    Add more bet types. Please refer to Appendix for more details.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center">
+                                    24 - Nov - 2016
+                                </td>
+                                <td>
+                                    Add more bet types and change xml attributes of the below bet types: Half Time/Full Time Correct Score, Exact 1H Goals, Exact 2H Goals,Exact Home Team Goals,Exact Away Team Goals,1H Correct Score. Please refer to Appendix & Term and definition for Match for more details.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center">
+                                    20 - Jun - 2017
+                                </td>
+                                <td>
+                                    Offer new basketball bet types.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="height: 550px">
+                    </div>
+                </div>
+                <div id="div_appendix" class="section">
+                    <div class="title">
+                        <span style="margin-left: 10px"></span>APPENDIX
+                    </div>
+                    <div id="div_appendix_sports" class="content appendix" style="height: 100%">
+                        <span class="sub_title">SUPPORTED SPORTS</span>
+                        <hr />
+                        Below is the list of supported sports in your xml data:
+                        <div style="height: 20px">
+                        </div>
+                        <div style="display: inline-block;">
+                            <div style="float: left; margin-right: 26px;">
+                                <table style="width: 270px">
+                                    <tr>
+                                        <th style="width: 30%">
+                                            SportID
+                                        </th>
+                                        <th>
+                                            Sports Name
+                                        </th>
+                                    </tr>
+
+                                    @foreach (var sport in ViewBag.SportsCol1)
+                                    {
+                                        var css1 = "";
+                                        if (highlightSportType.Any(sportType => string.Equals(sportType, sport.SportId.ToString())))
+                                        {
+                                            css1 = "style=color:Red";
+                                        }
+
+                                        <tr @css1>
+                                            <td class="center">
+                                                @sport.SportId
+                                            </td>
+                                            <td>
+                                                @sport.SportName
+                                            </td>
+                                        </tr>
+
+                                    }
+                                </table>
+                            </div>
+                            <div style="float: left; margin-right: 26px;">
+                                <table style="width: 270px">
+                                    @foreach (var sport in ViewBag.SportsCol2)
+                                    {
+                                        var css2 = "";
+                                        if (highlightSportType.Any(sportType => string.Equals(sportType, sport.SportId.ToString())))
+                                        {
+                                            css2 = "style=color:Red";
+                                        }
+
+                                        <tr @css2>
+                                            <td style="width: 30%" class="center">
+                                                @sport.SportId
+                                            </td>
+                                            <td>
+                                                @sport.SportName
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                            <div style="float: left;">
+                                <table style="width: 270px;">
+                                    @foreach (var sport in ViewBag.SportsCol3)
+                                    {
+                                        var css3 = "";
+                                        if (highlightSportType.Any(sportType => string.Equals(sportType, sport.SportId.ToString())))
+                                        {
+                                            css3 = "style=color:Red";
+                                        }
+
+                                        <tr @css3>
+                                            <td style="width: 30%" class="center">
+                                                @sport.SportId
+                                            </td>
+                                            <td>
+                                                @sport.SportName
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                        @{ var sportUrl = Model.Domain + "/" + ViewBag.VirtualPath + ViewBag.UserName + "/" + "sports.xml"; }
+                        <div class="div_appendix_sports">
+                            We also export the supported sport list into XML format, so that your development team can get and implement it dynamically. Please refer to the below information:
+                            <pre class="brush: xml">
+                                <sports>
+                                    <sport id="1" se="Soccer" st="足球" ss="足球"></sport>
+                                    <sport id="8" se="Basketball" st="籃球" ss="篮球"></sport>
+                                    <sport id="4" se="Ice Hockey" st="冰上曲棍球" ss="冰上曲棍球"></sport>
+                                    <sport id="5" se="Tennis" st="網球" ss="网球"></sport>
+                                </sports>
+                            </pre>
+                        </div>
+                        <div>
+                            <div style="width:100%; padding-top: 15px;"><strong>Definition:</strong></div>
+
+                            <ul>
+                                <li>Link: <a target="_blank" href="@sportUrl">@sportUrl</a></li>
+                                <li>id: Sport ID</li>
+                                <li>se: Sport name in English</li>
+                                <li>st: Sport name in Traditional Chinese</li>
+                                <li>ss: Sport name in Simplified Chinese</li>
+                            </ul>
+                        </div>
+
+                        <div style="height: 20px;">
+                        </div>
+                    </div>
+                    <div id="div_appendix_bettypes" class="content appendix">
+                        <span class="sub_title">SUPPORTED BET TYPES</span>
+                        <hr />
+                        Below is the list of supported bet types in your xml data:
+                        <div style="height: 20px">
+                        </div>
+                        <div style="display: inline-block;">
+                            <div style="float: left; margin-right: 26px;">
+                                <table style="width: 270px">
+                                    <tr>
+                                        <th style="width: 30%">
+                                            BettypeID
+                                        </th>
+                                        <th>
+                                            Bet Type
+                                        </th>
+                                        <th>
+                                            XML value
+                                        </th>
+                                        
+                                    </tr>
+                                    @foreach (var bettype in ViewBag.BetTypesCol1)
+                                    {
+                                        var css4 = "";
+                                        if (highlightBetType.Any(bt => string.Equals(bt, bettype.BetTypeId.ToString())))
+                                        {
+                                            css4 = "style=color:Red";
+                                        }
+
+                                        <tr @css4>
+                                            <td class="center" valign="middle">
+                                                <div class="bettype-inner-div">
+                                                    @bettype.BetTypeId
+                                                </div>
+                                            </td>
+                                            <td>
+                                                @bettype.BetTypeName
+                                            </td>
+                                            <td>
+                                                @BetTypeHelper.GetBetTypeName(betTypeList, bettype.BetTypeId)
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                            <div style="float: left; margin-right: 26px;">
+                                <table style="width: 270px">
+                                    @foreach (var bettype in ViewBag.BetTypesCol2)
+                                    {
+                                        var css5 = "";
+                                        if (highlightBetType.Any(bt => string.Equals(bt, bettype.BetTypeId.ToString())))
+                                        {
+                                            css5 = "style=color:Red";
+                                        }
+
+                                        <tr @css5>
+                                            <td style="width: 30%" class="center" valign="middle">
+                                                <div class="bettype-inner-div">
+                                                    @bettype.BetTypeId
+                                                </div>
+                                            </td>
+                                            <td>
+                                                @bettype.BetTypeName
+                                            </td>
+                                            <td>
+                                                @BetTypeHelper.GetBetTypeName(betTypeList, bettype.BetTypeId)
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                            <div style="float: left;">
+                                <table style="width: 270px;">
+                                    @foreach (var bettype in ViewBag.BetTypesCol3)
+                                    {
+                                        var css6 = "";
+                                        if (highlightBetType.Any(bt => string.Equals(bt, bettype.BetTypeId.ToString())))
+                                        {
+                                            css6 = "style=color:Red";
+                                        }
+
+                                        <tr @css6>
+                                            <td style="width: 30%" class="center" valign="middle">
+                                                <div class="bettype-inner-div">
+                                                    @bettype.BetTypeId
+                                                </div>
+                                            </td>                                            
+                                            <td>
+                                                @bettype.BetTypeName
+                                            </td>
+                                            <td>
+                                                @BetTypeHelper.GetBetTypeName(betTypeList, bettype.BetTypeId)
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                        @{ var bettypeUrl = Model.Domain + "/" + ViewBag.VirtualPath + ViewBag.UserName + "/" + "bettypes.xml"; }
+                        <div class="div_appendix_bettypes">
+                            We also export the supported bet type list into XML format, so that your development team can get and implement it dynamically. Please refer to the below information:
+                            <pre class="brush: xml">
+                                <bettypes>
+                                    <type id="1" t="ah" te="讓球" tt="" ts="让球"></type>
+                                    <type id="3" t="ou" te="大小盤" tt="" ts="大小盘"></type>
+                                    <type id="2" t="oe" te="單雙盤" tt="" ts="单双盘"></type>
+                                </bettypes>
+                            </pre>
+                        </div>
+                        <div>
+                            <div style="width:100%; padding-top: 15px;"><strong>Definition:</strong></div>
+
+                            <ul>
+                                <li>Link: <a target="_blank" href="@bettypeUrl">@bettypeUrl</a></li>
+                                <li>id: XML tag for bet type ID</li>
+                                <li>t: XML tag for the bet type</li>
+                                <li>te: Bet type name in English</li>
+                                <li>tt: Bet type name in Traditional Chinese</li>
+                                <li>ts: Bet type name in Simplified Chinese</li>
+                            </ul>
+                        </div>
+                        <div style="height: 20px;">
+                        </div>
+                    </div>
+                    <div id="div_appendix_countries" class="content appendix">
+                        <span class="sub_title">SUPPORTED COUNTRIES</span>
+                        <hr />
+                        Below is the list of supported countries in your xml data:
+                        <div style="height: 20px">
+                        </div>
+                        <div style="display: inline-block;">
+                            <div style="float: left; margin-right: 26px;">
+                                <table style="width: 270px">
+                                    <tr>
+                                        <th style="width: 30%">
+                                            CountryID
+                                        </th>
+                                        <th>
+                                            Country Name
+                                        </th>
+                                    </tr>
+                                    @foreach (var country in ViewBag.CountriesCol1)
+                                                {
+                                        <tr>
+                                            <td class="center">
+                                                @country.CountryId
+                                            </td>
+                                            <td>
+                                                @country.CountryName
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                            <div style="float: left; margin-right: 26px;">
+                                <table style="width: 270px">
+                                    @foreach (var country in ViewBag.CountriesCol2)
+                                                {
+                                        <tr>
+                                            <td style="width: 30%" class="center">
+                                                @country.CountryId
+                                            </td>
+                                            <td>
+                                                @country.CountryName
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                            <div style="float: left;">
+                                <table style="width: 270px;">
+                                    @foreach (var country in ViewBag.CountriesCol3)
+                                                {
+                                        <tr>
+                                            <td style="width: 30%" class="center">
+                                                @country.CountryId
+                                            </td>
+                                            <td>
+                                                @country.CountryName
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                        <div style="height: 20px;">
+                        </div>
+                    </div>
+                    <div id="div_appendix_leagues" class="content appendix" style="height: 100%">
+                        <span class="sub_title">SUPPORTED LEAGUES</span>
+                        <hr />                        
+                        @{ var leagueUrl = Model.Domain + "/" + ViewBag.VirtualPath + ViewBag.UserName + "/" + "leagues.xml"; }
+                        <div class="div_appendix_sports">
+                            To get the latest list of leagues for XML Odds Feed data, refer to below information:
+                            <pre class="brush: xml">
+                                <leagues>
+                                    <league id="3202" sid="1" se="Soccer" ge="Golf - PGA Tour" gt="高尔夫球 - 美洲赛" gs="高爾夫球 -  美洲賽"></league>
+                                </leagues>
+                            </pre>
+                        </div>
+                        <div>
+                            <div style="width:100%; padding-top: 15px;"><strong>Definition:</strong></div>
+
+                            <ul>
+                                <li>Link: <a target="_blank" href="@leagueUrl">@leagueUrl</a></li>
+                                <li>sid: Sport ID</li>
+                                <li>se: Sport name in English</li>
+                                <li>ge: League name in English</li>
+                                <li>gt: League name in Traditional Chinese</li>
+                                <li>gs: League name in Simplified Chinese</li>
+                            </ul>
+                        </div>
+
+                        <div style="height: 20px;">
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+        </div>
+        @*</section>*@
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
+</body>
+</html>

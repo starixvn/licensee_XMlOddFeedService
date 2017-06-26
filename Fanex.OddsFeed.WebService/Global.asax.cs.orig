@@ -1,0 +1,227 @@
+﻿using System.Web.Mvc;
+using System.Web.Routing;
+using Nexcel.OddsFeed.Library.Attributes;
+using System;
+using System.Configuration;
+using Nexcel.OddsFeed.Library;
+using Nexcel.OddsFeed.WebService.Controllers;
+using System.Web;
+using System.Web.Script.Serialization;
+
+namespace Nexcel.OddsFeed.WebService
+{
+    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
+    // visit http://go.microsoft.com/?LinkId=9394801
+
+    public class MvcApplication : System.Web.HttpApplication
+    {
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new HandleErrorAttribute());
+            filters.Add(new CompressAttribute());
+        }
+
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            /*routes.MapRoute(
+              "FeedsXmlService",
+              "{username}/{feedname}.xml", 
+              new { controller = "Feeds", action = "Index"}
+           );
+            routes.MapRoute(
+                 "FeedsJsonService",
+                 "{username}/{feedname}.json",
+                 new { controller = "Feeds", action = "GetJson"}
+              );
+            routes.MapRoute(
+                "OddsFeedService",
+                "{username}/odds.xml",
+                new { controller = "OddsFeed", action = "Index" }
+            );
+            routes.MapRoute(
+                "EventService",
+                "{username}/event.xml",
+                new { controller = "Event", action = "Index" }
+            );
+
+            routes.MapRoute(
+                "OddsFeedHelp",
+                "{username}/help.htm",
+                new { controller = "OddsFeed", action = "Help" }
+            );
+
+            routes.MapRoute(
+                "Default", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );*/
+
+            //Common Odds and schedule
+            routes.MapRoute(
+                "CommonScheduleService", // Route name
+                "{username}/sch.txt", // URL with parameters               
+               new { controller = "BetDaq", action = "GetSchedule" } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "CommonOddsFeedService", // Route name
+                "{username}/odds.txt", // URL with parameters               
+               new { controller = "BetDaq", action = "GetOdds" } // Parameter defaults
+            );
+            // odds            
+            routes.MapRoute(
+                "BetDaqOddsFeedService", // Route name
+                "{username}/en-lang/odds.txt", // URL with parameters               
+               new { controller = "BetDaq", action = "GetOdds" } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "BetDaqScheduleService", // Route name
+                "{username}/en-lang/sch.txt", // URL with parameters               
+               new { controller = "BetDaq", action = "GetSchedule" } // Parameter defaults
+            );
+                        
+            routes.MapRoute(
+                "InsertBetdaqService",
+                "{username}/en-lang/InsertBet.cmd",
+                new { controller = "InsertBetdaq", action = "Index" }
+            );
+
+            routes.MapRoute(
+                "OddsFeedService",
+                "feeds/{username}/odds.xml",
+                new { controller = "OddsFeed", action = "Index" }
+            );
+            routes.MapRoute(
+               "EventService",
+               "{username}/event.xml",
+               new { controller = "Event", action = "Index" }
+            );
+
+            routes.MapRoute(
+              "FeedsCsvService",
+              "{username}/{feedname}.csv",
+              new { controller = "Feeds", action = "GetCsv" }
+           );
+            routes.MapRoute(
+              "FeedsXmlService",
+              "{username}/{feedname}.xml",
+              new { controller = "Feeds", action = "Index" }
+           );
+            routes.MapRoute(
+                 "FeedsJsonService",
+                 "{username}/{feedname}.json",
+                 new { controller = "Feeds", action = "GetJson" }
+              );
+
+            routes.MapRoute(
+                "OddsFeedHelp",
+                "feeds/{username}/help.htm",
+                new { controller = "OddsFeed", action = "Help" }
+            );
+
+            routes.MapRoute(
+                "OddsFeedWindowService",
+                "{username}/analytics/cache",
+                new { controller = "Analytics", action = "Cache" }
+            );
+            
+            routes.MapRoute(
+                "Default", // Route name
+                "{controller}/{action}/{id}", // URL with parameters               
+               new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );          
+        }
+
+        protected void Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
+
+            RegisterGlobalFilters(GlobalFilters.Filters);
+            RegisterRoutes(RouteTable.Routes);
+
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {                        
+            Exception ex = Server.GetLastError();
+            Response.Clear();
+            Server.ClearError();
+
+            #region Send & log exception email
+            try
+            {                
+                string startTime;
+                string endTime;
+
+                if (!Utilities.GetDownTime(out startTime, out endTime))
+                {
+                    //write log
+                    //DNAide.Web.DNAideLog.Write(ex.Message);
+
+                    //send email
+                    var mailItem = new Fanex.MailDeliver.Model.MailRecord
+                    {
+                        MailTo = ConfigurationManager.AppSettings["ToMail"],
+                        Subject = "Odds feed services error!" + ConfigurationManager.AppSettings["Environment"].ToString(),
+                        Title = "Odds feed services" + ConfigurationManager.AppSettings["Environment"].ToString(),
+                        Body = ex.Message + Environment.NewLine + ex.StackTrace,
+                        MailBcc = ConfigurationManager.AppSettings["BCCMail"],
+                        MailCc = ConfigurationManager.AppSettings["CCMail"]
+                    };
+
+                    using (var client = new Fanex.MailDeliver.MailClient.API.MailDeliver())
+                    {
+                        // call send mail service
+                        client.SendMail(mailItem);
+                    }
+                }
+            }
+            catch (Exception email)
+            {
+                //write log
+                //DNAide.Web.DNAideLog.Write(email.Message);
+            }
+
+            #endregion
+<<<<<<< HEAD
+
+            #region Show friendly errors
+
+            Exception err = new Exception("Sorry for the inconvenience! We are not able to process your request this time. Please try again later");
+
+            var routeData = new RouteData();
+            routeData.Values["controller"] = "Errors";
+            routeData.Values["action"] = "Index";
+            routeData.Values["exception"] = err;
+
+            IController errorsController = new ErrorsController();
+            var rc = new RequestContext(new HttpContextWrapper(Context), routeData);
+            errorsController.Execute(rc);
+
+            #endregion
+                      
+=======
+            
+            
+            /*if (Request.RequestContext.HttpContext.Request.IsAjaxRequest())
+            {
+                Context.ClearError();
+                Response.ContentType = "application/json";
+                Response.StatusCode = 500;
+                Response.Write(new JavaScriptSerializer().Serialize(new
+                {
+                    errorcode = ex.GetHashCode(),
+                    errormsg = ex.Message
+                }));
+            }
+            else
+            {
+                Response.Redirect(_context.FullDomainName + "/UncatchedError.html");
+            }*/
+            Response.Redirect(_context.FullDomainName + "/UncatchedError.html");
+>>>>>>> d87124fad7787e77e7e769028680ab4ff3fbccf5
+        }
+    }
+}

@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Odds feed user manual</title>
+    <link rel="shortcut icon" href="/content/images/favicon.ico">
+    <link href="/content/usermanual.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="main">
+        <div id="left">
+            <div id="logo"></div>
+            <div id="toci"></div>
+            <div id="toct">Table of Contents</div>
+                <ul id="index">
+                    <li><a href="#1">1. Introduction</a></li>
+                    <li>
+                        <a href="#2">2. XML Odds sample</a>
+                        <ul class="subindex">
+                            <li>
+                                <a href="#21">2.1 XML Odds Sample for Outright bet type</a>
+                            </li>
+                            <li>
+                                <a href="#22">2.2 XML Odds sample for Match</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#3">3. How to</a>
+                        <ul class="subindex">
+                            <li>
+                                <a href="#31">3.1 Using timestamp</a>
+                            </li>
+                            <li>
+                                <a href="#32">3.2 Using compression algorithm</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#4">4. Experimental error</a></li>
+                </ul>
+        </div>
+        <div id="right">
+            <div id="textlogo"></div>
+
+            <div class="section">
+                <div class="title"><a name="1" ></a><span>1</span>Introduction</div>
+                <div class="content">
+                    Odds feed is an automated service which enables your betting system or website access to our Live Odds on all major sporting events through XML Odds feed. This service is already being used successfully by other customers who confidently give their full approval and praise the time savings and accuracy of the content.
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="title"><a name="2" ></a><span>2</span>XML Odds sample</div>
+                <div class="content">
+                    This is a sample of our XML Odds Feeds which includes the some following field:
+                    <ul>
+                        <li>Match ID</li>
+                        <li>Match Kick-off time</li>
+                        <li>League name/Team name</li>
+                        <li>All major Sport type/ Bet Type</li>
+                        <li>Odd ID/Price</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <div class="title"><a name="21" ></a><span>2.1</span>XML Odds Sample for Outright bet type</div>
+                    <div class="content">
+                        <div class="image">
+                            <img alt="" src="/Content/images/outrights.jpg" />
+                        </div>
+                        <strong>Term and definition</strong>:
+                        <ul>
+                            <li>ge: Event\League name in English.</li>
+                            <li>gt: Event\League name in Chinese Traditional.</li>
+                            <li>gs: Event\League name in Chinese Simplified.</li>
+                            <li>mt: Match Kick-off time.</li>
+                            <li>te: Team name in English.</li>
+                            <li>tt: Team name in Chinese Traditional.</li>
+                            <li>ts: Team name in Chinese Simplified.</li>
+                            <li>o: Price</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="subsection">
+                    <div class="title"><a name="22" ></a><span>2.2</span>XML Odds sample for Match</div>
+                    <div class="content">
+                        <div class="image">
+                            <img alt="" src="/Content/images/matchs.jpg" />
+                        </div>
+                        <strong>Term and definition</strong>:
+                        <ul>
+                            <li>Lastupdate: last request date for Odds data. </li>
+                            <li>Timestamp: last request date convert to integer number. </li>
+                            <li>ge: Event\League name in English. </li>
+                            <li>gs: Event\League name in Chinese Simplified. </li>
+                            <li>gt: Event\League name in Chinese Traditional. </li>
+                            <li>he: Home team name in English. </li>
+                            <li>hs: Home team name in Chinese Simplified. </li>
+                            <li>ht: Home team name in Chinese Traditional. </li>
+                            <li>ae: Away team name in English. </li>
+                            <li>as: Away team name in Chinese Simplified. </li>
+                            <li>at: Away team name in Chinese Traditional. </li>
+                            <li>mt: Match Kick-off time </li>
+                            <li>runing: Status (Live or Dead Ball) </li>
+                            <li>bookie name: Provider of XML Odds Feed in English. </li>
+                            <li>simp: Provider of XML Odds Feed in Chinese Simplified </li>
+                            <li>trad: Provider of XML Odds Feed in Chinese Simplified </li>
+                            <li>time: Display time for this odd. </li>
+                            <li>
+                                t="ah" : Full time Asian Handicap bet type; t="ah_1": First half Asian Handicap bet type 
+                                <ul>
+                                    <li>h: Handicap line </li>
+                                    <li>o: Price for favorite team </li>
+                                    <li>u: Price for underdog team </li>
+                                </ul>
+                            </li>
+                            <li>
+                                t="oe": Full Time Odd/Even bet type
+                                <ul>
+                                    <li>o: Price for Odd </li>
+                                    <li>e: Price for Even </li>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                t="ou": Full Time Over/Under bet type; t="ou_1": First Half
+                                Over/Under bet type. 
+                                <ul>
+                                    <li>h: Over/Under line </li>
+                                    <li>o: Price for Over </li>
+                                    <li>u: Price for Under </li>
+                                </ul>
+                            </li>
+                            <li>
+                                t="cs": Correct score 
+                                <ul>
+                                    <li>c00: Price for the score 0-0 </li>
+                                    <li>c11: Price for the score 1-1 </li>
+                                    <li>c22: Price for the score 2-2 </li>
+                                    <li>c33: Price for the score 3-3 </li>
+                                    <li>c44: Price for the score 4-4 </li>
+                                    <li>c01: Price for the score 0-1 </li>
+                                    <li>c02: Price for the score 0-2 </li>
+                                    <li>c03: Price for the score 0-3 </li>
+                                    <li>c04: Price for the score 0-4 </li>
+                                    <li>c05: Price for the score 0-5 UP </li>
+                                    <li>c10: Price for the score 1-0 </li>
+                                    <li>c20: Price for the score 2-0 </li>
+                                    <li>c30: Price for the score 3-0 </li>
+                                    <li>c40: Price for the score 4-0 </li>
+                                    <li>c50: Price for the score 5-0 UP </li>
+                                    <li>c12: Price for the score 1-2 </li>
+                                    <li>c13: Price for the score 1-3 </li>
+                                    <li>c23: Price for the score 2-3 </li>
+                                    <li>c14: Price for the score 1-4 </li>
+                                    <li>c24: Price for the score 2-4 </li>
+                                    <li>c34: Price for the score 3-4 </li>
+                                    <li>c21: Price for the score 2-1 </li>
+                                    <li>c31: Price for the score 3-1 </li>
+                                    <li>c32: Price for the score 3-2 </li>
+                                    <li>c41: Price for the score 4-1 </li>
+                                    <li>c42: Price for the score 4-2 </li>
+                                    <li>c43: Price for the score 4-3 </li>
+                                </ul>
+                            </li>
+                            <li>
+                                t="st": Full Time 1x2 bet type; t="st_1": First Half 1x2
+                                bet type 
+                                <ul>
+                                    <li>o1: Home team win price </li>
+                                    <li>o2: Draw price </li>
+                                    <li>o3: Away team win price </li>
+                                </ul>
+                            </li>
+                            <li>
+                                t="tg": Total Goal bet type 
+                                <ul>
+                                    <li>o1: Price for 0-1 </li>
+                                    <li>o2: Price for 2-3 </li>
+                                    <li>o3: Price for 4-6 </li>
+                                    <li>o4: Price for 7-over </li>
+                                </ul>
+                            </li>
+                            <li>t="htft": Half Time Full Time bet type
+                                <ul>
+                                    <li>hh: Home/Home </li>
+                                    <li>hd: Home/Draw </li>
+                                    <li>ha: Home/Away </li>
+                                    <li>dh: Draw/Home </li>
+                                    <li>dd: Draw/Draw </li>
+                                    <li>da: Draw/Away </li>
+                                    <li>ah: Away/Home </li>
+                                    <li>ad: Away/Draw </li>
+                                    <li>aa: Away/Away </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="title"><a name="3" ></a><span>3</span>How to</div>
+                <div class="content">
+                    You will be provided an XML Feed URL to get full Odds data with the format as below:
+                    <br />
+                    <a href="${Domain}/feeds/${UserName}/odds.xml">
+                        ${Domain}/feeds/${UserName}/odds.xml
+                    </a>
+                </div>
+                <div class="subsection">
+                    <div class="title"><a name="31" ></a><span>3.1</span>Using timestamp</div>
+                    <div class="content">
+                        To get the latest changes of Odds only, you need to specify the biggest timestamp in your previous data request then input this parameter in the query string. Please, note that this timestamp must be retrieved from child node only.
+                        <br />
+                        <a href="javascript:;">
+                            ${Domain}/feeds/${UserName}/odds.xml?t=[timestamp]
+                        </a>
+                    </div>
+                </div>
+                <div class="subsection">
+                    <div class="title"><a name="32" ></a><span>3.2</span>Using compression algorithm</div>
+                    <div class="content">
+                        To reduce the consumption of resources such as transmission bandwidth, you need to use the data compression algorithm and currently we support 2 algorithms:
+                        <ul>
+                            <li>zip=deflate: zip the xml stream using deflate algorithm</li>
+                            <li>zip=gzip: zip the xml stream using gzip algorithm</li>
+                        </ul>
+                        All you need to do is to input the algorithm name in the query string as below:
+                        <br />
+                        <a href="javascript:;">
+                            ${Domain}/feeds/${UserName}/odds.xml?zip=[algorithm-name]
+                        </a>
+
+                        <div>
+                            <br />
+                            <strong>Note</strong>:
+                            In case of using both parameters:
+                            <a href="javascript:;">
+                                ${Domain}/feeds/${UserName}/odds.xml?t=[timestamp]&zip=[algorithm-name]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="title"><a name="4" ></a><span>4</span>Experimental errors</div>
+                <div class="content">
+                    You might encounter some error message while accessing our XML Odds Feed, so please refer to the list of messages below for each type of errors:
+                    <ul>
+                        <li>Message "Invalid username" </li>
+                        <li>Message "Your account is disabled now. Please contact with Administrator"
+                        </li>
+                        <li>Message "Invalid profile. Please contact with Administrator" </li>
+                        <li>Message "You are not allowed to get odds feed from your location"
+                        </li>
+                        <li>Message "Invalid Domain name" </li>
+                        <li>Message "This Partner does not have permission to access this domain"
+                        </li>
+                        <li>Message "You are not authorized to take this action" </li>
+                        <li>Message "Missing parameter"</li>
+                        <li>Message "Invalid URL" </li>
+                        <li>Message "Sorry for the inconvenience! We are not able to process your request
+                            this time. Please try again later"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

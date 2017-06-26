@@ -1,0 +1,33 @@
+*** Settings ***
+Suite Setup
+Suite Teardown
+Library           Selenium2Library
+Library           Process
+Library           OperatingSystem
+Library           Screenshot
+Library           Collections
+Library           String
+Library           Dialogs
+Resource          XML_Actions/common_xml_actions.txt
+
+*** Variables ***
+${Url}            http://feeds.12ying.com/feedstest/12a12b/odds.xml
+
+*** Test Cases ***
+TM_Verify XML_Oddsfeed
+    Open Browser    ${Url}    ff
+    Maximize Browser Window
+    Sleep    3s
+    ${web_source}=    Get Source
+    Remove File    oddsfeed.xml
+    Append To File    oddsfeed.xml    ${web_source}
+    ${source}=    Get File    oddsfeed.xml
+    ${countmt}=    Get Count    ${source}    mt="
+    ${mtstring}=    String.Get Lines Containing String    ${source}    mt="
+    @{list}=    Split To Lines    ${mtstring}
+    :FOR    ${index}    IN    @{list}
+    \    ${temp1}=    Fetch From Right    ${index}    mt="
+    \    ${temp2}=    Fetch From Left    ${temp1}    ${SPACE}
+    \    log    ${temp2}
+    \    compare date    ${temp2}
+    [Teardown]    close browser
