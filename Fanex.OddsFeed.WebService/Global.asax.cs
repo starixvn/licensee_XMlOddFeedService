@@ -1,11 +1,11 @@
 ﻿namespace Fanex.OddsFeed.WebService
 {
+    using Common.Configurations;
+    using Common.Helpers;
     using System;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Routing;
-    using Common.Configurations;
-    using Common.Helpers;
 
     public class MvcApplication : HttpApplication
     {
@@ -53,18 +53,13 @@
         protected void Application_Error(object sender, EventArgs e)
         {
             var ex = Server.GetLastError();
+            LogHelper.Log(ex);
 
-            if (ex is HttpUnhandledException)
+            if (ex is HttpUnhandledException &&
+                ex is HttpException && ((HttpException)ex).ErrorCode == 404)
             {
-                if (ex is HttpException && ((HttpException)ex).ErrorCode == 404)
-                {
-                    Server.ClearError();
-                    Response.Redirect("~/PageNotFound.html");
-                }
-                else
-                {
-                    LogHelper.Log(ex);
-                }
+                Server.ClearError();
+                Response.Redirect("~/PageNotFound.html");
             }
 
             Response.Redirect("~/Errors/Index");
