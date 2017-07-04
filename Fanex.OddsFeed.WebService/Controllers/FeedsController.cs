@@ -1,7 +1,6 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
     using OddsFeed.Common.Configurations;
-    using System;
     using System.Web.Mvc;
     using WebServiceLibrary.Helpers;
     using WebServiceLibrary.Services;
@@ -18,32 +17,24 @@
         [HttpGet]
         public ActionResult Index(string username, string feedname, int? fromid)
         {
-            try
+            var ipAddress = GetClientIpAddress();
+            var domainName = RequestHelper.DomainName(Request.ServerVariables);
+            var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
+
+            if (string.IsNullOrEmpty(authenticatedPartner.Error))
             {
-                var ipAddress = GetClientIpAddress();
-                var domainName = RequestHelper.DomainName(Request.ServerVariables);
-                var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
-
-                if (string.IsNullOrEmpty(authenticatedPartner.Error))
-                {
-                    return XmlContent(authenticatedPartner.Error);
-                }
-
-                var feedsData = _feedsService.GetFeedsData(
-                    FormatType.Xml,
-                    feedname,
-                    username,
-                    domainName,
-                    ipAddress,
-                    fromid);
-
-                return XmlContent(feedsData);
+                return XmlContent(authenticatedPartner.Error);
             }
-            catch (Exception ex)
-            {
-                Logging.LogService.Error(ex.Message, ex.InnerException);
-                throw ex;
-            }
+
+            var feedsData = _feedsService.GetFeedsData(
+                FormatType.Xml,
+                feedname,
+                username,
+                domainName,
+                ipAddress,
+                fromid);
+
+            return XmlContent(feedsData);
         }
 
         [HttpGet]
