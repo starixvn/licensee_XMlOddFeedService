@@ -1,10 +1,10 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
+    using OddsFeed.Common.Configurations;
+    using OddsFeed.Common.DTO;
     using System;
     using System.Text;
     using System.Web.Mvc;
-    using OddsFeed.Common.Configurations;
-    using OddsFeed.Common.DTO;
     using WebServiceLibrary;
     using WebServiceLibrary.Helpers;
     using WebServiceLibrary.Models;
@@ -26,28 +26,36 @@
         [OutputCache(Duration = 5, Location = System.Web.UI.OutputCacheLocation.Server, VaryByParam = "username")]
         public ActionResult Index(string username)
         {
-            var userQuery = RequestHelper.GetFilter(Request);
-
-            if (RequestHelper.IsOverLimitedOptions(userQuery))
+            try
             {
-                return XmlContent(ErrorBuilder.GetOverLimitedOptions());
-            }
+                var userQuery = RequestHelper.GetFilter(Request);
 
-            var domainName = RequestHelper.DomainName(Request.ServerVariables);
-            var ipAddress = GetClientIpAddress();
-            var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
-
-            return !string.IsNullOrEmpty(authenticatedPartner.Error)
-                ? XmlContent(authenticatedPartner.Error)
-                : XmlContent(GetOddsFeed(new OddsFeedsModel
+                if (RequestHelper.IsOverLimitedOptions(userQuery))
                 {
-                    BookieName = authenticatedPartner.SystemName,
-                    DomainName = domainName,
-                    UserProfile = authenticatedPartner.UserProfile,
-                    UserQuery = userQuery,
-                    IpAddress = ipAddress,
-                    TimeStamp = Convert.ToInt32(HttpContext.Request["t"])
-                }));
+                    return XmlContent(ErrorBuilder.GetOverLimitedOptions());
+                }
+
+                var domainName = RequestHelper.DomainName(Request.ServerVariables);
+                var ipAddress = GetClientIpAddress();
+                var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
+
+                return !string.IsNullOrEmpty(authenticatedPartner.Error)
+                    ? XmlContent(authenticatedPartner.Error)
+                    : XmlContent(GetOddsFeed(new OddsFeedsModel
+                    {
+                        BookieName = authenticatedPartner.SystemName,
+                        DomainName = domainName,
+                        UserProfile = authenticatedPartner.UserProfile,
+                        UserQuery = userQuery,
+                        IpAddress = ipAddress,
+                        TimeStamp = Convert.ToInt32(HttpContext.Request["t"])
+                    }));
+            }
+            catch (Exception ex)
+            {
+                Logging.LogService.Error(ex.Message, ex.InnerException);
+                throw ex;
+            }
         }
 
         public ActionResult OldHelp(string username)

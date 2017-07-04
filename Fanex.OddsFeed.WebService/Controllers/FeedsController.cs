@@ -1,7 +1,8 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
-    using System.Web.Mvc;
     using OddsFeed.Common.Configurations;
+    using System;
+    using System.Web.Mvc;
     using WebServiceLibrary.Helpers;
     using WebServiceLibrary.Services;
 
@@ -17,24 +18,32 @@
         [HttpGet]
         public ActionResult Index(string username, string feedname, int? fromid)
         {
-            var ipAddress = GetClientIpAddress();
-            var domainName = RequestHelper.DomainName(Request.ServerVariables);
-            var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
-
-            if (string.IsNullOrEmpty(authenticatedPartner.Error))
+            try
             {
-                return XmlContent(authenticatedPartner.Error);
+                var ipAddress = GetClientIpAddress();
+                var domainName = RequestHelper.DomainName(Request.ServerVariables);
+                var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
+
+                if (string.IsNullOrEmpty(authenticatedPartner.Error))
+                {
+                    return XmlContent(authenticatedPartner.Error);
+                }
+
+                var feedsData = _feedsService.GetFeedsData(
+                    FormatType.Xml,
+                    feedname,
+                    username,
+                    domainName,
+                    ipAddress,
+                    fromid);
+
+                return XmlContent(feedsData);
             }
-
-            var feedsData = _feedsService.GetFeedsData(
-                FormatType.Xml,
-                feedname,
-                username,
-                domainName,
-                ipAddress, 
-                fromid);
-
-            return XmlContent(feedsData);              
+            catch (Exception ex)
+            {
+                Logging.LogService.Error(ex.Message, ex.InnerException);
+                throw ex;
+            }
         }
 
         [HttpGet]
@@ -44,20 +53,20 @@
             var domainName = RequestHelper.DomainName(Request.ServerVariables);
             var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
 
-            if(string.IsNullOrEmpty(authenticatedPartner.Error))
+            if (string.IsNullOrEmpty(authenticatedPartner.Error))
             {
                 return Content(authenticatedPartner.Error);
             }
-           
+
             var feedsData = _feedsService.GetFeedsData(
                 FormatType.Json,
                 feedname,
                 username,
                 domainName,
-                ipAddress, 
+                ipAddress,
                 fromid);
 
-            return Content(feedsData);        
+            return Content(feedsData);
         }
     }
 }
