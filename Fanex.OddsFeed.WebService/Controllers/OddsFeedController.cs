@@ -54,9 +54,13 @@
             }
             catch (Exception ex)
             {
-                LogService.Error("OddsFeedController:Index: " + ex.Message, ex);
-                LogService.Error("OddsFeedController:Index: username" + Server.HtmlEncode(username), ex);
-                LogService.Error("OddsFeedController:Index: timestemp" + Server.HtmlEncode(HttpContext.Request["t"]), ex);
+                var messages = new string[]
+                {
+                    "Message: " +  ex.Message,
+                    "username: " +  Server.HtmlEncode(username),
+                    "timestamp: " + Server.HtmlEncode(HttpContext.Request["t"])
+                };
+                LogService.Error("OddsFeedController:Index: " + string.Join(Environment.NewLine, messages), ex);
                 throw ex;
             }
         }
