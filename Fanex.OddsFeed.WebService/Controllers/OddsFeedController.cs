@@ -39,6 +39,7 @@
                 var domainName = RequestHelper.DomainName(Request.ServerVariables);
                 var ipAddress = GetClientIpAddress();
                 var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
+                var timestamp = string.IsNullOrEmpty(HttpContext.Request["t"]) ? "0" : HttpContext.Request["t"];
 
                 return !string.IsNullOrEmpty(authenticatedPartner.Error)
                     ? XmlContent(authenticatedPartner.Error)
@@ -49,7 +50,7 @@
                         UserProfile = authenticatedPartner.UserProfile,
                         UserQuery = userQuery,
                         IpAddress = ipAddress,
-                        TimeStamp = Convert.ToInt32(HttpContext.Request["t"])
+                        TimeStamp = Convert.ToInt32(timestamp)
                     }));
             }
             catch (Exception ex)
