@@ -10,6 +10,7 @@ namespace Fanex.OddsFeed.WindowsService
 {
     public class OddsFeedJob : IJob
     {
+     
         private readonly NLog.Logger _fileLogger = LogManager.GetCurrentClassLogger();
 
         public void Execute(IJobExecutionContext context)
