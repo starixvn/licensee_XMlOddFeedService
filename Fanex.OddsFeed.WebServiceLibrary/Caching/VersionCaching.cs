@@ -1,10 +1,10 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Caching
 {
-    using System;
-    using Couchbase.Core;
+    using Common.Caching;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.Common.DTO;
     using Fanex.OddsFeed.WebServiceLibrary.Models;
+    using System;
 
     public class VersionCaching : IVersionCaching
     {
@@ -12,11 +12,11 @@
         private static readonly string _currentVersionKey = CacheKeys.CurrentKey(AppSettings.CachePrefix);
         private static readonly string _isFullChainKey = CacheKeys.FullChainKey(AppSettings.CachePrefix);
 
-        public CacheVersion GetRightVersion(ICluster cluster, OddsFeedsModel model)
+        public CacheVersion GetRightVersion(OddsFeedsModel model)
         {
-            var currentVersion = GetCurrentVersion(cluster);
+            var currentVersion = GetCurrentVersion();
 
-            var isFullChain = IsFullChain(cluster);
+            var isFullChain = IsFullChain();
 
             var delayTimeDeadball = 0;
             var delayTimeLive = 0;
@@ -48,10 +48,10 @@
             return rightVersion > -1 ? rightVersion : -1;
         }
 
-        private static int GetCurrentVersion(ICluster cluster)
+        private static int GetCurrentVersion()
         {
             var currentVersion = 0;
-            using (var bucket = cluster.OpenBucket(_oddsFeedBucket))
+            using (var bucket = ClusterRepository.GetBucket(_oddsFeedBucket))
             {
                 currentVersion = bucket.Get<int>(_currentVersionKey).Value;
             }
@@ -59,9 +59,9 @@
             return currentVersion < 0 ? 0 : currentVersion;
         }
 
-        private static bool IsFullChain(ICluster cluster)
+        private static bool IsFullChain()
         {
-            using (var bucket = cluster.OpenBucket(_oddsFeedBucket))
+            using (var bucket = ClusterRepository.GetBucket(_oddsFeedBucket))
             {
                 return bucket.Get<bool>(_isFullChainKey).Value;
             }

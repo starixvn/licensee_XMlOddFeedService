@@ -1,13 +1,13 @@
 ﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.Services
 {
     using Common;
+    using Common.Caching;
     using Common.Configurations;
     using Common.DTO;
     using Common.Helpers;
     using Common.Schemas;
     using Couchbase;
     using Couchbase.Configuration.Client;
-    using Couchbase.Core;
     using Mapping;
     using System;
     using System.Collections.Generic;
@@ -27,12 +27,9 @@
 
         public void Reset()
         {
-            using (var cluster = new Cluster(new ClientConfiguration { Servers = _couchBaseServer }))
-            {
-                Store(cluster, _oddsFeedBucket, AppSettings.BetTypeSchemaKey, new List<BetTypeSchema>());
-                Store(cluster, _oddsFeedBucket, CacheKeys.CurrentKey(_cachePrefix), -1);
-                Store(cluster, _oddsFeedBucket, CacheKeys.FullChainKey(_cachePrefix), false);
-            }
+            Store(_oddsFeedBucket, AppSettings.BetTypeSchemaKey, new List<BetTypeSchema>());
+            Store(_oddsFeedBucket, CacheKeys.CurrentKey(_cachePrefix), -1);
+            Store(_oddsFeedBucket, CacheKeys.FullChainKey(_cachePrefix), false);
         }
 
         public bool Update()
@@ -44,25 +41,22 @@
             var deadBallMatches = GetDeadballMatches(betTypeSchemas);
             var outrights = GetOutrights();
 
-            using (var cluster = new Cluster(new ClientConfiguration { Servers = _couchBaseServer }))
+            var currentVersion = GetCurrentVersion() + 1;
+            if (currentVersion == _totalVersion)
             {
-                var currentVersion = GetCurrentVersion(cluster) + 1;
-                if (currentVersion == _totalVersion)
-                {
-                    currentVersion = 0;
-                }
-                var versionKey = currentVersion.ToString();
+                currentVersion = 0;
+            }
+            var versionKey = currentVersion.ToString();
 
-                result = Store(cluster, _oddsFeedBucket, CacheKeys.CurrentKey(_cachePrefix), currentVersion);
+            result = Store(_oddsFeedBucket, CacheKeys.CurrentKey(_cachePrefix), currentVersion);
 
-                result &= Store(cluster, _liveMatchBucket, versionKey, liveMatches);
-                result &= Store(cluster, _deadMatchBucket, versionKey, deadBallMatches);
-                result &= Store(cluster, _outRightBucket, versionKey, outrights);
+            result &= Store(_liveMatchBucket, versionKey, liveMatches);
+            result &= Store(_deadMatchBucket, versionKey, deadBallMatches);
+            result &= Store(_outRightBucket, versionKey, outrights);
 
-                if (result && currentVersion == _totalVersion - 1)
-                {
-                    result &= Store(cluster, _oddsFeedBucket, CacheKeys.FullChainKey(_cachePrefix), true);
-                }
+            if (result && currentVersion == _totalVersion - 1)
+            {
+                result &= Store(_oddsFeedBucket, CacheKeys.FullChainKey(_cachePrefix), true);
             }
 
             return result;
@@ -133,7 +127,7 @@
         {
             using (var cluster = new Cluster(new ClientConfiguration { Servers = _couchBaseServer }))
             {
-                using (var bucket = cluster.OpenBucket(_oddsFeedBucket))
+                using (var bucket = ClusterRepository.GetBucket(_oddsFeedBucket))
                 {
                     var document = bucket.Get<IList<BetTypeSchema>>(AppSettings.BetTypeSchemaKey);
 
@@ -156,9 +150,9 @@
             }
         }
 
-        private static bool Store<T>(ICluster cluster, string bucketName, string key, T value)
+        private static bool Store<T>(string bucketName, string key, T value)
         {
-            using (var bucket = cluster.OpenBucket(bucketName))
+            using (var bucket = ClusterRepository.GetBucket(bucketName))
             {
                 var upsert = bucket.Upsert(key, value);
 
@@ -166,9 +160,9 @@
             }
         }
 
-        private static int GetCurrentVersion(ICluster cluster)
+        private static int GetCurrentVersion()
         {
-            using (var bucket = cluster.OpenBucket(_oddsFeedBucket))
+            using (var bucket = ClusterRepository.GetBucket(_oddsFeedBucket))
             {
                 return bucket.Get<int>(_currentVersionKey).Value;
             }

@@ -1,12 +1,13 @@
 ﻿namespace Fanex.OddsFeed.WindowsService
 {
-    using System;
-    using System.ServiceProcess;
+    using Common.Caching;
     using Common.Configurations;
     using Logging;
     using NLog;
     using ONEbook.UM.Services;
     using ONEbook.UM.Services.Impl;
+    using System;
+    using System.ServiceProcess;
     using WindowsServiceLibrary.Services;
 
     public partial class OddsFeedService : ServiceBase
@@ -29,6 +30,7 @@
         {
             try
             {
+                ClusterRepository.Initizlize();
                 _fileLogger.Trace("OddsFeedService: OnStart");
                 _oddsFeedService.Reset();
                 _scheduler.Start(_oddsFeedService, _maintenanceService);
@@ -43,6 +45,7 @@
         {
             try
             {
+                ClusterRepository.Close();
                 _fileLogger.Trace("OddsFeedService: OnStop");
                 _scheduler.Stop();
             }

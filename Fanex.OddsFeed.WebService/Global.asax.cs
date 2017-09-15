@@ -1,5 +1,6 @@
 ﻿namespace Fanex.OddsFeed.WebService
 {
+    using Common.Caching;
     using Common.Configurations;
     using Common.Helpers;
     using System;
@@ -48,6 +49,7 @@
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             RegisterRoutes(RouteTable.Routes);
             Data.Configuration.DbSettingProviderManager.Current.Start();
+            ClusterRepository.Initizlize();
         }
 
         protected void Application_Error(object sender, EventArgs e)
