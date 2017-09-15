@@ -30,7 +30,6 @@
         {
             try
             {
-                ClusterRepository.Initizlize();
                 _fileLogger.Trace("OddsFeedService: OnStart");
                 _oddsFeedService.Reset();
                 _scheduler.Start(_oddsFeedService, _maintenanceService);

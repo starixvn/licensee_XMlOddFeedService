@@ -10,25 +10,38 @@ namespace Fanex.OddsFeed.Common.Caching
     public static class ClusterRepository
     {
         private static Cluster _cluster;
+        private static readonly object padlock = new object();
 
-        public static void Initizlize()
+        public static IBucket GetBucket(string bucketName)
         {
-            var couchBaseClientConfig = new ClientConfiguration
-            {
-                Servers = new List<Uri> { new Uri(AppSettings.CouchbaseServer) }
-            };
-
-            _cluster = new Cluster(couchBaseClientConfig);
+            Initialize();
+            return _cluster.OpenBucket(bucketName);
         }
 
         public static void Close()
         {
-            _cluster.Dispose();
+            lock (padlock)
+            {
+                if (_cluster != null)
+                {
+                    _cluster.Dispose();
+                }
+            }
         }
 
-        public static IBucket GetBucket(string bucketName)
+        private static void Initialize()
         {
-            return _cluster.OpenBucket(bucketName);
+            lock (padlock)
+            {
+                if (_cluster == null)
+                {
+                    var couchBaseClientConfig = new ClientConfiguration
+                    {
+                        Servers = new List<Uri> { new Uri(AppSettings.CouchbaseServer) }
+                    };
+                    _cluster = new Cluster(couchBaseClientConfig);
+                }
+            }
         }
     }
 }

@@ -49,7 +49,6 @@
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             RegisterRoutes(RouteTable.Routes);
             Data.Configuration.DbSettingProviderManager.Current.Start();
-            ClusterRepository.Initizlize();
         }
 
         protected void Application_Error(object sender, EventArgs e)
@@ -65,6 +64,11 @@
             }
 
             Response.Redirect("~/Errors/Index");
+        }
+
+        protected void Application_End(object sender, EventArgs e)
+        {
+            ClusterRepository.Close();
         }
 
         #region Private register routes methods
