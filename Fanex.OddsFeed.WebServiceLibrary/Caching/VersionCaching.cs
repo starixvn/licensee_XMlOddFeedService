@@ -1,6 +1,6 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Caching
 {
-    using Common.Caching;
+    using Couchbase;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.Common.DTO;
     using Fanex.OddsFeed.WebServiceLibrary.Models;
@@ -50,21 +50,16 @@
 
         private static int GetCurrentVersion()
         {
-            var currentVersion = 0;
-            using (var bucket = ClusterRepository.GetBucket(_oddsFeedBucket))
-            {
-                currentVersion = bucket.Get<int>(_currentVersionKey).Value;
-            }
+            var bucket = ClusterHelper.GetBucket(_oddsFeedBucket);
+            var currentVersion = bucket.Get<int>(_currentVersionKey).Value;
 
             return currentVersion < 0 ? 0 : currentVersion;
         }
 
         private static bool IsFullChain()
         {
-            using (var bucket = ClusterRepository.GetBucket(_oddsFeedBucket))
-            {
-                return bucket.Get<bool>(_isFullChainKey).Value;
-            }
+            var bucket = ClusterHelper.GetBucket(_oddsFeedBucket);
+            return bucket.Get<bool>(_isFullChainKey).Value;
         }
     }
 }

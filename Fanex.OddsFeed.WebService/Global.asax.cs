@@ -1,9 +1,11 @@
 ﻿namespace Fanex.OddsFeed.WebService
 {
-    using Common.Caching;
     using Common.Configurations;
     using Common.Helpers;
+    using Couchbase;
+    using Couchbase.Configuration.Client;
     using System;
+    using System.Collections.Generic;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Routing;
@@ -49,6 +51,10 @@
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             RegisterRoutes(RouteTable.Routes);
             Data.Configuration.DbSettingProviderManager.Current.Start();
+            ClusterHelper.Initialize(new ClientConfiguration
+            {
+                Servers = new List<Uri> { new Uri(AppSettings.CouchbaseServer) }
+            });
         }
 
         protected void Application_Error(object sender, EventArgs e)
@@ -68,7 +74,7 @@
 
         protected void Application_End(object sender, EventArgs e)
         {
-            ClusterRepository.Close();
+            ClusterHelper.Close();
         }
 
         #region Private register routes methods

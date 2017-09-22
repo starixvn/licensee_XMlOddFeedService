@@ -1,13 +1,11 @@
 ﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.Services
 {
     using Common;
-    using Common.Caching;
     using Common.Configurations;
     using Common.DTO;
     using Common.Helpers;
     using Common.Schemas;
     using Couchbase;
-    using Couchbase.Configuration.Client;
     using Mapping;
     using System;
     using System.Collections.Generic;
@@ -125,47 +123,38 @@
 
         private static IList<BetTypeSchema> GetBetTypeSchemas()
         {
-            using (var cluster = new Cluster(new ClientConfiguration { Servers = _couchBaseServer }))
+            var bucket = ClusterHelper.GetBucket(_oddsFeedBucket);
+            var document = bucket.Get<IList<BetTypeSchema>>(AppSettings.BetTypeSchemaKey);
+
+            if (document == null || document.Value == null || !document.Value.Any())
             {
-                using (var bucket = ClusterRepository.GetBucket(_oddsFeedBucket))
+                var newValue = JsonHelper.GetBetTypeSchemas(AppSettings.BetTypeSchemaPath);
+
+                if (newValue != null)
                 {
-                    var document = bucket.Get<IList<BetTypeSchema>>(AppSettings.BetTypeSchemaKey);
+                    bucket.Upsert(AppSettings.BetTypeSchemaKey, newValue);
 
-                    if (document == null || document.Value == null || !document.Value.Any())
-                    {
-                        var newValue = JsonHelper.GetBetTypeSchemas(AppSettings.BetTypeSchemaPath);
-
-                        if (newValue != null)
-                        {
-                            bucket.Upsert(AppSettings.BetTypeSchemaKey, newValue);
-
-                            return newValue;
-                        }
-
-                        return new List<BetTypeSchema>();
-                    }
-
-                    return document.Value;
+                    return newValue;
                 }
+
+                return new List<BetTypeSchema>();
             }
+
+            return document.Value;
         }
 
         private static bool Store<T>(string bucketName, string key, T value)
         {
-            using (var bucket = ClusterRepository.GetBucket(bucketName))
-            {
-                var upsert = bucket.Upsert(key, value);
+            var bucket = ClusterHelper.GetBucket(bucketName);
 
-                return upsert.Success;
-            }
+            return bucket.Upsert(key, value).Success;
         }
 
         private static int GetCurrentVersion()
         {
-            using (var bucket = ClusterRepository.GetBucket(_oddsFeedBucket))
-            {
-                return bucket.Get<int>(_currentVersionKey).Value;
-            }
+            var bucket = ClusterHelper.GetBucket(_oddsFeedBucket);
+
+            return bucket.Get<int>(_currentVersionKey).Value;
         }
     }
 }

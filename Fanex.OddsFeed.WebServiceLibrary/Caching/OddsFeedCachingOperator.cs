@@ -1,7 +1,7 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Caching
 {
-    using Common.Caching;
     using Common.Schemas;
+    using Couchbase;
     using Couchbase.Configuration.Client;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.Common.DTO;
@@ -49,12 +49,10 @@
 
         private static IList<T> Get<T>(string bucketName, string key)
         {
-            using (var bucket = ClusterRepository.GetBucket(bucketName))
-            {
-                var result = bucket.Get<IList<T>>(key);
+            var bucket = ClusterHelper.GetBucket(bucketName);
+            var result = bucket.Get<IList<T>>(key);
 
-                return result.Success ? result.Value : new List<T>();
-            }
+            return result.Success ? result.Value : new List<T>();
         }
     }
 }
