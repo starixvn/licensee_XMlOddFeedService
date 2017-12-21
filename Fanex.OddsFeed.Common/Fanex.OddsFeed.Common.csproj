@@ -114,13 +114,11 @@
     <Compile Include="DTO\Ip.cs" />
     <Compile Include="DTO\League.cs" />
     <Compile Include="DTO\Match.cs" />
-    <Compile Include="DTO\MatchNode.cs" />
     <Compile Include="DTO\MatchOdds.cs" />
     <Compile Include="DTO\OddsFlex.cs" />
     <Compile Include="DTO\OddsData.cs" />
     <Compile Include="DTO\OddsFlexGroup.cs" />
     <Compile Include="DTO\Outright.cs" />
-    <Compile Include="DTO\OutrightNode.cs" />
     <Compile Include="DTO\OutrightOdds.cs" />
     <Compile Include="DTO\PartnerBetType.cs" />
     <Compile Include="DTO\PartnerLeague.cs" />
