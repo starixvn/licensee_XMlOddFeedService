@@ -44,12 +44,24 @@
       <Mapping DataField="SportName" ObjectProperty="NameEnglish" />
       <Mapping DataField="SportNameCh" ObjectProperty="NameTraditionalChinese" />
       <Mapping DataField="SportNameCs" ObjectProperty="NameSimplifiedChinese" />
+      <Mapping DataField="SportNameId" ObjectProperty="NameIndonesia" />
+      <Mapping DataField="SportNameTh" ObjectProperty="NameThai" />
+      <Mapping DataField="SportNameKo" ObjectProperty="NameKorean" />
+      <Mapping DataField="SportNameVn" ObjectProperty="NameVietnamese" />
+      <Mapping DataField="SportNameJp" ObjectProperty="NameJapanese" />
+      <Mapping DataField="SportNameHd" ObjectProperty="NameHindi" />
     </Setting>
     <Setting Key="SP.BetType" SpName="Odds_Partner_BetTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
       <Mapping DataField="typeid" ObjectProperty="Id" />
       <Mapping DataField="typenamee" ObjectProperty="NameEnglish" />
       <Mapping DataField="typenameCh" ObjectProperty="NameTraditionalChinese" />
       <Mapping DataField="typenameCs" ObjectProperty="NameSimplifiedChinese" />
+      <Mapping DataField="typenameId" ObjectProperty="NameIndonesia" />
+      <Mapping DataField="typenameTh" ObjectProperty="NameThai" />
+      <Mapping DataField="typenameKo" ObjectProperty="NameKorean" />
+      <Mapping DataField="typenameVn" ObjectProperty="NameVietnamese" />
+      <Mapping DataField="typenameJp" ObjectProperty="NameJapanese" />
+      <Mapping DataField="typenameHd" ObjectProperty="NameHindi" />
     </Setting>
     <Setting Key="SP.League" SpName="Odds_Partner_LeagueSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
       <Mapping DataField="leaguename" ObjectProperty="NameEnglish" />
@@ -57,6 +69,12 @@
       <Mapping DataField="leaguenameCs" ObjectProperty="NameSimplifiedChinese" />
       <Mapping DataField="SportType" ObjectProperty="SportId" />
       <Mapping DataField="SportName" ObjectProperty="SportName" />
+      <Mapping DataField="leaguenameId" ObjectProperty="NameIndonesia" />
+      <Mapping DataField="leaguenameTh" ObjectProperty="NameThai" />
+      <Mapping DataField="leaguenameKo" ObjectProperty="NameKorean" />
+      <Mapping DataField="leaguenameVn" ObjectProperty="NameVietnamese" />
+      <Mapping DataField="leaguenameJp" ObjectProperty="NameJapanese" />
+      <Mapping DataField="leaguenameHd" ObjectProperty="NameHindi" />
     </Setting>
 
   </Function>
