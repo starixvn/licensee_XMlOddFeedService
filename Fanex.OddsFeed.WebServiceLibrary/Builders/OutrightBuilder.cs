@@ -1,13 +1,13 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Builders
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Security;
-    using System.Text;
     using Common.Converters;
     using Common.DTO;
     using Filters;
     using Models;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security;
+    using System.Text;
 
     public class OutrightBuilder : IOutrightBuilder
     {
@@ -69,6 +69,36 @@
                 oddsFeedNode.Append($"gs=\"{SecurityElement.Escape(outright.EventCn)}\" ");
             }
 
+            if (userLanguage.IsSupportedIndonesia)
+            {
+                oddsFeedNode.Append($"gb=\"{SecurityElement.Escape(outright.EventIndonesia)}\" ");
+            }
+
+            if (userLanguage.IsSupportedThai)
+            {
+                oddsFeedNode.Append($"ga=\"{SecurityElement.Escape(outright.EventThai)}\" ");
+            }
+
+            if (userLanguage.IsSupportedKorean)
+            {
+                oddsFeedNode.Append($"gk=\"{SecurityElement.Escape(outright.EventKorean)}\" ");
+            }
+
+            if (userLanguage.IsSupportedVietnamese)
+            {
+                oddsFeedNode.Append($"gv=\"{SecurityElement.Escape(outright.EventVietnamese)}\" ");
+            }
+
+            if (userLanguage.IsSupportedJapanese)
+            {
+                oddsFeedNode.Append($"gj=\"{SecurityElement.Escape(outright.EventJapanese)}\" ");
+            }
+
+            if (userLanguage.IsSupportedHindi)
+            {
+                oddsFeedNode.Append($"gh=\"{SecurityElement.Escape(outright.EventHindi)}\" ");
+            }
+
             oddsFeedNode.Append($"mt=\"{outright.Time}\" sport=\"{SecurityElement.Escape(outright.SportName)}\">");
 
             foreach (OutrightOdds outrightOddsNode in outright.OutrightOddsList)
@@ -100,6 +130,36 @@
             if (userLanguage.IsSupportedSimplifiedChinese)
             {
                 oddsFeedNode.Append($"ts=\"{SecurityElement.Escape(outrightOddsNode.OddNameCn)}\" ");
+            }
+
+            if (userLanguage.IsSupportedIndonesia)
+            {
+                oddsFeedNode.Append($"tb=\"{SecurityElement.Escape(outrightOddsNode.OddNameIndonesia)}\" ");
+            }
+
+            if (userLanguage.IsSupportedThai)
+            {
+                oddsFeedNode.Append($"ta=\"{SecurityElement.Escape(outrightOddsNode.OddNameThai)}\" ");
+            }
+
+            if (userLanguage.IsSupportedKorean)
+            {
+                oddsFeedNode.Append($"tk=\"{SecurityElement.Escape(outrightOddsNode.OddNameKorean)}\" ");
+            }
+
+            if (userLanguage.IsSupportedVietnamese)
+            {
+                oddsFeedNode.Append($"tv=\"{SecurityElement.Escape(outrightOddsNode.OddNameVietnamese)}\" ");
+            }
+
+            if (userLanguage.IsSupportedJapanese)
+            {
+                oddsFeedNode.Append($"tj=\"{SecurityElement.Escape(outrightOddsNode.OddNameJapanese)}\" ");
+            }
+
+            if (userLanguage.IsSupportedHindi)
+            {
+                oddsFeedNode.Append($"th=\"{SecurityElement.Escape(outrightOddsNode.OddNameHindi)}\" ");
             }
 
             oddsFeedNode.AppendFormat($"o=\"{OddsConverter.ConvertOdds(userProfile.OddRegion, outrightOddsNode.Value)}\" />");

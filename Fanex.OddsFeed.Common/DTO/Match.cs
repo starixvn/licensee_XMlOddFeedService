@@ -16,17 +16,53 @@
 
         public string LeagueCn { get; set; }
 
+        public string LeagueIndonesia { get; set; }
+
+        public string LeagueThai { get; set; }
+
+        public string LeagueKorean { get; set; }
+
+        public string LeagueVietnamese { get; set; }
+
+        public string LeagueJapanese { get; set; }
+
+        public string LeagueHindi { get; set; }
+
         public string HomeEn { get; set; }
 
         public string HomeTw { get; set; }
 
         public string HomeCn { get; set; }
 
+        public string HomeIndonesia { get; set; }
+
+        public string HomeThai { get; set; }
+
+        public string HomeKorean { get; set; }
+
+        public string HomeVietnamese { get; set; }
+
+        public string HomeJapanese { get; set; }
+
+        public string HomeHindi { get; set; }
+
         public string AwayEn { get; set; }
 
         public string AwayTw { get; set; }
 
         public string AwayCn { get; set; }
+
+        public string AwayIndonesia { get; set; }
+
+        public string AwayThai { get; set; }
+
+        public string AwayKorean { get; set; }
+
+        public string AwayVietnamese { get; set; }
+
+        public string AwayJapanese { get; set; }
+
+        public string AwayHindi { get; set; }
 
         public int SportId { get; set; }
 
