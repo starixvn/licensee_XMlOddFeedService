@@ -29,6 +29,11 @@
         {
             try
             {
+                if(this.IsDownTime())
+                {
+                    return Content(GetDowntimeContent());
+                }
+
                 var userQuery = RequestHelper.GetFilter(Request);
 
                 if (RequestHelper.IsOverLimitedOptions(userQuery))
@@ -62,7 +67,7 @@
                     "timestamp: " + Server.HtmlEncode(HttpContext.Request["t"])
                 };
                 LogService.Error("OddsFeedController:Index: " + string.Join(Environment.NewLine, messages), ex);
-                throw ex;
+                throw new Exception("OddsFeedController Error", ex);
             }
         }
 
