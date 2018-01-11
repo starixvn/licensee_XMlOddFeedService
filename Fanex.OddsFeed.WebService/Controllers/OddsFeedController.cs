@@ -31,7 +31,7 @@
             {
                 if(this.IsDownTime())
                 {
-                    return Content(GetDowntimeContent());
+                    return XmlContent(GetDowntimeContent());
                 }
 
                 var userQuery = RequestHelper.GetFilter(Request);
