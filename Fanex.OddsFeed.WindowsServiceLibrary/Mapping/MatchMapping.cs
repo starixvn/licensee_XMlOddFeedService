@@ -71,7 +71,7 @@
                 HomeKorean = row["HomeKo"].ToString(),
                 HomeVietnamese = row["HomeVn"].ToString(),
                 HomeJapanese = row["HomeJp"].ToString(),
-                HomeHindi = row["HomeHd"].ToString(),
+                HomeHindi = row["HomeHi"].ToString(),
                 AwayEn = row["Away"].ToString(),
                 AwayTw = row["AwayC_UNI"].ToString(),
                 AwayCn = row["AwayCN"].ToString(),
@@ -80,7 +80,7 @@
                 AwayKorean = row["AwayKo"].ToString(),
                 AwayVietnamese = row["AwayVn"].ToString(),
                 AwayJapanese = row["AwayJp"].ToString(),
-                AwayHindi = row["AwayHd"].ToString(),
+                AwayHindi = row["AwayHi"].ToString(),
                 LeagueId = Convert.ToInt32(row["LeagueID"]),
                 LeagueEn = row["LeagueName"].ToString(),
                 LeagueTw = row["LeagueNameC_UNI"].ToString(),
@@ -90,7 +90,7 @@
                 LeagueKorean = row["leaguenameKo"].ToString(),
                 LeagueVietnamese = row["leaguenameVn"].ToString(),
                 LeagueJapanese = row["leaguenameJp"].ToString(),
-                LeagueHindi = row["leaguenameHd"].ToString(),
+                LeagueHindi = row["leaguenameHi"].ToString(),
                 CountryCode = row["CountryCode"].ToString(),
                 IsLive = isLive
             };

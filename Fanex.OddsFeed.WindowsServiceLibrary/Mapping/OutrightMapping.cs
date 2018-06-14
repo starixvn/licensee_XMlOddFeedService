@@ -59,7 +59,7 @@
                 EventKorean = row["leaguenameKo"].ToString(),
                 EventVietnamese = row["leaguenameVn"].ToString(),
                 EventJapanese = row["leaguenameJp"].ToString(),
-                EventHindi = row["leaguenameHd"].ToString(),
+                EventHindi = row["leaguenameHi"].ToString(),
                 SportId = Convert.ToInt32(row["SportID"]),
                 SportName = row["LeagueNameTC"].ToString(),
                 CountryCode = row["CountryCode"].ToString(),
@@ -81,7 +81,7 @@
                 OddNameKorean = row["teamnameKo"].ToString(),
                 OddNameVietnamese = row["teamnameVn"].ToString(),
                 OddNameJapanese = row["teamnameJp"].ToString(),
-                OddNameHindi = row["teamnameHd"].ToString(),
+                OddNameHindi = row["teamnameHi"].ToString(),
                 Value = Convert.ToDecimal(row["Odds"])
             };
         }

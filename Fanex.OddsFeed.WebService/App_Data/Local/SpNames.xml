@@ -49,7 +49,7 @@
       <Mapping DataField="SportNameKo" ObjectProperty="NameKorean" />
       <Mapping DataField="SportNameVn" ObjectProperty="NameVietnamese" />
       <Mapping DataField="SportNameJp" ObjectProperty="NameJapanese" />
-      <Mapping DataField="SportNameHd" ObjectProperty="NameHindi" />
+      <Mapping DataField="SportNameHi" ObjectProperty="NameHindi" />
     </Setting>
     <Setting Key="SP.BetType" SpName="Odds_Partner_BetTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >      
       <Mapping DataField="typeid" ObjectProperty="Id" />
@@ -61,7 +61,7 @@
       <Mapping DataField="typenameKo" ObjectProperty="NameKorean" />
       <Mapping DataField="typenameVn" ObjectProperty="NameVietnamese" />
       <Mapping DataField="typenameJp" ObjectProperty="NameJapanese" />
-      <Mapping DataField="typenameHd" ObjectProperty="NameHindi" />
+      <Mapping DataField="typenameHi" ObjectProperty="NameHindi" />
     </Setting>
     <Setting Key="SP.League" SpName="Odds_Partner_LeagueSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
       <Mapping DataField="leaguename" ObjectProperty="NameEnglish" />
@@ -72,7 +72,7 @@
       <Mapping DataField="leaguenameKo" ObjectProperty="NameKorean" />
       <Mapping DataField="leaguenameVn" ObjectProperty="NameVietnamese" />
       <Mapping DataField="leaguenameJp" ObjectProperty="NameJapanese" />
-      <Mapping DataField="leaguenameHd" ObjectProperty="NameHindi" />
+      <Mapping DataField="leaguenameHi" ObjectProperty="NameHindi" />
       <Mapping DataField="SportType" ObjectProperty="SportId" />
       <Mapping DataField="SportName" ObjectProperty="SportName" />
     </Setting>
