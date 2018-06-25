@@ -13,7 +13,12 @@
 
         public static bool Contain(string value, string keyword)
         {
-            return value.IndexOf(keyword,StringComparison.OrdinalIgnoreCase) > -1;
+            return value.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) > -1;
+        }
+
+        public static string SelectName(string nameInOtherLanguage, string nameInEnglish)
+        {
+            return string.IsNullOrEmpty(nameInOtherLanguage) ? nameInEnglish : nameInOtherLanguage;
         }
     }
 }
