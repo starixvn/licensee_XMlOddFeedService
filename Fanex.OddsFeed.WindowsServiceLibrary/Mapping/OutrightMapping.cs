@@ -11,53 +11,30 @@
 
         public List<Outright> GetOutrights(DataTable dataTable)
         {
-            var events = new SafeList<Outright>();
             System.Collections.Concurrent.Partitioner<DataRow> partionerList = System.Collections.Concurrent.Partitioner.Create(dataTable.AsEnumerable().ToList(), true);
 
-            var tempRows = from row in partionerList.AsParallel()
-                           select row;
+            var outrights = from row in partionerList.AsParallel()
+                            group row by row["LeagueID"].ToString() into g
+                            select new Outright
+                            {
+                                EventId = Convert.ToInt32(g.Key),
+                                EventEn = g.FirstOrDefault()?["LeagueName"].ToString(),
+                                EventTw = g.FirstOrDefault()?["LeagueNameC_UNI"].ToString(),
+                                EventCn = g.FirstOrDefault()?["LeagueNameCN"].ToString(),
+                                EventIndonesia = g.FirstOrDefault()?["leaguenameId"].ToString(),
+                                EventThai = g.FirstOrDefault()?["leaguenameTh"].ToString(),
+                                EventKorean = g.FirstOrDefault()?["leaguenameKo"].ToString(),
+                                EventVietnamese = g.FirstOrDefault()?["leaguenameVn"].ToString(),
+                                EventJapanese = g.FirstOrDefault()?["leaguenameJp"].ToString(),
+                                EventHindi = g.FirstOrDefault()?["leaguenameHi"].ToString(),
+                                SportId = Convert.ToInt32(g.FirstOrDefault()?["SportID"]),
+                                SportName = g.FirstOrDefault()?["LeagueNameTC"].ToString(),
+                                CountryCode = g.FirstOrDefault()?["CountryCode"].ToString(),
+                                Time = Convert.ToDateTime(g.FirstOrDefault()?["EventDate"].ToString()),
+                                OutrightOddsList = (new SafeList<OutrightOdds>(g.Select(i => GetEventOdds(i))))
+                            };
 
-            tempRows.ForAll((row) =>
-            {
-                var eventOdds = GetEventOdds(row);
-
-                if (eventOdds != null)
-                {
-                    events.Add(GetOutright(row, eventOdds));
-                }
-            });
-
-            return events.GroupBy(e => e.EventId).Select(g =>
-            {
-                var odds = new List<OutrightOdds>(g.SelectMany(e => e.OutrightOddsList));
-                var outright = g.First();
-                outright.OutrightOddsList.Clear();
-                outright.OutrightOddsList.AddRange(odds);
-
-                return outright;
-            }).ToList();
-        }
-
-        private static Outright GetOutright(DataRow row, OutrightOdds eventOdds)
-        {
-            return new Outright
-            {
-                EventId = Convert.ToInt32(row["LeagueID"]),
-                EventEn = row["LeagueName"].ToString(),
-                EventTw = row["LeagueNameC_UNI"].ToString(),
-                EventCn = row["LeagueNameCN"].ToString(),
-                EventIndonesia = row["leaguenameId"].ToString(),
-                EventThai = row["leaguenameTh"].ToString(),
-                EventKorean = row["leaguenameKo"].ToString(),
-                EventVietnamese = row["leaguenameVn"].ToString(),
-                EventJapanese = row["leaguenameJp"].ToString(),
-                EventHindi = row["leaguenameHi"].ToString(),
-                SportId = Convert.ToInt32(row["SportID"]),
-                SportName = row["LeagueNameTC"].ToString(),
-                CountryCode = row["CountryCode"].ToString(),
-                Time = Convert.ToDateTime(row["EventDate"].ToString()),
-                OutrightOddsList = new SafeList<OutrightOdds> { eventOdds }
-            };
+            return outrights.ToList();
         }
 
         private static OutrightOdds GetEventOdds(DataRow row)
