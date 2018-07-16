@@ -2,13 +2,14 @@
 {
     using Common.DTO;
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Linq;
 
     public class OutrightMapping : IOutrightMapping
     {
 
-        public SafeList<Outright> GetOutrights(DataTable dataTable)
+        public List<Outright> GetOutrights(DataTable dataTable)
         {
             var events = new SafeList<Outright>();
             System.Collections.Concurrent.Partitioner<DataRow> partionerList = System.Collections.Concurrent.Partitioner.Create(dataTable.AsEnumerable().ToList(), true);
@@ -22,35 +23,26 @@
 
                 if (eventOdds != null)
                 {
-                    AddOutrightOdds(row, events, eventOdds);
+                    events.Add(GetOutright(row, eventOdds));
                 }
             });
 
+            return events.GroupBy(e => e.EventId).Select(g =>
+            {
+                var odds = new List<OutrightOdds>(g.SelectMany(e => e.OutrightOddsList));
+                var outright = g.First();
+                outright.OutrightOddsList.Clear();
+                outright.OutrightOddsList.AddRange(odds);
 
-            return events;
+                return outright;
+            }).ToList();
         }
 
-        private static void AddOutrightOdds(DataRow row, SafeList<Outright> outrights, OutrightOdds outrightOdds)
-        {
-            var currentLeagueId = Convert.ToInt32(row["LeagueID"]);
-            var existedOutright = outrights.FirstOrDefault(o => o.EventId == currentLeagueId);
-
-            if (existedOutright != null)
-            {
-                existedOutright.OutrightOddsList.Add(outrightOdds);
-            }
-            else
-            {
-                outrights.Add(GetOutright(row, currentLeagueId, outrightOdds));
-            }
-
-        }
-
-        private static Outright GetOutright(DataRow row, int leagueId, OutrightOdds eventOdds)
+        private static Outright GetOutright(DataRow row, OutrightOdds eventOdds)
         {
             return new Outright
             {
-                EventId = leagueId,
+                EventId = Convert.ToInt32(row["LeagueID"]),
                 EventEn = row["LeagueName"].ToString(),
                 EventTw = row["LeagueNameC_UNI"].ToString(),
                 EventCn = row["LeagueNameCN"].ToString(),
