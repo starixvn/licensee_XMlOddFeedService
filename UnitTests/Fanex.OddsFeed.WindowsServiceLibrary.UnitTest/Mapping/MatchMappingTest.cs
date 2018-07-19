@@ -332,6 +332,54 @@
             using (var dataColumn = new DataColumn
             {
                 DataType = typeof(string),
+                ColumnName = "HomeId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
                 ColumnName = "Away"
             })
             {
@@ -349,6 +397,54 @@
             {
                 DataType = typeof(string),
                 ColumnName = "AwayC_UNI"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayHd"
             })
             {
                 dataTable.Columns.Add(dataColumn);
@@ -377,6 +473,54 @@
             {
                 dataTable.Columns.Add(dataColumn);
             }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
 
             var row = dataTable.NewRow();
             row["MatchID"] = 1;
@@ -396,12 +540,30 @@
             row["Home"] = "Test";
             row["HomeCN"] = "Test";
             row["HomeC_UNI"] = "Test";
+            row["HomeId"] = "Test";
+            row["HomeTh"] = "Test";
+            row["HomeKo"] = "Test";
+            row["HomeVn"] = "Test";
+            row["HomeJp"] = "Test";
+            row["HomeHd"] = "Test";
             row["Away"] = "Test";
             row["AwayCN"] = "Test";
             row["AwayC_UNI"] = "Test";
+            row["AwayId"] = "Test";
+            row["AwayTh"] = "Test";
+            row["AwayKo"] = "Test";
+            row["AwayVn"] = "Test";
+            row["AwayJp"] = "Test";
+            row["AwayHd"] = "Test";
             row["LeagueName"] = "Test";
             row["LeagueNameCN"] = "Test";
             row["LeagueNameC_UNI"] = "Test";
+            row["leaguenameId"] = "Test";
+            row["leaguenameTh"] = "Test";
+            row["leaguenameKo"] = "Test";
+            row["leaguenameVn"] = "Test";
+            row["leaguenameJp"] = "Test";
+            row["leaguenameHd"] = "Test";
 
             dataTable.Rows.Add(row);
 
@@ -572,6 +734,150 @@
             {
                 dataTable.Columns.Add(dataColumn);
             }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
 
             var row = dataTable.NewRow();
             row["MatchID"] = 1;
@@ -588,12 +894,30 @@
             row["Home"] = "Test";
             row["HomeCN"] = "Test";
             row["HomeC_UNI"] = "Test";
+            row["HomeId"] = "Test";
+            row["HomeTh"] = "Test";
+            row["HomeKo"] = "Test";
+            row["HomeVn"] = "Test";
+            row["HomeJp"] = "Test";
+            row["HomeHd"] = "Test";
             row["Away"] = "Test";
             row["AwayCN"] = "Test";
             row["AwayC_UNI"] = "Test";
+            row["AwayId"] = "Test";
+            row["AwayTh"] = "Test";
+            row["AwayKo"] = "Test";
+            row["AwayVn"] = "Test";
+            row["AwayJp"] = "Test";
+            row["AwayHd"] = "Test";
             row["LeagueName"] = "Test";
             row["LeagueNameCN"] = "Test";
             row["LeagueNameC_UNI"] = "Test";
+            row["leaguenameId"] = "Test";
+            row["leaguenameTh"] = "Test";
+            row["leaguenameKo"] = "Test";
+            row["leaguenameVn"] = "Test";
+            row["leaguenameJp"] = "Test";
+            row["leaguenameHd"] = "Test";
 
             dataTable.Rows.Add(row);
 
@@ -772,6 +1096,150 @@
             {
                 dataTable.Columns.Add(dataColumn);
             }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
 
             var row = dataTable.NewRow();
             row["MatchID"] = 1;
@@ -789,12 +1257,30 @@
             row["Home"] = "Test";
             row["HomeCN"] = "Test";
             row["HomeC_UNI"] = "Test";
+            row["HomeId"] = "Test";
+            row["HomeTh"] = "Test";
+            row["HomeKo"] = "Test";
+            row["HomeVn"] = "Test";
+            row["HomeJp"] = "Test";
+            row["HomeHd"] = "Test";
             row["Away"] = "Test";
             row["AwayCN"] = "Test";
             row["AwayC_UNI"] = "Test";
+            row["AwayId"] = "Test";
+            row["AwayTh"] = "Test";
+            row["AwayKo"] = "Test";
+            row["AwayVn"] = "Test";
+            row["AwayJp"] = "Test";
+            row["AwayHd"] = "Test";
             row["LeagueName"] = "Test";
             row["LeagueNameCN"] = "Test";
             row["LeagueNameC_UNI"] = "Test";
+            row["leaguenameId"] = "Test";
+            row["leaguenameTh"] = "Test";
+            row["leaguenameKo"] = "Test";
+            row["leaguenameVn"] = "Test";
+            row["leaguenameJp"] = "Test";
+            row["leaguenameHd"] = "Test";
 
             dataTable.Rows.Add(row);
 
@@ -822,12 +1308,30 @@
             row["Home"] = "Test";
             row["HomeCN"] = "Test";
             row["HomeC_UNI"] = "Test";
+            row["HomeId"] = "Test";
+            row["HomeTh"] = "Test";
+            row["HomeKo"] = "Test";
+            row["HomeVn"] = "Test";
+            row["HomeJp"] = "Test";
+            row["HomeHd"] = "Test";
             row["Away"] = "Test";
             row["AwayCN"] = "Test";
             row["AwayC_UNI"] = "Test";
+            row["AwayId"] = "Test";
+            row["AwayTh"] = "Test";
+            row["AwayKo"] = "Test";
+            row["AwayVn"] = "Test";
+            row["AwayJp"] = "Test";
+            row["AwayHd"] = "Test";
             row["LeagueName"] = "Test";
             row["LeagueNameCN"] = "Test";
             row["LeagueNameC_UNI"] = "Test";
+            row["leaguenameId"] = "Test";
+            row["leaguenameTh"] = "Test";
+            row["leaguenameKo"] = "Test";
+            row["leaguenameVn"] = "Test";
+            row["leaguenameJp"] = "Test";
+            row["leaguenameHd"] = "Test";
 
             dataTable.Rows.Add(row);
 
@@ -984,6 +1488,150 @@
             {
                 DataType = typeof(string),
                 ColumnName = "LeagueNameC_UNI"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "HomeHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "AwayHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameHd"
             })
             {
                 dataTable.Columns.Add(dataColumn);

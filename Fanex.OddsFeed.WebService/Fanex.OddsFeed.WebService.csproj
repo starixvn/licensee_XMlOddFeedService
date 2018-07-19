@@ -394,7 +394,7 @@
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>59198</DevelopmentServerPort>
           <DevelopmentServerVPath>/OddsFeedwebservice</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59198/OddsFeedwebservice</IISUrl>
+          <IISUrl>http://localhost:59198/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

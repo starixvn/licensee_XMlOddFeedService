@@ -1794,6 +1794,143 @@
             </ul>
         </li>
     }
+@if (Model.BetTypes == null || Model.BetTypes.Contains(448))
+{
+    <li>
+        t="bt_448" : Last Team To Score
+        <ul>
+            <li>h: Price for Home</li>
+            <li>a: Price for Away</li>
+            <li>ng: Price for No Goal</li>
+        </ul>
+    </li>
+}
+@if (Model.BetTypes == null || Model.BetTypes.Contains(449))
+{
+    <li>
+        t="bt_449" : Double Chance/Total Goals
+        <ul>
+            <li>hdo: Price for Home/Draw and Over</li>
+            <li>hdu: Price for Home/Draw and Under</li>
+            <li>hao: Price for Home/Away and Over</li>
+            <li>hau: Price for Home/Away and Under</li>
+            <li>ado: Price for Away/Draw and Over</li>
+            <li>adu: Price for Away/Draw and Under</li>
+        </ul>
+    </li>
+}
+@if (Model.BetTypes == null || Model.BetTypes.Contains(450))
+{
+    <li>
+        t="bt_450" : Odd Even/Total Goals
+        <ul>
+            <li>oo: Price for Odd and Over</li>
+            <li>ou: Price for Odd and Under</li>
+            <li>eo: Price for Even and Over</li>
+            <li>eu: Price for Even and Under</li>
+        </ul>
+    </li>
+}
+@if (Model.BetTypes == null || Model.BetTypes.Contains(451))
+{
+    <li>
+        t="bt_451" : Both Teams to Score/Double Chance
+        <ul>
+            <li>y1x: Price for Yes and Home/Draw</li>
+            <li>y12: Price for Yes and Home/Away</li>
+            <li>y2x: Price for Yes and Away/Draw</li>
+            <li>n1x: Price for No and Home/Draw</li>
+            <li>n12: Price for No and Home/Away</li>
+            <li>n2x: Price for No and Away/Draw</li>
+        </ul>
+    </li>
+}
+@if (Model.BetTypes == null || Model.BetTypes.Contains(452))
+{
+    <li>
+        t="bt_452" : Highest Scoring Half (2 Way)
+        <ul>
+            <li>h1: Price for First half</li>
+            <li>h2: Price for Second half</li>            
+        </ul>
+    </li>
+}
+@if (Model.BetTypes == null || Model.BetTypes.Contains(453))
+{
+    <li>
+        t="bt_453" : 1H 3-Way Handicap
+        <ul>
+            <li>h: Price for Home</li>
+            <li>d: Price for Draw</li>
+            <li>a: Price for Away</li>
+        </ul>
+    </li>
+}
+@if (Model.BetTypes == null || Model.BetTypes.Contains(455))
+{
+    <li>
+        t="bt_455" : Time Of First Goal
+        <ul>
+            <li>o1-10: Price for 00:01-10:00</li>
+            <li>o11-20: Price for 10:01-20:00</li>
+            <li>o21-30: Price for 20:01-30:00</li>
+            <li>o31-40: Price for 30:01-40:00</li>
+            <li>o41-50: Price for 40:01-50:00</li>
+            <li>o51-60: Price for 50:01-60:00</li>
+            <li>o61-70: Price for 60:01-70:00</li>
+            <li>o71-80: Price for 70:01-80:00</li>
+            <li>o81-ft: Price for 80:01-Full Time</li>
+            <li>ng: Price for No Goal</li>
+        </ul>
+    </li>
+}
+@if (Model.BetTypes == null || Model.BetTypes.Contains(456))
+{
+    <li>
+        t="bt_456" : 1H Both Teams To Score/Result
+        <ul>
+            <li>yh: Price for Yes/Home</li>
+            <li>ya: Price for Yes/Away</li>
+            <li>yd: Price for Yes/Draw</li>
+            <li>nh: Price for No/Home</li>
+            <li>na: Price for No/Away</li>
+            <li>nd: Price for No/Draw</li>            
+            <li>nu: Price for No and Under</li>            
+        </ul>
+    </li>
+}
+@if (Model.BetTypes == null || Model.BetTypes.Contains(458))
+{
+    <li>
+        t="bt_458" : Asian 1X2
+        <ul>
+            <li>h: Price for Home</li>
+            <li>a: Price for Away</li>
+            <li>d: Price for Draw</li>            
+        </ul>
+    </li>
+}
+@if (Model.BetTypes == null || Model.BetTypes.Contains(459))
+{
+    <li>
+        t="bt_459" : 1H Asian 1X2
+        <ul>
+            <li>h: Price for Home</li>
+            <li>a: Price for Away</li>
+            <li>d: Price for Draw</li>
+        </ul>
+    </li>
+}
+@if (Model.BetTypes == null || Model.BetTypes.Contains(460))
+{
+    <li>
+        t="bt_460" : Which Team Will Win By 5+ Goals
+        <ul>
+            <li>h: Price for Home</li>
+            <li>a: Price for Away</li>
+        </ul>
+    </li>
+}
 @if (Model.BetTypes == null || Model.BetTypes.Contains(601))
 {
     <li>

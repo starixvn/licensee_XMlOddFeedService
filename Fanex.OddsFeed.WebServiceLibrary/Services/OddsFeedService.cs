@@ -1,15 +1,15 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Builders;
     using Caching;
     using Common.DTO;
     using Common.Helpers;
     using Filters;
     using Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
 
     public class OddsFeedService : IOddsFeedService
     {
@@ -58,7 +58,13 @@
             {
                 IsSupportedEnglish = StringHelper.ContainInList(model.UserProfile.Languages, "en-US"),
                 IsSupportedTraditionalChinese = StringHelper.ContainInList(model.UserProfile.Languages, "zh-TW"),
-                IsSupportedSimplifiedChinese = StringHelper.ContainInList(model.UserProfile.Languages, "zh-CN")
+                IsSupportedSimplifiedChinese = StringHelper.ContainInList(model.UserProfile.Languages, "zh-CN"),
+                IsSupportedIndonesia = StringHelper.ContainInList(model.UserProfile.Languages, "id-ID"),
+                IsSupportedThai = StringHelper.ContainInList(model.UserProfile.Languages, "th-TH"),
+                IsSupportedKorean = StringHelper.ContainInList(model.UserProfile.Languages, "ko-KR"),
+                IsSupportedVietnamese = StringHelper.ContainInList(model.UserProfile.Languages, "vi-VN"),
+                IsSupportedJapanese = StringHelper.ContainInList(model.UserProfile.Languages, "ja-JP"),
+                IsSupportedHindi = StringHelper.ContainInList(model.UserProfile.Languages, "hi-IN")
             };
         }
 

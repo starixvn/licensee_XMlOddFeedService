@@ -2,64 +2,39 @@
 {
     using Common.DTO;
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Linq;
 
     public class OutrightMapping : IOutrightMapping
     {
 
-        public SafeList<Outright> GetOutrights(DataTable dataTable)
+        public List<Outright> GetOutrights(DataTable dataTable)
         {
-            var events = new SafeList<Outright>();
             System.Collections.Concurrent.Partitioner<DataRow> partionerList = System.Collections.Concurrent.Partitioner.Create(dataTable.AsEnumerable().ToList(), true);
 
-            var tempRows = from row in partionerList.AsParallel()
-                           select row;
+            var outrights = from row in partionerList.AsParallel()
+                            group row by row["LeagueID"].ToString() into g
+                            select new Outright
+                            {
+                                EventId = Convert.ToInt32(g.Key),
+                                EventEn = g.FirstOrDefault()?["LeagueName"].ToString(),
+                                EventTw = g.FirstOrDefault()?["LeagueNameC_UNI"].ToString(),
+                                EventCn = g.FirstOrDefault()?["LeagueNameCN"].ToString(),
+                                EventIndonesia = g.FirstOrDefault()?["leaguenameId"].ToString(),
+                                EventThai = g.FirstOrDefault()?["leaguenameTh"].ToString(),
+                                EventKorean = g.FirstOrDefault()?["leaguenameKo"].ToString(),
+                                EventVietnamese = g.FirstOrDefault()?["leaguenameVn"].ToString(),
+                                EventJapanese = g.FirstOrDefault()?["leaguenameJp"].ToString(),
+                                EventHindi = g.FirstOrDefault()?["leaguenameHi"].ToString(),
+                                SportId = Convert.ToInt32(g.FirstOrDefault()?["SportID"]),
+                                SportName = g.FirstOrDefault()?["LeagueNameTC"].ToString(),
+                                CountryCode = g.FirstOrDefault()?["CountryCode"].ToString(),
+                                Time = Convert.ToDateTime(g.FirstOrDefault()?["EventDate"].ToString()),
+                                OutrightOddsList = (new SafeList<OutrightOdds>(g.Select(i => GetEventOdds(i))))
+                            };
 
-            tempRows.ForAll((row) =>
-            {
-                var eventOdds = GetEventOdds(row);
-
-                if (eventOdds != null)
-                {
-                    AddOutrightOdds(row, events, eventOdds);
-                }
-            });
-
-
-            return events;
-        }
-
-        private static void AddOutrightOdds(DataRow row, SafeList<Outright> outrights, OutrightOdds outrightOdds)
-        {
-            var currentLeagueId = Convert.ToInt32(row["LeagueID"]);
-            var existedOutright = outrights.FirstOrDefault(o => o.EventId == currentLeagueId);
-
-            if (existedOutright != null)
-            {
-                existedOutright.OutrightOddsList.Add(outrightOdds);
-            }
-            else
-            {
-                outrights.Add(GetOutright(row, currentLeagueId, outrightOdds));
-            }
-
-        }
-
-        private static Outright GetOutright(DataRow row, int leagueId, OutrightOdds eventOdds)
-        {
-            return new Outright
-            {
-                EventId = leagueId,
-                EventEn = row["LeagueName"].ToString(),
-                EventTw = row["LeagueNameC_UNI"].ToString(),
-                EventCn = row["LeagueNameCN"].ToString(),
-                SportId = Convert.ToInt32(row["SportID"]),
-                SportName = row["LeagueNameTC"].ToString(),
-                CountryCode = row["CountryCode"].ToString(),
-                Time = Convert.ToDateTime(row["EventDate"].ToString()),
-                OutrightOddsList = new SafeList<OutrightOdds> { eventOdds }
-            };
+            return outrights.ToList();
         }
 
         private static OutrightOdds GetEventOdds(DataRow row)
@@ -70,6 +45,12 @@
                 OddNameEn = row["TeamName"].ToString(),
                 OddNameTw = row["TeamNameC_UNI"].ToString(),
                 OddNameCn = row["TeamNameCN"].ToString(),
+                OddNameIndonesia = row["teamnameId"].ToString(),
+                OddNameThai = row["teamnameTh"].ToString(),
+                OddNameKorean = row["teamnameKo"].ToString(),
+                OddNameVietnamese = row["teamnameVn"].ToString(),
+                OddNameJapanese = row["teamnameJp"].ToString(),
+                OddNameHindi = row["teamnameHi"].ToString(),
                 Value = Convert.ToDecimal(row["Odds"])
             };
         }

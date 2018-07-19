@@ -13,6 +13,18 @@
 
         public string EventCn { get; set; }
 
+        public string EventIndonesia { get; set; }
+
+        public string EventThai { get; set; }
+
+        public string EventKorean { get; set; }
+
+        public string EventVietnamese { get; set; }
+
+        public string EventJapanese { get; set; }
+
+        public string EventHindi { get; set; }
+
         public DateTime Time { get; set; }
 
         public int SportId { get; set; }

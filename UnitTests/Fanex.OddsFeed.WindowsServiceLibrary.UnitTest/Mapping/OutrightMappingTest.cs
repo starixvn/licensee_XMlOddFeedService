@@ -1,9 +1,9 @@
 ﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.UnitTests.Mapping
 {
+    using NUnit.Framework;
     using System;
     using System.Data;
     using System.Linq;
-    using NUnit.Framework;
     using WindowsServiceLibrary.Mapping;
 
     [TestFixture]
@@ -113,6 +113,54 @@
             using (var dataColumn = new DataColumn
             {
                 DataType = typeof(string),
+                ColumnName = "teamnameId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "teamnameTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "teamnameKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "teamnameVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "teamnameJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "teamnameHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
                 ColumnName = "LeagueName"
             })
             {
@@ -137,6 +185,54 @@
             using (var dataColumn = new DataColumn
             {
                 DataType = typeof(string),
+                ColumnName = "leaguenameId"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameTh"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameKo"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameVn"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameJp"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
+                ColumnName = "leaguenameHd"
+            })
+            {
+                dataTable.Columns.Add(dataColumn);
+            }
+            using (var dataColumn = new DataColumn
+            {
+                DataType = typeof(string),
                 ColumnName = "CountryCode"
             })
             {
@@ -153,9 +249,21 @@
             row["TeamName"] = "Test";
             row["TeamNameCN"] = "Test";
             row["TeamNameC_UNI"] = "Test";
+            row["teamnameId"] = "Test";
+            row["teamnameTh"] = "Test";
+            row["teamnameKo"] = "Test";
+            row["teamnameVn"] = "Test";
+            row["teamnameJp"] = "Test";
+            row["teamnameHd"] = "Test";
             row["LeagueName"] = "Test";
             row["LeagueNameCN"] = "Test";
             row["LeagueNameC_UNI"] = "Test";
+            row["leaguenameId"] = "Test";
+            row["leaguenameTh"] = "Test";
+            row["leaguenameKo"] = "Test";
+            row["leaguenameVn"] = "Test";
+            row["leaguenameJp"] = "Test";
+            row["leaguenameHd"] = "Test";
             row["CountryCode"] = "Test";
 
             dataTable.Rows.Add(row);

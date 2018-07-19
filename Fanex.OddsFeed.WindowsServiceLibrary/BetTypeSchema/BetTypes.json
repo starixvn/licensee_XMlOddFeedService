@@ -4627,6 +4627,268 @@
     ]
   },
   {
+    "BetTypeId": 448,
+    "Tag": "bt_448",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "ng",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 449,
+    "Tag": "bt_449",
+    "BetChoices": [
+      {
+        "MatchAttribute": "hdo",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "hdu",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "hao",
+        "DataAttribute": "cs03"
+      },
+      {
+        "MatchAttribute": "hau",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "ado",
+        "DataAttribute": "cs05"
+      },
+      {
+        "MatchAttribute": "adu",
+        "DataAttribute": "cs04"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 450,
+    "Tag": "bt_450",
+    "BetChoices": [
+      {
+        "MatchAttribute": "oo",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "ou",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "eo",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "eu",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 451,
+    "Tag": "bt_451",
+    "BetChoices": [
+      {
+        "MatchAttribute": "y1x",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "y12",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "y2x",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "n1x",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "n12",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "n2x",
+        "DataAttribute": "cs30"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 452,
+    "Tag": "bt_452",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h1",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "h2",
+        "DataAttribute": "cs01"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 453,
+    "Tag": "bt_453",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "comx"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 455,
+    "Tag": "bt_455",
+    "BetChoices": [
+      {
+        "MatchAttribute": "o1-10",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "o11-20",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "o21-30",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "o31-40",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "o41-50",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "o51-60",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "o61-70",
+        "DataAttribute": "cs22"
+      },
+      {
+        "MatchAttribute": "o71-80",
+        "DataAttribute": "cs21"
+      },
+      {
+        "MatchAttribute": "o81-ft",
+        "DataAttribute": "cs20"
+      },
+      {
+        "MatchAttribute": "ng",
+        "DataAttribute": "cs00"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 456,
+    "Tag": "bt_456",
+    "BetChoices": [
+      {
+        "MatchAttribute": "yh",
+        "DataAttribute": "cs11"
+      },
+      {
+        "MatchAttribute": "ya",
+        "DataAttribute": "cs12"
+      },
+      {
+        "MatchAttribute": "yd",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "nh",
+        "DataAttribute": "cs01"
+      },
+      {
+        "MatchAttribute": "na",
+        "DataAttribute": "cs02"
+      },
+      {
+        "MatchAttribute": "nd",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "nu",
+        "DataAttribute": "cs03"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 458,
+    "Tag": "bt_458",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs30"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "comx"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 459,
+    "Tag": "bt_459",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "com1"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "com2"
+      },
+      {
+        "MatchAttribute": "d",
+        "DataAttribute": "comx"
+      }
+    ]
+  },
+  {
+    "BetTypeId": 460,
+    "Tag": "bt_460",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs00"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "cs01"
+      }
+    ]
+  },
+  {
     "BetTypeId": 601,
     "Tag": "bkb_601",
     "BetChoices": [
