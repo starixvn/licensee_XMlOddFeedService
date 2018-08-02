@@ -7,6 +7,7 @@
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Data;
+    using System.Globalization;
     using System.Linq;
 
     public class MatchMapping : IMatchMapping
@@ -64,7 +65,7 @@
                 SportId = Convert.ToInt32(row["SportType"]),
                 KickOfTime = Convert.ToDateTime(row["KickOffTime"].ToString()),
                 GlobalShowtime = Convert.ToDateTime(row["GlobalShowtime"].ToString()),
-                Showtime = row["Showtime"].ToString(),
+                Showtime = GetShowtime(row["GlobalShowtime"].ToString(), row["Showtime"].ToString()),
                 HomeEn = row["Home"].ToString(),
                 HomeTw = row["HomeC_UNI"].ToString(),
                 HomeCn = row["HomeCN"].ToString(),
@@ -96,6 +97,22 @@
                 CountryCode = row["CountryCode"].ToString(),
                 IsLive = isLive
             };
+        }
+
+        private static DateTime GetShowtime(string globalShowtime, string showtime)
+        {
+            DateTime gsTime = Convert.ToDateTime(globalShowtime);
+            DateTime sTime;
+            var canParseShowtime = DateTime.TryParseExact(
+                showtime,
+                "MM/dd hh:mmtt",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out sTime);
+
+            return canParseShowtime
+                ? new DateTime(gsTime.Year, sTime.Month, sTime.Day, sTime.Hour, sTime.Minute, sTime.Second)
+                : gsTime;
         }
 
         private static MatchOdds GetMatchOdds(IEnumerable<BetTypeSchema> schemas, DataRow row, IEnumerable<OddsFlexGroup> oddsFlexs)

@@ -76,7 +76,7 @@
         public DateTime GlobalShowtime { get; set; }
 
 
-        public string Showtime { get; set; }
+        public DateTime Showtime { get; set; }
 
         public int TimeStamp { get; set; }
 
