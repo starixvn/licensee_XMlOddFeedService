@@ -63,6 +63,8 @@
                 SportName = row["SportTypeName"].ToString(),
                 SportId = Convert.ToInt32(row["SportType"]),
                 KickOfTime = Convert.ToDateTime(row["KickOffTime"].ToString()),
+                GlobalShowtime = Convert.ToDateTime(row["GlobalShowtime"].ToString()),
+                Showtime = row["Showtime"].ToString(),
                 HomeEn = row["Home"].ToString(),
                 HomeTw = row["HomeC_UNI"].ToString(),
                 HomeCn = row["HomeCN"].ToString(),
