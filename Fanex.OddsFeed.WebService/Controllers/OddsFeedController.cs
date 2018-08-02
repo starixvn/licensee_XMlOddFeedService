@@ -27,7 +27,7 @@
         [OutputCache(
             Duration = 5,
             Location = System.Web.UI.OutputCacheLocation.Server,
-            VaryByParam = "username;Sport;Country;Bettype;League")]
+            VaryByParam = "username;Sport;Country;Bettype;League;moretime")]
         public ActionResult Index(string username)
         {
             try

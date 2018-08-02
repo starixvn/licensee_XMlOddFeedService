@@ -1,13 +1,13 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Helpers
 {
-    using System;
-    using System.Collections.Specialized;
-    using System.Linq;
-    using System.Web;
     using Common;
     using Common.Configurations;
     using Common.Converters;
     using Common.DTO;
+    using System;
+    using System.Collections.Specialized;
+    using System.Linq;
+    using System.Web;
 
     public static class RequestHelper
     {
@@ -73,6 +73,7 @@
             var filterCountry = request["Country"] == null ? string.Empty : request["Country"].ToLower();
             var filterBettype = request["Bettype"] == null ? string.Empty : request["Bettype"].ToLower();
             var filterLeague = request["League"] == null ? string.Empty : request["League"].ToLower();
+            var moreTime = request["moretime"] == null ? string.Empty : request["moretime"].ToLower();
 
             if (!string.IsNullOrEmpty(filterCountry))
             {
@@ -89,7 +90,8 @@
                 Sports = ListConverter.ConvertToListInt(filterSport),
                 Countries = ListConverter.ConvertToListString(filterCountry, true),
                 BetTypes = ListConverter.ConvertToListInt(filterBettype),
-                Leagues = ListConverter.ConvertToListString(filterLeague, true)
+                Leagues = ListConverter.ConvertToListString(filterLeague, true),
+                MoreTime = (moreTime == "yes")
             };
 
         }

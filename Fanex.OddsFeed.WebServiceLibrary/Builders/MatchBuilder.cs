@@ -68,12 +68,12 @@
             UserLanguage userLanguage,
             OddsFeedsModel model)
         {
-            AppendBeginMatch(oddsFeedNode, match, userLanguage);
+            AppendBeginMatch(oddsFeedNode, match, userLanguage, model);
             AppendBookieNode(oddsFeedNode, match, matchOddsList, model);
             oddsFeedNode.Append("</match>");
         }
 
-        private static void AppendBeginMatch(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)
+        private static void AppendBeginMatch(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage, OddsFeedsModel model)
         {
             var running = match.IsLive ? 1 : 0;
 
@@ -83,7 +83,8 @@
             AppendHomeTeam(oddsFeedNode, match, userLanguage);
             AppendAwayTeam(oddsFeedNode, match, userLanguage);
 
-            oddsFeedNode.Append($"mt=\"{match.KickOfTime}\" sport=\"{SecurityElement.Escape(match.SportName)}\" running=\"{running}\">");
+            var moreTimeStr = model.UserQuery.MoreTime ? $"gst=\"{match.GlobalShowtime}\" st=\"{match.Showtime}\"" : string.Empty;
+            oddsFeedNode.Append($"mt=\"{match.KickOfTime}\" {moreTimeStr} sport=\"{SecurityElement.Escape(match.SportName)}\" running=\"{running}\">");
         }
 
         private static void AppendLeague(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)
