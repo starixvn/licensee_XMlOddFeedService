@@ -72,6 +72,12 @@
 
         public DateTime KickOfTime { get; set; }
 
+
+        public DateTime GlobalShowtime { get; set; }
+
+
+        public DateTime Showtime { get; set; }
+
         public int TimeStamp { get; set; }
 
         public bool IsLive { get; set; }

@@ -24,12 +24,15 @@
             _userService = new UserService();
         }
 
-        [OutputCache(Duration = 5, Location = System.Web.UI.OutputCacheLocation.Server, VaryByParam = "username")]
+        [OutputCache(
+            Duration = 5,
+            Location = System.Web.UI.OutputCacheLocation.Server,
+            VaryByParam = "username;Sport;Country;Bettype;League;moretime")]
         public ActionResult Index(string username)
         {
             try
             {
-                if(this.IsDownTime())
+                if (this.IsDownTime())
                 {
                     return XmlContent(GetDowntimeContent());
                 }

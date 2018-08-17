@@ -11,5 +11,7 @@
         public IList<int> BetTypes { get; set; }
 
         public IList<string> Leagues { get; set; }
+
+        public bool MoreTime { get; set; }
     }
 }
