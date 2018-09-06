@@ -204,6 +204,7 @@
     <Compile Include="Controllers\SportController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MNL\SpNames.xml" />
     <Content Include="App_Data\Pro\SpNames.xml" />
     <Content Include="App_Data\UAT\SpNames.xml" />
     <Content Include="App_Data\Local\SpNames.xml">
@@ -342,6 +343,10 @@
       <DebugInfo>False</DebugInfo>
     </None>
     <Content Include="Views\OddsFeed\_BettypeDescription.cshtml" />
+    <None Include="Web.MNL.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\OddsFeed\Help.cshtml" />
