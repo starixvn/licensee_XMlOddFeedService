@@ -7,7 +7,7 @@
     using System.Collections.Generic;
     using System.IO;
 
-    public class JsonHelper
+    public static class JsonHelper
     {
         public static IList<BetTypeSchema> GetBetTypeSchemas(string filePath)
         {
@@ -35,7 +35,8 @@
                 LogService.Error(message);
             }
 
-            return null;
+            return new List<BetTypeSchema>();
         }
+
     }
 }

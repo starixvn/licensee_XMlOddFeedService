@@ -5360,6 +5360,1867 @@
         "IsResource": true
       }
     ]
+  },
+  {
+    "BettypeId": 9001,
+    "Tag": "es_9001",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9002,
+    "Tag": "es_9002",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9003,
+    "Tag": "es_9003",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9004,
+    "Tag": "es_9004",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9005,
+    "Tag": "es_9005",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9006,
+    "Tag": "es_9006",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9007,
+    "Tag": "es_9007",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9008,
+    "Tag": "es_9008",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9009,
+    "Tag": "es_9009",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9010,
+    "Tag": "es_9010",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9011,
+    "Tag": "es_9011",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9012,
+    "Tag": "es_9012",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9013,
+    "Tag": "es_9013",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9014,
+    "Tag": "es_9014",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9015,
+    "Tag": "es_9015",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9016,
+    "Tag": "es_9016",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9017,
+    "Tag": "es_9017",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9018,
+    "Tag": "es_9018",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9019,
+    "Tag": "es_9019",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9020,
+    "Tag": "es_9020",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9021,
+    "Tag": "es_9021",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9022,
+    "Tag": "es_9022",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9023,
+    "Tag": "es_9023",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9024,
+    "Tag": "es_9024",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9025,
+    "Tag": "es_9025",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9026,
+    "Tag": "es_9026",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9027,
+    "Tag": "es_9027",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9028,
+    "Tag": "es_9028",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9029,
+    "Tag": "es_9029",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9030,
+    "Tag": "es_9030",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9031,
+    "Tag": "es_9031",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9032,
+    "Tag": "es_9032",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9033,
+    "Tag": "es_9033",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9034,
+    "Tag": "es_9034",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9035,
+    "Tag": "es_9035",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9036,
+    "Tag": "es_9036",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9037,
+    "Tag": "es_9037",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9038,
+    "Tag": "es_9038",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9039,
+    "Tag": "es_9039",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9040,
+    "Tag": "es_9040",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9041,
+    "Tag": "es_9041",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9042,
+    "Tag": "es_9042",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9043,
+    "Tag": "es_9043",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9044,
+    "Tag": "es_9044",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9045,
+    "Tag": "es_9045",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9046,
+    "Tag": "es_9046",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9047,
+    "Tag": "es_9047",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9048,
+    "Tag": "es_9048",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9049,
+    "Tag": "es_9049",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9050,
+    "Tag": "es_9050",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9051,
+    "Tag": "es_9051",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9052,
+    "Tag": "es_9052",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9053,
+    "Tag": "es_9053",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9054,
+    "Tag": "es_9054",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9055,
+    "Tag": "es_9055",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9056,
+    "Tag": "es_9056",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9057,
+    "Tag": "es_9057",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9058,
+    "Tag": "es_9058",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9059,
+    "Tag": "es_9059",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9060,
+    "Tag": "es_9060",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9061,
+    "Tag": "es_9061",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9062,
+    "Tag": "es_9062",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9063,
+    "Tag": "es_9063",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9064,
+    "Tag": "es_9064",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9065,
+    "Tag": "es_9065",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9066,
+    "Tag": "es_9066",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9067,
+    "Tag": "es_9067",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9068,
+    "Tag": "es_9068",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9069,
+    "Tag": "es_9069",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9070,
+    "Tag": "es_9070",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9071,
+    "Tag": "es_9071",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9072,
+    "Tag": "es_9072",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9073,
+    "Tag": "es_9073",
+    "BetChoices": [
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "N",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9074,
+    "Tag": "es_9074",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "U",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9075,
+    "Tag": "es_9075",
+    "BetChoices": [
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "N",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9076,
+    "Tag": "es_9076",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9077,
+    "Tag": "es_9077",
+    "BetChoices": [
+      {
+        "MatchAttribute": "H",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "A",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "XXyy",
+        "IsResource": true
+      },
+      {
+        "MatchAttribute": "Y",
+        "DataAttribute": "xxYY",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9078,
+    "Tag": "es_9078",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9079,
+    "Tag": "es_9079",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9080,
+    "Tag": "es_9080",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9081,
+    "Tag": "es_9081",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9082,
+    "Tag": "es_9082",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9083,
+    "Tag": "es_9083",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9084,
+    "Tag": "es_9084",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9085,
+    "Tag": "es_9085",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 9086,
+    "Tag": "es_9086",
+    "BetChoices": [
+      {
+        "MatchAttribute": "O",
+        "DataAttribute": "odds1a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "E",
+        "DataAttribute": "odds2a",
+        "IsResource": false
+      },
+      {
+        "MatchAttribute": "X",
+        "DataAttribute": "xx",
+        "IsResource": true
+      }
+    ]
   }
 ]
 
