@@ -343,6 +343,7 @@
       <DebugInfo>False</DebugInfo>
     </None>
     <Content Include="Views\OddsFeed\_BettypeDescription.cshtml" />
+    <Content Include="Views\OddsFeed\_BetTypeDesc.cshtml" />
     <None Include="Web.MNL.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -1,6 +1,5 @@
 ﻿namespace Fanex.OddsFeed.Common.Helpers
 {
-    using Common.Schemas;
     using Logging;
     using Newtonsoft.Json;
     using System;
@@ -9,7 +8,7 @@
 
     public static class JsonHelper
     {
-        public static IList<BetTypeSchema> GetBetTypeSchemas(string filePath)
+        public static IList<T> GetBetTypeSchemas<T>(string filePath)
         {
             try
             {
@@ -20,7 +19,7 @@
                     var temp = reader.ReadToEnd();
                     if (!string.IsNullOrEmpty(temp))
                     {
-                        return JsonConvert.DeserializeObject<List<BetTypeSchema>>(temp);
+                        return JsonConvert.DeserializeObject<List<T>>(temp);
                     }
                     else
                     {
@@ -35,8 +34,7 @@
                 LogService.Error(message);
             }
 
-            return new List<BetTypeSchema>();
+            return new List<T>();
         }
-
     }
 }

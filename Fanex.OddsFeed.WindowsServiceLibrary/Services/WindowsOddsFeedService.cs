@@ -128,7 +128,7 @@
 
             if (document == null || document.Value == null || !document.Value.Any())
             {
-                var newValue = JsonHelper.GetBetTypeSchemas(AppSettings.BetTypeSchemaPath);
+                var newValue = JsonHelper.GetBetTypeSchemas<BetTypeSchema>(AppSettings.BetTypeSchemaPath);
 
                 if (newValue != null)
                 {

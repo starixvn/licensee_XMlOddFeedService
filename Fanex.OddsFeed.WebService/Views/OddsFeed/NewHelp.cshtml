@@ -7,6 +7,7 @@
     var highlightSportType = (string[])ViewBag.HighlightSportType;
     var highlightBetType = (string[])ViewBag.HighlightBetType;
     var betTypeList = (IDictionary<int, BetType>)ViewBag.BetTypeList;
+    var betTypeDescriptions = (IList<Fanex.OddsFeed.Common.Schemas.BetTypeDescription>)ViewBag.BetTypeDescriptions;
 }
 <!DOCTYPE html>
 <html>
@@ -240,6 +241,14 @@
                             <li>trad: Provider of XML Odds Feed in Chinese Simplified </li>
                             <li>time: Display time for this odd. </li>
                             @Html.Partial("_BettypeDescription")
+
+                            @foreach (var bettypeDesc in betTypeDescriptions)
+                            {
+                                if (Model.BetTypes == null || Model.BetTypes.Contains(bettypeDesc.BetTypeId))
+                                {
+                                    @Html.Partial("_BettypeDesc", bettypeDesc)
+                                }
+                            }
                         </ul>
                         <div style="color:Red">Note: When price is zero, it means we don't offer that bet choice.</div>
                         <div style="height: 20px">

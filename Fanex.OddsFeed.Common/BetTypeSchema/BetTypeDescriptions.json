@@ -1,0 +1,1874 @@
+[
+  {
+    "BetTypeId": 9001,
+    "BetTypeName": "Map X Moneyline",
+    "Tag": "es_9001",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9002,
+    "BetTypeName": "Map X Total Kills Handicap",
+    "Tag": "es_9002",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9003,
+    "BetTypeName": "Map X Total Kills Over/Under",
+    "Tag": "es_9003",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9004,
+    "BetTypeName": "Map X Total Kills Moneyline",
+    "Tag": "es_9004",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9005,
+    "BetTypeName": "Map X Total Kills Odd/Even",
+    "Tag": "es_9005",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9006,
+    "BetTypeName": "Map X First Blood",
+    "Tag": "es_9006",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9007,
+    "BetTypeName": "Map X First to Y Kills",
+    "Tag": "es_9007",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Kill number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9008,
+    "BetTypeName": "Map X Towers - Handicap",
+    "Tag": "es_9008",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9009,
+    "BetTypeName": "Map X Towers - Over/Under",
+    "Tag": "es_9009",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9010,
+    "BetTypeName": "Map X Towers - Moneyline",
+    "Tag": "es_9010",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9011,
+    "BetTypeName": "Map X Towers - First Tier Y",
+    "Tag": "es_9011",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Tier number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9012,
+    "BetTypeName": "Map X Roshans - Handicap",
+    "Tag": "es_9012",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9013,
+    "BetTypeName": "Map X Roshans - Over/Under",
+    "Tag": "es_9013",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9014,
+    "BetTypeName": "Map X Roshans - Moneyline",
+    "Tag": "es_9014",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9015,
+    "BetTypeName": "Map X Roshans - 1st",
+    "Tag": "es_9015",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9016,
+    "BetTypeName": "Map X Roshans - 2nd",
+    "Tag": "es_9016",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9017,
+    "BetTypeName": "Map X Roshans - 3rd",
+    "Tag": "es_9017",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9018,
+    "BetTypeName": "Map X Barracks - Handicap",
+    "Tag": "es_9018",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9019,
+    "BetTypeName": "Map X Barracks - Over/Under",
+    "Tag": "es_9019",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9020,
+    "BetTypeName": "Map X Barracks - Moneyline",
+    "Tag": "es_9020",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9021,
+    "BetTypeName": "Map X Barracks - 1st Lane",
+    "Tag": "es_9021",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9022,
+    "BetTypeName": "Map X Barracks - 2nd Lane",
+    "Tag": "es_9022",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9023,
+    "BetTypeName": "Map X Barracks - 3rd Lane",
+    "Tag": "es_9023",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9024,
+    "BetTypeName": "Map X Turrets - Handicap",
+    "Tag": "es_9024",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9025,
+    "BetTypeName": "Map X Turrets - Over/Under",
+    "Tag": "es_9025",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9026,
+    "BetTypeName": "Map X Turrets - Moneyline",
+    "Tag": "es_9026",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9027,
+    "BetTypeName": "Map X Turrets - First Tier Y",
+    "Tag": "es_9027",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Tier number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9028,
+    "BetTypeName": "Map X Dragons - Handicap",
+    "Tag": "es_9028",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9029,
+    "BetTypeName": "Map X Dragons - Over/Under",
+    "Tag": "es_9029",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9030,
+    "BetTypeName": "Map X Dragons - Moneyline",
+    "Tag": "es_9030",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9031,
+    "BetTypeName": "Map X Dragons - 1st",
+    "Tag": "es_9031",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9032,
+    "BetTypeName": "Map X Dragons - 2nd",
+    "Tag": "es_9032",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9033,
+    "BetTypeName": "Map X Dragons - 3rd",
+    "Tag": "es_9033",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9034,
+    "BetTypeName": "Map X Barrons - Handicap",
+    "Tag": "es_9034",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9035,
+    "BetTypeName": "Map X Barrons - Over/Under",
+    "Tag": "es_9035",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9036,
+    "BetTypeName": "Map X Barrons - Moneyline",
+    "Tag": "es_9036",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9037,
+    "BetTypeName": "Map X Barrons - 1st",
+    "Tag": "es_9037",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9038,
+    "BetTypeName": "Map X Barrons - 2nd",
+    "Tag": "es_9038",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9039,
+    "BetTypeName": "Map X Barrons - 3rd",
+    "Tag": "es_9039",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9040,
+    "BetTypeName": "Map X Inhibitors - Handicap",
+    "Tag": "es_9040",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9041,
+    "BetTypeName": "Map X Inhibitors - Over/Under",
+    "Tag": "es_9041",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9042,
+    "BetTypeName": "Map X Inhibitors - Moneyline",
+    "Tag": "es_9042",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9043,
+    "BetTypeName": "Map X Inhibitors - 1st",
+    "Tag": "es_9043",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9044,
+    "BetTypeName": "Map X Inhibitors - 2nd",
+    "Tag": "es_9044",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9045,
+    "BetTypeName": "Map X Inhibitors - 3rd",
+    "Tag": "es_9045",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9046,
+    "BetTypeName": "Map X Tyrants - Handicap",
+    "Tag": "es_9046",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9047,
+    "BetTypeName": "Map X Tyrants - Over/Under",
+    "Tag": "es_9047",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9048,
+    "BetTypeName": "Map X Tyrants - Moneyline",
+    "Tag": "es_9048",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9049,
+    "BetTypeName": "Map X Tyrants - 1st",
+    "Tag": "es_9049",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9050,
+    "BetTypeName": "Map X Tyrants - 2nd",
+    "Tag": "es_9050",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9051,
+    "BetTypeName": "Map X Tyrants - 3rd",
+    "Tag": "es_9051",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9052,
+    "BetTypeName": "Map X Lords - Handicap",
+    "Tag": "es_9052",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9053,
+    "BetTypeName": "Map X Lords - Over/Under",
+    "Tag": "es_9053",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9054,
+    "BetTypeName": "Map X Lords - Moneyline",
+    "Tag": "es_9054",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9055,
+    "BetTypeName": "Map X Lords - 1st",
+    "Tag": "es_9055",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9056,
+    "BetTypeName": "Map X Lords - 2nd",
+    "Tag": "es_9056",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9057,
+    "BetTypeName": "Map X Lords - 3rd",
+    "Tag": "es_9057",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9058,
+    "BetTypeName": "Map X Duration Over/Under",
+    "Tag": "es_9058",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9059,
+    "BetTypeName": "Map X Rounds Handicap",
+    "Tag": "es_9059",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9060,
+    "BetTypeName": "Map X Rounds Over/Under",
+    "Tag": "es_9060",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9061,
+    "BetTypeName": "Map X Rounds Odd/Even",
+    "Tag": "es_9061",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9062,
+    "BetTypeName": "Map X First to Y Rounds",
+    "Tag": "es_9062",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Tier number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9063,
+    "BetTypeName": "Map X First Half",
+    "Tag": "es_9063",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9064,
+    "BetTypeName": "Map X Second Half",
+    "Tag": "es_9064",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9065,
+    "BetTypeName": "Map X Most First Kill",
+    "Tag": "es_9065",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9066,
+    "BetTypeName": "Map X Clutches",
+    "Tag": "es_9066",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9067,
+    "BetTypeName": "Map X 16th Round",
+    "Tag": "es_9067",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9068,
+    "BetTypeName": "Map X Round Y Moneyline",
+    "Tag": "es_9068",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Tier number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9069,
+    "BetTypeName": "Map X Round Y Total Kills Moneyline",
+    "Tag": "es_9069",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Tier number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9070,
+    "BetTypeName": "Map X Round Y Total Kills Over/Under",
+    "Tag": "es_9070",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Tier number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9071,
+    "BetTypeName": "Map X Round Y Total Kills Odd/Even",
+    "Tag": "es_9071",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Tier number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9072,
+    "BetTypeName": "Map X Round Y First Kill",
+    "Tag": "es_9072",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Tier number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9073,
+    "BetTypeName": "Map X Round Y Bomb Plant",
+    "Tag": "es_9073",
+    "BetChoices": [
+      {
+        "Attribute": "y",
+        "Description": "Price for Yes"
+      },
+      {
+        "Attribute": "n",
+        "Description": "Price for No"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Tier number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9074,
+    "BetTypeName": "Map X Rounds Over/Under (Overtime)",
+    "Tag": "es_9074",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Over/Under line"
+      },
+      {
+        "Attribute": "o",
+        "Description": "Price for Over"
+      },
+      {
+        "Attribute": "u",
+        "Description": "Price for Under"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9075,
+    "BetTypeName": "Map X Final Round Bomb Plant",
+    "Tag": "es_9075",
+    "BetChoices": [
+      {
+        "Attribute": "y",
+        "Description": "Price for Yes"
+      },
+      {
+        "Attribute": "n",
+        "Description": "Price for No"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9076,
+    "BetTypeName": "Map X Clutches - Handicap",
+    "Tag": "es_9076",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9077,
+    "BetTypeName": "Map X Round Y Total Kills Handicap",
+    "Tag": "es_9077",
+    "BetChoices": [
+      {
+        "Attribute": "h",
+        "Description": "Handicap line"
+      },
+      {
+        "Attribute": "home",
+        "Description": "Price for Home"
+      },
+      {
+        "Attribute": "a",
+        "Description": "Price for Away"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      },
+      {
+        "Attribute": "y",
+        "Description": "Tier number"
+      }
+    ],
+    "ExtraDescription": "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+  },
+  {
+    "BetTypeId": 9078,
+    "BetTypeName": "Map X Towers - Odd/Even",
+    "Tag": "es_9078",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9079,
+    "BetTypeName": "Map X Roshans - Odd/Even",
+    "Tag": "es_9079",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9080,
+    "BetTypeName": "Map X Barracks - Odd/Even",
+    "Tag": "es_9080",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9081,
+    "BetTypeName": "Map X Turrets - Odd/Even",
+    "Tag": "es_9081",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9082,
+    "BetTypeName": "Map X Dragons - Odd/Even",
+    "Tag": "es_9082",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9083,
+    "BetTypeName": "Map X Barrons - Odd/Even",
+    "Tag": "es_9083",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9084,
+    "BetTypeName": "Map X Inhibitors - Odd/Even",
+    "Tag": "es_9084",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9085,
+    "BetTypeName": "Map X Tyrants - Odd/Even",
+    "Tag": "es_9085",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  },
+  {
+    "BetTypeId": 9086,
+    "BetTypeName": "Map X Lords - Odd/Even",
+    "Tag": "es_9086",
+    "BetChoices": [
+      {
+        "Attribute": "o",
+        "Description": "Price for Odd"
+      },
+      {
+        "Attribute": "e",
+        "Description": "Price for Even"
+      },
+      {
+        "Attribute": "x",
+        "Description": "Map number"
+      }
+    ],
+    "ExtraDescription": ""
+  }
+]

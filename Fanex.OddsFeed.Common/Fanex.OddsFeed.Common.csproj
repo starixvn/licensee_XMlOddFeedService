@@ -136,12 +136,17 @@
     <Compile Include="Helpers\SchemaHelper.cs" />
     <Compile Include="Helpers\SpHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schemas\BetChoiceDescription.cs" />
     <Compile Include="Schemas\BetChoiceSchema.cs" />
+    <Compile Include="Schemas\BetTypeDescription.cs" />
     <Compile Include="Schemas\BetTypeSchema.cs" />
     <Compile Include="Schemas\ReserveSchema.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="BetTypeSchema\BetTypeDescriptions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="BetTypeSchema\BetTypes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

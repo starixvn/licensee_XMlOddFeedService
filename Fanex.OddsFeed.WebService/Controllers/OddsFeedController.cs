@@ -1,5 +1,7 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
+    using Common.Helpers;
+    using Common.Schemas;
     using Logging;
     using OddsFeed.Common.Configurations;
     using OddsFeed.Common.DTO;
@@ -212,6 +214,8 @@
             ViewBag.HighlightSportType = AppSettings.HighlightSportType.Split(',');
             ViewBag.HighlightBetType = AppSettings.HighlightBetType.Split(',');
             ViewBag.BetTypeList = _betTypeService.GetBetTypeList();
+
+            ViewBag.BetTypeDescriptions = JsonHelper.GetBetTypeSchemas<BetTypeDescription>(AppSettings.BetTypeDescriptionPath);
         }
 
         private string GetOddsFeed(OddsFeedsModel model)
