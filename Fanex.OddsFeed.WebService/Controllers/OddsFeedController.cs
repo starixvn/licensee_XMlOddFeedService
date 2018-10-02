@@ -6,6 +6,7 @@
     using OddsFeed.Common.Configurations;
     using OddsFeed.Common.DTO;
     using System;
+    using System.Collections.Generic;
     using System.Text;
     using System.Web.Mvc;
     using WebServiceLibrary;
@@ -212,10 +213,34 @@
             ViewBag.CountriesCol3 = countries.ColumnThree;
 
             ViewBag.HighlightSportType = AppSettings.HighlightSportType.Split(',');
-            ViewBag.HighlightBetType = AppSettings.HighlightBetType.Split(',');
+            ViewBag.HighlightBetType = GetHighlightBetType();
             ViewBag.BetTypeList = _betTypeService.GetBetTypeList();
 
             ViewBag.BetTypeDescriptions = JsonHelper.GetBetTypeSchemas<BetTypeDescription>(AppSettings.BetTypeDescriptionPath);
+        }
+
+        private string[] GetHighlightBetType()
+        {
+            var result = new List<string>();
+            var items = AppSettings.HighlightBetType.Split(',');
+            foreach (var item in items)
+            {
+                if (item.Contains("-"))
+                {
+                    var start = int.Parse(item.Split('-')[0]);
+                    var end = int.Parse(item.Split('-')[1]);
+                    for (var i = start; i <= end; i++)
+                    {
+                        result.Add(i.ToString());
+                    }
+                }
+                else
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result.ToArray();
         }
 
         private string GetOddsFeed(OddsFeedsModel model)
