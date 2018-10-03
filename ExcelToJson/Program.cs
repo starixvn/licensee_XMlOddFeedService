@@ -133,7 +133,7 @@ namespace ExcelToJson
                 var group = new JasonDescItem
                 {
                     BetTypeId = g.First().BettypeId,
-                    BetTypeName = g.First().BettypeName,
+                    BetTypeName = g.First().BettypeName + " bet type",
                     Tag = g.First().Tag,
                     BetChoices = g.Select(b =>
                     {
@@ -175,7 +175,7 @@ namespace ExcelToJson
                 return group;
             });
 
-            var json = JsonConvert.SerializeObject(bettypeGroups.Where(g => g.BetTypeId >= 1).ToArray(), Formatting.Indented);
+            var json = JsonConvert.SerializeObject(bettypeGroups.Where(g => g.BetTypeId >= 9001).ToArray(), Formatting.Indented);
             System.IO.File.WriteAllText(outputJsonDescriptionFile, json);
         }
 

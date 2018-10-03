@@ -13,5 +13,10 @@ namespace ExcelToJson
         public List<BetChoiceDesc> BetChoices { get; set; }
 
         public string ExtraDescription { get; set; }
+
+        public bool ShouldSerializeExtraDescription()
+        {
+            return ExtraDescription != string.Empty;
+        }
     }
 }
