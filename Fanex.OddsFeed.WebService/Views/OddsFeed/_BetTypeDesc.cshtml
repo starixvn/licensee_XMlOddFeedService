@@ -6,7 +6,7 @@
         {
             <li>@betchoice.Attribute: @betchoice.Description </li>
         }
-        @if (Model.ExtraDescription != string.Empty)
+        @if (!String.IsNullOrEmpty(Model.ExtraDescription))
         {
             <li>@Html.Raw(@Model.ExtraDescription)</li>
         }
