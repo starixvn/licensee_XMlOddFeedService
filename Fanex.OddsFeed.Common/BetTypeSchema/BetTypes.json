@@ -6932,7 +6932,7 @@
     "Tag": "es_9073",
     "BetChoices": [
       {
-        "MatchAttribute": "y",
+        "MatchAttribute": "yes",
         "DataAttribute": "odds1a"
       },
       {
