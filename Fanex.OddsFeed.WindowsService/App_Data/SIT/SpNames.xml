@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+  
+  <Function Name="XmlWindowService">
+
+    <Setting Key="SP.LiveOdds" SpName="Is_Odds_GetLiveOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
+    <Setting Key="SP.DeadballOdds" SpName="Is_Odds_GetDeadballOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
+    <Setting Key="SP.OutrightOdds" SpName="Is_Odds_GetOutrightOddsData" DbName="DBACC.bodb02.bodbAdminNet" />    
+   
+  </Function>
+          
+</Functions>
