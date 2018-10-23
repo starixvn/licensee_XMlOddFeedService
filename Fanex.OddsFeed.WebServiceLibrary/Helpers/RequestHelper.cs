@@ -42,7 +42,8 @@
             var fullDomainName = protocol + domain;
 
             if (!AppSettings.Environment.Equals("Production", StringComparison.OrdinalIgnoreCase)
-                && !AppSettings.Environment.Equals("UAT", StringComparison.OrdinalIgnoreCase))
+                && !AppSettings.Environment.Equals("UAT", StringComparison.OrdinalIgnoreCase)
+                && !AppSettings.Environment.Equals("SIT", StringComparison.OrdinalIgnoreCase))
             {
                 fullDomainName = fullDomainName + ":" + port;
             }
@@ -58,7 +59,8 @@
             var fulldomain = protocol + domain;
 
             if (!AppSettings.Environment.Equals("Production", StringComparison.OrdinalIgnoreCase)
-                && !AppSettings.Environment.Equals("UAT", StringComparison.OrdinalIgnoreCase))
+                && !AppSettings.Environment.Equals("UAT", StringComparison.OrdinalIgnoreCase)
+                && !AppSettings.Environment.Equals("SIT", StringComparison.OrdinalIgnoreCase))
             {
                 fulldomain = fulldomain + ":" + port;
             }
