@@ -5375,8 +5375,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5402,8 +5402,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5426,8 +5426,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5445,8 +5445,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5464,8 +5464,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5483,8 +5483,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5502,12 +5502,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -5534,8 +5534,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5558,8 +5558,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5577,8 +5577,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5596,12 +5596,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -5628,8 +5628,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5652,8 +5652,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5671,8 +5671,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5690,8 +5690,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5709,8 +5709,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5728,8 +5728,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5755,8 +5755,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5779,8 +5779,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5798,8 +5798,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5817,8 +5817,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5836,8 +5836,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5855,8 +5855,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5882,8 +5882,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5906,8 +5906,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5925,8 +5925,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -5944,12 +5944,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -5976,8 +5976,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6000,8 +6000,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6019,8 +6019,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6038,8 +6038,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6057,8 +6057,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6076,8 +6076,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6103,8 +6103,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6127,8 +6127,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6146,8 +6146,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6165,8 +6165,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6184,8 +6184,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6203,8 +6203,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6230,8 +6230,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6254,8 +6254,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6273,8 +6273,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6292,8 +6292,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6311,8 +6311,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6330,8 +6330,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6357,8 +6357,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6381,8 +6381,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6400,8 +6400,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6419,8 +6419,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6438,8 +6438,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6457,8 +6457,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6484,8 +6484,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6508,8 +6508,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6527,8 +6527,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6546,8 +6546,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6565,8 +6565,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6584,8 +6584,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6608,8 +6608,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6635,8 +6635,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6659,8 +6659,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6678,8 +6678,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6697,12 +6697,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -6721,8 +6721,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6740,8 +6740,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6759,8 +6759,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6778,8 +6778,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6797,8 +6797,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6816,12 +6816,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -6840,12 +6840,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -6869,12 +6869,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -6893,12 +6893,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -6917,12 +6917,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -6932,7 +6932,7 @@
     "Tag": "es_9073",
     "BetChoices": [
       {
-        "MatchAttribute": "yes",
+        "MatchAttribute": "y",
         "DataAttribute": "odds1a"
       },
       {
@@ -6941,12 +6941,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -6970,8 +6970,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -6989,8 +6989,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -7016,8 +7016,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -7043,12 +7043,12 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.XXyy",
+        "DataAttribute": "ResourceID",
         "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
-        "DataAttribute": "ResourceID.xxYY",
+        "DataAttribute": "ResourceID",
         "IsResourceY": true
       }
     ]
@@ -7067,8 +7067,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -7086,8 +7086,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -7105,8 +7105,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -7124,8 +7124,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -7143,8 +7143,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -7162,8 +7162,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -7181,8 +7181,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -7200,8 +7200,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   },
@@ -7219,8 +7219,8 @@
       },
       {
         "MatchAttribute": "x",
-        "DataAttribute": "ResourceID.xx",
-        "IsResourceX": true
+        "DataAttribute": "ResourceID",
+        "IsResource": true
       }
     ]
   }
