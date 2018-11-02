@@ -104,7 +104,7 @@ namespace ExcelToJson
                         return new BetChoice
                         {
                             MatchAttribute = matchAttribute,
-                            DataAttribute = b.DataAttribute,
+                            DataAttribute = (b.IsResource || b.IsResourceX || b.IsResourceY) ? "ResourceID" : b.DataAttribute,
                             IsResource = b.IsResource,
                             IsResourceX = b.IsResourceX,
                             IsResourceY = b.IsResourceY

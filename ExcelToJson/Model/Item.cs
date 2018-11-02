@@ -49,9 +49,7 @@
         {
             get
             {
-                return DBColumns.Contains("ResourceID.XXyy")
-                    || (DBColumns.Contains("ResourceID.x") && !DBColumns.Contains("ResourceID.xxYY"))
-                    || (DBColumns.Contains("ResourceID.xx") && !DBColumns.Contains("ResourceID.xxYY"));
+                return DBColumns.Contains("ResourceID.XXyy");
             }
         }
 
@@ -59,8 +57,7 @@
         {
             get
             {
-                return DBColumns.Contains("ResourceID.xxYY")
-                    || DBColumns.Contains("ResourceID.yy");
+                return DBColumns.Contains("ResourceID.xxYY");
             }
         }
     }
