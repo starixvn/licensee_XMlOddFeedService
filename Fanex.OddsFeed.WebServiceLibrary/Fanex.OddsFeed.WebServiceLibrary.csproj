@@ -142,6 +142,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\CompressAttribute.cs" />
     <Compile Include="Attributes\PartnerPermissionAttribute.cs" />
     <Compile Include="Builders\EventBuilder.cs" />
     <Compile Include="Builders\IEventBuilder.cs" />

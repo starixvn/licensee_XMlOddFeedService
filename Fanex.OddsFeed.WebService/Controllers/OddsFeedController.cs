@@ -7,10 +7,12 @@
     using System.Text;
     using System.Web.Mvc;
     using WebServiceLibrary;
+    using WebServiceLibrary.Attributes;
     using WebServiceLibrary.Helpers;
     using WebServiceLibrary.Models;
     using WebServiceLibrary.Services;
 
+    [Compress]
     public class OddsFeedController : BaseController
     {
         private readonly IBetTypeService _betTypeService;
