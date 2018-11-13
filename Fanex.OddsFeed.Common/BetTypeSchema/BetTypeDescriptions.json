@@ -1063,7 +1063,7 @@
   },
   {
     "BetTypeId": 9052,
-    "BetTypeName": "Map X Lords - Handicap bet type",
+    "BetTypeName": "Map X Total Overlords Handicap bet type",
     "Tag": "es_9052",
     "BetChoices": [
       {
@@ -1087,7 +1087,7 @@
   },
   {
     "BetTypeId": 9053,
-    "BetTypeName": "Map X Lords - Over/Under bet type",
+    "BetTypeName": "Map X Total Overlords Over/Under bet type",
     "Tag": "es_9053",
     "BetChoices": [
       {
@@ -1129,7 +1129,7 @@
   },
   {
     "BetTypeId": 9055,
-    "BetTypeName": "Map X Lords - 1st bet type",
+    "BetTypeName": "Map X 1st Overlord bet type",
     "Tag": "es_9055",
     "BetChoices": [
       {
@@ -1148,7 +1148,7 @@
   },
   {
     "BetTypeId": 9056,
-    "BetTypeName": "Map X Lords - 2nd bet type",
+    "BetTypeName": "Map X 2nd Overlord bet type",
     "Tag": "es_9056",
     "BetChoices": [
       {
@@ -1167,7 +1167,7 @@
   },
   {
     "BetTypeId": 9057,
-    "BetTypeName": "Map X Lords - 3rd bet type",
+    "BetTypeName": "Map X 3rd Overlord bet type",
     "Tag": "es_9057",
     "BetChoices": [
       {
@@ -1186,7 +1186,7 @@
   },
   {
     "BetTypeId": 9058,
-    "BetTypeName": "Map X Duration Over/Under bet type",
+    "BetTypeName": "Map X Duration Over/Under (Mins) bet type",
     "Tag": "es_9058",
     "BetChoices": [
       {
@@ -1781,7 +1781,7 @@
   },
   {
     "BetTypeId": 9086,
-    "BetTypeName": "Map X Lords - Odd/Even bet type",
+    "BetTypeName": "Map X Total Overlords Odd/Even bet type",
     "Tag": "es_9086",
     "BetChoices": [
       {
