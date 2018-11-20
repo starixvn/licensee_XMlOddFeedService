@@ -147,7 +147,7 @@
   },
   {
     "BetTypeId": 9008,
-    "BetTypeName": "Map X Towers - Handicap bet type",
+    "BetTypeName": "Map X Total Towers Handicap bet type",
     "Tag": "es_9008",
     "BetChoices": [
       {
@@ -171,7 +171,7 @@
   },
   {
     "BetTypeId": 9009,
-    "BetTypeName": "Map X Towers - Over/Under bet type",
+    "BetTypeName": "Map X Total Towers Over/Under bet type",
     "Tag": "es_9009",
     "BetChoices": [
       {
@@ -194,7 +194,7 @@
   },
   {
     "BetTypeId": 9010,
-    "BetTypeName": "Map X Towers - Moneyline bet type",
+    "BetTypeName": "Map X Total Towers Moneyline bet type",
     "Tag": "es_9010",
     "BetChoices": [
       {
@@ -213,7 +213,7 @@
   },
   {
     "BetTypeId": 9011,
-    "BetTypeName": "Map X Towers - First Tier Y bet type",
+    "BetTypeName": "Map X First Tier Y Tower bet type",
     "Tag": "es_9011",
     "BetChoices": [
       {
@@ -236,7 +236,7 @@
   },
   {
     "BetTypeId": 9012,
-    "BetTypeName": "Map X Roshans - Handicap bet type",
+    "BetTypeName": "Map X Total Roshans Handicap bet type",
     "Tag": "es_9012",
     "BetChoices": [
       {
@@ -260,7 +260,7 @@
   },
   {
     "BetTypeId": 9013,
-    "BetTypeName": "Map X Roshans - Over/Under bet type",
+    "BetTypeName": "Map X Total Roshans Over/Under bet type",
     "Tag": "es_9013",
     "BetChoices": [
       {
@@ -283,7 +283,7 @@
   },
   {
     "BetTypeId": 9014,
-    "BetTypeName": "Map X Roshans - Moneyline bet type",
+    "BetTypeName": "Map X Total Roshans Moneyline bet type",
     "Tag": "es_9014",
     "BetChoices": [
       {
@@ -302,7 +302,7 @@
   },
   {
     "BetTypeId": 9015,
-    "BetTypeName": "Map X Roshans - 1st bet type",
+    "BetTypeName": "Map X 1st Roshan bet type",
     "Tag": "es_9015",
     "BetChoices": [
       {
@@ -321,7 +321,7 @@
   },
   {
     "BetTypeId": 9016,
-    "BetTypeName": "Map X Roshans - 2nd bet type",
+    "BetTypeName": "Map X 2nd Roshan bet type",
     "Tag": "es_9016",
     "BetChoices": [
       {
@@ -340,7 +340,7 @@
   },
   {
     "BetTypeId": 9017,
-    "BetTypeName": "Map X Roshans - 3rd bet type",
+    "BetTypeName": "Map X 3rd Roshan bet type",
     "Tag": "es_9017",
     "BetChoices": [
       {
@@ -359,7 +359,7 @@
   },
   {
     "BetTypeId": 9018,
-    "BetTypeName": "Map X Barracks - Handicap bet type",
+    "BetTypeName": "Map X Total Barracks Handicap bet type",
     "Tag": "es_9018",
     "BetChoices": [
       {
@@ -383,7 +383,7 @@
   },
   {
     "BetTypeId": 9019,
-    "BetTypeName": "Map X Barracks - Over/Under bet type",
+    "BetTypeName": "Map X Total Barracks Over/Under bet type",
     "Tag": "es_9019",
     "BetChoices": [
       {
@@ -406,7 +406,7 @@
   },
   {
     "BetTypeId": 9020,
-    "BetTypeName": "Map X Barracks - Moneyline bet type",
+    "BetTypeName": "Map X Total Barracks Moneyline bet type",
     "Tag": "es_9020",
     "BetChoices": [
       {
@@ -425,7 +425,7 @@
   },
   {
     "BetTypeId": 9021,
-    "BetTypeName": "Map X Barracks - 1st Lane bet type",
+    "BetTypeName": "Map X Barracks 1st Lane bet type",
     "Tag": "es_9021",
     "BetChoices": [
       {
@@ -444,7 +444,7 @@
   },
   {
     "BetTypeId": 9022,
-    "BetTypeName": "Map X Barracks - 2nd Lane bet type",
+    "BetTypeName": "Map X Barracks 2nd Lane bet type",
     "Tag": "es_9022",
     "BetChoices": [
       {
@@ -463,7 +463,7 @@
   },
   {
     "BetTypeId": 9023,
-    "BetTypeName": "Map X Barracks - 3rd Lane bet type",
+    "BetTypeName": "Map X Barracks 3rd Lane bet type",
     "Tag": "es_9023",
     "BetChoices": [
       {
@@ -482,7 +482,7 @@
   },
   {
     "BetTypeId": 9024,
-    "BetTypeName": "Map X Turrets - Handicap bet type",
+    "BetTypeName": "Map X Total Turrets Handicap bet type",
     "Tag": "es_9024",
     "BetChoices": [
       {
@@ -506,7 +506,7 @@
   },
   {
     "BetTypeId": 9025,
-    "BetTypeName": "Map X Turrets - Over/Under bet type",
+    "BetTypeName": "Map X Total Turrets Over/Under bet type",
     "Tag": "es_9025",
     "BetChoices": [
       {
@@ -529,7 +529,7 @@
   },
   {
     "BetTypeId": 9026,
-    "BetTypeName": "Map X Turrets - Moneyline bet type",
+    "BetTypeName": "Map X Total Turrets Moneyline bet type",
     "Tag": "es_9026",
     "BetChoices": [
       {
@@ -548,7 +548,7 @@
   },
   {
     "BetTypeId": 9027,
-    "BetTypeName": "Map X Turrets - First Tier Y bet type",
+    "BetTypeName": "Map X First Tier Y Turret bet type",
     "Tag": "es_9027",
     "BetChoices": [
       {
@@ -571,7 +571,7 @@
   },
   {
     "BetTypeId": 9028,
-    "BetTypeName": "Map X Dragons - Handicap bet type",
+    "BetTypeName": "Map X Total Dragons Handicap bet type",
     "Tag": "es_9028",
     "BetChoices": [
       {
@@ -595,7 +595,7 @@
   },
   {
     "BetTypeId": 9029,
-    "BetTypeName": "Map X Dragons - Over/Under bet type",
+    "BetTypeName": "Map X Total Dragons Over/Under bet type",
     "Tag": "es_9029",
     "BetChoices": [
       {
@@ -618,7 +618,7 @@
   },
   {
     "BetTypeId": 9030,
-    "BetTypeName": "Map X Dragons - Moneyline bet type",
+    "BetTypeName": "Map X Total Dragons Moneyline bet type",
     "Tag": "es_9030",
     "BetChoices": [
       {
@@ -637,7 +637,7 @@
   },
   {
     "BetTypeId": 9031,
-    "BetTypeName": "Map X Dragons - 1st bet type",
+    "BetTypeName": "Map X 1st Dragon bet type",
     "Tag": "es_9031",
     "BetChoices": [
       {
@@ -656,7 +656,7 @@
   },
   {
     "BetTypeId": 9032,
-    "BetTypeName": "Map X Dragons - 2nd bet type",
+    "BetTypeName": "Map X 2nd Dragon bet type",
     "Tag": "es_9032",
     "BetChoices": [
       {
@@ -675,7 +675,7 @@
   },
   {
     "BetTypeId": 9033,
-    "BetTypeName": "Map X Dragons - 3rd bet type",
+    "BetTypeName": "Map X 3rd Dragon bet type",
     "Tag": "es_9033",
     "BetChoices": [
       {
@@ -694,7 +694,7 @@
   },
   {
     "BetTypeId": 9034,
-    "BetTypeName": "Map X Barrons - Handicap bet type",
+    "BetTypeName": "Map X Total Barrons Handicap bet type",
     "Tag": "es_9034",
     "BetChoices": [
       {
@@ -718,7 +718,7 @@
   },
   {
     "BetTypeId": 9035,
-    "BetTypeName": "Map X Barrons - Over/Under bet type",
+    "BetTypeName": "Map X Total Barrons Over/Under bet type",
     "Tag": "es_9035",
     "BetChoices": [
       {
@@ -741,7 +741,7 @@
   },
   {
     "BetTypeId": 9036,
-    "BetTypeName": "Map X Barrons - Moneyline bet type",
+    "BetTypeName": "Map X Total Barrons Moneyline bet type",
     "Tag": "es_9036",
     "BetChoices": [
       {
@@ -760,7 +760,7 @@
   },
   {
     "BetTypeId": 9037,
-    "BetTypeName": "Map X Barrons - 1st bet type",
+    "BetTypeName": "Map X 1st Barron bet type",
     "Tag": "es_9037",
     "BetChoices": [
       {
@@ -779,7 +779,7 @@
   },
   {
     "BetTypeId": 9038,
-    "BetTypeName": "Map X Barrons - 2nd bet type",
+    "BetTypeName": "Map X 2nd Barron bet type",
     "Tag": "es_9038",
     "BetChoices": [
       {
@@ -798,7 +798,7 @@
   },
   {
     "BetTypeId": 9039,
-    "BetTypeName": "Map X Barrons - 3rd bet type",
+    "BetTypeName": "Map X 3rd Barron bet type",
     "Tag": "es_9039",
     "BetChoices": [
       {
@@ -817,7 +817,7 @@
   },
   {
     "BetTypeId": 9040,
-    "BetTypeName": "Map X Inhibitors - Handicap bet type",
+    "BetTypeName": "Map X Total Inhibitors Handicap bet type",
     "Tag": "es_9040",
     "BetChoices": [
       {
@@ -841,7 +841,7 @@
   },
   {
     "BetTypeId": 9041,
-    "BetTypeName": "Map X Inhibitors - Over/Under bet type",
+    "BetTypeName": "Map X Total Inhibitors Over/Under bet type",
     "Tag": "es_9041",
     "BetChoices": [
       {
@@ -864,7 +864,7 @@
   },
   {
     "BetTypeId": 9042,
-    "BetTypeName": "Map X Inhibitors - Moneyline bet type",
+    "BetTypeName": "Map X Total Inhibitors Moneyline bet type",
     "Tag": "es_9042",
     "BetChoices": [
       {
@@ -883,7 +883,7 @@
   },
   {
     "BetTypeId": 9043,
-    "BetTypeName": "Map X Inhibitors - 1st bet type",
+    "BetTypeName": "Map X 1st Inhibitor bet type",
     "Tag": "es_9043",
     "BetChoices": [
       {
@@ -902,7 +902,7 @@
   },
   {
     "BetTypeId": 9044,
-    "BetTypeName": "Map X Inhibitors - 2nd bet type",
+    "BetTypeName": "Map X 2nd Inhibitor bet type",
     "Tag": "es_9044",
     "BetChoices": [
       {
@@ -921,7 +921,7 @@
   },
   {
     "BetTypeId": 9045,
-    "BetTypeName": "Map X Inhibitors - 3rd bet type",
+    "BetTypeName": "Map X 3rd Inhibitor bet type",
     "Tag": "es_9045",
     "BetChoices": [
       {
@@ -940,7 +940,7 @@
   },
   {
     "BetTypeId": 9046,
-    "BetTypeName": "Map X Tyrants - Handicap bet type",
+    "BetTypeName": "Map X Total Tyrants Handicap bet type",
     "Tag": "es_9046",
     "BetChoices": [
       {
@@ -964,7 +964,7 @@
   },
   {
     "BetTypeId": 9047,
-    "BetTypeName": "Map X Tyrants - Over/Under bet type",
+    "BetTypeName": "Map X Total Tyrants Over/Under bet type",
     "Tag": "es_9047",
     "BetChoices": [
       {
@@ -987,7 +987,7 @@
   },
   {
     "BetTypeId": 9048,
-    "BetTypeName": "Map X Tyrants - Moneyline bet type",
+    "BetTypeName": "Map X Total Tyrants Moneyline bet type",
     "Tag": "es_9048",
     "BetChoices": [
       {
@@ -1006,7 +1006,7 @@
   },
   {
     "BetTypeId": 9049,
-    "BetTypeName": "Map X Tyrants - 1st bet type",
+    "BetTypeName": "Map X 1st Tyrant bet type",
     "Tag": "es_9049",
     "BetChoices": [
       {
@@ -1025,7 +1025,7 @@
   },
   {
     "BetTypeId": 9050,
-    "BetTypeName": "Map X Tyrants - 2nd bet type",
+    "BetTypeName": "Map X 2nd Tyrant bet type",
     "Tag": "es_9050",
     "BetChoices": [
       {
@@ -1044,7 +1044,7 @@
   },
   {
     "BetTypeId": 9051,
-    "BetTypeName": "Map X Tyrants - 3rd bet type",
+    "BetTypeName": "Map X 3rd Tyrant bet type",
     "Tag": "es_9051",
     "BetChoices": [
       {
@@ -1110,7 +1110,7 @@
   },
   {
     "BetTypeId": 9054,
-    "BetTypeName": "Map X Lords - Moneyline bet type",
+    "BetTypeName": "Map X Total Overlords Moneyline bet type",
     "Tag": "es_9054",
     "BetChoices": [
       {
@@ -1355,7 +1355,7 @@
   },
   {
     "BetTypeId": 9066,
-    "BetTypeName": "Map X Clutches bet type",
+    "BetTypeName": "Map X Clutches Moneyline bet type",
     "Tag": "es_9066",
     "BetChoices": [
       {
@@ -1577,7 +1577,7 @@
   },
   {
     "BetTypeId": 9076,
-    "BetTypeName": "Map X Clutches - Handicap bet type",
+    "BetTypeName": "Map X Clutches Handicap bet type",
     "Tag": "es_9076",
     "BetChoices": [
       {
@@ -1629,7 +1629,7 @@
   },
   {
     "BetTypeId": 9078,
-    "BetTypeName": "Map X Towers - Odd/Even bet type",
+    "BetTypeName": "Map X Total Towers Odd/Even bet type",
     "Tag": "es_9078",
     "BetChoices": [
       {
@@ -1648,7 +1648,7 @@
   },
   {
     "BetTypeId": 9079,
-    "BetTypeName": "Map X Roshans - Odd/Even bet type",
+    "BetTypeName": "Map X Total Roshans Odd/Even bet type",
     "Tag": "es_9079",
     "BetChoices": [
       {
@@ -1667,7 +1667,7 @@
   },
   {
     "BetTypeId": 9080,
-    "BetTypeName": "Map X Barracks - Odd/Even bet type",
+    "BetTypeName": "Map X Total Barracks Odd/Even bet type",
     "Tag": "es_9080",
     "BetChoices": [
       {
@@ -1686,7 +1686,7 @@
   },
   {
     "BetTypeId": 9081,
-    "BetTypeName": "Map X Turrets - Odd/Even bet type",
+    "BetTypeName": "Map X Total Turrets Odd/Even bet type",
     "Tag": "es_9081",
     "BetChoices": [
       {
@@ -1705,7 +1705,7 @@
   },
   {
     "BetTypeId": 9082,
-    "BetTypeName": "Map X Dragons - Odd/Even bet type",
+    "BetTypeName": "Map X Total Dragons Odd/Even bet type",
     "Tag": "es_9082",
     "BetChoices": [
       {
@@ -1724,7 +1724,7 @@
   },
   {
     "BetTypeId": 9083,
-    "BetTypeName": "Map X Barrons - Odd/Even bet type",
+    "BetTypeName": "Map X Total Barrons Odd/Even bet type",
     "Tag": "es_9083",
     "BetChoices": [
       {
@@ -1743,7 +1743,7 @@
   },
   {
     "BetTypeId": 9084,
-    "BetTypeName": "Map X Inhibitors - Odd/Even bet type",
+    "BetTypeName": "Map X Total Inhibitors Odd/Even bet type",
     "Tag": "es_9084",
     "BetChoices": [
       {
@@ -1762,7 +1762,7 @@
   },
   {
     "BetTypeId": 9085,
-    "BetTypeName": "Map X Tyrants - Odd/Even bet type",
+    "BetTypeName": "Map X Total Tyrants Odd/Even bet type",
     "Tag": "es_9085",
     "BetChoices": [
       {

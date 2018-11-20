@@ -8,7 +8,7 @@ namespace ExcelToJson
 {
     public class Program
     {
-        private const string excelFile = @"D:\XML_MasterTag.20180925.xlsx";
+        private const string excelFile = @"D:\XML_MasterTag.20180925_20181120.xlsx";
         private const string outputJsonFile = @"D:\outputJson.txt";
         private const string outputJsonDescriptionFile = @"D:\outputDescJson.txt";
 
@@ -22,7 +22,7 @@ namespace ExcelToJson
             using (OleDbConnection connection = new OleDbConnection(con))
             {
                 connection.Open();
-                OleDbCommand command = new OleDbCommand("select * from [bettype$]", connection);
+                OleDbCommand command = new OleDbCommand("select * from [bet type$]", connection);
                 using (OleDbDataReader dr = command.ExecuteReader())
                 {
                     while (dr.Read())
