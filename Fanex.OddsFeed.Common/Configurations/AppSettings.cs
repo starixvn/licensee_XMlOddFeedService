@@ -149,6 +149,14 @@
             }
         }
 
+        public static string BetTypeDescriptionPath
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["BetTypeDescriptionPath"].ToString();
+            }
+        }
+
         public static string BetTypeSchemaKey
         {
             get

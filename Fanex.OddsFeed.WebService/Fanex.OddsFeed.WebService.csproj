@@ -206,6 +206,7 @@
   <ItemGroup>
     <Content Include="App_Data\MNL\SpNames.xml" />
     <Content Include="App_Data\Pro\SpNames.xml" />
+    <Content Include="App_Data\SIT\SpNames.xml" />
     <Content Include="App_Data\UAT\SpNames.xml" />
     <Content Include="App_Data\Local\SpNames.xml">
       <SubType>Designer</SubType>
@@ -343,7 +344,12 @@
       <DebugInfo>False</DebugInfo>
     </None>
     <Content Include="Views\OddsFeed\_BettypeDescription.cshtml" />
+    <Content Include="Views\OddsFeed\_BetTypeDesc.cshtml" />
     <None Include="Web.MNL.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Web.SIT.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

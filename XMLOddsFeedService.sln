@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.OddsFeed.WindowsServi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouchbaseApp", "CouchbaseApp\CouchbaseApp.csproj", "{C38F2833-F562-43BF-A299-CBF29DFDB5B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelToJson", "ExcelToJson\ExcelToJson.csproj", "{43A9CC17-39A1-4815-B795-E743E4E6441A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,18 @@ Global
 		{C38F2833-F562-43BF-A299-CBF29DFDB5B4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C38F2833-F562-43BF-A299-CBF29DFDB5B4}.Release|x86.ActiveCfg = Release|Any CPU
 		{C38F2833-F562-43BF-A299-CBF29DFDB5B4}.Release|x86.Build.0 = Release|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Debug|x86.Build.0 = Debug|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Release|x86.ActiveCfg = Release|Any CPU
+		{43A9CC17-39A1-4815-B795-E743E4E6441A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
