@@ -227,8 +227,9 @@
             {
                 if (item.Contains("-"))
                 {
-                    var start = int.Parse(item.Split('-')[0]);
-                    var end = int.Parse(item.Split('-')[1]);
+                    var itemArr = item.Split('-');
+                    var start = int.Parse(itemArr[0]);
+                    var end = int.Parse(itemArr[1]);
                     for (var i = start; i <= end; i++)
                     {
                         result.Add(i.ToString());
