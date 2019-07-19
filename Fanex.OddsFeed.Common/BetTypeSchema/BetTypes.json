@@ -5049,7 +5049,7 @@
   {
     "BetTypeId": 606,
     "Tag": "bkb_606",
-    "BetChoices": [      
+    "BetChoices": [
       {
         "MatchAttribute": "h",
         "DataAttribute": "odds1a"
@@ -5148,9 +5148,9 @@
     "Reserve": {
       "FirstHdp": "hdp1",
       "SecondHdp": "hdp2"
-    },    
+    },
     "BetChoices": [
-       {
+      {
         "MatchAttribute": "h",
         "NotConvert": true
       },
@@ -5246,12 +5246,12 @@
       {
         "MatchAttribute": "x",
         "DataAttribute": "ResourceID.x",
-        "IsResourceX":  true
+        "IsResourceX": true
       },
       {
         "MatchAttribute": "y",
         "DataAttribute": "ResourceID.yy",
-        "IsResourceY":  true
+        "IsResourceY": true
       }
     ]
   },
@@ -5358,6 +5358,20 @@
         "MatchAttribute": "x",
         "DataAttribute": "ResourceID",
         "IsResource": true
+      }
+    ]
+  },
+  {
+    "BettypeId": 501,
+    "Tag": "ck_mw",
+    "BetChoices": [
+      {
+        "MatchAttribute": "h",
+        "DataAttribute": "cs10"
+      },
+      {
+        "MatchAttribute": "a",
+        "DataAttribute": "cs20"
       }
     ]
   },
