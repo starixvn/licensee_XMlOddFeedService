@@ -1,14 +1,14 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Web.Mvc;
     using Common.Helpers;
     using Common.Schemas;
     using Logging;
     using OddsFeed.Common.Configurations;
     using OddsFeed.Common.DTO;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Web.Mvc;
     using WebServiceLibrary;
     using WebServiceLibrary.Attributes;
     using WebServiceLibrary.Helpers;
@@ -68,7 +68,7 @@
             }
             catch (Exception ex)
             {
-                var messages = new string[]
+                var messages = new[]
                 {
                     "Message: " +  ex.Message,
                     "username: " +  Server.HtmlEncode(username),
@@ -219,7 +219,7 @@
             ViewBag.BetTypeDescriptions = JsonHelper.GetBetTypeSchemas<BetTypeDescription>(AppSettings.BetTypeDescriptionPath);
         }
 
-        private string[] GetHighlightBetType()
+        private static string[] GetHighlightBetType()
         {
             var result = new List<string>();
             var items = AppSettings.HighlightBetType.Split(',');

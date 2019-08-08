@@ -4890,7 +4890,7 @@
   },
   {
     "BetTypeId": 467,
-    "Tag": "bt467",
+    "Tag": "bt_467",
     "IsOddsFlex": true,
     "BetChoices": [
       { "MatchAttribute": "o00", "DataAttribute": "G0/G0" },
