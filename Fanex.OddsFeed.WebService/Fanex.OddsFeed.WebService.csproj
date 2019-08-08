@@ -349,6 +349,8 @@
     </None>
     <Content Include="Views\OddsFeed\_BettypeDescription.cshtml" />
     <Content Include="Views\OddsFeed\_BetTypeDesc.cshtml" />
+    <Content Include="Views\OddsFeed\_ChangeLog.cshtml" />
+    <Content Include="Views\OddsFeed\_FQAs.cshtml" />
     <None Include="Web.MNL.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
