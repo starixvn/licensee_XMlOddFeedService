@@ -58,6 +58,15 @@
     ]
   },
   {
+    "BetTypeId": 471,
+    "BetTypeName": "1H Corners Odd/Even",
+    "Tag": "coe_1",
+    "BetChoices": [
+      { "Attribute": "o", "Description": "Odd" },
+      { "Attribute": "e", "Description": "Even" }
+    ]
+  },
+  {
     "BetTypeId": 501,
     "BetTypeName": "Match Winner",
     "Tag": "ck_mw",
