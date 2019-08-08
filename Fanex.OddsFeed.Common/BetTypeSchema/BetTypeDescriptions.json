@@ -88,6 +88,17 @@
     ]
   },
   {
+    "BetTypeId": 474,
+    "BetTypeName": "1H Total Corners",
+    "Tag": "tc_1",
+    "BetChoices": [
+      { "Attribute": "o4", "Description": "Price for 0-2" },
+      { "Attribute": "o5", "Description": "Price for 0-4" },
+      { "Attribute": "o2", "Description": "Price for 5-6" },
+      { "Attribute": "o3", "Description": "Price for 7+" }
+    ]
+  },
+  {
     "BetTypeId": 501,
     "BetTypeName": "Match Winner",
     "Tag": "ck_mw",
