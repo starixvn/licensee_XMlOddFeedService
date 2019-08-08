@@ -51,7 +51,7 @@
       <Mapping DataField="SportNameJp" ObjectProperty="NameJapanese" />
       <Mapping DataField="SportNameHi" ObjectProperty="NameHindi" />
     </Setting>
-    <Setting Key="SP.BetType" SpName="Odds_Partner_BetTypeSel_xtest" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
+    <Setting Key="SP.BetType" SpName="Odds_Partner_BetTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
       <Mapping DataField="typeid" ObjectProperty="Id" />
       <Mapping DataField="typenamee" ObjectProperty="NameEnglish" />
       <Mapping DataField="typenameCh" ObjectProperty="NameTraditionalChinese" />
