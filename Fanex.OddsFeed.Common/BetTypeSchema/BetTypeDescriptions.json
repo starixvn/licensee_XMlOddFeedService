@@ -67,6 +67,15 @@
     ]
   },
   {
+    "BetTypeId": 472,
+    "BetTypeName": "2H Corners Odd/Even",
+    "Tag": "bt_472",
+    "BetChoices": [
+      { "Attribute": "o", "Description": "Odd" },
+      { "Attribute": "e", "Description": "Even" }
+    ]
+  },
+  {
     "BetTypeId": 501,
     "BetTypeName": "Match Winner",
     "Tag": "ck_mw",
