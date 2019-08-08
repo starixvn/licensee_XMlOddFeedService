@@ -4936,6 +4936,15 @@
       { "MatchAttribute": "o610+", "DataAttribute": "G6/G10+" },
       { "MatchAttribute": "o7+7+", "DataAttribute": "G7+/G7+" }
     ]
+  },{
+    "BetTypeId": 470,
+    "Tag": "coe",
+    "IsOddsFlex": true,
+    "IsChildBetType": true,
+    "BetChoices": [
+      { "MatchAttribute": "o", "DataAttribute": "odds1a" },
+      { "MatchAttribute": "e", "DataAttribute": "odds2a" }
+    ]
   },
   {
     "BetTypeId": 601,

@@ -351,6 +351,11 @@
     <Content Include="Views\OddsFeed\_BetTypeDesc.cshtml" />
     <Content Include="Views\OddsFeed\_ChangeLog.cshtml" />
     <Content Include="Views\OddsFeed\_FQAs.cshtml" />
+    <Content Include="Views\OddsFeed\Appendix\_SupportedLeagues.cshtml" />
+    <Content Include="Views\OddsFeed\Appendix\_SupportedCountries.cshtml" />
+    <Content Include="Views\OddsFeed\Commands\_Filters.cshtml" />
+    <Content Include="Views\OddsFeed\Commands\_UsingCompressionAlgorithrm.cshtml" />
+    <Content Include="Views\OddsFeed\Commands\_Commands.cshtml" />
     <None Include="Web.MNL.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

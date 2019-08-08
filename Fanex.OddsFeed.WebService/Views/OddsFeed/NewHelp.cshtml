@@ -1,4 +1,5 @@
 ﻿@using Fanex.OddsFeed.Common.DTO
+@using Fanex.OddsFeed.WebServiceLibrary.Models
 @using Fanex.OddsFeed.WebServiceLibrary.Helpers
 
 @model UserProfile
@@ -276,41 +277,12 @@
                     </div>
                 </div>
                 <div id="div_commands" class="section">
+                    @{ string baseUrl = string.Format("{0}/{1}{2}", Model.Domain, ViewBag.VirtualPath, ViewBag.UserName); }
                     <div class="title">
                         <span style="margin-left: 10px"></span>Commands
                     </div>
                     <div id="div_commands_general" class="content commands">
-                        You will be provided an XML Feed URL to get full Odds data with the format as below:
-                        <br />
-                        <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml">
-                            @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml
-                        </a>
-                        <br />
-                        You can get list of supported sports, bet types and leagues in following links:
-                        <ul>
-                            <li>
-                                <a href="#" onclick="ActiveMenu(div_appendix_sports, '.appendix')">Get list of sports:</a>
-                                provides a list of supported sports.
-                            </li>
-                            <li>
-                                <a href="#" onclick="ActiveMenu(div_appendix_bettypes, '.appendix')">
-                                    Get list of
-                                    bet types:
-                                </a> provides a list of supported bet types.
-                            </li>
-                            <li>
-                                <a href="#" onclick="ActiveMenu(div_appendix_countries, '.appendix')">
-                                    Get list of
-                                    countries:
-                                </a> provides a list of supported countries.
-                            </li>
-                            <li>
-                                <a href="#" onclick="ActiveMenu(div_appendix_leagues, '.appendix')">
-                                    Get list of
-                                    leagues:
-                                </a> provides a list of supported leagues.
-                            </li>
-                        </ul>
+                        @Html.Partial("Commands/_Commands", baseUrl)
                     </div>
                     <div id="div_commands_timestamp" class="content commands">
                         <span class="sub_title">USING TIMESTAMP</span>
@@ -332,114 +304,10 @@
                         <div style="height: 20px"></div>
                     </div>
                     <div id="div_commands_algorithm" class="content commands">
-                        <span class="sub_title">USING COMPRESSION ALGORITHM</span>
-                        <hr />
-                        To reduce the consumption of resources such as transmission bandwidth, you need
-                        to use the data compression algorithm and currently we support 2 algorithms:
-                        <ul>
-                            <li>zip=deflate: zip the xml stream using deflate algorithm</li>
-                            <li>zip=gzip: zip the xml stream using gzip algorithm</li>
-                        </ul>
-                        All you need to do is input the algorithm name in the query string as below:
-                        <br />
-                        <a href="javascript:;">
-                            @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=[algorithm-name]
-                        </a>
-                        <div>
-                            <br />
-                            <strong>Note</strong>: In case of using both parameters: <a href="javascript:;">
-                                <br />
-                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?t=[timestamp]&zip=[algorithm-name]
-                            </a>
-                        </div>
-                        <div style="height: 20px"></div>
+                        @Html.Partial("Commands/_UsingCompressionAlgorithrm", baseUrl)
                     </div>
                     <div id="div_commands_filters" class="content commands">
-                        <div id="div_commands_filters_general" class="content sub-commands">
-                            <span class="sub_title">FILTERS</span>
-                            <hr />
-                            If you just need odds data from some special events only, you can use our filtering
-                            commands to do that. This will return your preferred data and you do not need to
-                            download all data at the same time. Note that you can query multiple sports/bet
-                            types/countries/leagues by adding the character ‘,’ between options. However, you
-                            can only have maximum 5 options. If you inputs more than 5 options, you will receive
-                            an error message as below: "You can only filter maximum 5 options. Please try again."
-                            <div style="height: 20px">
-                            </div>
-                        </div>
-                        <div id="div_commands_filters_sports" class="content sub-commands">
-                            <span style="color: #33495F; font-size: 15px; font-weight: bold">Sports Filter</span>
-                            <hr />
-                            You can filter odds data from the list of your preferred sports by inputting '&sport='
-                            and sportID (refer <a href="#" onclick="ActiveMenu(div_appendix_sports, '.appendix')">
-                                here
-                            </a> to get defined sportID). Reminder that you can query multiple sports
-                            by adding the character ‘,’ between sports and the maximum options are 5.
-                            <br />
-                            For example: You want to query sport types: Soccer, Basketball, or Football.
-                            <br />
-                            <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip&sport=1,2,3">
-                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip<span style="color: Red">&sport=1,2,3</span>
-                            </a>
-                            <div style="height: 20px"></div>
-                        </div>
-                        <div id="div_commands_filters_bettypes" class="content sub-commands">
-                            <span style="color: #33495F; font-size: 15px; font-weight: bold">Bet Types Filter</span>
-                            <hr />
-                            You can filter odds data from the list of your preferred bet types by inputting
-                            '&bettype=' and bettypeID (refer <a href="#" onclick="ActiveMenu(div_appendix_bettypes, '.appendix')">
-                                here
-                            </a> to get defined betttypeID). Reminder that you can query multiple bet
-                            types by adding the character ‘,’ between bet types and the maximum options are
-                            5.
-                            <br />
-                            For example: You want to query bet types: Handicap, Over/Under, FT.1X2, or 1st Handicap.
-                            <br />
-                            <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip&bettype=1,3,5,7">
-                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip<span style="color: Red">&bettype=1,3,5,7</span>
-                            </a>
-                            <div style="height: 20px"></div>
-                        </div>
-                        <div id="div_commands_filters_countries" class="content sub-commands">
-                            <span style="color: #33495F; font-size: 15px; font-weight: bold">Countries Filter</span>
-                            <hr />
-                            You can filter odds data from the list of your preferred countries by inputting
-                            '&country=' and countryID (refer <a href="#" onclick="ActiveMenu(div_appendix_countries, '.appendix')">
-                                here
-                            </a> to get defined countryID). Reminder that you can query multiple countries
-                            by adding the character ‘,’ between countries and the maximum options are 5.
-                            <br />
-                            For example: You want to query countries: Austria, Switzerland, or Spain.<br />
-                            <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip&country=AT,CH,ES">
-                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip<span style="color: Red">&country=AT,CH,ES</span>
-                            </a>
-                            <div style="height: 20px"></div>
-                        </div>
-                        <div id="div_commands_filters_leagues" class="content sub-commands">
-                            <span style="color: #33495F; font-size: 15px; font-weight: bold">Leagues Filter</span>
-                            <hr />
-                            You can filter odds data from the list of your preferred leagues by inputting '&league='
-                            and League Name (English Name only). Reminder that you can query multiple leagues
-                            by adding the character ‘,’ between leagues and the maximum options are 5.
-                            <br />
-                            For example: You want to query all leagues that contain "UEFA", "FIFA", "Premier League", or "SPAIN".
-                            <br />
-                            <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip&league=UEFA,FIFA,PRIMIER LEAGUE,SPAIN">
-                                @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip<span style="color: Red">&league=UEFA,FIFA,Premier League,SPAIN</span>
-                            </a>
-                            <div style="height: 20px"></div>
-                        </div>
-                        <strong>Note:</strong> You can combine all above filters into one command to limit
-                        odds feed data as below:
-                        <br />
-                        For example: You want to query sport types (Soccer, Basketball, or Football), bet
-                        types (Handicap, Over/Under, FT.1X2, or 1st Handicap), countries Austria, Switzerland,
-                        or Spain), and all leagues that contain (UEFA, FIFA, Premier League, or SPAIN).
-                        <br />
-                        <a target="_blank" href="@Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip&sport=1,2,3&bettype=1,3,5,7&country=AT,CH,ES&league=UEFA,FIFA,PRIMIER LEAGUE,SPAIN">
-                            @Model.Domain/@ViewBag.VirtualPath@ViewBag.UserName/odds.xml?zip=gzip<span style="color: Red">&sport=1,2,3&bettype=1,3,5,7&country=AT,CH,ES&league=UEFA,FIFA,Premier League,SPAIN</span>
-                        </a>
-                        <div style="height: 20px"></div>
+                        @Html.Partial("Commands/_Filters", baseUrl)
                     </div>
                 </div>
                 <div id="div_FAQ" class="section">
@@ -687,95 +555,19 @@
                         <div style="height: 20px;"></div>
                     </div>
                     <div id="div_appendix_countries" class="content appendix">
-                        <span class="sub_title">SUPPORTED COUNTRIES</span>
-                        <hr />
-                        Below is the list of supported countries in your xml data:
-                        <div style="height: 20px">
-                        </div>
-                        <div style="display: inline-block;">
-                            <div style="float: left; margin-right: 26px;">
-                                <table style="width: 270px">
-                                    <tr>
-                                        <th style="width: 30%">CountryID</th>
-                                        <th>Country Name</th>
-                                    </tr>
-                                    @foreach (var country in ViewBag.CountriesCol1)
-                                    {
-                                        <tr>
-                                            <td class="center">
-                                                @country.CountryId
-                                            </td>
-                                            <td>
-                                                @country.CountryName
-                                            </td>
-                                        </tr>
-                                    }
-                                </table>
-                            </div>
-                            <div style="float: left; margin-right: 26px;">
-                                <table style="width: 270px">
-                                    @foreach (var country in ViewBag.CountriesCol2)
-                                    {
-                                        <tr>
-                                            <td style="width: 30%" class="center">
-                                                @country.CountryId
-                                            </td>
-                                            <td>
-                                                @country.CountryName
-                                            </td>
-                                        </tr>
-                                    }
-                                </table>
-                            </div>
-                            <div style="float: left;">
-                                <table style="width: 270px;">
-                                    @foreach (var country in ViewBag.CountriesCol3)
-                                    {
-                                        <tr>
-                                            <td style="width: 30%" class="center">
-                                                @country.CountryId
-                                            </td>
-                                            <td>
-                                                @country.CountryName
-                                            </td>
-                                        </tr>
-                                    }
-                                </table>
-                            </div>
-                        </div>
-                        <div style="height: 20px;"></div>
+                        @{
+                            var countries = new ColumnModel<Country>
+                            {
+                                ColumnOne = (IEnumerable<Country>)ViewBag.CountriesCol1,
+                                ColumnTwo = (IEnumerable<Country>)ViewBag.CountriesCol2,
+                                ColumnThree = (IEnumerable<Country>)ViewBag.CountriesCol3
+                            };
+                        }
+                        @Html.Partial("Appendix/_SupportedCountries", countries)
                     </div>
                     <div id="div_appendix_leagues" class="content appendix" style="height: 100%">
-                        <span class="sub_title">SUPPORTED LEAGUES</span>
-                        <hr />
-                        @{ var leagueUrl = Model.Domain + "/" + ViewBag.VirtualPath + ViewBag.UserName + "/" + "leagues.xml"; }
-                        <div class="div_appendix_sports">
-                            To get the latest list of leagues for XML Odds Feed data, refer to below information:
-                            <pre class="brush: xml">
-                            <leagues>
-                            <league id="3202" sid="1" se="Soccer" ge="Golf - PGA Tour" gt="高尔夫球 - 美洲赛" gs="高爾夫球 -  美洲賽"></league>
-                                </leagues>
-                            </pre>
-                        </div>
-                        <div>
-                            <div style="width:100%; padding-top: 15px;"><strong>Definition:</strong></div>
-                            <ul>
-                                <li>Link: <a target="_blank" href="@leagueUrl">@leagueUrl</a></li>
-                                <li>sid: Sport ID</li>
-                                <li>se: Sport name in English</li>
-                                <li>ge: League name in English</li>
-                                <li>gt: League name in Traditional Chinese</li>
-                                <li>gs: League name in Simplified Chinese</li>
-                                <li>gb: League name in Bahasa Indonesia</li>
-                                <li>ga: League name in Thai</li>
-                                <li>gk: League name in Korean</li>
-                                <li>gv: League name in Vietnamese</li>
-                                <li>gj: League name in Japanese</li>
-                                <li>gh: League name in Hindi</li>
-                            </ul>
-                        </div>
-
-                        <div style="height: 20px;"></div>
+                        @{ string leagueUrl = Model.Domain + "/" + ViewBag.VirtualPath + ViewBag.UserName + "/" + "leagues.xml"; }
+                        @Html.Partial("Appendix/_SupportedLeagues", leagueUrl)
                     </div>
                 </div>
             </section>

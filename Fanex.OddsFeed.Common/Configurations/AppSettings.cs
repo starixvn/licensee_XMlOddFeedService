@@ -5,228 +5,60 @@
 
     public static class AppSettings
     {
-        public static string FeedUrlPath
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["FeedUrlPath"].ToString();
-            }
-        }
+        public static string FeedUrlPath => ConfigurationManager.AppSettings["FeedUrlPath"];
 
-        public static string VirtualPathWebService
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["VirtualPathWebService"].ToString();
-            }
-        }
+        public static string VirtualPathWebService => ConfigurationManager.AppSettings["VirtualPathWebService"];
 
-        public static string Environment
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["Environment"].ToString();
-            }
-        }
+        public static string Environment => ConfigurationManager.AppSettings["Environment"];
 
-        public static int TotalVersion
-        {
-            get
-            {
-                return Convert.ToInt32(ConfigurationManager.AppSettings["TotalVersion"]);
-            }
-        }
+        public static int TotalVersion => Convert.ToInt32(ConfigurationManager.AppSettings["TotalVersion"]);
 
-        public static int Interval
-        {
-            get
-            {
-                return Convert.ToInt32(ConfigurationManager.AppSettings["Interval"]);
-            }
-        }
+        public static int Interval => Convert.ToInt32(ConfigurationManager.AppSettings["Interval"]);
 
-        public static bool IsSpLive
-        {
-            get
-            {
-                return Convert.ToBoolean(ConfigurationManager.AppSettings["SP.Live"]);
-            }
-        }
+        public static bool IsSpLive => Convert.ToBoolean(ConfigurationManager.AppSettings["SP.Live"]);
 
-        public static string SpSuffix
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["SP.Suffix"].ToString();
-            }
-        }
+        public static string SpSuffix => ConfigurationManager.AppSettings["SP.Suffix"];
 
-        public static string SmtpClientHost
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["SmtpClient.Host"].ToString();
-            }
-        }
+        public static string SmtpClientHost => ConfigurationManager.AppSettings["SmtpClient.Host"];
 
-        public static bool SmtpClientEnableSsl
-        {
-            get
-            {
-                return Convert.ToBoolean(ConfigurationManager.AppSettings["SmtpClient.EnableSsl"]);
-            }
-        }
+        public static bool SmtpClientEnableSsl => Convert.ToBoolean(ConfigurationManager.AppSettings["SmtpClient.EnableSsl"]);
 
-        public static int SmtpClientPort
-        {
-            get
-            {
-                return Convert.ToInt32(ConfigurationManager.AppSettings["SmtpClient.Port"]);
-            }
-        }
+        public static int SmtpClientPort => Convert.ToInt32(ConfigurationManager.AppSettings["SmtpClient.Port"]);
 
-        public static string SmtpClientAccount
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["SmtpClient.Account"].ToString();
-            }
-        }
+        public static string SmtpClientAccount => ConfigurationManager.AppSettings["SmtpClient.Account"];
 
-        public static string SmtpClientPassword
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["SmtpClient.Password"].ToString();
-            }
-        }
+        public static string SmtpClientPassword => ConfigurationManager.AppSettings["SmtpClient.Password"];
 
-        public static string SpTestingUMTime
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["SPTestingUMTime"].ToString();
-            }
-        }
+        public static string SpTestingUMTime => ConfigurationManager.AppSettings["SPTestingUMTime"];
 
-        public static bool IsDisableUMTimeFlag
-        {
-            get
-            {
-                return Convert.ToBoolean(ConfigurationManager.AppSettings["IsDisableUMTimeFlag"]);
-            }
-        }
+        public static bool IsDisableUMTimeFlag => Convert.ToBoolean(ConfigurationManager.AppSettings["IsDisableUMTimeFlag"]);
 
-        public static int LimitedOptions
-        {
-            get
-            {
-                return Convert.ToInt32(ConfigurationManager.AppSettings["LimitedOptions"]);
-            }
-        }
+        public static int LimitedOptions => Convert.ToInt32(ConfigurationManager.AppSettings["LimitedOptions"]);
 
-        public static string HighlightSportType
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["HighlightSportType"].ToString();
-            }
-        }
+        public static string HighlightSportType => ConfigurationManager.AppSettings["HighlightSportType"];
 
-        public static string HighlightBetType
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["HighlightBetType"].ToString();
-            }
-        }
+        public static string HighlightBetType => ConfigurationManager.AppSettings["HighlightBetType"];
 
-        public static string BetTypeSchemaPath
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["BetTypeSchemaPath"].ToString();
-            }
-        }
+        public static string BetTypeSchemaPath => ConfigurationManager.AppSettings["BetTypeSchemaPath"];
 
-        public static string BetTypeDescriptionPath
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["BetTypeDescriptionPath"].ToString();
-            }
-        }
+        public static string BetTypeDescriptionPath => ConfigurationManager.AppSettings["BetTypeDescriptionPath"];
 
-        public static string BetTypeSchemaKey
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["BetTypeSchemaKey"].ToString();
-            }
-        }
+        public static string BetTypeSchemaKey => ConfigurationManager.AppSettings["BetTypeSchemaKey"];
 
-        public static string CachePrefix
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["Cache.Prefix"].ToString();
-            }
-        }
+        public static string CachePrefix => ConfigurationManager.AppSettings["Cache.Prefix"];
 
-        public static int NumberTries
-        {
-            get
-            {
-                return Convert.ToInt32(ConfigurationManager.AppSettings["NumTries"]);
-            }
-        }
+        public static int NumberTries => Convert.ToInt32(ConfigurationManager.AppSettings["NumTries"]);
 
-        public static string FromMail
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["FromMail"].ToString();
-            }
-        }
+        public static string FromMail => ConfigurationManager.AppSettings["FromMail"];
 
-        public static string CouchbaseServer
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["CouchbaseServer"].ToString();
-            }
-        }
+        public static string CouchbaseServer => ConfigurationManager.AppSettings["CouchbaseServer"];
 
-        public static string BucketOddsFeed
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["Bucket.OddsFeed"].ToString();
-            }
-        }
+        public static string BucketOddsFeed => ConfigurationManager.AppSettings["Bucket.OddsFeed"];
 
-        public static string BucketOutrights
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["Bucket.Outrights"].ToString();
-            }
-        }
+        public static string BucketOutrights => ConfigurationManager.AppSettings["Bucket.Outrights"];
 
-        public static string BucketLiveMatches
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["Bucket.LiveMatches"].ToString();
-            }
-        }
+        public static string BucketLiveMatches => ConfigurationManager.AppSettings["Bucket.LiveMatches"];
 
-        public static string BucketDeadMatches
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["Bucket.DeadMatches"].ToString();
-            }
-        }
+        public static string BucketDeadMatches => ConfigurationManager.AppSettings["Bucket.DeadMatches"];
     }
 }
