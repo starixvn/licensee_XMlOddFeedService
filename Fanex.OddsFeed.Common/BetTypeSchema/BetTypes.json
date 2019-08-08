@@ -4964,6 +4964,17 @@
     ]
   },
   {
+    "BetTypeId": 473,
+    "Tag": "bt_473",
+    "BetChoices": [
+      { "MatchAttribute": "o05", "DataAttribute": "cs00" },
+      { "MatchAttribute": "o68", "DataAttribute": "cs01" },
+      { "MatchAttribute": "o911", "DataAttribute": "cs10" },
+      { "MatchAttribute": "o1214", "DataAttribute": "cs11" },
+      { "MatchAttribute": "015+", "DataAttribute": "cs02" }
+    ]
+  },
+  {
     "BetTypeId": 601,
     "Tag": "bkb_601",
     "BetChoices": [
