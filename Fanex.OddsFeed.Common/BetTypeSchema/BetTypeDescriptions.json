@@ -92,6 +92,16 @@
     ]
   },
   {
+    "BetTypeId": 477,
+    "BetTypeName": "Corner 3-Way Handicap",
+    "Tag": "bt_477",
+    "BetChoices": [
+      { "Attribute": "h", "Description": "Price for Home" },
+      { "Attribute": "d", "Description": "Price for Draw" },
+      { "Attribute": "a", "Description": "Price for Away" }
+    ]
+  },
+  {
     "BetTypeId": 501,
     "BetTypeName": "Match Winner",
     "Tag": "ck_mw",
