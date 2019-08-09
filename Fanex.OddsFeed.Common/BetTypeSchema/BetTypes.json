@@ -5133,6 +5133,15 @@
     ]
   },
   {
+    "BetTypeId": 492,
+    "Tag": "lc_1",
+    "IsChildBetType": true,
+    "BetChoices": [
+      { "MatchAttribute": "h", "DataAttribute": "odds1a" },
+      { "MatchAttribute": "a", "DataAttribute": "odds2a" }
+    ]
+  },
+  {
     "BetTypeId": 601,
     "Tag": "bkb_601",
     "BetChoices": [
