@@ -1,4 +1,5 @@
 ﻿@using Fanex.OddsFeed.Common.DTO
+@using Fanex.OddsFeed.Common.Schemas
 @using Fanex.OddsFeed.WebServiceLibrary.Models
 @using Fanex.OddsFeed.WebServiceLibrary.Helpers
 
@@ -8,6 +9,7 @@
     var highlightSportType = (string[])ViewBag.HighlightSportType;
     var highlightBetType = (string[])ViewBag.HighlightBetType;
     var betTypeList = (IDictionary<int, BetType>)ViewBag.BetTypeList;
+    var betTypeDescriptions = (IList<BetTypeDescription>)ViewBag.BetTypeDescriptions;
 }
 <!DOCTYPE html>
 <html>
@@ -27,7 +29,40 @@
         <div class="content_wrap">
             <section id="section_breadcrumb">
                 <div id="header" class="separator js-separator">
-                    @Html.Partial("_GettingStarted", Model)
+                    <div class="title">
+                        <span style="margin-left: 10px"></span>GETTING STARTTED
+                    </div>
+                    @if (Model.OddsType.Contains(4))
+                    {
+                        <div class="content">
+                            Odds feed is an automated service which enables your betting system or website access
+                            to our Live Odds on all major sporting events through XML Odds feed. This service
+                            is already being used successfully by other customers who confidently give their
+                            full approval and praise the time savings and accuracy of the content.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="content">
+                            Odds feed is an automated service which enables your betting system or website access
+                            to our Odds data on all major sporting events through XML Odds feed. This service
+                            is already being used successfully by other customers who confidently give their
+                            full approval and praise the time savings and accuracy of the content.
+                        </div>
+                    }
+                    <div class="content">
+                        <br />
+                        This is a sample of our XML Odds Feeds that includes following fields:
+                        <ul>
+                            <li>Match ID</li>
+                            <li>Match Kick-off time</li>
+                            <li>League name/Team name</li>
+                            <li>All major Sport type/ Bet Type</li>
+                            <li>Odd ID/Price</li>
+                        </ul>
+                        <pre class="brush: xml">@Html.Raw(ViewBag.Odds)</pre>
+                    </div>
+                    <div style="height: 20px"></div>
                 </div>
             </section>
             <section id="section_body" class="content_scroll">
@@ -42,7 +77,59 @@
                         @Html.Partial("GeneralConcepts/_Outright")
                     </div>
                     <div id="div_general_concepts_match" class="content general_concepts">
-                        @Html.Partial("GeneralConcepts/_Match", Model)
+                        <span class="sub_title">TERM AND DEFINITION FOR MATCH</span>
+                        <hr />
+                        <ul>
+                            <li>Lastupdate: last request date for Odds data. </li>
+                            <li>Timestamp: last request date convert to integer number. </li>
+                            <li>ge: Event\League name in English. </li>
+                            <li>gs: Event\League name in Chinese Simplified. </li>
+                            <li>gt: Event\League name in Chinese Traditional. </li>
+                            <li>gb: Event\League name in Bahasa Indonesia.</li>
+                            <li>ga: Event\League name in Thai.</li>
+                            <li>gk: Event\League name in Korean.</li>
+                            <li>gv: Event\League name in Vietnamese.</li>
+                            <li>gj: Event\League name in Japanese.</li>
+                            <li>gh: Event\League name in Hindi.</li>
+                            <li>he: Home team name in English. </li>
+                            <li>hs: Home team name in Chinese Simplified. </li>
+                            <li>ht: Home team name in Chinese Traditional. </li>
+                            <li>hb: Home team name in Bahasa Indonesia.</li>
+                            <li>ha: Home team name in Thai.</li>
+                            <li>hk: Home team name in Korean.</li>
+                            <li>hv: Home team name in Vietnamese.</li>
+                            <li>hj: Home team name in Japanese.</li>
+                            <li>hh: Home team name in Hindi.</li>
+                            <li>ae: Away team name in English. </li>
+                            <li>as: Away team name in Chinese Simplified. </li>
+                            <li>at: Away team name in Chinese Traditional. </li>
+                            <li>ab: Away team name in Bahasa Indonesia.</li>
+                            <li>aa: Away team name in Thai.</li>
+                            <li>ak: Away team name in Korean.</li>
+                            <li>av: Away team name in Vietnamese.</li>
+                            <li>aj: Away team name in Japanese.</li>
+                            <li>ah: Away team name in Hindi.</li>
+                            <li>mt: Match Kick-off time </li>
+                            @if (Model.OddsType.Contains(4))
+                            {
+                                <li>runing: Status (Live or Dead Ball) </li>
+                            }
+                            <li>bookie name: Provider of XML Odds Feed in English. </li>
+                            <li>simp: Provider of XML Odds Feed in Chinese Simplified </li>
+                            <li>trad: Provider of XML Odds Feed in Chinese Simplified </li>
+                            <li>time: Display time for this odd. </li>
+                            @Html.Partial("GeneralConcepts/_BettypeDescription")
+
+                            @foreach (BetTypeDescription bettypeDesc in betTypeDescriptions)
+                            {
+                                if (Model.BetTypes == null || Model.BetTypes.Contains(bettypeDesc.BetTypeId))
+                                {
+                                    @Html.Partial("GeneralConcepts/_BettypeDesc", bettypeDesc)
+                                }
+                            }
+                        </ul>
+                        <div style="color:Red">Note: When price is zero, it means we don't offer that bet choice.</div>
+                        <div style="height: 20px"></div>
                     </div>
                     <div id="div_general_concepts_errors" class="content general_concepts">
                         @Html.Partial("GeneralConcepts/_Errors")
@@ -57,7 +144,20 @@
                         @Html.Partial("Commands/_Commands", baseUrl)
                     </div>
                     <div id="div_commands_timestamp" class="content commands">
-                        @Html.Partial("Commands/_UsingTimestamp", baseUrl)
+                        <span class="sub_title">USING TIMESTAMP</span>
+                        <hr />
+                        To get the latest changes of Odds only, you need to specify the biggest timestamp
+                        in your previous data request then input this parameter in the query string. Please,
+                        note that this timestamp must be retrieved from child node only.
+                        <br />
+                        <a href="javascript:;">@baseUrl/odds.xml?t=[timestamp]</a>
+                        <p>
+                            <strong>Note</strong>: The biggest timestamp value is stored in timestamp attribute of <strong>matches</strong> node
+                        </p>
+                        <div id="tamstamp">
+                            <pre class="brush: xml;">@Html.Raw(ViewBag.Odds)</pre>
+                        </div>
+                        <div style="height: 20px"></div>
                     </div>
                     <div id="div_commands_algorithm" class="content commands">
                         @Html.Partial("Commands/_UsingCompressionAlgorithrm", baseUrl)

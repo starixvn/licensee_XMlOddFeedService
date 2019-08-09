@@ -357,11 +357,8 @@
     <Content Include="Views\OddsFeed\Commands\_UsingCompressionAlgorithrm.cshtml" />
     <Content Include="Views\OddsFeed\Commands\_Commands.cshtml" />
     <Content Include="Views\OddsFeed\_Menu.cshtml" />
-    <Content Include="Views\OddsFeed\_GettingStarted.cshtml" />
     <Content Include="Views\OddsFeed\GeneralConcepts\_Outright.cshtml" />
     <Content Include="Views\OddsFeed\GeneralConcepts\_Errors.cshtml" />
-    <Content Include="Views\OddsFeed\GeneralConcepts\_Match.cshtml" />
-    <Content Include="Views\OddsFeed\Commands\_UsingTimestamp.cshtml" />
     <None Include="Web.MNL.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
