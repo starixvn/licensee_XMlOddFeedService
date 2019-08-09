@@ -5330,6 +5330,22 @@
     ]
   },
   {
+    "BetTypeId": 497,
+    "Tag": "bt_497",
+    "BetChoices": [
+      { "MatchAttribute": "h1", "DataAttribute": "cs00" },
+      { "MatchAttribute": "h2", "DataAttribute": "cs01" }
+    ]
+  },
+  {
+    "BettypeId": 501,
+    "Tag": "ck_mw",
+    "BetChoices": [
+      { "MatchAttribute": "h", "DataAttribute": "cs10" },
+      { "MatchAttribute": "a", "DataAttribute": "cs20" }
+    ]
+  },
+  {
     "BetTypeId": 601,
     "Tag": "bkb_601",
     "BetChoices": [
@@ -5799,20 +5815,6 @@
         "MatchAttribute": "x",
         "DataAttribute": "ResourceID",
         "IsResource": true
-      }
-    ]
-  },
-  {
-    "BettypeId": 501,
-    "Tag": "ck_mw",
-    "BetChoices": [
-      {
-        "MatchAttribute": "h",
-        "DataAttribute": "cs10"
-      },
-      {
-        "MatchAttribute": "a",
-        "DataAttribute": "cs20"
       }
     ]
   },
