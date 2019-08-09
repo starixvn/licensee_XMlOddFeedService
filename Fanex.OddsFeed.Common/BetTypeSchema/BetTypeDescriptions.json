@@ -194,6 +194,15 @@
     ]
   },
   {
+    "BetTypeId": 490,
+    "BetTypeName": "2H First Corner",
+    "Tag": "bt_490",
+    "BetChoices": [
+      { "Attribute": "h", "Description": "Price for Home" },
+      { "Attribute": "a", "Description": "Price for Away" }
+    ]
+  },
+  {
     "BetTypeId": 501,
     "BetTypeName": "Match Winner",
     "Tag": "ck_mw",
