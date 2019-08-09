@@ -286,7 +286,7 @@
     <Content Include="App_Data\usermanual.htm" />
     <Content Include="Scripts\shBrushXml.js" />
     <Content Include="Scripts\shCore.js" />
-    <Content Include="Views\OddsFeed\NewHelp.cshtml" />
+    <Content Include="Views\OddsFeed\Help.cshtml" />
     <Content Include="stylesheets\Help\menu.css" />
     <Content Include="stylesheets\Help\content.css" />
     <Content Include="Web.config">
@@ -347,8 +347,8 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <Content Include="Views\OddsFeed\_BettypeDescription.cshtml" />
-    <Content Include="Views\OddsFeed\_BetTypeDesc.cshtml" />
+    <Content Include="Views\OddsFeed\GeneralConcepts\_BettypeDescription.cshtml" />
+    <Content Include="Views\OddsFeed\GeneralConcepts\_BetTypeDesc.cshtml" />
     <Content Include="Views\OddsFeed\_ChangeLog.cshtml" />
     <Content Include="Views\OddsFeed\_FQAs.cshtml" />
     <Content Include="Views\OddsFeed\Appendix\_SupportedLeagues.cshtml" />
@@ -356,6 +356,12 @@
     <Content Include="Views\OddsFeed\Commands\_Filters.cshtml" />
     <Content Include="Views\OddsFeed\Commands\_UsingCompressionAlgorithrm.cshtml" />
     <Content Include="Views\OddsFeed\Commands\_Commands.cshtml" />
+    <Content Include="Views\OddsFeed\_Menu.cshtml" />
+    <Content Include="Views\OddsFeed\_GettingStarted.cshtml" />
+    <Content Include="Views\OddsFeed\GeneralConcepts\_Outright.cshtml" />
+    <Content Include="Views\OddsFeed\GeneralConcepts\_Errors.cshtml" />
+    <Content Include="Views\OddsFeed\GeneralConcepts\_Match.cshtml" />
+    <Content Include="Views\OddsFeed\Commands\_UsingTimestamp.cshtml" />
     <None Include="Web.MNL.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -364,9 +370,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\OddsFeed\Help.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Analytics\Cache.cshtml" />
@@ -384,6 +387,7 @@
       <Name>Fanex.OddsFeed.WebServiceLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

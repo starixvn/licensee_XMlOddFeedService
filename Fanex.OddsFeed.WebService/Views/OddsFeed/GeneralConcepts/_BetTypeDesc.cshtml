@@ -1,0 +1,14 @@
+﻿@model Fanex.OddsFeed.Common.Schemas.BetTypeDescription
+<li>
+    t="@Model.Tag": @Model.BetTypeName
+    <ul>
+        @foreach (var betchoice in Model.BetChoices)
+        {
+            <li>@betchoice.Attribute: @betchoice.Description </li>
+        }
+        @if (!String.IsNullOrEmpty(Model.ExtraDescription))
+        {
+            <li>@Html.Raw(@Model.ExtraDescription)</li>
+        }
+    </ul>
+</li>
