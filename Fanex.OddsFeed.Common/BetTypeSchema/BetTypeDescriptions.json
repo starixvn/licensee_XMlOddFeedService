@@ -49,24 +49,6 @@
     ]
   },
   {
-    "BetTypeId": 470,
-    "BetTypeName": "Corners Odd/Even",
-    "Tag": "coe",
-    "BetChoices": [
-      { "Attribute": "o", "Description": "Odd" },
-      { "Attribute": "e", "Description": "Even" }
-    ]
-  },
-  {
-    "BetTypeId": 471,
-    "BetTypeName": "1H Corners Odd/Even",
-    "Tag": "coe_1",
-    "BetChoices": [
-      { "Attribute": "o", "Description": "Odd" },
-      { "Attribute": "e", "Description": "Even" }
-    ]
-  },
-  {
     "BetTypeId": 472,
     "BetTypeName": "2H Corners Odd/Even",
     "Tag": "bt_472",
@@ -88,14 +70,14 @@
     ]
   },
   {
-    "BetTypeId": 474,
-    "BetTypeName": "1H Total Corners",
-    "Tag": "tc_1",
+    "BetTypeId": 475,
+    "BetTypeName": "Alternative Corners",
+    "Tag": "bt_475",
     "BetChoices": [
-      { "Attribute": "o4", "Description": "Price for 0-2" },
-      { "Attribute": "o5", "Description": "Price for 0-4" },
-      { "Attribute": "o2", "Description": "Price for 5-6" },
-      { "Attribute": "o3", "Description": "Price for 7+" }
+      { "Attribute": "h", "Description": "Over/Under value" },
+      { "Attribute": "o", "Description": "Price for Over" },
+      { "Attribute": "e", "Description": "Price for Exact" },
+      { "Attribute": "u", "Description": "Price for Under" }
     ]
   },
   {
