@@ -122,6 +122,16 @@
     ]
   },
   {
+    "BetTypeId": 481,
+    "BetTypeName": "Time of 2H First Corner",
+    "Tag": "bt_481",
+    "BetChoices": [
+      { "Attribute": "y", "Description": "Price for Yes" },
+      { "Attribute": "n", "Description": "Price for No" },
+      { "Attribute": "x", "Description": "Pre-defined minutes in 2H" }
+    ]
+  },
+  {
     "BetTypeId": 501,
     "BetTypeName": "Match Winner",
     "Tag": "ck_mw",
