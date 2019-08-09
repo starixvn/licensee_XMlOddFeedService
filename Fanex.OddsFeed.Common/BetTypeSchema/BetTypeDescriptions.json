@@ -142,6 +142,16 @@
     ]
   },
   {
+    "BetTypeId": 483,
+    "BetTypeName": "Away Team Corners Over/Under",
+    "Tag": "bt_483",
+    "BetChoices": [
+      { "Attribute": "h", "Description": "Over/Under value" },
+      { "Attribute": "o", "Description": "Price for Over" },
+      { "Attribute": "u", "Description": "Price for Under" }
+    ]
+  },
+  {
     "BetTypeId": 501,
     "BetTypeName": "Match Winner",
     "Tag": "ck_mw",
