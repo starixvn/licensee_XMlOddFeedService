@@ -172,6 +172,17 @@
     ]
   },
   {
+    "BetTypeId": 486,
+    "BetTypeName": "Corners Race",
+    "Tag": "bt_486",
+    "BetChoices": [
+      { "Attribute": "h", "Description": "Price for Home" },
+      { "Attribute": "a", "Description": "Price for Away" },
+      { "Attribute": "n", "Description": "Price for None" },
+      { "Attribute": "x", "Description": "Pre-defined number of Corners" }
+    ]
+  },
+  {
     "BetTypeId": 501,
     "BetTypeName": "Match Winner",
     "Tag": "ck_mw",
