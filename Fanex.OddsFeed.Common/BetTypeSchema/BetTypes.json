@@ -5029,7 +5029,7 @@
     "BetChoices": [
       { "MatchAttribute": "y", "DataAttribute": "odds1a" },
       { "MatchAttribute": "n", "DataAttribute": "odds2a" },
-      { "MatchAttribute": "x", "DataAttribute": "hdp1" }
+      { "MatchAttribute": "x", "DataAttribute": "hdp1", "NotConvert": true }
     ]
   },
   {
@@ -5038,7 +5038,7 @@
     "BetChoices": [
       { "MatchAttribute": "y", "DataAttribute": "odds1a" },
       { "MatchAttribute": "n", "DataAttribute": "odds2a" },
-      { "MatchAttribute": "x", "DataAttribute": "hdp1" }
+      { "MatchAttribute": "x", "DataAttribute": "hdp1", "NotConvert": true }
     ]
   },
   {
@@ -5062,6 +5062,15 @@
   {
     "BetTypeId": 484,
     "Tag": "bt_484",
+    "BetChoices": [
+      { "MatchAttribute": "h", "DataAttribute": "hdp1", "NotConvert": true },
+      { "MatchAttribute": "o", "DataAttribute": "odds1a" },
+      { "MatchAttribute": "u", "DataAttribute": "odds2a" }
+    ]
+  },
+  {
+    "BetTypeId": 485,
+    "Tag": "bt_485",
     "BetChoices": [
       { "MatchAttribute": "h", "DataAttribute": "hdp1", "NotConvert": true },
       { "MatchAttribute": "o", "DataAttribute": "odds1a" },
