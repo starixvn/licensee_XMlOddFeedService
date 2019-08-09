@@ -5088,6 +5088,16 @@
     ]
   },
   {
+    "BetTypeId": 487,
+    "Tag": "bt_487",
+    "BetChoices": [
+      { "MatchAttribute": "h", "DataAttribute": "com1" },
+      { "MatchAttribute": "a", "DataAttribute": "com2" },
+      { "MatchAttribute": "n", "DataAttribute": "comx" },
+      { "MatchAttribute": "x", "DataAttribute": "hdp1", "NotConvert": true }
+    ]
+  },
+  {
     "BetTypeId": 601,
     "Tag": "bkb_601",
     "BetChoices": [
