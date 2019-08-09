@@ -384,6 +384,16 @@
     ]
   },
   {
+    "BetTypeId": 496,
+    "BetTypeName": "Corner Highest Scoring Half",
+    "Tag": "bt_496",
+    "BetChoices": [
+      { "Attribute": "h1", "Description": "Price for First Half" },
+      { "Attribute": "h2", "Description": "Price for Second Half" },
+      { "Attribute": "tie", "Description": "Price for Tie" }
+    ]
+  },
+  {
     "BetTypeId": 501,
     "BetTypeName": "Match Winner",
     "Tag": "ck_mw",
