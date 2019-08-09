@@ -81,6 +81,17 @@
     ]
   },
   {
+    "BetTypeId": 476,
+    "BetTypeName": "1H Alternative Corners",
+    "Tag": "bt_476",
+    "BetChoices": [
+      { "Attribute": "h", "Description": "Over/Under value" },
+      { "Attribute": "o", "Description": "Price for Over" },
+      { "Attribute": "e", "Description": "Price for Exact" },
+      { "Attribute": "u", "Description": "Price for Under" }
+    ]
+  },
+  {
     "BetTypeId": 501,
     "BetTypeName": "Match Winner",
     "Tag": "ck_mw",
