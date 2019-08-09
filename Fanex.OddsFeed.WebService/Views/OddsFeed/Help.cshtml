@@ -29,6 +29,11 @@
         <div class="content_wrap">
             <section id="section_breadcrumb">
                 <div id="header" class="separator js-separator">
+                    @Html.Partial("_Menu")
+                </div>
+            </section>
+            <section id="section_body" class="content_scroll">
+                <div id="div_get_started" class="section">
                     <div class="title">
                         <span style="margin-left: 10px"></span>GETTING STARTTED
                     </div>
@@ -63,11 +68,6 @@
                         <pre class="brush: xml">@Html.Raw(ViewBag.Odds)</pre>
                     </div>
                     <div style="height: 20px"></div>
-                </div>
-            </section>
-            <section id="section_body" class="content_scroll">
-                <div id="div_get_started" class="section">
-                    @Html.Partial("_Menu")
                 </div>
                 <div id="div_general_concepts" class="section">
                     <div class="title">
