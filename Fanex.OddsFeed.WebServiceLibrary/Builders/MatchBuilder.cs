@@ -13,11 +13,6 @@
 
     public class MatchBuilder : IMatchBuilder
     {
-        private const int LiveStatus = 1;
-        private const int DeadBallStatus = 0;
-        private const int OddsTypeLiveMatch = 4;
-        private const int OddsTypeDeadBallMatch = 2;
-
         private readonly IMatchFilter _matchFilter;
 
         public MatchBuilder()
@@ -69,7 +64,7 @@
             OddsFeedsModel model)
         {
             AppendBeginMatch(oddsFeedNode, match, userLanguage, model);
-            AppendBookieNode(oddsFeedNode, match, matchOddsList, model);
+            AppendBookieNode(oddsFeedNode, matchOddsList, model);
             oddsFeedNode.Append("</match>");
         }
 
@@ -231,7 +226,7 @@
             }
         }
 
-        private static void AppendBookieNode(StringBuilder matchesNode, Match match, IEnumerable<MatchOdds> matchOddsList, OddsFeedsModel model)
+        private static void AppendBookieNode(StringBuilder matchesNode, IEnumerable<MatchOdds> matchOddsList, OddsFeedsModel model)
         {
             matchesNode.Append($"<bookie name=\"{model.BookieName}\" simp=\"{model.BookieName}\" trad=\"{model.BookieName}\">");
             AppendOddNodeList(matchesNode, matchOddsList, model.UserProfile.OddRegion);

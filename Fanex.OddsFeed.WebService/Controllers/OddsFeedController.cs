@@ -75,7 +75,8 @@
                     "timestamp: " + Server.HtmlEncode(HttpContext.Request["t"])
                 };
                 LogService.Error("OddsFeedController:Index: " + string.Join(Environment.NewLine, messages), ex);
-                throw new Exception("OddsFeedController Error", ex);
+                var exception = new Exception("OddsFeedController Error", ex);
+                throw exception;
             }
         }
 
