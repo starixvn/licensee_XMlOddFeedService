@@ -4967,11 +4967,11 @@
     "BetTypeId": 473,
     "Tag": "bt_473",
     "BetChoices": [
-      { "MatchAttribute": "o05", "DataAttribute": "cs00" },
-      { "MatchAttribute": "o68", "DataAttribute": "cs01" },
-      { "MatchAttribute": "o911", "DataAttribute": "cs10" },
-      { "MatchAttribute": "o1214", "DataAttribute": "cs11" },
-      { "MatchAttribute": "015+", "DataAttribute": "cs02" }
+      { "MatchAttribute": "o1", "DataAttribute": "cs00" },
+      { "MatchAttribute": "o2", "DataAttribute": "cs01" },
+      { "MatchAttribute": "o3", "DataAttribute": "cs10" },
+      { "MatchAttribute": "o4", "DataAttribute": "cs11" },
+      { "MatchAttribute": "05", "DataAttribute": "cs02" }
     ]
   },
   {

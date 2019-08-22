@@ -62,11 +62,11 @@
     "BetTypeName": "Total Corners",
     "Tag": "bt_473",
     "BetChoices": [
-      { "Attribute": "o05", "Description": "Price for 0-5" },
-      { "Attribute": "o68", "Description": "Price for 6-8" },
-      { "Attribute": "o911", "Description": "Price for 9-11" },
-      { "Attribute": "o1214", "Description": "Price for 12-14" },
-      { "Attribute": "o15+", "Description": "Price for 15+" }
+      { "Attribute": "o1", "Description": "Price for 0-5" },
+      { "Attribute": "o2", "Description": "Price for 6-8" },
+      { "Attribute": "o3", "Description": "Price for 9-11" },
+      { "Attribute": "o4", "Description": "Price for 12-14" },
+      { "Attribute": "o5", "Description": "Price for 15+" }
     ]
   },
   {
