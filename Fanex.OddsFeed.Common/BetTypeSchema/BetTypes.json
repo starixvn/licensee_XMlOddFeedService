@@ -256,24 +256,6 @@
     ]
   },
   {
-    "BetTypeId": 11,
-    "Tag": "tc",
-    "BetChoices": [
-      {
-        "MatchAttribute": "o1",
-        "DataAttribute": "cs10"
-      },
-      {
-        "MatchAttribute": "o2",
-        "DataAttribute": "cs20"
-      },
-      {
-        "MatchAttribute": "o3",
-        "DataAttribute": "cs00"
-      }
-    ]
-  },
-  {
     "BetTypeId": 12,
     "Tag": "oe_1",
     "BetChoices": [
@@ -1993,25 +1975,6 @@
       {
         "MatchAttribute": "u",
         "DataAttribute": "odds2a"
-      }
-    ]
-  },
-  {
-    "BetTypeId": 199,
-    "Tag": "tc",
-    "IsChildBetType": true,
-    "BetChoices": [
-      {
-        "MatchAttribute": "o1",
-        "DataAttribute": "cs10"
-      },
-      {
-        "MatchAttribute": "o2",
-        "DataAttribute": "cs20"
-      },
-      {
-        "MatchAttribute": "o3",
-        "DataAttribute": "cs00"
       }
     ]
   },
