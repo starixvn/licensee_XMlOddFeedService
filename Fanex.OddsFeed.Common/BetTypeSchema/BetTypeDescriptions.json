@@ -53,8 +53,8 @@
     "BetTypeName": "2H Corners Odd/Even",
     "Tag": "bt_472",
     "BetChoices": [
-      { "Attribute": "o", "Description": "Odd" },
-      { "Attribute": "e", "Description": "Even" }
+      { "Attribute": "o", "Description": "Price for Odd" },
+      { "Attribute": "e", "Description": "Price for Even" }
     ]
   },
   {
