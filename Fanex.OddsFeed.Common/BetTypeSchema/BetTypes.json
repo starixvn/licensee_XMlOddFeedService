@@ -4934,7 +4934,7 @@
       { "MatchAttribute": "o2", "DataAttribute": "cs01" },
       { "MatchAttribute": "o3", "DataAttribute": "cs10" },
       { "MatchAttribute": "o4", "DataAttribute": "cs11" },
-      { "MatchAttribute": "05", "DataAttribute": "cs02" }
+      { "MatchAttribute": "o5", "DataAttribute": "cs02" }
     ]
   },
   {
@@ -4945,7 +4945,7 @@
       { "MatchAttribute": "o4", "DataAttribute": "cs00" },
       { "MatchAttribute": "o5", "DataAttribute": "cs01" },
       { "MatchAttribute": "o2", "DataAttribute": "cs10" },
-      { "MatchAttribute": "03", "DataAttribute": "cs11" }
+      { "MatchAttribute": "o3", "DataAttribute": "cs11" }
     ]
   },
   {
