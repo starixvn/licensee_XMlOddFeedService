@@ -133,7 +133,7 @@
   },
   {
     "BetTypeId": 482,
-    "BetTypeName": "Home Team Corners Over/Under",
+    "BetTypeName": "Home Team Over/Under Corners",
     "Tag": "bt_482",
     "BetChoices": [
       { "Attribute": "h", "Description": "Over/Under value" },
@@ -143,7 +143,7 @@
   },
   {
     "BetTypeId": 483,
-    "BetTypeName": "Away Team Corners Over/Under",
+    "BetTypeName": "Away Team Over/Under Corners",
     "Tag": "bt_483",
     "BetChoices": [
       { "Attribute": "h", "Description": "Over/Under value" },
@@ -153,7 +153,7 @@
   },
   {
     "BetTypeId": 484,
-    "BetTypeName": "1H Home Team Corners Over/Under",
+    "BetTypeName": "1H Home Team Over/Under Corners",
     "Tag": "bt_484",
     "BetChoices": [
       { "Attribute": "h", "Description": "Over/Under value" },
@@ -163,7 +163,7 @@
   },
   {
     "BetTypeId": 485,
-    "BetTypeName": "1H Away Team Corners Over/Under",
+    "BetTypeName": "1H Away Team Over/Under Corners",
     "Tag": "bt_485",
     "BetChoices": [
       { "Attribute": "h", "Description": "Over/Under value" },
@@ -204,7 +204,7 @@
   },
   {
     "BetTypeId": 493,
-    "BetTypeName": "HT/FT Total Corners",
+    "BetTypeName": "Half Time/Full Time Total Corners",
     "Tag": "bt_493",
     "BetChoices": [
       { "Attribute": "tc00", "Description": "Price for 0/0" },
@@ -278,7 +278,7 @@
       { "Attribute": "tc712", "Description": "Price for 7/12" },
       { "Attribute": "tc713", "Description": "Price for 7/13" },
       { "Attribute": "tc714", "Description": "Price for 7/14" },
-      { "Attribute": "tc715", "Description": "Price for 7/15" },
+      { "Attribute": "tc715", "Description": "Price for 7/15+" },
       { "Attribute": "tc88", "Description": "Price for 8/8" },
       { "Attribute": "tc89", "Description": "Price for 8/9" },
       { "Attribute": "tc810", "Description": "Price for 8/10" },
