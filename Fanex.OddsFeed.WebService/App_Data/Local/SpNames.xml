@@ -3,8 +3,8 @@
 
   <Function Name="XmlWebService">
 
-    <Setting Key="SP.LiveOdds" SpName="Is_Odds_GetLiveOddsData_xtest" DbName="DBACC.bodb02.bodbAdminNet" />
-    <Setting Key="SP.DeadballOdds" SpName="Is_Odds_GetDeadballOddsData_xtest" DbName="DBACC.bodb02.bodbAdminNet" />
+    <Setting Key="SP.LiveOdds" SpName="Is_Odds_GetLiveOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
+    <Setting Key="SP.DeadballOdds" SpName="Is_Odds_GetDeadballOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
     <Setting Key="SP.OutrightOdds" SpName="Is_Odds_GetOutrightOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
     <Setting Key="SP.CheckPermission" SpName="Odds_PartnerCheckPermission" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
     <Setting Key="SP.GetSportByUserName" SpName="Odds_SportSelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
