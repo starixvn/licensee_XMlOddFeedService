@@ -1,0 +1,24 @@
+﻿@model string
+
+<span class="sub_title">USING COMPRESSION ALGORITHM</span>
+<hr />
+To reduce the consumption of resources such as transmission bandwidth, you need
+to use the data compression algorithm and currently we support 2 algorithms:
+<ul>
+    <li>zip=deflate: zip the xml stream using deflate algorithm</li>
+    <li>zip=gzip: zip the xml stream using gzip algorithm</li>
+</ul>
+All you need to do is input the algorithm name in the query string as below:
+<br />
+<a href="javascript:;">
+    @Model/odds.xml?zip=[algorithm-name]
+</a>
+<div>
+    <br />
+    <strong>Note</strong>: In case of using both parameters:
+    <br />
+    <a href="javascript:;">
+        @Model/odds.xml?t=[timestamp]&zip=[algorithm-name]
+    </a>
+</div>
+<div style="height: 20px"></div>

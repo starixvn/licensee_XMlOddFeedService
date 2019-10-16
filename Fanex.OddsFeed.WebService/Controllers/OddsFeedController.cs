@@ -1,14 +1,14 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Web.Mvc;
     using Common.Helpers;
     using Common.Schemas;
     using Logging;
     using OddsFeed.Common.Configurations;
     using OddsFeed.Common.DTO;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Web.Mvc;
     using WebServiceLibrary;
     using WebServiceLibrary.Attributes;
     using WebServiceLibrary.Helpers;
@@ -68,63 +68,15 @@
             }
             catch (Exception ex)
             {
-                var messages = new string[]
+                var messages = new[]
                 {
                     "Message: " +  ex.Message,
                     "username: " +  Server.HtmlEncode(username),
                     "timestamp: " + Server.HtmlEncode(HttpContext.Request["t"])
                 };
                 LogService.Error("OddsFeedController:Index: " + string.Join(Environment.NewLine, messages), ex);
-                throw new Exception("OddsFeedController Error", ex);
-            }
-        }
-
-        public ActionResult OldHelp(string username)
-        {
-            if (IsDownTime())
-            {
-                return Content(GetDowntimeContent());
-            }
-
-            if (string.IsNullOrEmpty(username))
-            {
-                return Content(ErrorBuilder.GetParameterSufficent());
-            }
-
-            var domainName = RequestHelper.DomainName(Request.ServerVariables);
-            var ipAddress = GetClientIpAddress();
-            var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
-
-            if (!string.IsNullOrEmpty(authenticatedPartner.Error))
-            {
-                return Content(authenticatedPartner.Error);
-            }
-
-            var sampleOdds = GetOddsFeed(new OddsFeedsModel
-            {
-                BookieName = authenticatedPartner.SystemName,
-                DomainName = domainName,
-                UserProfile = authenticatedPartner.UserProfile,
-                UserQuery = new UserQuery(),
-                IpAddress = ipAddress,
-                TimeStamp = Convert.ToInt32(HttpContext.Request["t"]),
-                IsSample = true
-            });
-
-            ViewBag.UserName = username;
-            ViewBag.FullDomainName = RequestHelper.FullDomainName(Request.ServerVariables);
-            ViewBag.VirtualPath = GetVirtualPath();
-            ViewBag.Odds = GetFormatSampleOdds(sampleOdds);
-            ViewBag.Sports = _userService.GetSports(username);
-            ViewBag.Bettypes = _userService.GetBetTypes(username);
-
-            if (string.IsNullOrEmpty(authenticatedPartner.Error))
-            {
-                return View("Help", authenticatedPartner.UserProfile);
-            }
-            else
-            {
-                return Content(sampleOdds);
+                var exception = new Exception("OddsFeedController Error", ex);
+                throw exception;
             }
         }
 
@@ -165,7 +117,7 @@
 
             if (string.IsNullOrEmpty(authenticatedPartner.Error))
             {
-                return View("NewHelp", authenticatedPartner.UserProfile);
+                return View("Help", authenticatedPartner.UserProfile);
             }
             else
             {
@@ -219,7 +171,7 @@
             ViewBag.BetTypeDescriptions = JsonHelper.GetBetTypeSchemas<BetTypeDescription>(AppSettings.BetTypeDescriptionPath);
         }
 
-        private string[] GetHighlightBetType()
+        private static string[] GetHighlightBetType()
         {
             var result = new List<string>();
             var items = AppSettings.HighlightBetType.Split(',');

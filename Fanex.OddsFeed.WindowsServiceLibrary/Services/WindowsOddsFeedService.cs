@@ -1,5 +1,9 @@
 ﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Linq;
     using Common;
     using Common.Configurations;
     using Common.DTO;
@@ -7,10 +11,6 @@
     using Common.Schemas;
     using Couchbase;
     using Mapping;
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Linq;
 
     public class WindowsOddsFeedService : IWindowsOddsFeedService
     {
@@ -19,9 +19,8 @@
         private static readonly string _liveMatchBucket = AppSettings.BucketLiveMatches;
         private static readonly string _deadMatchBucket = AppSettings.BucketDeadMatches;
         private static readonly string _outRightBucket = AppSettings.BucketOutrights;
-        private static readonly List<Uri> _couchBaseServer = new List<Uri> { new Uri(AppSettings.CouchbaseServer) };
         private static readonly string _currentVersionKey = CacheKeys.CurrentKey(AppSettings.CachePrefix);
-        private static int _totalVersion = AppSettings.TotalVersion;
+        private static readonly int _totalVersion = AppSettings.TotalVersion;
 
         public void Reset()
         {

@@ -1,5 +1,8 @@
 ﻿namespace Fanex.OddsFeed.WindowsService
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ServiceProcess;
     using Common.Configurations;
     using Couchbase;
     using Couchbase.Configuration.Client;
@@ -7,9 +10,6 @@
     using NLog;
     using ONEbook.UM.Services;
     using ONEbook.UM.Services.Impl;
-    using System;
-    using System.Collections.Generic;
-    using System.ServiceProcess;
     using WindowsServiceLibrary.Services;
 
     public partial class OddsFeedService : ServiceBase
@@ -62,7 +62,7 @@
 
         private static string GetExceptionMessage(Exception exception)
         {
-            var messages = new string[]
+            var messages = new[]
             {
                 "ENVIRONMENT: " + AppSettings.Environment,
                 "ERROR: " + exception.Message,

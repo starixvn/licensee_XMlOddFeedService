@@ -1,0 +1,48 @@
+﻿@using Fanex.OddsFeed.WebServiceLibrary.Models
+@using Fanex.OddsFeed.Common.DTO
+@model ColumnModel<Country>
+
+<span class="sub_title">SUPPORTED COUNTRIES</span>
+<hr />
+Below is the list of supported countries in your xml data:
+<div style="height: 20px"></div>
+<div style="display: inline-block;">
+    <div style="float: left; margin-right: 26px;">
+        <table style="width: 270px">
+            <tr>
+                <th style="width: 30%">CountryID</th>
+                <th>Country Name</th>
+            </tr>
+            @foreach (Country country in Model.ColumnOne)
+            {
+                <tr>
+                    <td class="center">@country.CountryId</td>
+                    <td>@country.CountryName</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div style="float: left; margin-right: 26px;">
+        <table style="width: 270px">
+            @foreach (Country country in Model.ColumnTwo)
+            {
+                <tr>
+                    <td style="width: 30%" class="center">@country.CountryId</td>
+                    <td>@country.CountryName</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div style="float: left;">
+        <table style="width: 270px;">
+            @foreach (Country country in Model.ColumnThree)
+            {
+                <tr>
+                    <td style="width: 30%" class="center">@country.CountryId</td>
+                    <td>@country.CountryName</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div style="height: 20px;"></div>

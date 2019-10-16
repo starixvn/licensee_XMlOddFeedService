@@ -1,21 +1,14 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Caching
 {
+    using System.Collections.Generic;
     using Common.Schemas;
     using Couchbase;
-    using Couchbase.Configuration.Client;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.Common.DTO;
     using Models;
-    using System;
-    using System.Collections.Generic;
 
     public class OddsFeedCachingOperator : IOddsFeedCachingOperator
     {
-        private static readonly ClientConfiguration _couchBaseClientConfig = new ClientConfiguration
-        {
-            Servers = new List<Uri> { new Uri(AppSettings.CouchbaseServer) }
-        };
-
         public OddsData GetOddsData(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch)
         {
             var versionCaching = new VersionCaching();
@@ -39,7 +32,6 @@
                 LiveMatches = liveMatches,
                 DeadballMatches = deadballMatches
             };
-
         }
 
         public IList<BetTypeSchema> GetBetTypes()

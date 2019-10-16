@@ -1,23 +1,18 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Builders
 {
-    using Common.Converters;
-    using Common.DTO;
-    using Common.Helpers;
-    using Filters;
-    using Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Security;
     using System.Text;
+    using Common.Converters;
+    using Common.DTO;
+    using Common.Helpers;
+    using Filters;
+    using Models;
 
     public class MatchBuilder : IMatchBuilder
     {
-        private const int LiveStatus = 1;
-        private const int DeadBallStatus = 0;
-        private const int OddsTypeLiveMatch = 4;
-        private const int OddsTypeDeadBallMatch = 2;
-
         private readonly IMatchFilter _matchFilter;
 
         public MatchBuilder()
@@ -49,7 +44,7 @@
             }
         }
 
-        private void AppendSampleMatchNode(
+        private static void AppendSampleMatchNode(
             StringBuilder oddsFeedNode,
             IList<Match> matches,
             UserLanguage userLanguage,
@@ -61,7 +56,7 @@
             }
         }
 
-        private void AppendMatchNode(
+        private static void AppendMatchNode(
             StringBuilder oddsFeedNode,
             Match match,
             IEnumerable<MatchOdds> matchOddsList,
@@ -69,7 +64,7 @@
             OddsFeedsModel model)
         {
             AppendBeginMatch(oddsFeedNode, match, userLanguage, model);
-            AppendBookieNode(oddsFeedNode, match, matchOddsList, model);
+            AppendBookieNode(oddsFeedNode, matchOddsList, model);
             oddsFeedNode.Append("</match>");
         }
 
@@ -231,14 +226,14 @@
             }
         }
 
-        private void AppendBookieNode(StringBuilder matchesNode, Match match, IEnumerable<MatchOdds> matchOddsList, OddsFeedsModel model)
+        private static void AppendBookieNode(StringBuilder matchesNode, IEnumerable<MatchOdds> matchOddsList, OddsFeedsModel model)
         {
             matchesNode.Append($"<bookie name=\"{model.BookieName}\" simp=\"{model.BookieName}\" trad=\"{model.BookieName}\">");
             AppendOddNodeList(matchesNode, matchOddsList, model.UserProfile.OddRegion);
             matchesNode.Append("</bookie>");
         }
 
-        private void AppendOddNodeList(StringBuilder oddsFeedNode, IEnumerable<MatchOdds> matchOddsNodes, int oddsRegion)
+        private static void AppendOddNodeList(StringBuilder oddsFeedNode, IEnumerable<MatchOdds> matchOddsNodes, int oddsRegion)
         {
             foreach (var matchOddsNode in matchOddsNodes)
             {
