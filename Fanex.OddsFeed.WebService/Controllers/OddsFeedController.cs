@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Web.Mvc;
+    using System.Web.UI;
     using Common.Helpers;
     using Common.Schemas;
     using Logging;
@@ -29,10 +30,6 @@
             _userService = new UserService();
         }
 
-        [OutputCache(
-            Duration = 5,
-            Location = System.Web.UI.OutputCacheLocation.Server,
-            VaryByParam = "username;Sport;Country;Bettype;League;moretime")]
         public ActionResult Index(string username)
         {
             try

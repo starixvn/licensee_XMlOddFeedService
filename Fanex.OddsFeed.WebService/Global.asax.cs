@@ -4,6 +4,7 @@
     using Common.Helpers;
     using Couchbase;
     using Couchbase.Configuration.Client;
+    using Fanex.OddsFeed.WebServiceLibrary.Helpers;
     using System;
     using System.Collections.Generic;
     using System.Web;
@@ -12,6 +13,16 @@
 
     public class MvcApplication : HttpApplication
     {
+        public override string GetVaryByCustomString(HttpContext context, string arg)
+        {
+            if (arg.Equals("clientIP", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return RequestHelper.GetClientIpAddress();
+            }
+
+            return base.GetVaryByCustomString(context, arg);
+        }
+
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");

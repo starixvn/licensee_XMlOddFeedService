@@ -1,8 +1,10 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
+    using System;
     using System.Text;
     using System.Web.Mvc;
     using App_Start;
+    using Fanex.Caching;
     using OddsFeed.Common.DTO;
     using ONEbook.UM.Models;
     using ONEbook.UM.Services;
@@ -17,6 +19,7 @@
     {
         private readonly IMaintenanceService _maintenanceService;
         private readonly IPartnerRepository _partnerRepository;
+        private const int TimeExpireCache = 20;
 
         public BaseController()
         {
@@ -39,14 +42,31 @@
             return ErrorBuilder.GetUMDownTime(GetUndermaintenanceTime().To);
         }
 
+        protected AuthenticatedPartner GetAuthenticatedPartner(string userName)
+        {
+            var domainName = RequestHelper.DomainName(Request.ServerVariables);
+            var ipAddress = GetClientIpAddress();
+            return GetAuthenticatedPartner(userName, domainName, ipAddress);
+        }
+
         protected AuthenticatedPartner GetAuthenticatedPartner(string userName, string domainName, string ip)
         {
-            return _partnerRepository.GetAuthenticatedPartner(new CheckPermissionCriteria
+            var cacheKeyAuthenticatedPartner = "AuthenticatedPartner_" + userName;
+            var authenticatedPartner = ConfiguredCacheService.Get<AuthenticatedPartner>(cacheKeyAuthenticatedPartner);
+            if (authenticatedPartner == null)
             {
-                UserName = userName,
-                DomainName = domainName,
-                Ip = ip
-            });
+                authenticatedPartner = _partnerRepository.GetAuthenticatedPartner(new CheckPermissionCriteria
+                {
+                    UserName = userName,
+                    DomainName = domainName,
+                    Ip = ip
+                });
+
+                ConfiguredCacheService.Set(cacheKeyAuthenticatedPartner, authenticatedPartner,
+                        new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(TimeExpireCache)));
+            }
+
+            return authenticatedPartner;
         }
 
         protected static string GetClientIpAddress()

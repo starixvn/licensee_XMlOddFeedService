@@ -26,7 +26,7 @@
                 var authenticatedPartner = new AuthenticatedPartner
                 {
                     SystemName = Converter.ToString2(outputParams["systemname"]),
-                    UserProfile = profileDataList.Count() == 0 ? null : GetUserProfile(profileDataList.FirstOrDefault()),
+                    UserProfile = profileDataList.Any() ? GetUserProfile(profileDataList.FirstOrDefault()) : null,
                     Error = ErrorBuilder.GetError(Converter.ToInt(outputParams[ErrorCode]), outputParams[ErrorMsg].ToString())
                 };
 

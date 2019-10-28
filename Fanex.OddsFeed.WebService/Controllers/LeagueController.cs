@@ -1,8 +1,7 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
     using System.Web.Mvc;
-    using OddsFeed.Common.DTO;
-    using WebServiceLibrary.Attributes;
+    using System.Web.UI;
     using WebServiceLibrary.Services;
 
     public class LeagueController : BaseController
@@ -14,10 +13,14 @@
             _partnerService = new PartnerService();
         }
 
-        [PartnerPermission]
-        public ActionResult Index(string username, UserProfile userProfile)
+        [OutputCache(Duration = 20, Location = OutputCacheLocation.ServerAndClient, VaryByParam = "username", VaryByCustom ="clientIP")]
+        public ActionResult Index(string username)
         {
-            return XmlContent(_partnerService.GetLeaguesXmlContent(username, userProfile));
+            var authenticatedPartner = GetAuthenticatedPartner(username);
+
+            return !string.IsNullOrEmpty(authenticatedPartner.Error)
+                    ? XmlContent(authenticatedPartner.Error)
+                    : XmlContent(_partnerService.GetLeaguesXmlContent(username, authenticatedPartner.UserProfile));
         }
     }
 }
