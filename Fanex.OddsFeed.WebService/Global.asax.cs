@@ -21,13 +21,21 @@
             {
                 var clientIpAddress = RequestHelper.GetClientIpAddress();
                 var domain =  RequestHelper.DomainName(Request.ServerVariables);
-                var username = context.Request.RequestContext.RouteData.Values["username"].ToString();
+                var username = GetUsername(context);
                 WriteLogRequestAccess(username, clientIpAddress, domain);
 
                 return clientIpAddress;
             }
 
             return base.GetVaryByCustomString(context, custom);
+        }
+
+        private static string GetUsername(HttpContext context)
+        {
+            var usernameRouteValue = context.Request.RequestContext.RouteData.Values["username"];
+            var username = usernameRouteValue == null ? context.Request.Path.Split('/')[1] : usernameRouteValue.ToString();
+
+            return username;
         }
 
         private void WriteLogRequestAccess(string username, string clientIpAddress, string domain)
