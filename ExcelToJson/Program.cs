@@ -27,35 +27,31 @@ namespace ExcelToJson
                 {
                     while (dr.Read())
                     {
-                        try
+                        if (IsGroupRow(dr))
                         {
-                            if (IsGroupRow(dr))
+                            bettypes.Add(new Item
                             {
-                                bettypes.Add(new Item
-                                {
-                                    BettypeName = dr[0].ToString(),
-                                    BettypeId = int.Parse(dr[1].ToString()),
-                                    Tag = dr[3].ToString(),
-                                    MatchAttribute = dr[5].ToString(),
-                                    ExtraAttribute = dr[6].ToString(),
-                                    BetChoice = dr[7].ToString(),
-                                    Description = dr[8].ToString(),
-                                    DBColumns = dr[9].ToString(),
-                                });
-                            }
-                            else
-                            {
-                                bettypes.Add(new Item
-                                {
-                                    MatchAttribute = dr[5].ToString(),
-                                    ExtraAttribute = dr[6].ToString(),
-                                    BetChoice = dr[7].ToString(),
-                                    Description = dr[8].ToString(),
-                                    DBColumns = dr[9].ToString(),
-                                });
-                            }
+                                BettypeName = dr[0].ToString(),
+                                BettypeId = int.Parse(dr[1].ToString()),
+                                Tag = dr[3].ToString(),
+                                MatchAttribute = dr[5].ToString(),
+                                ExtraAttribute = dr[6].ToString(),
+                                BetChoice = dr[7].ToString(),
+                                Description = dr[8].ToString(),
+                                DBColumns = dr[9].ToString(),
+                            });
                         }
-                        catch (Exception e) { }
+                        else
+                        {
+                            bettypes.Add(new Item
+                            {
+                                MatchAttribute = dr[5].ToString(),
+                                ExtraAttribute = dr[6].ToString(),
+                                BetChoice = dr[7].ToString(),
+                                Description = dr[8].ToString(),
+                                DBColumns = dr[9].ToString(),
+                            });
+                        }
                     }
                 }
             }

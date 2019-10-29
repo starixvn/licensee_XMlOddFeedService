@@ -9,6 +9,7 @@
     using Criteria;
     using Fanex.Common;
     using Fanex.Data;
+    using Fanex.Data.Repository;
 
     public class PartnerRepository : BaseRepository, IPartnerRepository
     {
@@ -40,6 +41,16 @@
             }
         }
 
+        public bool WriteLogRequestAccess(WriteLogRequestAccessCriteria criteria)
+        {
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            {
+                var inputParams = GetInputParams(criteria);
+                int result = db.ExecuteNonQuery(inputParams);
+                return result == -1;
+            }
+        }
+
         public IEnumerable<PartnerBetType> GetPartnerBetTypes(GetPartnerBetTypeCriteria criteria)
         {
             return GetListOf<PartnerBetType>(criteria);
@@ -55,7 +66,7 @@
             return GetListOf<PartnerSport>(criteria);
         }
 
-        private static Hashtable GetInputParams(CheckPermissionCriteria criteria)
+        private static Hashtable GetInputParams(ICriteria criteria)
         {
             var inputParams = criteria.GetSpParams();
 

@@ -12,6 +12,7 @@
         private const string FailedBadOddsId = "Failed - Bad oddsId";
         private const string Success = "OK";
         private const string SuccessAndAlready = "OK Already";
+        private const int SuccessAndAlreadyRrrorCode = 2;
 
         private readonly IBetDaqService _betDaqService;
 
@@ -70,7 +71,7 @@
                 case 0:
                     return Success;
 
-                case 2:
+                case SuccessAndAlreadyRrrorCode:
                     return SuccessAndAlready;
 
                 default:

@@ -89,14 +89,7 @@ namespace CouchbaseApp
 
         private void ParseToForm<T>(T data)
         {
-            if (data != null)
-            {
-                textBox1.Text = JsonConvert.SerializeObject(data);
-            }
-            else
-            {
-                textBox1.Text = string.Empty;
-            }
+            textBox1.Text = object.Equals(data, default(T)) ? string.Empty : JsonConvert.SerializeObject(data);
         }
     }
 }

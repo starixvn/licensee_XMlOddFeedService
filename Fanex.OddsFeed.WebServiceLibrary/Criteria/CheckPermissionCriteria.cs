@@ -15,7 +15,7 @@
 
         public override string GetSettingKey()
         {
-            return SpHelper.RealSp("SP.CheckPermission");
+            return SpHelper.RealSp("Odds_PartnerCheckPermission");
         }
     }
 }

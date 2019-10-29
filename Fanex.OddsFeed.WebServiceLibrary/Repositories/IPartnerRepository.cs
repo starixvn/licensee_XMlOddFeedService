@@ -8,6 +8,8 @@
     {
         AuthenticatedPartner GetAuthenticatedPartner(CheckPermissionCriteria criteria);
 
+        bool WriteLogRequestAccess(WriteLogRequestAccessCriteria criteria);
+
         IEnumerable<PartnerBetType> GetPartnerBetTypes(GetPartnerBetTypeCriteria criteria);
 
         IEnumerable<PartnerLeague> GetPartnerLeagues(GetPartnerLeagueCriteria criteria);

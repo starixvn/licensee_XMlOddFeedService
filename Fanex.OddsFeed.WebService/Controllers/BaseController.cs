@@ -51,7 +51,7 @@
 
         protected AuthenticatedPartner GetAuthenticatedPartner(string userName, string domainName, string ip)
         {
-            var cacheKeyAuthenticatedPartner = "AuthenticatedPartner_" + userName;
+            var cacheKeyAuthenticatedPartner = "AuthenticatedPartner_" + userName + ip;
             var authenticatedPartner = ConfiguredCacheService.Get<AuthenticatedPartner>(cacheKeyAuthenticatedPartner);
             if (authenticatedPartner == null)
             {

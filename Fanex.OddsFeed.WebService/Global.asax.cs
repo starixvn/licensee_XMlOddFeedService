@@ -1,26 +1,46 @@
 ﻿namespace Fanex.OddsFeed.WebService
 {
-    using Common.Configurations;
-    using Common.Helpers;
-    using Couchbase;
-    using Couchbase.Configuration.Client;
-    using Fanex.OddsFeed.WebServiceLibrary.Helpers;
     using System;
     using System.Collections.Generic;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Routing;
+    using Common.Configurations;
+    using Common.Helpers;
+    using Couchbase;
+    using Couchbase.Configuration.Client;
+    using Fanex.OddsFeed.WebServiceLibrary.Criteria;
+    using Fanex.OddsFeed.WebServiceLibrary.Helpers;
+    using Fanex.OddsFeed.WebServiceLibrary.Repositories;
 
     public class MvcApplication : HttpApplication
     {
-        public override string GetVaryByCustomString(HttpContext context, string arg)
+        public override string GetVaryByCustomString(HttpContext context, string custom)
         {
-            if (arg.Equals("clientIP", StringComparison.CurrentCultureIgnoreCase))
+            if (custom.Equals("clientIP", StringComparison.CurrentCultureIgnoreCase))
             {
-                return RequestHelper.GetClientIpAddress();
+                var clientIpAddress = RequestHelper.GetClientIpAddress();
+                var domain =  RequestHelper.DomainName(Request.ServerVariables);
+                var username = context.Request.RequestContext.RouteData.Values["username"].ToString();
+                WriteLogRequestAccess(username, clientIpAddress, domain);
+
+                return clientIpAddress;
             }
 
-            return base.GetVaryByCustomString(context, arg);
+            return base.GetVaryByCustomString(context, custom);
+        }
+
+        private void WriteLogRequestAccess(string username, string clientIpAddress, string domain)
+        {
+            var partnerRepository = new PartnerRepository();
+            var criteria = new WriteLogRequestAccessCriteria
+            {
+                Ip = clientIpAddress,
+                UserName = username,
+                DomainName = domain
+            };
+
+            partnerRepository.WriteLogRequestAccess(criteria);
         }
 
         public static void RegisterRoutes(RouteCollection routes)

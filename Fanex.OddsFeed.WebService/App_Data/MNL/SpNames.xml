@@ -3,10 +3,10 @@
 
   <Function Name="XmlWebService">
 
-    <Setting Key="SP.LiveOdds" SpName="Is_Odds_GetLiveOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
-    <Setting Key="SP.DeadballOdds" SpName="Is_Odds_GetDeadballOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
-    <Setting Key="SP.OutrightOdds" SpName="Is_Odds_GetOutrightOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
-    <Setting Key="SP.CheckPermission" SpName="Odds_PartnerCheckPermission" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+    <Setting Key="Is_Odds_GetLiveOddsData" SpName="Is_Odds_GetLiveOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
+    <Setting Key="Is_Odds_GetDeadballOddsData" SpName="Is_Odds_GetDeadballOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
+    <Setting Key="Is_Odds_GetOutrightOddsData" SpName="Is_Odds_GetOutrightOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
+    <Setting Key="Odds_PartnerCheckPermission" SpName="Odds_PartnerCheckPermission" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
     <Setting Key="SP.GetSportByUserName" SpName="Odds_SportSelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
     <Setting Key="SP.GetBetTypeByUserName" SpName="Odds_BetTypeSelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
     <Setting Key="SP.GetCountryByUserName" SpName="Odds_CountrySelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
@@ -39,7 +39,7 @@
 
   </Function>
   <Function Name="BetTypeSportType">
-    <Setting Key="SP.SportType" SpName="Odds_Partner_SportTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
+    <Setting Key="Odds_Partner_SportTypeSel" SpName="Odds_Partner_SportTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
       <Mapping DataField="SportType" ObjectProperty="Id" />
       <Mapping DataField="SportName" ObjectProperty="NameEnglish" />
       <Mapping DataField="SportNameCh" ObjectProperty="NameTraditionalChinese" />
@@ -51,7 +51,7 @@
       <Mapping DataField="SportNameJp" ObjectProperty="NameJapanese" />
       <Mapping DataField="SportNameHi" ObjectProperty="NameHindi" />
     </Setting>
-    <Setting Key="SP.BetType" SpName="Odds_Partner_BetTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
+    <Setting Key="Odds_Partner_BetTypeSel" SpName="Odds_Partner_BetTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
       <Mapping DataField="typeid" ObjectProperty="Id" />
       <Mapping DataField="typenamee" ObjectProperty="NameEnglish" />
       <Mapping DataField="typenameCh" ObjectProperty="NameTraditionalChinese" />
@@ -63,7 +63,7 @@
       <Mapping DataField="typenameJp" ObjectProperty="NameJapanese" />
       <Mapping DataField="typenameHi" ObjectProperty="NameHindi" />
     </Setting>
-    <Setting Key="SP.League" SpName="Odds_Partner_LeagueSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
+    <Setting Key="Odds_Partner_LeagueSel" SpName="Odds_Partner_LeagueSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
       <Mapping DataField="leaguename" ObjectProperty="NameEnglish" />
       <Mapping DataField="leaguenameCh" ObjectProperty="NameTraditionalChinese" />
       <Mapping DataField="leaguenameCs" ObjectProperty="NameSimplifiedChinese" />

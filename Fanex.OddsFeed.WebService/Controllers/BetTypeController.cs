@@ -2,11 +2,11 @@
 {
     using System.Web.Mvc;
     using System.Web.UI;
-    using OddsFeed.Common.DTO;
     using WebServiceLibrary.Services;
 
     public class BetTypeController : BaseController
     {
+        private const int TimeExpireCacheForBetType = 20;
         private readonly IPartnerService _partnerService;
 
         public BetTypeController()
@@ -14,7 +14,7 @@
             _partnerService = new PartnerService();
         }
 
-        [OutputCache(Duration = 20, Location = OutputCacheLocation.ServerAndClient, VaryByParam = "username", VaryByCustom = "clientIP")]
+        [OutputCache(Duration = TimeExpireCacheForBetType, Location = OutputCacheLocation.ServerAndClient, VaryByParam = "username", VaryByCustom = "clientIP")]
         public ActionResult Index(string username)
         {
             var authenticatedPartner = GetAuthenticatedPartner(username);

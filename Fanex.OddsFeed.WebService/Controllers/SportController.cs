@@ -6,6 +6,8 @@
 
     public class SportController : BaseController
     {
+        private const int TimeExpireCacheForSport = 20;
+
         private readonly IPartnerService _partnerService;
 
         public SportController()
@@ -13,7 +15,7 @@
             _partnerService = new PartnerService();
         }
 
-        [OutputCache(Duration = 20, Location = OutputCacheLocation.ServerAndClient, VaryByParam = "username", VaryByCustom = "clientIP")]
+        [OutputCache(Duration = TimeExpireCacheForSport, Location = OutputCacheLocation.ServerAndClient, VaryByParam = "username", VaryByCustom = "clientIP")]
         public ActionResult Index(string username)
         {
             var authenticatedPartner = GetAuthenticatedPartner(username);

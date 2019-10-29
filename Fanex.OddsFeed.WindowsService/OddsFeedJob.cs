@@ -23,7 +23,7 @@
                 var _oddsFeedService = (IWindowsOddsFeedService)dataMap.Get("oddsFeedService");
                 var _maintenanceService = (IMaintenanceService)dataMap.Get("maintenanceService");
 
-                if (_maintenanceService.IsUnderMaintenance())
+                if (_maintenanceService.GetUnderMaintenanceTime().IsUnderMaintenanceTime)
                 {
                     _fileLogger.Trace("UM Time");
                     return;

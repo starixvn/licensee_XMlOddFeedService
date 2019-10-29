@@ -9,7 +9,7 @@
     {
         public static DataSet GetLiveOddsData()
         {
-            using (var db = new ObjectDb(SpHelper.RealSp("SP.LiveOdds")))
+            using (var db = new ObjectDb(SpHelper.RealSp("Is_Odds_GetLiveOddsData")))
             {
                 return db.ExecuteDataSet();
             }
@@ -17,7 +17,7 @@
 
         public static DataSet GetDeadballOddsData()
         {
-            using (var db = new ObjectDb(SpHelper.RealSp("SP.DeadballOdds")))
+            using (var db = new ObjectDb(SpHelper.RealSp("Is_Odds_GetDeadballOddsData")))
             {
                 return db.ExecuteDataSet();
             }
@@ -25,7 +25,7 @@
 
         public static DataTable GetOutrightOddsData()
         {
-            using (var db = new ObjectDb(SpHelper.RealSp("SP.OutrightOdds")))
+            using (var db = new ObjectDb(SpHelper.RealSp("Is_Odds_GetOutrightOddsData")))
             {
                 return db.ExecuteDataSet().Tables[0];
             }

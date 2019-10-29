@@ -9,7 +9,7 @@
 
         public override string GetSettingKey()
         {
-            return SpHelper.RealSp("SP.League");
+            return SpHelper.RealSp("Odds_Partner_LeagueSel");
         }
     }
 }
