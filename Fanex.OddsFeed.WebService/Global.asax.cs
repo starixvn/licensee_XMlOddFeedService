@@ -33,7 +33,16 @@
         private static string GetUsername(HttpContext context)
         {
             var usernameRouteValue = context.Request.RequestContext.RouteData.Values["username"];
-            var username = usernameRouteValue == null ? context.Request.Path.Split('/')[1] : usernameRouteValue.ToString();
+            string username;
+            if (usernameRouteValue == null)
+            {
+                var pathSplit = context.Request.Path.Split('/');
+                username = pathSplit[pathSplit.Length - 2];
+            }
+            else
+            {
+                username= usernameRouteValue.ToString();
+            }
 
             return username;
         }
