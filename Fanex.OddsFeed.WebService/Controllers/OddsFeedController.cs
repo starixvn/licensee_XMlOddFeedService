@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Web.Mvc;
-    using System.Web.UI;
     using Common.Helpers;
     using Common.Schemas;
     using Logging;
@@ -19,7 +18,6 @@
     [Compress]
     public class OddsFeedController : BaseController
     {
-        private const int TimeExpireCacheForOdd = 5;
         private readonly IBetTypeService _betTypeService;
         private readonly IOddsFeedService _oddsFeedService;
         private readonly IUserService _userService;
@@ -31,7 +29,6 @@
             _userService = new UserService();
         }
 
-        [OutputCache(Duration = TimeExpireCacheForOdd, Location = OutputCacheLocation.Client, VaryByParam = "username", VaryByCustom = "clientIP")]
         public ActionResult Index(string username)
         {
             try

@@ -1,8 +1,10 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
-    using System.Threading;
+    using System;
     using System.Web.Mvc;
-    using System.Web.UI;
+    using Fanex.Caching;
+    using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.WebServiceLibrary.Helpers;
     using WebServiceLibrary.Services;
 
     public class LeagueController : BaseController
@@ -15,7 +17,6 @@
             _partnerService = new PartnerService();
         }
 
-        [OutputCache(Duration = TimeExpireCacheForLeague, Location = OutputCacheLocation.Server, VaryByParam = "username", VaryByCustom ="clientIP")]
         public ActionResult Index(string username)
         {
             var authenticatedPartner = GetAuthenticatedPartner(username);
@@ -23,7 +24,24 @@
 
             return !string.IsNullOrEmpty(authenticatedPartner.Error)
                     ? XmlContent(authenticatedPartner.Error)
-                    : XmlContent(_partnerService.GetLeaguesXmlContent(username, authenticatedPartner.UserProfile));
+                    : XmlContent(GetLeagues(username, authenticatedPartner.UserProfile));
+        }
+
+        protected string GetLeagues(string userName, UserProfile userProfile)
+        {
+            var domainName = RequestHelper.DomainName(Request.ServerVariables);
+            var ipAddress = GetClientIpAddress();
+            var cacheKeyLeague = "League_" + userName + ipAddress + domainName;
+            var leagues = ConfiguredCacheService.Get<string>(cacheKeyLeague);
+            if (leagues == null)
+            {
+                leagues = _partnerService.GetLeaguesXmlContent(userName, userProfile);
+
+                ConfiguredCacheService.Set(cacheKeyLeague, leagues,
+                        new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(TimeExpireCacheForLeague)));
+            }
+
+            return leagues;
         }
     }
 }

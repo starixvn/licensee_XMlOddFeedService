@@ -46,6 +46,7 @@
         {
             var domainName = RequestHelper.DomainName(Request.ServerVariables);
             var ipAddress = GetClientIpAddress();
+            
             return GetAuthenticatedPartner(userName, domainName, ipAddress);
         }
 
@@ -66,7 +67,22 @@
                         new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(TimeExpireCache)));
             }
 
+            WriteLogRequestAccess(userName, ip, domainName);
+
             return authenticatedPartner;
+        }
+
+        private void WriteLogRequestAccess(string username, string clientIpAddress, string domain)
+        {
+            var partnerRepository = new PartnerRepository();
+            var criteria = new WriteLogRequestAccessCriteria
+            {
+                Ip = clientIpAddress,
+                UserName = username,
+                DomainName = domain
+            };
+
+            partnerRepository.WriteLogRequestAccess(criteria);
         }
 
         protected static string GetClientIpAddress()

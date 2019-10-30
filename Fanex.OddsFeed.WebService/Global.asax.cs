@@ -9,57 +9,9 @@
     using Common.Helpers;
     using Couchbase;
     using Couchbase.Configuration.Client;
-    using Fanex.OddsFeed.WebServiceLibrary.Criteria;
-    using Fanex.OddsFeed.WebServiceLibrary.Helpers;
-    using Fanex.OddsFeed.WebServiceLibrary.Repositories;
 
     public class MvcApplication : HttpApplication
-    {
-        public override string GetVaryByCustomString(HttpContext context, string custom)
-        {
-            if (custom.Equals("clientIP", StringComparison.CurrentCultureIgnoreCase))
-            {
-                var clientIpAddress = RequestHelper.GetClientIpAddress();
-                var domain =  RequestHelper.DomainName(Request.ServerVariables);
-                var username = GetUsername(context);
-                WriteLogRequestAccess(username, clientIpAddress, domain);
-
-                return clientIpAddress;
-            }
-
-            return base.GetVaryByCustomString(context, custom);
-        }
-
-        private static string GetUsername(HttpContext context)
-        {
-            var usernameRouteValue = context.Request.RequestContext.RouteData.Values["username"];
-            string username;
-            if (usernameRouteValue == null)
-            {
-                var pathSplit = context.Request.Path.Split('/');
-                username = pathSplit[pathSplit.Length - 2];
-            }
-            else
-            {
-                username= usernameRouteValue.ToString();
-            }
-
-            return username;
-        }
-
-        private void WriteLogRequestAccess(string username, string clientIpAddress, string domain)
-        {
-            var partnerRepository = new PartnerRepository();
-            var criteria = new WriteLogRequestAccessCriteria
-            {
-                Ip = clientIpAddress,
-                UserName = username,
-                DomainName = domain
-            };
-
-            partnerRepository.WriteLogRequestAccess(criteria);
-        }
-
+    { 
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
