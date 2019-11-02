@@ -21,7 +21,6 @@
         {
             var authenticatedPartner = GetAuthenticatedPartner(username);
 
-
             return !string.IsNullOrEmpty(authenticatedPartner.Error)
                     ? XmlContent(authenticatedPartner.Error)
                     : XmlContent(GetLeagues(username, authenticatedPartner.UserProfile));

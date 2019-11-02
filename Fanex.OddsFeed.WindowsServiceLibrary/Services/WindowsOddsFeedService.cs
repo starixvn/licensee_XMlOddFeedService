@@ -11,22 +11,24 @@
     using Common.Schemas;
     using Couchbase;
     using Mapping;
+    using NLog;
 
     public class WindowsOddsFeedService : IWindowsOddsFeedService
     {
-        private static readonly string _cachePrefix = AppSettings.CachePrefix;
-        private static readonly string _oddsFeedBucket = AppSettings.BucketOddsFeed;
-        private static readonly string _liveMatchBucket = AppSettings.BucketLiveMatches;
-        private static readonly string _deadMatchBucket = AppSettings.BucketDeadMatches;
-        private static readonly string _outRightBucket = AppSettings.BucketOutrights;
-        private static readonly string _currentVersionKey = CacheKeys.CurrentKey(AppSettings.CachePrefix);
-        private static readonly int _totalVersion = AppSettings.TotalVersion;
+        private readonly Logger fileLogger = LogManager.GetCurrentClassLogger();
+        private static readonly string cachePrefix = AppSettings.CachePrefix;
+        private static readonly string oddsFeedBucket = AppSettings.BucketOddsFeed;
+        private static readonly string liveMatchBucket = AppSettings.BucketLiveMatches;
+        private static readonly string deadMatchBucket = AppSettings.BucketDeadMatches;
+        private static readonly string outRightBucket = AppSettings.BucketOutrights;
+        private static readonly string currentVersionKey = CacheKeys.CurrentKey(AppSettings.CachePrefix);
+        private static readonly int totalVersion = AppSettings.TotalVersion;
 
         public void Reset()
         {
-            Store(_oddsFeedBucket, AppSettings.BetTypeSchemaKey, new List<BetTypeSchema>());
-            Store(_oddsFeedBucket, CacheKeys.CurrentKey(_cachePrefix), -1);
-            Store(_oddsFeedBucket, CacheKeys.FullChainKey(_cachePrefix), false);
+            Store(oddsFeedBucket, AppSettings.BetTypeSchemaKey, new List<BetTypeSchema>());
+            Store(oddsFeedBucket, CacheKeys.CurrentKey(cachePrefix), -1);
+            Store(oddsFeedBucket, CacheKeys.FullChainKey(cachePrefix), false);
         }
 
         public bool Update()
@@ -39,24 +41,38 @@
             var outrights = GetOutrights();
 
             var currentVersion = GetCurrentVersion() + 1;
-            if (currentVersion == _totalVersion)
+            if (currentVersion == totalVersion)
             {
                 currentVersion = 0;
             }
             var versionKey = currentVersion.ToString();
 
-            result = Store(_oddsFeedBucket, CacheKeys.CurrentKey(_cachePrefix), currentVersion);
+            result = Store(oddsFeedBucket, CacheKeys.CurrentKey(cachePrefix), currentVersion);
 
-            result &= Store(_liveMatchBucket, versionKey, liveMatches);
-            result &= Store(_deadMatchBucket, versionKey, deadBallMatches);
-            result &= Store(_outRightBucket, versionKey, outrights);
+            result &= Store(liveMatchBucket, versionKey, liveMatches);
+            result &= Store(deadMatchBucket, versionKey, deadBallMatches);
+            result &= Store(outRightBucket, versionKey, outrights);
 
-            if (result && currentVersion == _totalVersion - 1)
+            if (result && currentVersion == totalVersion - 1)
             {
-                result &= Store(_oddsFeedBucket, CacheKeys.FullChainKey(_cachePrefix), true);
+                result &= Store(oddsFeedBucket, CacheKeys.FullChainKey(cachePrefix), true);
             }
 
             return result;
+        }
+
+        public string GetExceptionMessage(Exception exception)
+        {
+            var messages = new[]
+            {
+                "ENVIRONMENT: " + AppSettings.Environment,
+                "ERROR: " + exception.Message,
+                "SOURCE: " + exception.Source,
+                "TARGETSITE: " + exception.TargetSite,
+                "STACKTRACE: " + exception.StackTrace
+            };
+
+            return string.Join(Environment.NewLine, messages);
         }
 
         private static IList<Match> GetLiveMatches(IList<BetTypeSchema> betTypeSchemas)
@@ -68,10 +84,12 @@
             }
         }
 
-        private static IList<Match> GetDeadballMatches(IList<BetTypeSchema> betTypeSchemas)
+        private IList<Match> GetDeadballMatches(IList<BetTypeSchema> betTypeSchemas)
         {
             using (var deadballOdds = DbAccess.GetDeadballOddsData())
             {
+                fileLogger.Trace($"Table1: {deadballOdds.Tables[0].AsEnumerable().Count()}");
+                fileLogger.Trace($"Table2: {deadballOdds.Tables[1].AsEnumerable().Count()}");
                 var matchMapping = new MatchMapping();
                 return matchMapping.GetMatches(deadballOdds.Tables[0], betTypeSchemas, GetOddsFlexGroups(deadballOdds.Tables[1]), false);
             }
@@ -122,7 +140,7 @@
 
         private static IList<BetTypeSchema> GetBetTypeSchemas()
         {
-            var bucket = ClusterHelper.GetBucket(_oddsFeedBucket);
+            var bucket = ClusterHelper.GetBucket(oddsFeedBucket);
             var document = bucket.Get<IList<BetTypeSchema>>(AppSettings.BetTypeSchemaKey);
 
             if (document == null || document.Value == null || !document.Value.Any())
@@ -142,18 +160,30 @@
             return document.Value;
         }
 
-        private static bool Store<T>(string bucketName, string key, T value)
+        private bool Store<T>(string bucketName, string key, T value)
         {
             var bucket = ClusterHelper.GetBucket(bucketName);
+            var result = bucket.Upsert(key, value);
 
-            return bucket.Upsert(key, value).Success;
+            if (!result.Success)
+            {
+                fileLogger.Trace(result.Message);
+                if (result.Exception != null)
+                {
+                    var exception = result.Exception;
+                    var message = GetExceptionMessage(exception);
+                    fileLogger.Trace(message);
+                }
+            }
+
+            return result.Success;
         }
 
         private static int GetCurrentVersion()
         {
-            var bucket = ClusterHelper.GetBucket(_oddsFeedBucket);
+            var bucket = ClusterHelper.GetBucket(oddsFeedBucket);
 
-            return bucket.Get<int>(_currentVersionKey).Value;
+            return bucket.Get<int>(currentVersionKey).Value;
         }
     }
 }

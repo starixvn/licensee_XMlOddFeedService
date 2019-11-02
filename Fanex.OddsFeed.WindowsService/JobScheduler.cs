@@ -1,21 +1,22 @@
-﻿using Fanex.OddsFeed.Common.Configurations;
-using Fanex.OddsFeed.WindowsServiceLibrary.Services;
-using ONEbook.UM.Services;
-using Quartz;
-using Quartz.Impl;
-using System.Collections.Generic;
-
+﻿
 namespace Fanex.OddsFeed.WindowsService
 {
+    using Fanex.OddsFeed.Common.Configurations;
+    using Fanex.OddsFeed.WindowsServiceLibrary.Services;
+    using ONEbook.UM.Services;
+    using Quartz;
+    using Quartz.Impl;
+    using System.Collections.Generic;
+
     public class JobScheduler
     {
-        private readonly int _interval;
-        private readonly IScheduler _scheduler;
+        private readonly int interval;
+        private readonly IScheduler scheduler;
 
         public JobScheduler()
         {
-            _interval = AppSettings.Interval;
-            _scheduler = StdSchedulerFactory.GetDefaultScheduler();
+            interval = AppSettings.Interval;
+            scheduler = StdSchedulerFactory.GetDefaultScheduler();
         }
 
         public void Start(IWindowsOddsFeedService oddsFeedService, IMaintenanceService maintenanceService)
@@ -32,17 +33,17 @@ namespace Fanex.OddsFeed.WindowsService
                 .Build();
 
             var trigger = TriggerBuilder.Create()
-                   .WithSimpleSchedule(a => a.WithIntervalInSeconds(_interval)
+                   .WithSimpleSchedule(a => a.WithIntervalInSeconds(interval)
                    .RepeatForever())
                    .Build();
 
-            _scheduler.ScheduleJob(job, trigger);
-            _scheduler.Start();
+            scheduler.ScheduleJob(job, trigger);
+            scheduler.Start();
         }
 
         public void Stop()
         {
-            _scheduler.Shutdown();
+            scheduler.Shutdown();
         }
     }
 }

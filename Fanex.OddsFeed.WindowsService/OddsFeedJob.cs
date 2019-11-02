@@ -2,7 +2,6 @@
 {
     using System;
     using Fanex.Logging;
-    using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.WindowsServiceLibrary.Services;
     using NLog;
     using ONEbook.UM.Services;
@@ -10,53 +9,49 @@
 
     public class OddsFeedJob : IJob
     {
-        private readonly NLog.Logger _fileLogger = LogManager.GetCurrentClassLogger();
+        private readonly NLog.Logger fileLogger = LogManager.GetCurrentClassLogger();
+        private IWindowsOddsFeedService oddsFeedService;
+        private static bool isReady = true;
+        private readonly DateTime dateTime = DateTime.Now;
 
         public void Execute(IJobExecutionContext context)
         {
-            var startTime = DateTime.Now;
-            var isSuccessful = false;
-
-            try
+            fileLogger.Trace(dateTime);
+            if (isReady)
             {
-                var dataMap = context.JobDetail.JobDataMap;
-                var _oddsFeedService = (IWindowsOddsFeedService)dataMap.Get("oddsFeedService");
-                var _maintenanceService = (IMaintenanceService)dataMap.Get("maintenanceService");
+                isReady = false;
+                var startTime = DateTime.Now;
+                var isSuccessful = false;
 
-                if (_maintenanceService.GetUnderMaintenanceTime().IsUnderMaintenanceTime)
+                try
                 {
-                    _fileLogger.Trace("UM Time");
-                    return;
-                }
+                    var dataMap = context.JobDetail.JobDataMap;
+                    var maintenanceService = (IMaintenanceService)dataMap.Get("maintenanceService");
+                    oddsFeedService = (IWindowsOddsFeedService)dataMap.Get("oddsFeedService");
 
-                isSuccessful = _oddsFeedService.Update();
-                if (!isSuccessful)
+                    if (maintenanceService.GetUnderMaintenanceTime().IsUnderMaintenanceTime)
+                    {
+                        fileLogger.Trace("UM Time");
+                        isReady = true;
+                        return;
+                    }
+
+                    isSuccessful = oddsFeedService.Update();
+                }
+                catch (Exception exception)
                 {
-                    LogService.Error("IP address seems to have changed OR Cache on CouchBase is full. Please restart OddsFeedWindowService!");
+                    LogService.Error("OddsFeedJob:Execute -- " + oddsFeedService.GetExceptionMessage(exception), exception);
+                }
+                finally
+                {
+                    fileLogger.Trace("Time: " + (DateTime.Now - startTime) + ", Success: " + isSuccessful);
+                    isReady = true;
                 }
             }
-            catch (Exception exception)
+            else
             {
-                LogService.Error("OddsFeedJob:Execute -- " + GetExceptionMessage(exception), exception);
+                fileLogger.Trace("Previous call has not finished yet.");
             }
-            finally
-            {
-                _fileLogger.Trace("Time: " + (DateTime.Now - startTime) + ", Success: " + isSuccessful);
-            }
-        }
-
-        private static string GetExceptionMessage(Exception exception)
-        {
-            var messages = new[]
-            {
-                "ENVIRONMENT: " + AppSettings.Environment,
-                "ERROR: " + exception.Message,
-                "SOURCE: " + exception.Source,
-                "TARGETSITE: " + exception.TargetSite,
-                "STACKTRACE: " + exception.StackTrace
-            };
-
-            return string.Join(Environment.NewLine, messages);
         }
     }
 }

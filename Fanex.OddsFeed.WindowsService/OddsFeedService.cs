@@ -6,7 +6,7 @@
     using Common.Configurations;
     using Couchbase;
     using Couchbase.Configuration.Client;
-    using Logging;
+    using Fanex.Logging;
     using NLog;
     using ONEbook.UM.Services;
     using ONEbook.UM.Services.Impl;
@@ -14,18 +14,18 @@
 
     public partial class OddsFeedService : ServiceBase
     {
-        private readonly IWindowsOddsFeedService _oddsFeedService;
-        private readonly IMaintenanceService _maintenanceService;
-        private readonly JobScheduler _scheduler;
-        private readonly NLog.Logger _fileLogger;
+        private readonly IWindowsOddsFeedService oddsFeedService;
+        private readonly IMaintenanceService maintenanceService;
+        private readonly JobScheduler scheduler;
+        private readonly NLog.Logger fileLogger;
 
         public OddsFeedService()
         {
             InitializeComponent();
-            _oddsFeedService = new WindowsOddsFeedService();
-            _maintenanceService = new MaintenanceService();
-            _scheduler = new JobScheduler();
-            _fileLogger = LogManager.GetCurrentClassLogger();
+            oddsFeedService = new WindowsOddsFeedService();
+            maintenanceService = new MaintenanceService();
+            scheduler = new JobScheduler();
+            fileLogger = LogManager.GetCurrentClassLogger();
         }
 
         protected override void OnStart(string[] args)
@@ -36,13 +36,13 @@
                 {
                     Servers = new List<Uri> { new Uri(AppSettings.CouchbaseServer) }
                 });
-                _fileLogger.Trace("OddsFeedService: OnStart");
-                _oddsFeedService.Reset();
-                _scheduler.Start(_oddsFeedService, _maintenanceService);
+                fileLogger.Trace("OddsFeedService: OnStart");
+                oddsFeedService.Reset();
+                scheduler.Start(oddsFeedService, maintenanceService);
             }
             catch (Exception exception)
             {
-                LogService.Error("OnStart -- " + GetExceptionMessage(exception));
+                LogService.Error("OnStart -- " + oddsFeedService.GetExceptionMessage(exception));
             }
         }
 
@@ -51,27 +51,13 @@
             try
             {
                 ClusterHelper.Close();
-                _fileLogger.Trace("OddsFeedService: OnStop");
-                _scheduler.Stop();
+                fileLogger.Trace("OddsFeedService: OnStop");
+                scheduler.Stop();
             }
             catch (Exception exception)
             {
-                LogService.Error("OnStop -- " + GetExceptionMessage(exception));
+                LogService.Error("OnStop -- " + oddsFeedService.GetExceptionMessage(exception));
             }
-        }
-
-        private static string GetExceptionMessage(Exception exception)
-        {
-            var messages = new[]
-            {
-                "ENVIRONMENT: " + AppSettings.Environment,
-                "ERROR: " + exception.Message,
-                "SOURCE: " + exception.Source,
-                "TARGETSITE: " + exception.TargetSite,
-                "STACKTRACE: " + exception.StackTrace
-            };
-
-            return string.Join(Environment.NewLine, messages);
         }
     }
 }
