@@ -1,6 +1,7 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Caching
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Common.Schemas;
     using Couchbase;
     using Fanex.OddsFeed.Common.Configurations;
@@ -22,9 +23,16 @@
                 ? Get<Match>(AppSettings.BucketLiveMatches, cacheVersion.CurrentVersionLiveMatch.ToString())
                 : new List<Match>();
 
-            var deadballMatches = isGetDeadballMatch
-                ? Get<Match>(AppSettings.BucketDeadMatches, cacheVersion.CurrentVersionDeadballMatch.ToString())
-                : new List<Match>();
+            var deadballs1 = new List<Match>();
+            var deadballs2 = new List<Match>();
+
+            if (isGetDeadballMatch)
+            {
+                deadballs1 = Get<Match>(AppSettings.BucketDeadMatches, cacheVersion.CurrentVersionDeadballMatch.ToString() + "_1").ToList();
+                deadballs2 = Get<Match>(AppSettings.BucketDeadMatches, cacheVersion.CurrentVersionDeadballMatch.ToString() + "_2").ToList();
+            }
+
+            var deadballMatches = deadballs1.Union(deadballs2).ToList();
 
             return new OddsData
             {

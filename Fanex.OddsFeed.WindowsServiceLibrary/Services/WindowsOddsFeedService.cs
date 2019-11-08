@@ -12,9 +12,11 @@
     using Couchbase;
     using Fanex.Logging;
     using Mapping;
+    using NLog;
 
     public class WindowsOddsFeedService : IWindowsOddsFeedService
     {
+        private readonly NLog.Logger fileLogger = LogManager.GetCurrentClassLogger();
         private static readonly string cachePrefix = AppSettings.CachePrefix;
         private static readonly string oddsFeedBucket = AppSettings.BucketOddsFeed;
         private static readonly string liveMatchBucket = AppSettings.BucketLiveMatches;
@@ -37,6 +39,28 @@
             var betTypeSchemas = GetBetTypeSchemas();
             var liveMatches = GetLiveMatches(betTypeSchemas);
             var deadBallMatches = GetDeadballMatches(betTypeSchemas);
+            var deadBallLength = deadBallMatches.Count;
+            var splitIndex = deadBallLength / 2;
+            var deadBalls1 = new List<Match>();
+            var deadBalls2 = new List<Match>();
+
+            for (var i = 0; i < splitIndex; i++)
+            {
+                deadBalls1.Add(deadBallMatches[i]);
+            }
+
+            for (var j = splitIndex; j < deadBallLength; j++)
+            {
+                deadBalls2.Add(deadBallMatches[j]);
+            }
+
+            var deadball3 = deadBalls1.Union(deadBalls2).ToList();
+
+            fileLogger.Trace(deadBallMatches.Count);
+            fileLogger.Trace(deadBalls1.Count);
+            fileLogger.Trace(deadBalls2.Count);
+            fileLogger.Trace(deadball3.Count);
+
             var outrights = GetOutrights();
 
             var currentVersion = GetCurrentVersion() + 1;
@@ -49,7 +73,8 @@
             result = Store(oddsFeedBucket, CacheKeys.CurrentKey(cachePrefix), currentVersion);
 
             result &= Store(liveMatchBucket, versionKey, liveMatches);
-            result &= Store(deadMatchBucket, versionKey, deadBallMatches);
+            result &= Store(deadMatchBucket, versionKey + "_1", deadBalls1);
+            result &= Store(deadMatchBucket, versionKey + "_2", deadBalls2);
             result &= Store(outRightBucket, versionKey, outrights);
 
             if (result && currentVersion == totalVersion - 1)
