@@ -30,10 +30,6 @@
                 }
 
                 isSuccessful = _oddsFeedService.Update();
-                if (!isSuccessful)
-                {
-                    LogService.Error("IP address seems to have changed OR Cache on CouchBase is full. Please restart OddsFeedWindowService!");
-                }
             }
             catch (Exception exception)
             {
