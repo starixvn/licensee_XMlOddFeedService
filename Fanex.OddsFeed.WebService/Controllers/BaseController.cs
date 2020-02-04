@@ -15,6 +15,7 @@
     using WebServiceLibrary.Repositories;
 
     [CustomHandleError]
+    [RateLimitFilter]
     public class BaseController : Controller
     {
         private readonly IMaintenanceService _maintenanceService;

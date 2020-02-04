@@ -56,6 +56,7 @@
                 Servers = new List<Uri> { new Uri(AppSettings.CouchbaseServer) }
             });
             log4net.Config.XmlConfigurator.Configure();
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         protected void Application_Error(object sender, EventArgs e)

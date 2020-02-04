@@ -152,8 +152,10 @@
     <Compile Include="Builders\MatchBuilder.cs" />
     <Compile Include="Builders\OutrightBuilder.cs" />
     <Compile Include="Caching\IOddsFeedCachingOperator.cs" />
+    <Compile Include="Caching\IRateLimitService.cs" />
     <Compile Include="Caching\IVersionCaching.cs" />
     <Compile Include="Caching\OddsFeedCachingOperator.cs" />
+    <Compile Include="Caching\RateLimitService.cs" />
     <Compile Include="Caching\VersionCaching.cs" />
     <Compile Include="Criteria\WriteLogRequestAccessCriteria.cs" />
     <Compile Include="Criteria\CheckPermissionCriteria.cs" />
