@@ -9,7 +9,7 @@
 
     public class SportController : BaseController
     {
-        private const int TimeExpireCacheForSport = 20;
+        private const int TimeExpireCacheForSport = 60;
 
         private readonly IPartnerService _partnerService;
 

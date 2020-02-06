@@ -20,7 +20,7 @@
     {
         private readonly IMaintenanceService _maintenanceService;
         private readonly IPartnerRepository _partnerRepository;
-        private const int TimeExpireCache = 20;
+        private const int TimeExpireCache = 60;
 
         public BaseController()
         {

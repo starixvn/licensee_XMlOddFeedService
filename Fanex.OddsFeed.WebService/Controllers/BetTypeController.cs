@@ -9,7 +9,7 @@
 
     public class BetTypeController : BaseController
     {
-        private const int TimeExpireCacheForBetType = 20;
+        private const int TimeExpireCacheForBetType = 60;
         private readonly IPartnerService _partnerService;
 
         public BetTypeController()

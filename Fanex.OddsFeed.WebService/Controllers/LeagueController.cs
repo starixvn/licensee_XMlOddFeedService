@@ -9,7 +9,7 @@
 
     public class LeagueController : BaseController
     {
-        private const int TimeExpireCacheForLeague = 20;
+        private const int TimeExpireCacheForLeague = 60;
         private readonly IPartnerService _partnerService;
 
         public LeagueController()
