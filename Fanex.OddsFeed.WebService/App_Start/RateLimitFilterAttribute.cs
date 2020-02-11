@@ -9,6 +9,7 @@
     public class RateLimitFilterAttribute : ActionFilterAttribute
     {
         private const int TooManyRequestStatusCode = 429;
+        private const string TooManyRequestDescription = "Too many request";
         private const string TooManyRequestMessage = "You have been blocked because of sending too many requests";
 
         private readonly int RequestLimit = int.Parse(AppSettings.ThrottlerRequestLimit);
@@ -30,7 +31,8 @@
             if (isBlocked || IsThrottled(ipAdress))
             {
                 httpContext.Response.StatusCode = TooManyRequestStatusCode;
-                httpContext.Response.StatusDescription = TooManyRequestMessage;
+                httpContext.Response.StatusDescription = TooManyRequestDescription;
+                httpContext.Response.Write(TooManyRequestMessage);
 
                 filterContext.Result = new EmptyResult();
             }
