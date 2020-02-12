@@ -34,7 +34,9 @@
                 httpContext.Response.StatusDescription = TooManyRequestDescription;
                 httpContext.Response.Write(TooManyRequestMessage);
 
-                filterContext.Result = new EmptyResult();
+                filterContext.Result = new ContentResult {
+                    Content = TooManyRequestMessage
+                };
             }
 
             base.OnActionExecuting(filterContext);
