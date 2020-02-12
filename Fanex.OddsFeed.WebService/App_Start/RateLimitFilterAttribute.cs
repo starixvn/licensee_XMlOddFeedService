@@ -32,7 +32,6 @@
             {
                 httpContext.Response.StatusCode = TooManyRequestStatusCode;
                 httpContext.Response.StatusDescription = TooManyRequestDescription;
-                httpContext.Response.Write(TooManyRequestMessage);
                 httpContext.Response.TrySkipIisCustomErrors = true;
 
                 filterContext.Result = new ContentResult {
