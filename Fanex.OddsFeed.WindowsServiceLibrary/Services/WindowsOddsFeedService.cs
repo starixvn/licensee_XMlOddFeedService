@@ -1,18 +1,18 @@
 ﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Linq;
     using Common;
     using Common.Configurations;
     using Common.DTO;
     using Common.Helpers;
+    using Common.Repository;
     using Common.Schemas;
-    using Couchbase;
     using Fanex.Logging;
     using Mapping;
     using NLog;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Linq;
 
     public class WindowsOddsFeedService : IWindowsOddsFeedService
     {
@@ -162,16 +162,19 @@
 
         private static IList<BetTypeSchema> GetBetTypeSchemas()
         {
-            var bucket = ClusterHelper.GetBucket(oddsFeedBucket);
-            var document = bucket.Get<IList<BetTypeSchema>>(AppSettings.BetTypeSchemaKey);
+            //var bucket = ClusterHelper.GetBucket(oddsFeedBucket);
+            //var document = bucket.Get<IList<BetTypeSchema>>(AppSettings.BetTypeSchemaKey);
 
-            if (document == null || document.Value == null || !document.Value.Any())
+            var document = RedisRepository.ReadData<IList<BetTypeSchema>>(string.Format("{0}:{1}", oddsFeedBucket, AppSettings.BetTypeSchemaKey));
+
+            if (document == null)
             {
                 var newValue = JsonHelper.GetBetTypeSchemas<BetTypeSchema>(AppSettings.BetTypeSchemaPath);
 
                 if (newValue != null)
                 {
-                    bucket.Upsert(AppSettings.BetTypeSchemaKey, newValue);
+                    //bucket.Upsert(AppSettings.BetTypeSchemaKey, newValue);
+                    RedisRepository.StoreData<IList<BetTypeSchema>>(string.Format("{0}:{1}", oddsFeedBucket, AppSettings.BetTypeSchemaKey), newValue);
 
                     return newValue;
                 }
@@ -179,33 +182,47 @@
                 return new List<BetTypeSchema>();
             }
 
-            return document.Value;
+            //return document.Value;
+            return document;
         }
 
         private static bool Store<T>(string bucketName, string key, T value)
         {
-            var bucket = ClusterHelper.GetBucket(bucketName);
-            var result = bucket.Upsert(key, value);
+            //var bucket = ClusterHelper.GetBucket(bucketName);
+            //var result = bucket.Upsert(key, value);
 
-            if (!result.Success)
+            try
             {
-                LogService.Error(result.Message);
-                if (result.Exception != null)
-                {
-                    var exception = result.Exception;
-                    var message = GetExceptionMessage(exception);
-                    LogService.Error(message);
-                }
+                return RedisRepository.StoreData<T>(string.Format("{0}:{1}", bucketName, key), value);
+            }
+            catch (Exception ex)
+            {
+                var message = GetExceptionMessage(ex);
+                LogService.Error(message);
+                return false;
             }
 
-            return result.Success;
+            //if (!result.Success)
+            //{
+            //    LogService.Error(result.Message);
+            //    if (result.Exception != null)
+            //    {
+            //        var exception = result.Exception;
+            //        var message = GetExceptionMessage(exception);
+            //        LogService.Error(message);
+            //    }
+            //}
+
+            //return true;
         }
 
         private static int GetCurrentVersion()
         {
-            var bucket = ClusterHelper.GetBucket(oddsFeedBucket);
+            return RedisRepository.ReadData<int>(string.Format("{0}:{1}", oddsFeedBucket, currentVersionKey));
+            //var bucket = ClusterHelper.GetBucket(oddsFeedBucket);
 
-            return bucket.Get<int>(currentVersionKey).Value;
+            //return bucket.Get<int>(currentVersionKey).Value;
+
         }
     }
 }

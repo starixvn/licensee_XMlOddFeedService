@@ -1,12 +1,12 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Caching
 {
-    using System.Collections.Generic;
-    using System.Linq;
+    using Common.Repository;
     using Common.Schemas;
-    using Couchbase;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.Common.DTO;
     using Models;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class OddsFeedCachingOperator : IOddsFeedCachingOperator
     {
@@ -49,10 +49,15 @@
 
         private static IList<T> Get<T>(string bucketName, string key)
         {
-            var bucket = ClusterHelper.GetBucket(bucketName);
-            var result = bucket.Get<IList<T>>(key);
+            //var bucket = ClusterHelper.GetBucket(bucketName);
+            //var result = bucket.Get<IList<T>>(key);
 
-            return result.Success ? result.Value : new List<T>();
+            var result =  RedisRepository.ReadData<IList<T>>(string.Format("{0}:{1}", bucketName, key));
+            //return result;
+
+            return result == null ? new List<T>() : result;
+
+            //return result.Success ? result.Value : new List<T>();
         }
     }
 }

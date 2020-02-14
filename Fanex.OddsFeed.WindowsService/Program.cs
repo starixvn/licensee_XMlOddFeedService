@@ -1,7 +1,7 @@
 ﻿namespace Fanex.OddsFeed.WindowsService
 {
-    using System.ServiceProcess;
     using Data.Configuration;
+    using WindowsServiceLibrary.Services;
 
     /// <summary>
     /// Class Program.
@@ -14,12 +14,13 @@
         public static void Main()
         {
             DbSettingProviderManager.Current.Start();
-            var servicesToRun = new ServiceBase[]
-              {
-                      new OddsFeedService()
-              };
+            //var servicesToRun = new ServiceBase[]
+            //  {
+            //          new OddsFeedService()
+            //  };
 
-            ServiceBase.Run(servicesToRun);
+            //ServiceBase.Run(servicesToRun);
+            (new WindowsOddsFeedService()).Update();
         }
     }
 }
