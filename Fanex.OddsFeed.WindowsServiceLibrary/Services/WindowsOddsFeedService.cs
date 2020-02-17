@@ -162,9 +162,6 @@
 
         private static IList<BetTypeSchema> GetBetTypeSchemas()
         {
-            //var bucket = ClusterHelper.GetBucket(oddsFeedBucket);
-            //var document = bucket.Get<IList<BetTypeSchema>>(AppSettings.BetTypeSchemaKey);
-
             var document = RedisRepository.ReadData<IList<BetTypeSchema>>(string.Format("{0}:{1}", oddsFeedBucket, AppSettings.BetTypeSchemaKey));
 
             if (document == null)
@@ -173,24 +170,18 @@
 
                 if (newValue != null)
                 {
-                    //bucket.Upsert(AppSettings.BetTypeSchemaKey, newValue);
                     RedisRepository.StoreData<IList<BetTypeSchema>>(string.Format("{0}:{1}", oddsFeedBucket, AppSettings.BetTypeSchemaKey), newValue);
-
                     return newValue;
                 }
 
                 return new List<BetTypeSchema>();
             }
 
-            //return document.Value;
             return document;
         }
 
         private static bool Store<T>(string bucketName, string key, T value)
         {
-            //var bucket = ClusterHelper.GetBucket(bucketName);
-            //var result = bucket.Upsert(key, value);
-
             try
             {
                 return RedisRepository.StoreData<T>(string.Format("{0}:{1}", bucketName, key), value);
@@ -201,28 +192,11 @@
                 LogService.Error(message);
                 return false;
             }
-
-            //if (!result.Success)
-            //{
-            //    LogService.Error(result.Message);
-            //    if (result.Exception != null)
-            //    {
-            //        var exception = result.Exception;
-            //        var message = GetExceptionMessage(exception);
-            //        LogService.Error(message);
-            //    }
-            //}
-
-            //return true;
         }
 
         private static int GetCurrentVersion()
         {
             return RedisRepository.ReadData<int>(string.Format("{0}:{1}", oddsFeedBucket, currentVersionKey));
-            //var bucket = ClusterHelper.GetBucket(oddsFeedBucket);
-
-            //return bucket.Get<int>(currentVersionKey).Value;
-
         }
     }
 }

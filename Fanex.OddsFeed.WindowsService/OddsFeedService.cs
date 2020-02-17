@@ -1,15 +1,12 @@
 ﻿namespace Fanex.OddsFeed.WindowsService
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ServiceProcess;
     using Common.Configurations;
-    using Couchbase;
-    using Couchbase.Configuration.Client;
     using Logging;
     using NLog;
     using ONEbook.UM.Services;
     using ONEbook.UM.Services.Impl;
+    using System;
+    using System.ServiceProcess;
     using WindowsServiceLibrary.Services;
 
     public partial class OddsFeedService : ServiceBase
@@ -32,10 +29,6 @@
         {
             try
             {
-                ClusterHelper.Initialize(new ClientConfiguration
-                {
-                    Servers = new List<Uri> { new Uri(AppSettings.CouchbaseServer) }
-                });
                 _fileLogger.Trace("OddsFeedService: OnStart");
                 _oddsFeedService.Reset();
                 _scheduler.Start(_oddsFeedService, _maintenanceService);
@@ -50,7 +43,6 @@
         {
             try
             {
-                ClusterHelper.Close();
                 _fileLogger.Trace("OddsFeedService: OnStop");
                 _scheduler.Stop();
             }

@@ -7,14 +7,12 @@
     using System.Web.Routing;
     using Common.Configurations;
     using Common.Helpers;
-    using Couchbase;
-    using Couchbase.Configuration.Client;
     using Fanex.Data.Configuration;
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Extensions.Web;
 
     public class MvcApplication : HttpApplication
-    { 
+    {
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -55,10 +53,6 @@
             ExceptionHandler.UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             RegisterRoutes(RouteTable.Routes);
-            ClusterHelper.Initialize(new ClientConfiguration
-            {
-                Servers = new List<Uri> { new Uri(AppSettings.CouchbaseServer) }
-            });
             log4net.Config.XmlConfigurator.Configure();
         }
 
@@ -98,11 +92,6 @@
                     Response.Redirect("~/Errors/Index");
                 }
             }
-        }
-
-        protected void Application_End(object sender, EventArgs e)
-        {
-            ClusterHelper.Close();
         }
 
         #region Private register routes methods

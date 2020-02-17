@@ -51,20 +51,12 @@
 
         private static int GetCurrentVersion()
         {
-            //var bucket = ClusterHelper.GetBucket(_oddsFeedBucket);
-
-            //var currentVersion = bucket.Get<int>(_currentVersionKey).Value;
-
             var currentVersion = RedisRepository.ReadData<int>(string.Format("{0}:{1}", _oddsFeedBucket, _currentVersionKey));
-
             return currentVersion < 0 ? 0 : currentVersion;
         }
 
         private static bool IsFullChain()
         {
-            //var bucket = ClusterHelper.GetBucket(_oddsFeedBucket);
-            //return bucket.Get<bool>(_isFullChainKey).Value;
-
             return RedisRepository.ReadData<bool>(string.Format("{0}:{1}", _oddsFeedBucket, _isFullChainKey));
         }
     }

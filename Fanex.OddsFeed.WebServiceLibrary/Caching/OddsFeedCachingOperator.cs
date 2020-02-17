@@ -49,15 +49,8 @@
 
         private static IList<T> Get<T>(string bucketName, string key)
         {
-            //var bucket = ClusterHelper.GetBucket(bucketName);
-            //var result = bucket.Get<IList<T>>(key);
-
-            var result =  RedisRepository.ReadData<IList<T>>(string.Format("{0}:{1}", bucketName, key));
-            //return result;
-
-            return result == null ? new List<T>() : result;
-
-            //return result.Success ? result.Value : new List<T>();
+            var result = RedisRepository.ReadData<IList<T>>(string.Format("{0}:{1}", bucketName, key));
+            return result ?? new List<T>();
         }
     }
 }
