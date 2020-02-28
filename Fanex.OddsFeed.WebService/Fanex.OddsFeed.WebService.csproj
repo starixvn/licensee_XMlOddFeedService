@@ -224,9 +224,11 @@
     <Content Include="App_Data\Local\SpNames.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Themes\Default\Images\logo_licensee.png" />
     <Content Include="App_Themes\Default\Images\top-bg.png" />
     <Content Include="App_Themes\Default\Images\tp_404error.png" />
     <Content Include="App_Themes\Default\Images\tp_exclamation.png" />
+    <Content Include="App_Themes\Default\Images\tp_maintenance.png" />
     <Content Include="App_Themes\Help\dropdown-menu_files\arrow-filter.png" />
     <Content Include="App_Themes\Help\dropdown-menu_files\bg.png" />
     <Content Include="App_Themes\Help\dropdown-menu_files\body_bg.gif" />
@@ -370,6 +372,7 @@
     <Content Include="Views\OddsFeed\_Menu.cshtml" />
     <Content Include="Views\OddsFeed\GeneralConcepts\_Outright.cshtml" />
     <Content Include="Views\OddsFeed\GeneralConcepts\_Errors.cshtml" />
+    <Content Include="Views\Shared\UnderMaintainance.cshtml" />
     <None Include="Web.MNL.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -20,6 +20,11 @@
 
         public ActionResult Index(string username)
         {
+            if (this.IsDownTime())
+            {
+                return XmlContent(GetDowntimeContent());
+            }
+
             var authenticatedPartner = GetAuthenticatedPartner(username);
 
             return !string.IsNullOrEmpty(authenticatedPartner.Error)
