@@ -77,30 +77,8 @@ namespace ExcelToJson
                     DataAttribute = g.First().HasExtraOverUnder ? "hdp1" : string.Empty
                 };
 
-                var group = new JsonItem
-                {
-                    BettypeId = g.First().BettypeId,
-                    Tag = g.First().Tag,
-                    Reserve = g.First().HasExtraHandicap ? new ReserveItem() : null,
-                    BetChoices = g.Select(b =>
-                    {
-                        var matchAttribute = b.MatchAttribute.ToLower();
-                        if (matchAttribute == "h" && (g.First().HasExtraHandicap || g.First().HasExtraOverUnder))
-                        {
-                            matchAttribute = "home";
-                        }
-
-                        return new BetChoice
-                        {
-                            MatchAttribute = matchAttribute,
-                            DataAttribute = (b.IsResource || b.IsResourceX || b.IsResourceY) ? "resourceID" : b.DataAttribute,
-                            IsResource = b.IsResource,
-                            IsResourceX = b.IsResourceX,
-                            IsResourceY = b.IsResourceY
-                        };
-                    }).ToList()
-                };
-
+                var group = GetBettypesJsonItem(g);
+               
                 if (g.First().HasExtraHandicap || g.First().HasExtraOverUnder)
                 {
                     group.BetChoices.Insert(0, extraBetchoice);
@@ -124,7 +102,7 @@ namespace ExcelToJson
                     Tag = g.First().Tag,
                     BetChoices = g.Select(b =>
                     {
-                        var matchAttribute = b.MatchAttribute.ToLower();
+                        var matchAttribute = b.MatchAttribute.ToLowerInvariant();
                         if (matchAttribute == "h" && (g.First().HasExtraHandicap || g.First().HasExtraOverUnder))
                         {
                             matchAttribute = "home";
@@ -177,6 +155,35 @@ namespace ExcelToJson
             {
                 return false;
             }
+        }
+
+        private static JsonItem GetBettypesJsonItem(IGrouping<int,Item> g)
+        {
+            var group = new JsonItem
+            {
+                BettypeId = g.First().BettypeId,
+                Tag = g.First().Tag,
+                Reserve = g.First().HasExtraHandicap ? new ReserveItem() : null,
+                BetChoices = g.Select(b =>
+                {
+                    var matchAttribute = b.MatchAttribute.ToLowerInvariant();
+                    if (matchAttribute == "h" && (g.First().HasExtraHandicap || g.First().HasExtraOverUnder))
+                    {
+                        matchAttribute = "home";
+                    }
+
+                    return new BetChoice
+                    {
+                        MatchAttribute = matchAttribute,
+                        DataAttribute = (b.IsResource || b.IsResourceX || b.IsResourceY) ? "resourceID" : b.DataAttribute,
+                        IsResource = b.IsResource,
+                        IsResourceX = b.IsResourceX,
+                        IsResourceY = b.IsResourceY
+                    };
+                }).ToList()
+            };
+
+            return group;
         }
     }
 }
