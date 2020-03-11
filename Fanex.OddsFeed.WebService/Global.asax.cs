@@ -61,6 +61,37 @@
         {
             var ex = Server.GetLastError();
             LogHelper.Log(ex);
+
+            if (!AppSettings.Environment.Equals("Local", StringComparison.OrdinalIgnoreCase))
+            {
+                Exception exBase = Server.GetLastError().GetBaseException();
+                log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+                string message = string.Format(
+                    "{0}{1}{2}{3}{1}{4}{5}{1}{6}{7}{1}{8}{9}",
+                    exBase.Message,
+                    Environment.NewLine,
+                    "Source",
+                    exBase.Source,
+                    "Domain",
+                    HttpContext.Current.Request.Headers["Host"],
+                    "TargetSite",
+                    exBase.TargetSite,
+                    "StackTrace",
+                    exBase.StackTrace);
+
+                log.Error(message);
+
+
+                if (ex is HttpUnhandledException &&
+                    ex is HttpException && ((HttpException)ex).ErrorCode == 404)
+                {
+                    Server.ClearError();
+                    Response.Redirect("~/PageNotFound.html");
+                }
+
+                Response.Redirect("~/Errors/Index");
+            }
         }
 
         protected void Application_End(object sender, EventArgs e)
