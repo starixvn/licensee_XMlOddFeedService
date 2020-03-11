@@ -61,18 +61,6 @@
         {
             var ex = Server.GetLastError();
             LogHelper.Log(ex);
-
-            if (!AppSettings.Environment.Equals("Local", StringComparison.OrdinalIgnoreCase))
-            {
-                if (ex is HttpUnhandledException &&
-                    ex is HttpException && ((HttpException)ex).ErrorCode == 404)
-                {
-                    Server.ClearError();
-                    Response.Redirect("~/PageNotFound.html");
-                }
-
-                Response.Redirect("~/Errors/Index");
-            }
         }
 
         protected void Application_End(object sender, EventArgs e)
