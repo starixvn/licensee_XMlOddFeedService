@@ -295,6 +295,7 @@
     <Content Include="App_Data\usermanual.htm" />
     <Content Include="Scripts\shBrushXml.js" />
     <Content Include="Scripts\shCore.js" />
+    <Content Include="SystemLog\logfile.log.txt" />
     <Content Include="Views\OddsFeed\Help.cshtml" />
     <Content Include="stylesheets\Help\menu.css" />
     <Content Include="stylesheets\Help\content.css" />
@@ -393,9 +394,7 @@
       <Name>Fanex.OddsFeed.WebServiceLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SystemLog\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
