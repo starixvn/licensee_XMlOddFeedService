@@ -52,11 +52,7 @@
     <add key="BetTypeSchemaPath" value="Bin\BetTypeSchema\BetTypes.json" />
     <add key="BetTypeDescriptionPath" value="Bin\BetTypeSchema\BetTypeDescriptions.json" />
     <add key="BetTypeSchemaKey" value="BetTypeSchemaKey" />
-<<<<<<< HEAD
     <add key="CouchbaseServer" value="http://10.99.99.101:8091/pools" />
-=======
-    <add key="CouchbaseServer" value="http://10.99.99.51:8091/pools" />
->>>>>>> 000 - Change UM, Couchbase, mail URI
     <add key="Bucket.OddsFeed" value="oddsfeed" />
     <add key="Bucket.Outrights" value="outrights" />
     <add key="Bucket.LiveMatches" value="livematches" />

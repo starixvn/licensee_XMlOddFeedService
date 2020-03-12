@@ -9,6 +9,9 @@
     using Common.Helpers;
     using Couchbase;
     using Couchbase.Configuration.Client;
+    using Fanex.Data.Configuration;
+    using Fanex.Logging.Extensions.Database;
+    using Fanex.Logging.Extensions.Web;
 
     public class MvcApplication : HttpApplication
     { 
@@ -47,15 +50,15 @@
 
         protected void Application_Start()
         {
+            DbSettingProviderManager.Current.Start();
             AreaRegistration.RegisterAllAreas();
+            ExceptionHandler.UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             RegisterRoutes(RouteTable.Routes);
-            Data.Configuration.DbSettingProviderManager.Current.Start();
             ClusterHelper.Initialize(new ClientConfiguration
             {
                 Servers = new List<Uri> { new Uri(AppSettings.CouchbaseServer) }
             });
-            log4net.Config.XmlConfigurator.Configure();
             log4net.Config.XmlConfigurator.Configure();
         }
 
