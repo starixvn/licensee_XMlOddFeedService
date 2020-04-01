@@ -1,9 +1,9 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Caching
 {
-    using System;
-    using Couchbase;
+    using Common.Repository;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.Common.FilterAtribute;
+    using System;
 
     public class RateLimitService : IRateLimitService
     {
@@ -13,40 +13,41 @@
 
         public ThrottleInfo GetThrottleInfo(string ipAdress)
         {
-            var bucket = ClusterHelper.GetBucket(throttlerBucket);
-            var throttleInfo = bucket.Get<ThrottleInfo>(ipAdress).Value;
+            var throttleInfo = RedisRepository.ReadData<ThrottleInfo>(string.Format("{0}:{1}", throttlerBucket, UpdateIPText(ipAdress)));
 
             return throttleInfo ?? new ThrottleInfo();
         }
 
         public void UpdateThrottleInfo(string ipAdress, ThrottleInfo throttleInfo)
         {
-            var bucket = ClusterHelper.GetBucket(throttlerBucket);
-            bucket.Upsert(ipAdress, throttleInfo);
+            RedisRepository.StoreData<ThrottleInfo>(string.Format("{0}:{1}", throttlerBucket, UpdateIPText(ipAdress)), throttleInfo);
         }
 
         public void AddToBlockList(string ipAdress, DateTime expiredAt)
         {
-            var bucket = ClusterHelper.GetBucket(blocklistBucket);
-            bucket.Upsert(ipAdress, expiredAt, TimeSpan.FromSeconds(blockTimeInSeconds));
+            RedisRepository.StoreData<DateTime>(string.Format("{0}:{1}", blocklistBucket, UpdateIPText(ipAdress)), expiredAt, TimeSpan.FromSeconds(blockTimeInSeconds));
         }
 
         public bool IsBlocked(string ipAdress)
         {
             var isBlocked = true;
 
-            var bucket = ClusterHelper.GetBucket(blocklistBucket);
-            var expiredTime = bucket.Get<DateTime>(ipAdress).Value;
+            var expiredTime = RedisRepository.ReadData<DateTime>(string.Format("{0}:{1}", blocklistBucket, UpdateIPText(ipAdress)));
 
             var curTime = DateTime.Now;
 
             if (curTime >= expiredTime)
             {
-                bucket.Remove(ipAdress);
+                RedisRepository.Remove(string.Format("{0}:{1}", blocklistBucket, UpdateIPText(ipAdress)));
                 isBlocked = false;
             }
 
             return isBlocked;
+        }
+
+        private static string UpdateIPText(string ipAdress)
+        {
+            return ipAdress.Replace(":", "_");
         }
     }
 }
