@@ -271,6 +271,11 @@
 
         private static string GetOddsValue(BetChoiceSchema betChoiceSchema, object value)
         {
+            if (value is DBNull)
+            {
+                value = 0;
+            }
+
             if (betChoiceSchema.NotConvert)
             {
                 return ConvertOddsToString(Convert.ToDecimal(value));

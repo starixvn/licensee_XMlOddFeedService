@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StackExchange.Redis;
+using System;
 
 namespace Fanex.OddsFeed.Common.Helpers
 {
@@ -8,8 +9,11 @@ namespace Fanex.OddsFeed.Common.Helpers
          .ConnectionMultiplexer> _RedisConnection = new Lazy
                <StackExchange.Redis.ConnectionMultiplexer>(() =>
                {
+                   var options = ConfigurationOptions.Parse(System.Configuration.ConfigurationManager.AppSettings["RedisHost"]);
+                   options.ConnectTimeout = 60000;
+
                    return StackExchange.Redis.ConnectionMultiplexer.
-                      Connect(System.Configuration.ConfigurationManager.AppSettings["RedisHost"]);
+                      Connect(options);
                });
 
         public static StackExchange.Redis.ConnectionMultiplexer
