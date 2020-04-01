@@ -51,8 +51,6 @@
 
         public static string FromMail => ConfigurationManager.AppSettings["FromMail"];
 
-        public static string CouchbaseServer => ConfigurationManager.AppSettings["CouchbaseServer"];
-
         public static string BucketOddsFeed => ConfigurationManager.AppSettings["Bucket.OddsFeed"];
 
         public static string BucketOutrights => ConfigurationManager.AppSettings["Bucket.Outrights"];
