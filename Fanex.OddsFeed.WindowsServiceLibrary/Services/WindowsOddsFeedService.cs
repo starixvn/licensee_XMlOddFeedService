@@ -164,7 +164,7 @@
         {
             var document = RedisRepository.ReadData<IList<BetTypeSchema>>(string.Format("{0}:{1}", oddsFeedBucket, AppSettings.BetTypeSchemaKey));
 
-            if (document == null)
+            if (document == null || document.Count == 0)
             {
                 var newValue = JsonHelper.GetBetTypeSchemas<BetTypeSchema>(AppSettings.BetTypeSchemaPath);
 
