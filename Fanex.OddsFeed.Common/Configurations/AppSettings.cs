@@ -60,5 +60,15 @@
         public static string BucketLiveMatches => ConfigurationManager.AppSettings["Bucket.LiveMatches"];
 
         public static string BucketDeadMatches => ConfigurationManager.AppSettings["Bucket.DeadMatches"];
+
+        public static string BucketThrottler => ConfigurationManager.AppSettings["Bucket.Throttler"];
+
+        public static string BucketBlockList => ConfigurationManager.AppSettings["Bucket.BlockList"];
+
+        public static string ThrottlerRequestLimit => ConfigurationManager.AppSettings["Throttler.RequestLimit"];
+
+        public static string ThrottlerTimeOutInSeconds => ConfigurationManager.AppSettings["Throttler.TimeOutInSeconds"];
+
+        public static string ThrollerBlockTimeInSeconds => ConfigurationManager.AppSettings["Throttler.BlockTimeInSeconds"];
     }
 }

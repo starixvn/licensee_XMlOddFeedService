@@ -1,20 +1,20 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace ExcelToJson
 {
-    public class Program
+    public static class Program
     {
         private const string excelFile = @"D:\XML_MasterTag.20180925_20181120.xlsx";
         private const string outputJsonFile = @"D:\outputJson.txt";
         private const string outputJsonDescriptionFile = @"D:\outputDescJson.txt";
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            string con = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source="
+            const string con = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source="
                 + excelFile
                 + ";Extended Properties='Excel 12.0;HDR=Yes;';";
 
@@ -27,31 +27,24 @@ namespace ExcelToJson
                 {
                     while (dr.Read())
                     {
-                        if (IsGroupRow(dr))
+                        bettypes.Add(IsGroupRow(dr) ? new Item
                         {
-                            bettypes.Add(new Item
-                            {
-                                BettypeName = dr[0].ToString(),
-                                BettypeId = int.Parse(dr[1].ToString()),
-                                Tag = dr[3].ToString(),
-                                MatchAttribute = dr[5].ToString(),
-                                ExtraAttribute = dr[6].ToString(),
-                                BetChoice = dr[7].ToString(),
-                                Description = dr[8].ToString(),
-                                DBColumns = dr[9].ToString(),
-                            });
-                        }
-                        else
+                            BettypeName = dr[0].ToString(),
+                            BettypeId = int.Parse(dr[1].ToString()),
+                            Tag = dr[3].ToString(),
+                            MatchAttribute = dr[5].ToString(),
+                            ExtraAttribute = dr[6].ToString(),
+                            BetChoice = dr[7].ToString(),
+                            Description = dr[8].ToString(),
+                            DBColumns = dr[9].ToString(),
+                        } : new Item
                         {
-                            bettypes.Add(new Item
-                            {
-                                MatchAttribute = dr[5].ToString(),
-                                ExtraAttribute = dr[6].ToString(),
-                                BetChoice = dr[7].ToString(),
-                                Description = dr[8].ToString(),
-                                DBColumns = dr[9].ToString(),
-                            });
-                        }
+                            MatchAttribute = dr[5].ToString(),
+                            ExtraAttribute = dr[6].ToString(),
+                            BetChoice = dr[7].ToString(),
+                            Description = dr[8].ToString(),
+                            DBColumns = dr[9].ToString(),
+                        });
                     }
                 }
             }
@@ -73,7 +66,7 @@ namespace ExcelToJson
             WriteBetTypeDescJson(bettypes);
         }
 
-        static void WriteBetTypeSchemaJson(List<Item> bettypes)
+        private static void WriteBetTypeSchemaJson(List<Item> bettypes)
         {
             var bettypeGroups = bettypes.GroupBy(b => b.BettypeId).Select(g =>
             {
@@ -84,30 +77,8 @@ namespace ExcelToJson
                     DataAttribute = g.First().HasExtraOverUnder ? "hdp1" : string.Empty
                 };
 
-                var group = new JsonItem
-                {
-                    BettypeId = g.First().BettypeId,
-                    Tag = g.First().Tag,
-                    Reserve = g.First().HasExtraHandicap ? new ReserveItem() : null,
-                    BetChoices = g.Select(b =>
-                    {
-                        var matchAttribute = b.MatchAttribute.ToLower();
-                        if (matchAttribute == "h" && (g.First().HasExtraHandicap || g.First().HasExtraOverUnder))
-                        {
-                            matchAttribute = "home";
-                        }
-
-                        return new BetChoice
-                        {
-                            MatchAttribute = matchAttribute,
-                            DataAttribute = (b.IsResource || b.IsResourceX || b.IsResourceY) ? "resourceID" : b.DataAttribute,
-                            IsResource = b.IsResource,
-                            IsResourceX = b.IsResourceX,
-                            IsResourceY = b.IsResourceY
-                        };
-                    }).ToList()
-                };
-
+                var group = GetBettypesJsonItem(g);
+               
                 if (g.First().HasExtraHandicap || g.First().HasExtraOverUnder)
                 {
                     group.BetChoices.Insert(0, extraBetchoice);
@@ -120,12 +91,10 @@ namespace ExcelToJson
             System.IO.File.WriteAllText(outputJsonFile, json);
         }
 
-        static void WriteBetTypeDescJson(List<Item> bettypes)
+        private static void WriteBetTypeDescJson(List<Item> bettypes)
         {
             var bettypeGroups = bettypes.GroupBy(b => b.BettypeId).Select(g =>
             {
-
-
                 var group = new JasonDescItem
                 {
                     BetTypeId = g.First().BettypeId,
@@ -133,7 +102,7 @@ namespace ExcelToJson
                     Tag = g.First().Tag,
                     BetChoices = g.Select(b =>
                     {
-                        var matchAttribute = b.MatchAttribute.ToLower();
+                        var matchAttribute = b.MatchAttribute.ToLowerInvariant();
                         if (matchAttribute == "h" && (g.First().HasExtraHandicap || g.First().HasExtraOverUnder))
                         {
                             matchAttribute = "home";
@@ -146,7 +115,9 @@ namespace ExcelToJson
                         };
                     }).ToList(),
                     ExtraDescription = g.First().HasExtraHandicap
-                        ? "For indication of handicap 'h', please show the handicap for the favorite team, use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp; + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
+                        ? "For indication of handicap 'h', please show the handicap for the favorite team," +
+                        " use '+' or '-' to indicate the home team is the favorite or underdog i.e.<br> &nbsp;&nbsp;" +
+                        " + When h<=0, the home team is the favorite.<br> &nbsp;&nbsp; + When h>0, the away team is the favorite."
                         : string.Empty
                 };
 
@@ -167,7 +138,6 @@ namespace ExcelToJson
                     });
                 }
 
-
                 return group;
             });
 
@@ -175,16 +145,45 @@ namespace ExcelToJson
             System.IO.File.WriteAllText(outputJsonDescriptionFile, json);
         }
 
-        static bool IsGroupRow(OleDbDataReader dr)
+        private static bool IsGroupRow(OleDbDataReader dr)
         {
             try
             {
                 return dr[0].ToString() != "";
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
+        }
+
+        private static JsonItem GetBettypesJsonItem(IGrouping<int,Item> g)
+        {
+            var group = new JsonItem
+            {
+                BettypeId = g.First().BettypeId,
+                Tag = g.First().Tag,
+                Reserve = g.First().HasExtraHandicap ? new ReserveItem() : null,
+                BetChoices = g.Select(b =>
+                {
+                    var matchAttribute = b.MatchAttribute.ToLowerInvariant();
+                    if (matchAttribute == "h" && (g.First().HasExtraHandicap || g.First().HasExtraOverUnder))
+                    {
+                        matchAttribute = "home";
+                    }
+
+                    return new BetChoice
+                    {
+                        MatchAttribute = matchAttribute,
+                        DataAttribute = (b.IsResource || b.IsResourceX || b.IsResourceY) ? "resourceID" : b.DataAttribute,
+                        IsResource = b.IsResource,
+                        IsResourceX = b.IsResourceX,
+                        IsResourceY = b.IsResourceY
+                    };
+                }).ToList()
+            };
+
+            return group;
         }
     }
 }

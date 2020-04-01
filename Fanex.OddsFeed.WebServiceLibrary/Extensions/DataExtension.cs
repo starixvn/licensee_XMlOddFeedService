@@ -20,11 +20,11 @@
             foreach (DataRow row in dt.Rows)
             {
                 var param = new string[]
-                                                    {
-                                                        row["matchid"].ToString(), row["kickofftime"].ToString(),
-                                                        row["leaguename"].ToString().Replace(",", "\u002C"), row["home"].ToString().Replace(",", "\u002C"),
-                                                        row["away"].ToString().Replace(",", "\u002C") + separateRow
-                                                    };
+                {
+                    row["matchid"].ToString(), row["kickofftime"].ToString(),
+                    row["leaguename"].ToString().Replace(",", "\u002C"), row["home"].ToString().Replace(",", "\u002C"),
+                    row["away"].ToString().Replace(",", "\u002C") + separateRow
+                };
 
                 sb.Append(string.Join(",", param));
             }

@@ -9,7 +9,7 @@
 
     public class BetTypeController : BaseController
     {
-        private const int TimeExpireCacheForBetType = 20;
+        private const int TimeExpireCacheForBetType = 60;
         private readonly IPartnerService _partnerService;
 
         public BetTypeController()
@@ -19,6 +19,11 @@
 
         public ActionResult Index(string username)
         {
+            if (this.IsDownTime())
+            {
+                return XmlContent(GetDowntimeContent());
+            }
+
             var authenticatedPartner = GetAuthenticatedPartner(username);
 
             return !string.IsNullOrEmpty(authenticatedPartner.Error)

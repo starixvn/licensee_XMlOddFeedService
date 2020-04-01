@@ -2,7 +2,6 @@
 {
     using System;
     using System.Web.Mvc;
-    using System.Web.UI;
     using Fanex.Caching;
     using Fanex.OddsFeed.Common.DTO;
     using Fanex.OddsFeed.WebServiceLibrary.Helpers;
@@ -10,7 +9,7 @@
 
     public class SportController : BaseController
     {
-        private const int TimeExpireCacheForSport = 20;
+        private const int TimeExpireCacheForSport = 60;
 
         private readonly IPartnerService _partnerService;
 
@@ -21,6 +20,11 @@
 
         public ActionResult Index(string username)
         {
+            if (this.IsDownTime())
+            {
+                return XmlContent(GetDowntimeContent());
+            }
+
             var authenticatedPartner = GetAuthenticatedPartner(username);
 
             return !string.IsNullOrEmpty(authenticatedPartner.Error)

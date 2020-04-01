@@ -132,6 +132,7 @@
     <Compile Include="DTO\UserLanguage.cs" />
     <Compile Include="DTO\UserProfile.cs" />
     <Compile Include="DTO\UserQuery.cs" />
+    <Compile Include="FilterAtribute\ThrottleInfo.cs" />
     <Compile Include="Formatters\NumberFormatter.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Helpers\StringHelper.cs" />

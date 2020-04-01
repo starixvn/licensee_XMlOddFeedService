@@ -88,9 +88,17 @@
       <HintPath>..\packages\Fanex.Data.DbSettingProviderExtension.1.0.0.1\lib\net40\Fanex.Data.DbSettingProviderExtension.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Logging.1.0.0.0\lib\net40\Fanex.Logging.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fanex.Logging, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Logging.1.0.4\lib\net40\Fanex.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Logging.Extensions, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Logging.Extensions.1.0.6\lib\net461\Fanex.Logging.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Logging.Extensions.Database.V62, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Logging.Extensions.Database.V62.1.0.3\lib\net40\Fanex.Logging.Extensions.Database.V62.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Logging.Extensions.Web, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Logging.Extensions.Web.1.0.6\lib\net40\Fanex.Logging.Extensions.Web.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.MailDeliver.MailClient, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.MailDeliver.MailClient.1.0.0.2\lib\net40\Fanex.MailDeliver.MailClient.dll</HintPath>
@@ -196,6 +204,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\CustomHandleErrorAttribute.cs" />
+    <Compile Include="App_Start\RateLimitFilterAttribute.cs" />
     <Compile Include="Controllers\AnalyticsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BetDaqController.cs" />
@@ -223,9 +232,11 @@
     <Content Include="App_Data\Local\SpNames.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Themes\Default\Images\logo_licensee.png" />
     <Content Include="App_Themes\Default\Images\top-bg.png" />
     <Content Include="App_Themes\Default\Images\tp_404error.png" />
     <Content Include="App_Themes\Default\Images\tp_exclamation.png" />
+    <Content Include="App_Themes\Default\Images\tp_maintenance.png" />
     <Content Include="App_Themes\Help\dropdown-menu_files\arrow-filter.png" />
     <Content Include="App_Themes\Help\dropdown-menu_files\bg.png" />
     <Content Include="App_Themes\Help\dropdown-menu_files\body_bg.gif" />
@@ -295,7 +306,6 @@
     <Content Include="App_Data\usermanual.htm" />
     <Content Include="Scripts\shBrushXml.js" />
     <Content Include="Scripts\shCore.js" />
-    <Content Include="SystemLog\logfile.log.txt" />
     <Content Include="Views\OddsFeed\Help.cshtml" />
     <Content Include="stylesheets\Help\menu.css" />
     <Content Include="stylesheets\Help\content.css" />
@@ -369,6 +379,8 @@
     <Content Include="Views\OddsFeed\_Menu.cshtml" />
     <Content Include="Views\OddsFeed\GeneralConcepts\_Outright.cshtml" />
     <Content Include="Views\OddsFeed\GeneralConcepts\_Errors.cshtml" />
+    <Content Include="Views\Shared\UnderMaintainance.cshtml" />
+    <Content Include="SystemLog\logfile.log.txt" />
     <None Include="Web.MNL.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

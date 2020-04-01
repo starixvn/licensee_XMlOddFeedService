@@ -80,7 +80,8 @@
         {
             if (IsDownTime())
             {
-                return Content(GetDowntimeContent());
+                ViewBag.UmtTo = GetUndermaintenanceTime().To;
+                return View("UnderMaintainance");
             }
 
             var domainName = RequestHelper.DomainName(Request.ServerVariables);
