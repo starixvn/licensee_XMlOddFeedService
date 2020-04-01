@@ -10,7 +10,9 @@ namespace Fanex.OddsFeed.Common.Helpers
                <StackExchange.Redis.ConnectionMultiplexer>(() =>
                {
                    var options = ConfigurationOptions.Parse(System.Configuration.ConfigurationManager.AppSettings["RedisHost"]);
-                   options.ConnectTimeout = 60000;
+                   options.ConnectTimeout = 30000;
+                   options.SyncTimeout = 30000;
+                   options.AsyncTimeout = 30000;
 
                    return StackExchange.Redis.ConnectionMultiplexer.
                       Connect(options);
