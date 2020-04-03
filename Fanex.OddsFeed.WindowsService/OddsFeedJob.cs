@@ -1,12 +1,12 @@
 ﻿namespace Fanex.OddsFeed.WindowsService
 {
-    using System;
     using Fanex.Logging;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.WindowsServiceLibrary.Services;
     using NLog;
     using ONEbook.UM.Services;
     using Quartz;
+    using System;
 
     public class OddsFeedJob : IJob
     {
@@ -34,6 +34,7 @@
             catch (Exception exception)
             {
                 LogService.Error("OddsFeedJob:Execute -- " + GetExceptionMessage(exception), exception);
+                _fileLogger.Trace("Exception: " + GetExceptionMessage(exception));
             }
             finally
             {
