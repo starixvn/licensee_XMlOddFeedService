@@ -44,13 +44,15 @@
 
         private static string GetExceptionMessage(Exception exception)
         {
+            var innerException = (exception.InnerException != null) ? exception.InnerException.Message + " " + exception.InnerException.StackTrace : string.Empty;
             var messages = new[]
             {
                 "ENVIRONMENT: " + AppSettings.Environment,
                 "ERROR: " + exception.Message,
                 "SOURCE: " + exception.Source,
                 "TARGETSITE: " + exception.TargetSite,
-                "STACKTRACE: " + exception.StackTrace
+                "STACKTRACE: " + exception.StackTrace,
+                "INNER EXCEPTION: " + innerException
             };
 
             return string.Join(Environment.NewLine, messages);
