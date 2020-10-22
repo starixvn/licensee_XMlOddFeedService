@@ -143,6 +143,7 @@
     <Compile Include="Configurations\AppSettings.cs" />
     <Compile Include="Configurations\CacheKeys.cs" />
     <Compile Include="Configurations\FormatType.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Converters\ListConverter.cs" />
     <Compile Include="Converters\OddsConverter.cs" />
     <Compile Include="DataObjects\ProfileData.cs" />

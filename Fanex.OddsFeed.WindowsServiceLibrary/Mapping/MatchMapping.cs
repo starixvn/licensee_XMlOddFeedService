@@ -271,17 +271,22 @@
 
         private static string GetOddsValue(BetChoiceSchema betChoiceSchema, object value)
         {
+            object oddValue;
             if (value is DBNull)
             {
-                value = 0;
+                oddValue = 0;
+            }
+            else
+            {
+                oddValue = value;
             }
 
             if (betChoiceSchema.NotConvert)
             {
-                return ConvertOddsToString(Convert.ToDecimal(value));
+                return ConvertOddsToString(Convert.ToDecimal(oddValue));
             }
 
-            return ConvertMalayToDecimalOddsString(Convert.ToDecimal(value));
+            return ConvertMalayToDecimalOddsString(Convert.ToDecimal(oddValue));
         }
 
         private static BetTypeSchema FindBetTypeSchema(int betTypeId, IEnumerable<BetTypeSchema> schemas)
