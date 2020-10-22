@@ -225,6 +225,9 @@
     <Compile Include="Controllers\SportController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="..\.sonarlint\xmloddsfeedservice\CSharp\SonarLint.xml">
+      <Link>SonarLint.xml</Link>
+    </AdditionalFiles>
     <Content Include="App_Data\MNL\SpNames.xml" />
     <Content Include="App_Data\Pro\SpNames.xml" />
     <Content Include="App_Data\SIT\SpNames.xml" />
