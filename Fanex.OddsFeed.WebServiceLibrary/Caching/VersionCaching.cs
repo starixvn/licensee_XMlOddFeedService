@@ -2,7 +2,6 @@
 {
     using System;
     using Common.Repository;
-    using Couchbase;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.Common.DTO;
     using Fanex.OddsFeed.WebServiceLibrary.Models;
