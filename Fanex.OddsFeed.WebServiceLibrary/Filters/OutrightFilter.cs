@@ -7,17 +7,20 @@
     {
         public bool FilterOutright(Outright outright, UserProfile userProfile, UserQuery userQuery)
         {
-            return FilterBySport(userProfile, userQuery, outright) &&
+            var sportLeageCountryCondition = FilterBySport(userProfile, userQuery, outright) &&
                    FilterByLeague(userQuery, outright) &&
-                   FilterByCountry(userProfile, userQuery, outright) &&
+                   FilterByCountry(userProfile, userQuery, outright);
+
+            return sportLeageCountryCondition &&
                    FilterByKeyWord(userProfile, outright) &&
                    FilterByProfile(userProfile, outright);
         }
 
         private static bool FilterBySport(UserProfile userProfile, UserQuery userQuery, Outright outright)
         {
-            return (userProfile.Sports == null || userProfile.Sports.Count == 0 || userProfile.Sports.Contains(outright.SportId))
-                && (userQuery.Sports == null || userQuery.Sports.Count == 0 || userQuery.Sports.Contains(outright.SportId));
+            var userProfileCondition = userProfile.Sports == null || userProfile.Sports.Count == 0 || userProfile.Sports.Contains(outright.SportId);
+            var userQueryCondition = userQuery.Sports == null || userQuery.Sports.Count == 0 || userQuery.Sports.Contains(outright.SportId);
+            return userProfileCondition && userQueryCondition;
         }
 
         private static bool FilterByLeague(UserQuery userQuery, Outright outright)
@@ -27,18 +30,19 @@
 
         private static bool FilterByCountry(UserProfile userProfile, UserQuery userQuery, Outright outright)
         {
-            return (userProfile.Countries == null || userProfile.Countries.Count == 0 || StringHelper.ContainInList(userProfile.Countries, outright.CountryCode))
-                && (userQuery.Countries == null || userQuery.Countries.Count == 0 || StringHelper.ContainInList(userQuery.Countries, outright.CountryCode));
+            var userProfileCondition = userProfile.Countries == null || userProfile.Countries.Count == 0 || StringHelper.ContainInList(userProfile.Countries, outright.CountryCode);
+            var userQueryCondition = userQuery.Countries == null || userQuery.Countries.Count == 0 || StringHelper.ContainInList(userQuery.Countries, outright.CountryCode);
+            return userProfileCondition && userQueryCondition;
         }
 
         private static bool FilterByProfile(UserProfile userProfile, Outright outright)
         {
-            return userProfile.Outrights == null || userProfile.Outrights.Count ==0 || userProfile.Outrights.Contains(outright.EventId);
+            return userProfile.Outrights == null || userProfile.Outrights.Count == 0 || userProfile.Outrights.Contains(outright.EventId);
         }
 
         private static bool FilterByKeyWord(UserProfile userProfile, Outright outright)
         {
-            return string.IsNullOrEmpty(userProfile.OutrightsKeyword) 
+            return string.IsNullOrEmpty(userProfile.OutrightsKeyword)
                 || StringHelper.Contain(outright.EventEn, userProfile.OutrightsKeyword);
         }
     }

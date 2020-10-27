@@ -1,10 +1,10 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Common.DTO;
     using Models;
     using Repositories;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class UserService : IUserService
     {
@@ -24,7 +24,8 @@
 
         public ColumnModel<Sport> GetSports(string username)
         {
-            return GenerateData(_repository.GetSports(username).Where(s => s.SportId != 50));
+            const int ignoreSportId = 50;
+            return GenerateData(_repository.GetSports(username).Where(s => s.SportId != ignoreSportId));
         }
 
         public ColumnModel<Country> GetCountries(string username)
@@ -39,9 +40,10 @@
 
         private static ColumnModel<T> GenerateData<T>(IEnumerable<T> list)
         {
+            const int amountCondition = 5;
             var numberItems = list.Count();
 
-            if (numberItems <= 5)
+            if (numberItems <= amountCondition)
             {
                 return GetColumns(list, numberItems, 0, 0);
             }

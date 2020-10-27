@@ -85,7 +85,7 @@
             return result;
         }
 
-        private string GetExceptionMessage(Exception exception)
+        private static string GetExceptionMessage(Exception exception)
         {
             var messages = new[]
             {
@@ -108,7 +108,7 @@
             }
         }
 
-        private IList<Match> GetDeadballMatches(IList<BetTypeSchema> betTypeSchemas)
+        private static IList<Match> GetDeadballMatches(IList<BetTypeSchema> betTypeSchemas)
         {
             using (var deadballOdds = DbAccess.GetDeadballOddsData())
             {
@@ -182,7 +182,7 @@
             return document.Value;
         }
 
-        private bool Store<T>(string bucketName, string key, T value)
+        private static bool Store<T>(string bucketName, string key, T value)
         {
             var bucket = ClusterHelper.GetBucket(bucketName);
             var result = bucket.Upsert(key, value);

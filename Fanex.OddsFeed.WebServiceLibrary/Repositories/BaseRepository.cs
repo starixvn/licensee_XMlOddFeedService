@@ -5,8 +5,12 @@
     using Data;
     using Fanex.Data.Repository;
 
-    public abstract class BaseRepository
+    public class BaseRepository
     {
+        protected BaseRepository()
+        {
+        }
+
         protected const string ErrorCode = "errcode";
         protected const string ErrorMsg = "errmsg";
         protected const string Language = "language";

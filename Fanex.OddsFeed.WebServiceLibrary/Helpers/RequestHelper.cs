@@ -1,13 +1,14 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Helpers
 {
+    using System;
+    using System.Collections.Specialized;
+    using System.Globalization;
+    using System.Linq;
+    using System.Web;
     using Common;
     using Common.Configurations;
     using Common.Converters;
     using Common.DTO;
-    using System;
-    using System.Collections.Specialized;
-    using System.Linq;
-    using System.Web;
 
     public static class RequestHelper
     {
@@ -21,7 +22,7 @@
             }
             else
             {
-                var forwardedIps = clientIp.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var forwardedIps = clientIp.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
                 clientIp = forwardedIps[forwardedIps.Length - 1];
             }
@@ -71,15 +72,15 @@
 
         public static UserQuery GetFilter(HttpRequestBase request)
         {
-            var filterSport = request["Sport"] == null ? string.Empty : request["Sport"].ToLower();
-            var filterCountry = request["Country"] == null ? string.Empty : request["Country"].ToLower();
-            var filterBettype = request["Bettype"] == null ? string.Empty : request["Bettype"].ToLower();
-            var filterLeague = request["League"] == null ? string.Empty : request["League"].ToLower();
-            var moreTime = request["moretime"] == null ? string.Empty : request["moretime"].ToLower();
+            var filterSport = request["Sport"] == null ? string.Empty : request["Sport"].ToLower(CultureInfo.InvariantCulture);
+            var filterCountry = request["Country"] == null ? string.Empty : request["Country"].ToLower(CultureInfo.InvariantCulture);
+            var filterBettype = request["Bettype"] == null ? string.Empty : request["Bettype"].ToLower(CultureInfo.InvariantCulture);
+            var filterLeague = request["League"] == null ? string.Empty : request["League"].ToLower(CultureInfo.InvariantCulture);
+            var moreTime = request["moretime"] == null ? string.Empty : request["moretime"].ToLower(CultureInfo.InvariantCulture);
 
             if (!string.IsNullOrEmpty(filterCountry))
             {
-                filterCountry = StandardizeCountryCodeList(string.Join(",", ListConverter.ConvertToListString(filterCountry, true))).ToLower();
+                filterCountry = StandardizeCountryCodeList(string.Join(",", ListConverter.ConvertToListString(filterCountry, true))).ToLower(CultureInfo.InvariantCulture);
                 if (string.IsNullOrEmpty(filterCountry))
                 {
                     filterCountry = "null";
@@ -88,14 +89,12 @@
 
             return new UserQuery
             {
-
                 Sports = ListConverter.ConvertToListInt(filterSport),
                 Countries = ListConverter.ConvertToListString(filterCountry, true),
                 BetTypes = ListConverter.ConvertToListInt(filterBettype),
                 Leagues = ListConverter.ConvertToListString(filterLeague, true),
                 MoreTime = (moreTime == "yes")
             };
-
         }
 
         public static bool IsOverLimitedOptions(UserQuery userQuery)
@@ -110,10 +109,11 @@
 
         private static string StandardizeCountryCodeList(string countryCodeList)
         {
+            const int valueIndex = 2;
             using (var countryCodeTable = DbAccess.GetCountryList())
             {
                 var filteredRows = countryCodeTable.Select($"{"CountryCode"} in ('{countryCodeList.Replace(",", "','")}')");
-                return string.Join(",", filteredRows.Select(x => x.ItemArray.GetValue(2)).AsEnumerable());
+                return string.Join(",", filteredRows.Select(x => x.ItemArray.GetValue(valueIndex)).AsEnumerable());
             }
         }
     }

@@ -1,18 +1,18 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Builders
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security;
+    using System.Text;
     using Common.Converters;
     using Common.DTO;
     using Common.Helpers;
     using Filters;
     using Models;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Security;
-    using System.Text;
 
     public class OutrightBuilder : IOutrightBuilder
     {
-        private OutrightFilter _outrightFilter;
+        private readonly OutrightFilter _outrightFilter;
 
         public OutrightBuilder()
         {
@@ -55,50 +55,23 @@
         {
             oddsFeedNode.Append($"<event id=\"{outright.EventId}\" ");
 
-            if (userLanguage.IsSupportedEnglish)
-            {
-                oddsFeedNode.Append($"ge=\"{SecurityElement.Escape(outright.EventEn)}\" ");
-            }
+            AppendEventNodeSingleCondition(oddsFeedNode, userLanguage.IsSupportedEnglish, $"ge=\"{SecurityElement.Escape(outright.EventEn)}\" ");
 
-            if (userLanguage.IsSupportedTraditionalChinese)
-            {
-                oddsFeedNode.Append($"gt=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventTw, outright.EventEn))}\" ");
-            }
+            AppendEventNodeSingleCondition(oddsFeedNode, userLanguage.IsSupportedTraditionalChinese, $"gt=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventTw, outright.EventEn))}\" ");
 
-            if (userLanguage.IsSupportedSimplifiedChinese)
-            {
-                oddsFeedNode.Append($"gs=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventCn, outright.EventEn))}\" ");
-            }
+            AppendEventNodeSingleCondition(oddsFeedNode, userLanguage.IsSupportedSimplifiedChinese, $"gs=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventCn, outright.EventEn))}\" ");
 
-            if (userLanguage.IsSupportedIndonesia)
-            {
-                oddsFeedNode.Append($"gb=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventIndonesia, outright.EventEn))}\" ");
-            }
+            AppendEventNodeSingleCondition(oddsFeedNode, userLanguage.IsSupportedIndonesia, $"gb=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventIndonesia, outright.EventEn))}\" ");
 
-            if (userLanguage.IsSupportedThai)
-            {
-                oddsFeedNode.Append($"ga=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventThai, outright.EventEn))}\" ");
-            }
+            AppendEventNodeSingleCondition(oddsFeedNode, userLanguage.IsSupportedThai, $"ga=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventThai, outright.EventEn))}\" ");
 
-            if (userLanguage.IsSupportedKorean)
-            {
-                oddsFeedNode.Append($"gk=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventKorean, outright.EventEn))}\" ");
-            }
+            AppendEventNodeSingleCondition(oddsFeedNode, userLanguage.IsSupportedKorean, $"gk=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventKorean, outright.EventEn))}\" ");
 
-            if (userLanguage.IsSupportedVietnamese)
-            {
-                oddsFeedNode.Append($"gv=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventVietnamese, outright.EventEn))}\" ");
-            }
+            AppendEventNodeSingleCondition(oddsFeedNode, userLanguage.IsSupportedVietnamese, $"gv=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventVietnamese, outright.EventEn))}\" ");
 
-            if (userLanguage.IsSupportedJapanese)
-            {
-                oddsFeedNode.Append($"gj=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventJapanese, outright.EventEn))}\" ");
-            }
+            AppendEventNodeSingleCondition(oddsFeedNode, userLanguage.IsSupportedJapanese, $"gj=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventJapanese, outright.EventEn))}\" ");
 
-            if (userLanguage.IsSupportedHindi)
-            {
-                oddsFeedNode.Append($"gh=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventHindi, outright.EventEn))}\" ");
-            }
+            AppendEventNodeSingleCondition(oddsFeedNode, userLanguage.IsSupportedHindi, $"gh=\"{SecurityElement.Escape(StringHelper.SelectName(outright.EventHindi, outright.EventEn))}\" ");
 
             oddsFeedNode.Append($"mt=\"{outright.Time}\" sport=\"{SecurityElement.Escape(outright.SportName)}\">");
 
@@ -108,6 +81,14 @@
             }
 
             oddsFeedNode.Append("</event>");
+        }
+
+        private static void AppendEventNodeSingleCondition(StringBuilder builder, bool condition, string value)
+        {
+            if (condition)
+            {
+                builder.Append(value);
+            }
         }
 
         private static void AppendOdd(
@@ -173,11 +154,12 @@
 
         public static bool FilterBetType(UserQuery userQuery, bool isSample)
         {
+            const int defaultBetType = 10;
+            var notNullCondition = userQuery.BetTypes != null && userQuery.BetTypes.Contains(defaultBetType);
             return !isSample
                 && (userQuery.BetTypes == null
                 || userQuery.BetTypes.Count == 0
-                || (userQuery.BetTypes != null
-                && userQuery.BetTypes.Contains(10)));
+                || notNullCondition);
         }
     }
 }

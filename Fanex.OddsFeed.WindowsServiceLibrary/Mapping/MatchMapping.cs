@@ -1,14 +1,14 @@
 ﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.Mapping
 {
-    using Common.Converters;
-    using Common.DTO;
-    using Common.Schemas;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Data;
     using System.Globalization;
     using System.Linq;
+    using Common.Converters;
+    using Common.DTO;
+    using Common.Schemas;
 
     public class MatchMapping : IMatchMapping
     {
@@ -189,12 +189,14 @@
                 }
                 else if (betChoiceSchema.IsResourceX || betChoiceSchema.IsResourceY)
                 {
+                    const int maxResouceIdAmount = 4;
+                    const int subStringLength = 2;
                     var resourceId = Convert.ToString(row["resourceID"]);
                     var index = betChoiceSchema.IsResourceX ? 0 : 2;
                     betChoices.Add(new BetChoice
                     {
                         Code = betChoiceSchema.MatchAttribute,
-                        Value = (resourceId.Count() >= 4) ? resourceId.Substring(index, 2) : string.Empty,
+                        Value = (resourceId.Count() >= maxResouceIdAmount) ? resourceId.Substring(index, subStringLength) : string.Empty,
                         NotConvert = true
                     });
                 }

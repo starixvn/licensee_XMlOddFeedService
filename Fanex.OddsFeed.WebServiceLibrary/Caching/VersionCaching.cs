@@ -1,10 +1,10 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Caching
 {
+    using System;
     using Couchbase;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.Common.DTO;
     using Fanex.OddsFeed.WebServiceLibrary.Models;
-    using System;
 
     public class VersionCaching : IVersionCaching
     {
@@ -14,18 +14,18 @@
 
         public CacheVersion GetRightVersion(OddsFeedsModel model)
         {
+            const int maxDelayTimes = 3;
             var currentVersion = GetCurrentVersion();
-
             var isFullChain = IsFullChain();
-
             var delayTimeDeadball = 0;
             var delayTimeLive = 0;
             var delayTimeOutright = 0;
-            if (model.UserProfile.DelayTimes.Count >= 3)
+            if (model.UserProfile.DelayTimes.Count >= maxDelayTimes)
             {
-                delayTimeDeadball = model.UserProfile.DelayTimes[0];
-                delayTimeLive = model.UserProfile.DelayTimes[1];
-                delayTimeOutright = model.UserProfile.DelayTimes[2];
+                var index = 0;
+                delayTimeDeadball = model.UserProfile.DelayTimes[index++];
+                delayTimeLive = model.UserProfile.DelayTimes[index++];
+                delayTimeOutright = model.UserProfile.DelayTimes[index];
             }
 
             return new CacheVersion

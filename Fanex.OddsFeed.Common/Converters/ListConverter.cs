@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class ListConverter
+    public static class ListConverter
     {
         public static IList<int> ConvertToListInt(string stringArray)
         {

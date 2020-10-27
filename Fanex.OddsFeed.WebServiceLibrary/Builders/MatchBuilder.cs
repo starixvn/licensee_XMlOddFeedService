@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Security;
     using System.Text;
@@ -255,7 +256,7 @@
 
         private static string ConvertOdds(int oddsRegion, BetChoice betChoice)
         {
-            return betChoice.NotConvert ? betChoice.Value : OddsConverter.ConvertOdds(oddsRegion, Convert.ToDecimal(betChoice.Value)).ToString();
+            return betChoice.NotConvert ? betChoice.Value : OddsConverter.ConvertOdds(oddsRegion, Convert.ToDecimal(betChoice.Value)).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

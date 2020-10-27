@@ -1,15 +1,15 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
     using Builders;
     using Caching;
     using Common.DTO;
     using Common.Helpers;
     using Filters;
     using Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     public class OddsFeedService : IOddsFeedService
     {
@@ -132,7 +132,8 @@
 
         private static DateTime GetLastUpdate()
         {
-            return DateTime.Now.AddHours(12);
+            const int addHour = 12;
+            return DateTime.Now.AddHours(addHour);
         }
 
         private static void AppendBeginMatches(
@@ -141,35 +142,34 @@
             int matchesTimeStamp,
             DateTime lastUpdate)
         {
-            if (matchesTimeStamp > 0)
-            {
-                oddsFeedNode.Append($"<matches lastupdate=\"{lastUpdate}\" timestamp=\"{matchesTimeStamp}\" oddstype=\"{GetOddsTypeName(model.UserProfile.OddRegion)}\">");
-            }
-            else
-            {
-                oddsFeedNode.Append("<matches>");
-            }
+            oddsFeedNode.Append(matchesTimeStamp > 0 ?
+                $"<matches lastupdate=\"{lastUpdate}\" timestamp=\"{matchesTimeStamp}\" oddstype=\"{GetOddsTypeName(model.UserProfile.OddRegion)}\">" :
+                "<matches>");
         }
 
         private static string GetOddsTypeName(int oddsTypeId)
         {
+            const int hongKongTypeName = 2;
+            const int decimalTypeName = 3;
+            const int indoTypeName = 4;
+            const int usTypeName = 5;
             var oddsTypeName = string.Empty;
 
             switch (oddsTypeId)
             {
-                case 2:
+                case hongKongTypeName:
                     oddsTypeName = "HongKong";
                     break;
 
-                case 3:
+                case decimalTypeName:
                     oddsTypeName = "Decimal";
                     break;
 
-                case 4:
+                case indoTypeName:
                     oddsTypeName = "Indo";
                     break;
 
-                case 5:
+                case usTypeName:
                     oddsTypeName = "US";
                     break;
 

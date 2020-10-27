@@ -1,6 +1,7 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Services
 {
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Text;
     using Criteria;
     using Fanex.OddsFeed.Common.Configurations;
@@ -24,27 +25,36 @@
             string ipAddress,
             int? fromid)
         {
-            var feeds = string.Empty;
+            string feeds;
 
-            switch (feedName.ToLower())
+            switch (feedName.ToLower(CultureInfo.InvariantCulture))
             {
                 case "ip":
                     feeds = GetIpFeeds(formatType, username, domain, ipAddress, fromid);
                     break;
+
                 case "team":
                     feeds = GetTeamFeeds(formatType, username, domain, ipAddress, fromid);
                     break;
+
                 case "league":
                     feeds = GetLeagueFeeds(formatType, username, domain, ipAddress, fromid);
                     break;
+
                 case "country":
                     feeds = GetCountryFeeds(formatType, username, domain, ipAddress, fromid);
                     break;
+
                 case "sport":
                     feeds = GetSportFeeds(formatType, username, domain, ipAddress, fromid);
                     break;
+
                 case "event":
                     feeds = GetEventFeeds(formatType, username, domain, ipAddress, fromid);
+                    break;
+
+                default:
+                    feeds = string.Empty;
                     break;
             }
 

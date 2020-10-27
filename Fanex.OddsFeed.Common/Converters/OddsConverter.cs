@@ -33,6 +33,11 @@
 
         public static decimal ConvertOdds(int oddsRegion, decimal decimalOdds)
         {
+            const int malayOdds = 1;
+            const int hkOdds = 2;
+            const int truncateOdds = 3;
+            const int indoOdds = 4;
+            const int usOdds = 5;
             if (decimalOdds == 0)
             {
                 return decimalOdds;
@@ -40,16 +45,21 @@
 
             switch (oddsRegion)
             {
-                case 1:
-                    return DecimalToMalay(decimalOdds); 
-                case 2:
+                case malayOdds:
+                    return DecimalToMalay(decimalOdds);
+
+                case hkOdds:
                     return DecimalToHK(decimalOdds);
-                case 3:
+
+                case truncateOdds:
                     return Truncate(decimalOdds);
-                case 4:
+
+                case indoOdds:
                     return DecimalToIndo(decimalOdds);
-                case 5:
+
+                case usOdds:
                     return DecimalToUS(decimalOdds);
+
                 default:
                     return Truncate(decimalOdds);
             }
@@ -57,18 +67,14 @@
 
         public static decimal DecimalToUS(decimal decimalOdds)
         {
+            const int maxOdds = 2;
+            const int hundred = 100;
             if (decimalOdds <= 1)
             {
                 return Truncate(0);
             }
-            else if (decimalOdds < 2)
-            {
-                return Truncate(-100 / (decimalOdds - 1));
-            }
-            else
-            {
-                return Truncate((decimalOdds - 1) * 100);
-            }
+
+            return decimalOdds < maxOdds ? Truncate(-hundred / (decimalOdds - 1)) : Truncate((decimalOdds - 1) * hundred);
         }
 
         public static decimal DecimalToHK(decimal decimalOdds)
@@ -80,34 +86,24 @@
 
         public static decimal DecimalToIndo(decimal decimalOdds)
         {
+            const int maxOdds = 2;
             if (decimalOdds <= 1)
             {
                 return Truncate(0);
             }
-            else if (decimalOdds >= 2)
-            {
-                return Truncate(decimalOdds - 1);
-            }
-            else
-            {
-                return Truncate(1 / (1 - decimalOdds));
-            }
+
+            return decimalOdds >= maxOdds ? Truncate(decimalOdds - 1) : Truncate(1 / (1 - decimalOdds));
         }
 
         public static decimal DecimalToMalay(decimal dec)
         {
+            const int maxOdds = 2;
             if (dec <= 1)
             {
                 return Truncate(0);
             }
-            else if (dec <= 2)
-            {
-                return Truncate(dec - 1);
-            }
-            else
-            {
-                return Truncate(1 / (1 - dec));
-            }
+
+            return dec <= maxOdds ? Truncate(dec - 1) : Truncate(1 / (1 - dec));
         }
 
         public static decimal Truncate(decimal value, int decimalPlaces = 2)
