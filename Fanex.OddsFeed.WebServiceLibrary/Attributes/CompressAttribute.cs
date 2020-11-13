@@ -1,10 +1,11 @@
-﻿using System;
-using System.IO.Compression;
-using System.Web.Mvc;
-
-namespace Fanex.OddsFeed.WebServiceLibrary.Attributes
+﻿namespace Fanex.OddsFeed.WebServiceLibrary.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Delegate)]
+    using System;
+    using System.IO.Compression;
+    using System.Web.Mvc;
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+
     public class CompressAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
