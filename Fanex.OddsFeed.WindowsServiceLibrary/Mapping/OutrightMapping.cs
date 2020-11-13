@@ -8,7 +8,6 @@
 
     public class OutrightMapping : IOutrightMapping
     {
-
         public List<Outright> GetOutrights(DataTable dataTable)
         {
             System.Collections.Concurrent.Partitioner<DataRow> partionerList = System.Collections.Concurrent.Partitioner.Create(dataTable.AsEnumerable().ToList(), true);
@@ -18,15 +17,15 @@
                             select new Outright
                             {
                                 EventId = Convert.ToInt32(g.Key),
-                                EventEn = g.FirstOrDefault()?["LeagueName"].ToString(),
-                                EventTw = g.FirstOrDefault()?["LeagueNameC_UNI"].ToString(),
-                                EventCn = g.FirstOrDefault()?["LeagueNameCN"].ToString(),
-                                EventIndonesia = g.FirstOrDefault()?["leaguenameId"].ToString(),
-                                EventThai = g.FirstOrDefault()?["leaguenameTh"].ToString(),
-                                EventKorean = g.FirstOrDefault()?["leaguenameKo"].ToString(),
-                                EventVietnamese = g.FirstOrDefault()?["leaguenameVn"].ToString(),
-                                EventJapanese = g.FirstOrDefault()?["leaguenameJp"].ToString(),
-                                EventHindi = g.FirstOrDefault()?["leaguenameHi"].ToString(),
+                                EventEn = GetEventEn(g),
+                                EventTw = GetEventTw(g),
+                                EventCn = GetEventCn(g),
+                                EventIndonesia = GetEventIndonesia(g),
+                                EventThai = GetEventThai(g),
+                                EventKorean = GetEventKorean(g),
+                                EventVietnamese = GetEventVietnamese(g),
+                                EventJapanese = GetEventJapanese(g),
+                                EventHindi = GetEventHindi(g),
                                 SportId = Convert.ToInt32(g.FirstOrDefault()?["SportID"]),
                                 SportName = g.FirstOrDefault()?["LeagueNameTC"].ToString(),
                                 CountryCode = g.FirstOrDefault()?["CountryCode"].ToString(),
@@ -35,6 +34,51 @@
                             };
 
             return outrights.ToList();
+        }
+
+        private static string GetEventEn(IGrouping<string, DataRow> dataRow)
+        {
+            return dataRow.FirstOrDefault()?["LeagueName"].ToString();
+        }
+
+        private static string GetEventTw(IGrouping<string, DataRow> dataRow)
+        {
+            return dataRow.FirstOrDefault()?["LeagueNameC_UNI"].ToString();
+        }
+
+        private static string GetEventCn(IGrouping<string, DataRow> dataRow)
+        {
+            return dataRow.FirstOrDefault()?["LeagueNameCN"].ToString();
+        }
+
+        private static string GetEventIndonesia(IGrouping<string, DataRow> dataRow)
+        {
+            return dataRow.FirstOrDefault()?["leaguenameId"].ToString();
+        }
+
+        private static string GetEventThai(IGrouping<string, DataRow> dataRow)
+        {
+            return dataRow.FirstOrDefault()?["leaguenameTh"].ToString();
+        }
+
+        private static string GetEventKorean(IGrouping<string, DataRow> dataRow)
+        {
+            return dataRow.FirstOrDefault()?["leaguenameKo"].ToString();
+        }
+
+        private static string GetEventVietnamese(IGrouping<string, DataRow> dataRow)
+        {
+            return dataRow.FirstOrDefault()?["leaguenameVn"].ToString();
+        }
+
+        private static string GetEventJapanese(IGrouping<string, DataRow> dataRow)
+        {
+            return dataRow.FirstOrDefault()?["leaguenameJp"].ToString();
+        }
+
+        private static string GetEventHindi(IGrouping<string, DataRow> dataRow)
+        {
+            return dataRow.FirstOrDefault()?["leaguenameHi"].ToString();
         }
 
         private static OutrightOdds GetEventOdds(DataRow row)

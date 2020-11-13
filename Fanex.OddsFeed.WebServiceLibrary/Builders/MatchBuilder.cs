@@ -83,7 +83,7 @@
             oddsFeedNode.Append($"mt=\"{String.Format("{0:G}", match.KickOfTime)}\" {moreTimeStr} sport=\"{SecurityElement.Escape(match.SportName)}\" running=\"{running}\">");
         }
 
-        private static void AppendLeague(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)
+        public static void AppendLeague(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)
         {
             if (userLanguage.IsSupportedEnglish)
             {
@@ -131,7 +131,7 @@
             }
         }
 
-        private static void AppendHomeTeam(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)
+        public static void AppendHomeTeam(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)
         {
             if (userLanguage.IsSupportedEnglish)
             {
@@ -179,7 +179,7 @@
             }
         }
 
-        private static void AppendAwayTeam(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)
+        public static void AppendAwayTeam(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)
         {
             if (userLanguage.IsSupportedEnglish)
             {
