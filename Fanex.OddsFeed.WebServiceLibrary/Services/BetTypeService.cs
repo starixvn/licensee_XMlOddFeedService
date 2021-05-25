@@ -11,8 +11,6 @@
     {
         private readonly IOddsFeedCachingOperator _oddsFeedCachingOperator;
 
-        private IList<BetTypeSchema> _betTypeSchemas;
-
         public BetTypeService()
         {
             _oddsFeedCachingOperator = new OddsFeedCachingOperator();
@@ -27,19 +25,9 @@
 
         public IDictionary<int, BetType> GetBetTypeList()
         {
-            return GetBetTypeSchemas().ToDictionary(
+            return _oddsFeedCachingOperator.GetBetTypes().ToDictionary(
                 schema => schema.BetTypeId,
                 schema => new BetType { BetTypeName = schema.Tag, IsChildBetType = schema.IsChildBetType });
-        }
-
-        private IList<BetTypeSchema> GetBetTypeSchemas()
-        {
-            if (_betTypeSchemas == null)
-            {
-                _betTypeSchemas = _oddsFeedCachingOperator.GetBetTypes();
-            }
-
-            return _betTypeSchemas;
         }
     }
 }
