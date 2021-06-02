@@ -227,8 +227,11 @@
     <AdditionalFiles Include="..\.sonarlint\xmloddsfeedservice\CSharp\SonarLint.xml">
       <Link>SonarLint.xml</Link>
     </AdditionalFiles>
+    <Content Include="App_Data\AWS\SpNames.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\MNL\SpNames.xml" />
-    <Content Include="App_Data\Pro\SpNames.xml" />
+    <Content Include="App_Data\PROD\SpNames.xml" />
     <Content Include="App_Data\SIT\SpNames.xml" />
     <Content Include="App_Data\UAT\SpNames.xml" />
     <Content Include="App_Data\Local\SpNames.xml">
@@ -337,7 +340,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <None Include="config.rb" />
-    <Content Include="Web.PRO.config">
+    <Content Include="Web.PROD.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -384,6 +387,10 @@
     <Content Include="Views\Shared\UnderMaintainance.cshtml" />
     <Content Include="SystemLog\logfile.log.txt" />
     <None Include="Web.MNL.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Web.AWS.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

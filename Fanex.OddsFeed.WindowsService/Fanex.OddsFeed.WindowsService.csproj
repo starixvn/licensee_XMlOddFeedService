@@ -246,7 +246,11 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Fanex.OddsFeed.WindowsService.PRO.exe.config">
+    <None Include="Fanex.OddsFeed.WindowsService.AWS.exe.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Fanex.OddsFeed.WindowsService.PROD.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
@@ -266,6 +270,10 @@
     <AdditionalFiles Include="..\.sonarlint\xmloddsfeedservice\CSharp\SonarLint.xml">
       <Link>SonarLint.xml</Link>
     </AdditionalFiles>
+    <Content Include="App_Data\AWS\SpNames.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\MNL\SpNames.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -305,7 +313,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Pro\SpNames.xml">
+    <Content Include="App_Data\PROD\SpNames.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
