@@ -10,6 +10,7 @@
     using Common.Helpers;
     using Filters;
     using Models;
+    using NLog;
 
     public class OddsFeedService : IOddsFeedService
     {
@@ -21,6 +22,7 @@
         private readonly IOutrightBuilder _outrightBuilder;
         private readonly IOddsFeedCachingOperator _oddsFeedCachingOperator;
         private readonly IMatchFilter _matchFilter;
+        private readonly Logger fileLogger = LogManager.GetCurrentClassLogger();
 
         public OddsFeedService()
         {
@@ -48,6 +50,13 @@
             AppendMatches(oddsFeedNode, oddsData.LiveMatches, oddsData.DeadballMatches, model, userLanguage);
 
             oddsFeedNode.Append("</oddsfeed>");
+
+            if (model.Username == "1_12_09")
+            {
+                WriteLogInfo("LiveMatches rows: " + oddsData.LiveMatches.Count);
+                WriteLogInfo("DeadballMatches rows: " + oddsData.DeadballMatches.Count);
+                WriteLogInfo("Outrights rows: " + oddsData.Outrights.Count);
+            }
 
             return oddsFeedNode.ToString();
         }
@@ -179,6 +188,11 @@
             }
 
             return oddsTypeName;
+        }
+
+        private void WriteLogInfo(string message)
+        {
+            fileLogger.Info(message);
         }
     }
 }

@@ -4,6 +4,7 @@
     using System.Web.Mvc;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.WebServiceLibrary.Caching;
+    using NLog;
 
     [AttributeUsage(AttributeTargets.Class)]
     public class RateLimitFilterAttribute : ActionFilterAttribute
@@ -17,6 +18,7 @@
         private readonly int TimeOutInSeconds = int.Parse(AppSettings.ThrottlerTimeOutInSeconds);
         private readonly IRateLimitService rateLimitService;
 
+        private readonly Logger fileLogger = LogManager.GetCurrentClassLogger();
         public RateLimitFilterAttribute()
         {
             rateLimitService = new RateLimitService();
@@ -73,14 +75,12 @@
             return result;
         }
 
-        private static void LogBlockInfo(string ipAdress)
+        private void LogBlockInfo(string ipAdress)
         {
             const string LogMessagePrefix = "TooManyRequests - IP Address: ";
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
             string logMessage = LogMessagePrefix + ipAdress;
 
-            log.Warn(logMessage);
+            fileLogger.Warn(logMessage);
         }
     }
 }

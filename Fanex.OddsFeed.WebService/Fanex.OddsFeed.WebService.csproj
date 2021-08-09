@@ -69,10 +69,6 @@
       <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Couchbase.NetClient, Version=2.5.0.0, Culture=neutral, PublicKeyToken=05e9c6b5a9ec94c2, processorArchitecture=MSIL">
-      <HintPath>..\packages\CouchbaseNetClient.2.5.0\lib\net45\Couchbase.NetClient.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Fanex.Caching, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Caching.2.2.1\lib\net461\Fanex.Caching.dll</HintPath>
     </Reference>
@@ -99,9 +95,6 @@
     <Reference Include="Fanex.MailDeliver.MailClient, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.MailDeliver.MailClient.1.0.0.2\lib\net40\Fanex.MailDeliver.MailClient.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -135,6 +128,9 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.10\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="ONEbook.UM, Version=2.0.2.7, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ONEbook.UM.2.0.2.7\lib\net40\ONEbook.UM.dll</HintPath>
       <Private>True</Private>
@@ -149,6 +145,7 @@
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
@@ -161,6 +158,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -227,14 +226,17 @@
     <AdditionalFiles Include="..\.sonarlint\xmloddsfeedservice\CSharp\SonarLint.xml">
       <Link>SonarLint.xml</Link>
     </AdditionalFiles>
-    <Content Include="App_Data\AWS\SpNames.xml">
+    <Content Include="App_Data\SpNames.AWS.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Data\MNL\SpNames.xml" />
-    <Content Include="App_Data\PROD\SpNames.xml" />
-    <Content Include="App_Data\SIT\SpNames.xml" />
-    <Content Include="App_Data\UAT\SpNames.xml" />
-    <Content Include="App_Data\Local\SpNames.xml">
+    <Content Include="App_Data\SpNames.MNL.xml" />
+    <Content Include="App_Data\SpNames.PROD.xml" />
+    <Content Include="App_Data\SpNames.SIT.xml" />
+    <Content Include="App_Data\SpNames.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\SpNames.UAT.xml" />
+    <Content Include="App_Data\SpNames.LOCAL.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Themes\Default\Images\logo_licensee.png" />
@@ -351,6 +353,12 @@
     <Content Include="deployment.ignore" />
     <Content Include="packages.config" />
     <Content Include="Fanex.OddsFeed.WebService.ruleset" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="sass\ie.scss">
       <Compile>True</Compile>
       <Minify>True</Minify>

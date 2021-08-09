@@ -53,7 +53,6 @@
             ExceptionHandler.UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             RegisterRoutes(RouteTable.Routes);
-            log4net.Config.XmlConfigurator.Configure();
         }
 
         protected void Application_Error(object sender, EventArgs e)
@@ -71,24 +70,6 @@
                 }
                 else
                 {
-                    Exception baseEx = Server.GetLastError().GetBaseException();
-                    log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-                    string message = string.Format(
-                        "{0}{1}{2}{3}{1}{4}{5}{1}{6}{7}{1}{8}{9}",
-                        baseEx.Message,
-                        Environment.NewLine,
-                        "Source",
-                        baseEx.Source,
-                        "Domain",
-                        HttpContext.Current.Request.Headers["Host"],
-                        "TargetSite",
-                        baseEx.TargetSite,
-                        "StackTrace",
-                        baseEx.StackTrace);
-
-                    log.Error(message);
-
                     Response.Redirect("~/Errors/Index");
                 }
             }

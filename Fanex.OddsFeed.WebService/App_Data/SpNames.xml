@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+
+  <Function Name="XmlWebService">
+
+    <Setting Key="Is_Odds_GetLiveOddsData" SpName="Is_Odds_GetLiveOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
+    <Setting Key="Is_Odds_GetDeadballOddsData" SpName="Is_Odds_GetDeadballOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
+    <Setting Key="Is_Odds_GetOutrightOddsData" SpName="Is_Odds_GetOutrightOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
+    <Setting Key="Odds_PartnerCheckPermission" SpName="Odds_PartnerCheckPermission" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+    <Setting Key="Odds_PartnerCheckPermission_WriteLog" SpName="Odds_PartnerCheckPermission_WriteLog" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+    <Setting Key="SP.GetSportByUserName" SpName="Odds_SportSelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+    <Setting Key="SP.GetBetTypeByUserName" SpName="Odds_BetTypeSelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+    <Setting Key="SP.GetCountryByUserName" SpName="Odds_CountrySelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+    <Setting Key="SP.GetContactEmailByUserName" SpName="Odds_ContactEmailSelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+    <Setting Key="SP.GetCountryList" SpName="Odds_GetCountryList" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+
+    <!-- Betdaq schedule text feed -->
+    <Setting Key="Portal_BetDaq_Schedule" SpName="dbo.Portal_BetDaq_Schedule" DbName="DBPRO.bodb02.portal" />
+    <!--Insert betdaq for testing account (member10)-->
+    <!--<add key="SP.InsertBetDaq" value="Portal_BetDaq_InsertBet_V2"/>-->
+    <!--
+      Portal_BetDaq_InsertBet:    Insert betdaq for real account
+      Portal_BetDaq_InsertBet_V2: Insert betdaq for testing account (member10)
+    -->
+    <Setting Key="SP.InsertBetDaq" SpName="Portal_BetDaq_InsertBet" DbName="DBPRO.bodb02.portal" />
+    <Setting Key="SP.GetOddsFeed" SpName="Portal_BetDaq_Odds_V2" DbName="DBPRO.bodb02.portal" />
+    <Setting Key="SP.GetOddsFeed_2" SpName="Portal_BetDaq_Odds_2_V2" DbName="DBPRO.bodb02.portal" />
+
+    <!-- BetRadar feed -->
+    <Setting Key="SP.BetRadarOddsSel" SpName="Odds_BetRadar_OddsSel" DbName="DBACC.bodb02.bodbAdminNet" />
+
+    <!-- OCS XML Feed -->
+    <Setting Key="SP.Ocs_Ip" SpName="ocs_ips_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
+    <Setting Key="SP.Ocs_Country" SpName="ocs_countries_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
+    <Setting Key="SP.Ocs_Sport" SpName="ocs_sports_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
+    <Setting Key="SP.Ocs_Team" SpName="ocs_teams_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
+    <Setting Key="SP.Ocs_League" SpName="ocs_leagues_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
+    <Setting Key="SP.Ocs_Event" SpName="ocs_events_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
+    <Setting Key="SP.Ocs_Match" SpName="ocs_matches_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
+
+  </Function>
+  <Function Name="BetTypeSportType">
+    <Setting Key="Odds_Partner_SportTypeSel" SpName="Odds_Partner_SportTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
+      <Mapping DataField="SportType" ObjectProperty="Id" />
+      <Mapping DataField="SportName" ObjectProperty="NameEnglish" />
+      <Mapping DataField="SportNameCh" ObjectProperty="NameTraditionalChinese" />
+      <Mapping DataField="SportNameCs" ObjectProperty="NameSimplifiedChinese" />
+      <Mapping DataField="SportNameId" ObjectProperty="NameIndonesia" />
+      <Mapping DataField="SportNameTh" ObjectProperty="NameThai" />
+      <Mapping DataField="SportNameKo" ObjectProperty="NameKorean" />
+      <Mapping DataField="SportNameVn" ObjectProperty="NameVietnamese" />
+      <Mapping DataField="SportNameJp" ObjectProperty="NameJapanese" />
+      <Mapping DataField="SportNameHi" ObjectProperty="NameHindi" />
+    </Setting>
+    <Setting Key="Odds_Partner_BetTypeSel" SpName="Odds_Partner_BetTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >      
+      <Mapping DataField="typeid" ObjectProperty="Id" />
+      <Mapping DataField="typenamee" ObjectProperty="NameEnglish" />
+      <Mapping DataField="typenameCh" ObjectProperty="NameTraditionalChinese" />
+      <Mapping DataField="typenameCs" ObjectProperty="NameSimplifiedChinese" />
+      <Mapping DataField="typenameId" ObjectProperty="NameIndonesia" />
+      <Mapping DataField="typenameTh" ObjectProperty="NameThai" />
+      <Mapping DataField="typenameKo" ObjectProperty="NameKorean" />
+      <Mapping DataField="typenameVn" ObjectProperty="NameVietnamese" />
+      <Mapping DataField="typenameJp" ObjectProperty="NameJapanese" />
+      <Mapping DataField="typenameHi" ObjectProperty="NameHindi" />
+    </Setting>
+    <Setting Key="Odds_Partner_LeagueSel" SpName="Odds_Partner_LeagueSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" >
+      <Mapping DataField="leaguename" ObjectProperty="NameEnglish" />
+      <Mapping DataField="leaguenameCh" ObjectProperty="NameTraditionalChinese" />
+      <Mapping DataField="leaguenameCs" ObjectProperty="NameSimplifiedChinese" />
+      <Mapping DataField="leaguenameId" ObjectProperty="NameIndonesia" />
+      <Mapping DataField="leaguenameTh" ObjectProperty="NameThai" />
+      <Mapping DataField="leaguenameKo" ObjectProperty="NameKorean" />
+      <Mapping DataField="leaguenameVn" ObjectProperty="NameVietnamese" />
+      <Mapping DataField="leaguenameJp" ObjectProperty="NameJapanese" />
+      <Mapping DataField="leaguenameHi" ObjectProperty="NameHindi" />
+      <Mapping DataField="SportType" ObjectProperty="SportId" />
+      <Mapping DataField="SportName" ObjectProperty="SportName" />
+    </Setting>
+    
+  </Function>
+</Functions>

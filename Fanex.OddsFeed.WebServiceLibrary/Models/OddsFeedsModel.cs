@@ -19,5 +19,7 @@
         public bool IsSample { get; set; }
 
         public bool IsOutright { get; set; } = true;
+
+        public string Username { get; set; }
     }
 }
