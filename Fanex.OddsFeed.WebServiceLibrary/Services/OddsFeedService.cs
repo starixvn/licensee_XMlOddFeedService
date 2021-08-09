@@ -53,7 +53,15 @@
 
             if (model.Username == "1_12_09")
             {
+                var eventIds = string.Empty;
+                foreach (var odd in oddsData.LiveMatches)
+                {
+                    eventIds += odd.MatchId + ",";
+                }
+
                 WriteLogInfo("LiveMatches rows: " + oddsData.LiveMatches.Count);
+                WriteLogInfo("Live-EventId: " + eventIds);
+
                 WriteLogInfo("DeadballMatches rows: " + oddsData.DeadballMatches.Count);
                 WriteLogInfo("Outrights rows: " + oddsData.Outrights.Count);
             }

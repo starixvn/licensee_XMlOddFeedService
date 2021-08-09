@@ -36,9 +36,9 @@
 
             return new OddsData
             {
-                Outrights = outrights,
-                LiveMatches = liveMatches,
-                DeadballMatches = deadballMatches
+                Outrights = outrights.OrderBy(t=>t.EventId).ToList(),
+                LiveMatches = liveMatches.OrderBy(t => t.MatchId).ToList(),
+                DeadballMatches = deadballMatches.OrderBy(t => t.MatchId).ToList()
             };
         }
 
