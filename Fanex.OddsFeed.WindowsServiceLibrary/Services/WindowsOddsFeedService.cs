@@ -35,10 +35,16 @@
         public bool Update()
         {
             var result = false;
-
+            var startDate = DateTime.Now;
+            var timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            fileLogger.Trace("Start - " + timeStamp);
             var betTypeSchemas = GetBetTypeSchemas();
+            fileLogger.Trace("X - " + timeStamp);
             var liveMatches = GetLiveMatches(betTypeSchemas);
+            fileLogger.Trace("Y - " + timeStamp);
             var deadBallMatches = GetDeadballMatches(betTypeSchemas);
+            fileLogger.Trace("Done get from DB - " + timeStamp);
+
             var deadBallLength = deadBallMatches.Count;
             var splitIndex = deadBallLength / 2;
             var deadBalls1 = new List<Match>();
@@ -53,6 +59,8 @@
             {
                 deadBalls2.Add(deadBallMatches[j]);
             }
+
+            fileLogger.Trace("Done split - " + timeStamp);
 
             fileLogger.Trace(deadBallMatches.Count);
             fileLogger.Trace(deadBalls1.Count);
@@ -70,14 +78,24 @@
             result = Store(oddsFeedBucket, CacheKeys.CurrentKey(cachePrefix), currentVersion);
 
             result &= Store(liveMatchBucket, versionKey, liveMatches);
+            fileLogger.Trace("A-" + timeStamp);
             result &= Store(deadMatchBucket, versionKey + "_1", deadBalls1);
+            fileLogger.Trace("B-" + timeStamp);
             result &= Store(deadMatchBucket, versionKey + "_2", deadBalls2);
+            fileLogger.Trace("C-" + timeStamp);
             result &= Store(outRightBucket, versionKey, outrights);
+            fileLogger.Trace("D-" + timeStamp);
 
             if (result && currentVersion == totalVersion - 1)
             {
                 result &= Store(oddsFeedBucket, CacheKeys.FullChainKey(cachePrefix), true);
             }
+
+            fileLogger.Trace("E-" + timeStamp);
+
+            var endDate = DateTime.Now;
+            var duration = (endDate - startDate).TotalMilliseconds;
+            fileLogger.Info("Update: " + duration);
 
             return result;
         }
@@ -96,7 +114,7 @@
             return string.Join(Environment.NewLine, messages);
         }
 
-        private static IList<Match> GetLiveMatches(IList<BetTypeSchema> betTypeSchemas)
+        private IList<Match> GetLiveMatches(IList<BetTypeSchema> betTypeSchemas)
         {
             using (var liveOdds = DbAccess.GetLiveOddsData())
             {
@@ -105,7 +123,7 @@
             }
         }
 
-        private static IList<Match> GetDeadballMatches(IList<BetTypeSchema> betTypeSchemas)
+        private IList<Match> GetDeadballMatches(IList<BetTypeSchema> betTypeSchemas)
         {
             using (var deadballOdds = DbAccess.GetDeadballOddsData())
             {
@@ -123,8 +141,10 @@
             }
         }
 
-        private static IEnumerable<OddsFlexGroup> GetOddsFlexGroups(DataTable table)
+        private IEnumerable<OddsFlexGroup> GetOddsFlexGroups(DataTable table)
         {
+            fileLogger.Trace("Start GetOddsFlexGroups");
+
             var oddsFlexGroups = new List<OddsFlexGroup>();
 
             foreach (DataRow row in table.Rows)
@@ -154,6 +174,7 @@
                 }
             }
 
+            fileLogger.Trace("End GetOddsFlexGroups");
             return oddsFlexGroups;
         }
 
