@@ -266,15 +266,15 @@
     <AdditionalFiles Include="..\.sonarlint\xmloddsfeedservice\CSharp\SonarLint.xml">
       <Link>SonarLint.xml</Link>
     </AdditionalFiles>
-    <Content Include="App_Data\AWS\SpNames.xml">
+    <Content Include="App_Data\SpNames.AWS.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\MNL\SpNames.xml">
+    <Content Include="App_Data\SpNames.MNL.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\SIT\SpNames.xml">
+    <Content Include="App_Data\SpNames.SIT.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -309,15 +309,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\PROD\SpNames.xml">
+    <Content Include="App_Data\SpNames.PROD.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\UAT\SpNames.xml">
+    <Content Include="App_Data\SpNames.UAT.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\Local\SpNames.xml">
+    <Content Include="App_Data\SpNames.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

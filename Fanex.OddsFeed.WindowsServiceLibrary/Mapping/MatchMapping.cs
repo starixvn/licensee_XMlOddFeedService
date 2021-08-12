@@ -9,51 +9,48 @@
     using Common.Converters;
     using Common.DTO;
     using Common.Schemas;
+    using NLog;
 
     public class MatchMapping : IMatchMapping
     {
+        private readonly Logger fileLogger = LogManager.GetCurrentClassLogger();
+
         public IList<Match> GetMatches(
             DataTable dataTable,
             IEnumerable<BetTypeSchema> schemas,
             IEnumerable<OddsFlexGroup> oddsFlexs,
             bool isLive)
         {
-            var matchList = new SafeList<Match>();
-            var matchOddsList = new SafeList<MatchOdds>();
+            var matchList = new List<Match>();
+            var startDate = DateTime.Now;
 
-            var partionerList = Partitioner.Create(dataTable.AsEnumerable().ToList(), true);
-
-            var tempRows = from row in partionerList.AsParallel() select row;
-
-            tempRows.ForAll((row) =>
+            var tempMatch = new Match();
+            foreach (DataRow row in dataTable.Rows)
             {
-                var matchOdds = GetMatchOdds(schemas, row, oddsFlexs);
                 var match = CreateMatch(row, isLive);
-                if (matchOdds != null)
-                {
-                    matchOddsList.Add(matchOdds);
-                }
-
                 if (match != null)
                 {
-                    matchList.Add(match);
+                    if (tempMatch.MatchId != match.MatchId)
+                    {
+                        tempMatch = match;
+                        match.MatchOddsList = new List<MatchOdds>();
+                        matchList.Add(match);
+                    }
+
+                    var matchOdds = GetMatchOdds(schemas, row, oddsFlexs);
+                    if (matchOdds != null)
+                    {
+                        tempMatch.MatchOddsList.Add(matchOdds);
+                    }
                 }
-            });
+            }
 
-            var matchListResult = new SafeList<Match>();
-            var partitionerMatchList = Partitioner.Create(matchList, true);
-            var matchListById = from row in partitionerMatchList.AsParallel()
-                                group row by row.MatchId into g
-                                select new { MatchId = g.Key, FirstMatch = g.FirstOrDefault() };
+            var endDate = DateTime.Now;
+            var duration = (endDate - startDate).TotalMilliseconds;
 
-            matchListById.ForAll((row) =>
-            {
-                var temp = row.FirstMatch;
-                temp.MatchOddsList = matchOddsList.AsParallel().Where(i => i.MatchId == row.MatchId).ToList();
-                matchListResult.Add(temp);
-            });
+            fileLogger.Trace("GetMatches-" + (isLive ? "Live" : "DeadBall") + "-" + matchList.Count + ": " + duration);
 
-            return matchListResult;
+            return matchList;
         }
 
         private static Match CreateMatch(DataRow row, bool isLive)

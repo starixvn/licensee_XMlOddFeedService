@@ -54,12 +54,9 @@
                 deadBalls2.Add(deadBallMatches[j]);
             }
 
-            var deadball3 = deadBalls1.Union(deadBalls2).ToList();
-
             fileLogger.Trace(deadBallMatches.Count);
             fileLogger.Trace(deadBalls1.Count);
             fileLogger.Trace(deadBalls2.Count);
-            fileLogger.Trace(deadball3.Count);
 
             var outrights = GetOutrights();
 
