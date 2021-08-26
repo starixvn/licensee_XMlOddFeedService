@@ -12,11 +12,5 @@
             IEnumerable<BetTypeSchema> schemas,
             IEnumerable<OddsFlexGroup> oddsFlexs,
             bool isLive);
-
-        IList<Match> GetMatchesTest(
-            DataTable dataTable,
-            IEnumerable<BetTypeSchema> schemas,
-            IEnumerable<OddsFlexGroup> oddsFlexs,
-            bool isLive);
     }
 }

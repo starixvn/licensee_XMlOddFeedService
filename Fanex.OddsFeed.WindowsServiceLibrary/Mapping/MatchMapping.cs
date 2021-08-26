@@ -1,7 +1,6 @@
 ﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.Mapping
 {
     using System;
-    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Data;
     using System.Globalization;
@@ -51,50 +50,6 @@
             fileLogger.Trace("GetMatches-" + (isLive ? "Live" : "DeadBall") + "-" + matchList.Count + ": " + duration);
 
             return matchList;
-        }
-
-        public IList<Match> GetMatchesTest(
-            DataTable dataTable,
-            IEnumerable<BetTypeSchema> schemas,
-            IEnumerable<OddsFlexGroup> oddsFlexs,
-            bool isLive)
-        {
-            var matchList = new SafeList<Match>();
-            var matchOddsList = new SafeList<MatchOdds>();
-
-            var partionerList = Partitioner.Create(dataTable.AsEnumerable().ToList(), true);
-
-            var tempRows = from row in partionerList.AsParallel() select row;
-
-            tempRows.ForAll((row) =>
-            {
-                var matchOdds = GetMatchOdds(schemas, row, oddsFlexs);
-                var match = CreateMatch(row, isLive);
-                if (matchOdds != null)
-                {
-                    matchOddsList.Add(matchOdds);
-                }
-
-                if (match != null)
-                {
-                    matchList.Add(match);
-                }
-            });
-
-            var matchListResult = new SafeList<Match>();
-            var partitionerMatchList = Partitioner.Create(matchList, true);
-            var matchListById = from row in partitionerMatchList.AsParallel()
-                                group row by row.MatchId into g
-                                select new { MatchId = g.Key, FirstMatch = g.FirstOrDefault() };
-
-            matchListById.ForAll((row) =>
-            {
-                var temp = row.FirstMatch;
-                temp.MatchOddsList = matchOddsList.Where(i => i.MatchId == row.MatchId).ToList();
-                matchListResult.Add(temp);
-            });
-
-            return matchListResult;
         }
 
         private static Match CreateMatch(DataRow row, bool isLive)
