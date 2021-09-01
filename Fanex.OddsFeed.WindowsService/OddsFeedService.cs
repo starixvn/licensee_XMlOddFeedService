@@ -1,12 +1,11 @@
 ﻿namespace Fanex.OddsFeed.WindowsService
 {
-    using Common.Configurations;
-    using Logging;
-    using NLog;
-    using ONEbook.UM.Services;
-    using ONEbook.UM.Services.Impl;
     using System;
     using System.ServiceProcess;
+    using Common.Configurations;
+    using Logging;
+    using ONEbook.UM.Services;
+    using ONEbook.UM.Services.Impl;
     using WindowsServiceLibrary.Services;
 
     public partial class OddsFeedService : ServiceBase
@@ -22,7 +21,7 @@
             _oddsFeedService = new WindowsOddsFeedService();
             _maintenanceService = new MaintenanceService();
             _scheduler = new JobScheduler();
-            _fileLogger = LogManager.GetCurrentClassLogger();
+            _fileLogger = NLog.LogManager.GetCurrentClassLogger();
         }
 
         protected override void OnStart(string[] args)

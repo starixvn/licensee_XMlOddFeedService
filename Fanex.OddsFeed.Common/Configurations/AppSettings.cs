@@ -68,5 +68,9 @@
         public static string ThrottlerTimeOutInSeconds => ConfigurationManager.AppSettings["Throttler.TimeOutInSeconds"];
 
         public static string ThrollerBlockTimeInSeconds => ConfigurationManager.AppSettings["Throttler.BlockTimeInSeconds"];
+
+        public static string SentryCategory => ConfigurationManager.AppSettings["SentryCategory"];
+
+        public static string SentryDNS => ConfigurationManager.AppSettings["SentryDNS"];
     }
 }

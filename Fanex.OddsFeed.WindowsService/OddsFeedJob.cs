@@ -1,16 +1,15 @@
 ﻿namespace Fanex.OddsFeed.WindowsService
 {
+    using System;
     using Fanex.Logging;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.WindowsServiceLibrary.Services;
-    using NLog;
     using ONEbook.UM.Services;
     using Quartz;
-    using System;
 
     public class OddsFeedJob : IJob
     {
-        private readonly NLog.Logger _fileLogger = LogManager.GetCurrentClassLogger();
+        private readonly NLog.Logger _fileLogger = NLog.LogManager.GetCurrentClassLogger();
 
         public void Execute(IJobExecutionContext context)
         {

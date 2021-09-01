@@ -1,15 +1,18 @@
 ﻿namespace Fanex.OddsFeed.WebService
 {
     using System;
-    using System.Collections.Generic;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Routing;
     using Common.Configurations;
     using Common.Helpers;
     using Fanex.Data.Configuration;
+    using Fanex.Logging;
+    using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Extensions.Web;
+    using Fanex.Logging.Sentry.RavenClient;
+    using SharpRaven;
 
     public class MvcApplication : HttpApplication
     {
@@ -48,9 +51,20 @@
 
         protected void Application_Start()
         {
+            LogManager
+                   .SetDefaultLogCategory(AppSettings.SentryDNS)
+                   .Use(new SentryLogging(new SentryEngineOptions
+                   {
+                       Dsn = new Dsn(AppSettings.SentryDNS)
+                   }));
+
+            ExceptionHandler
+                .UseConfig(new LoggingConfiguration())
+                .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
+
             DbSettingProviderManager.Current.Start();
             AreaRegistration.RegisterAllAreas();
-            ExceptionHandler.UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
+
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             RegisterRoutes(RouteTable.Routes);
         }
@@ -58,7 +72,6 @@
         protected void Application_Error(object sender, EventArgs e)
         {
             var ex = Server.GetLastError();
-            LogHelper.Log(ex);
 
             if (!AppSettings.Environment.Equals("Local", StringComparison.OrdinalIgnoreCase))
             {
@@ -70,6 +83,7 @@
                 }
                 else
                 {
+                    LogHelper.Log(ex);
                     Response.Redirect("~/Errors/Index");
                 }
             }
