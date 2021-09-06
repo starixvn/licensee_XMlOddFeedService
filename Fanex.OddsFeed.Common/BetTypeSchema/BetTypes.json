@@ -5304,8 +5304,8 @@
     "BettypeId": 501,
     "Tag": "ck_mw",
     "BetChoices": [
-      { "MatchAttribute": "h", "DataAttribute": "cs10" },
-      { "MatchAttribute": "a", "DataAttribute": "cs20" }
+      { "MatchAttribute": "h", "DataAttribute": "odds1a" },
+      { "MatchAttribute": "a", "DataAttribute": "odds2a" }
     ]
   },
   {
