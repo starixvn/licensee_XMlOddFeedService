@@ -188,7 +188,7 @@
 
             if (userLanguage.IsSupportedTraditionalChinese)
             {
-                oddsFeedNode.Append($"at=\"{SecurityElement.Escape(StringHelper.SelectName(match.AwayTw, match.AwayEn))}\" ");
+                oddsFeedNode.Append($"at=\"{SecurityElement.Escape(StringHelper.SelectName(EscapeSpecialCharacter(match.AwayTw), match.AwayEn))}\" ");
             }
 
             if (userLanguage.IsSupportedSimplifiedChinese)
@@ -257,6 +257,11 @@
         private static string ConvertOdds(int oddsRegion, BetChoice betChoice)
         {
             return betChoice.NotConvert ? betChoice.Value : OddsConverter.ConvertOdds(oddsRegion, Convert.ToDecimal(betChoice.Value)).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private static string EscapeSpecialCharacter(string text)
+        {
+            return text?.Replace("\u001D", string.Empty);
         }
     }
 }
