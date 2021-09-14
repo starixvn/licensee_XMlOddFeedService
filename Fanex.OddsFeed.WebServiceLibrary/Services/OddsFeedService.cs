@@ -36,7 +36,7 @@
 
         public string BuildXmlDocument(OddsFeedsModel model)
         {
-            if (model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase))
+            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase))
             {
                 return BuildXmlDocumentForBetRadar(model);
             }
