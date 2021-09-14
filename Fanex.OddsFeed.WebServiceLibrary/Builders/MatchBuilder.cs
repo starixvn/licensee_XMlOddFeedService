@@ -79,8 +79,8 @@
             AppendHomeTeam(oddsFeedNode, match, userLanguage);
             AppendAwayTeam(oddsFeedNode, match, userLanguage);
 
-            var moreTimeStr = model.UserQuery.MoreTime ? $"gst=\"{String.Format("{0:G}", match.GlobalShowtime)}\" st=\"{String.Format("{0:G}", match.Showtime) }\"" : string.Empty;
-            oddsFeedNode.Append($"mt=\"{String.Format("{0:G}", match.KickOfTime)}\" {moreTimeStr} sport=\"{SecurityElement.Escape(match.SportName)}\" running=\"{running}\">");
+            var moreTimeStr = model.UserQuery.MoreTime ? $"gst=\"{string.Format("{0:G}", match.GlobalShowtime)}\" st=\"{string.Format("{0:G}", match.Showtime) }\"" : string.Empty;
+            oddsFeedNode.Append($"mt=\"{string.Format("{0:G}", match.KickOfTime)}\" {moreTimeStr} sport=\"{SecurityElement.Escape(match.SportName)}\" running=\"{running}\">");
         }
 
         public static void AppendLeague(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)

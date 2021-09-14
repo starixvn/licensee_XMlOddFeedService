@@ -2,12 +2,14 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data;
     using System.Linq;
     using System.Text;
     using Builders;
     using Caching;
     using Common.DTO;
     using Common.Helpers;
+    using Fanex.OddsFeed.Common;
     using Filters;
     using Models;
     using NLog;
@@ -34,6 +36,11 @@
 
         public string BuildXmlDocument(OddsFeedsModel model)
         {
+            if (model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return BuildXmlDocumentForBetRadar(model);
+            }
+
             var isShownOutright = IsShownOutright(model);
             var isShownLiveMatch = IsShownLiveMatch(model.UserProfile);
             var isShownDeadMatch = IsShownDeadBallMatch(model.UserProfile);
@@ -67,6 +74,211 @@
             }
 
             return oddsFeedNode.ToString();
+        }
+
+        private string BuildXmlDocumentForBetRadar(OddsFeedsModel model)
+        {
+            var matchList = new List<Match>();
+            using (var oddsFeedData = DbAccess.GetBetRadar())
+            {
+                foreach (DataRow row in oddsFeedData.Rows)
+                {
+                    var match = CreateMatch(row);
+                    if (match != null)
+                    {
+                        if (!matchList.Any(x => x.MatchId == match.MatchId))
+                        {
+                            match.MatchOddsList = new List<MatchOdds>();
+                            matchList.Add(match);
+                        }
+
+                        Match tempMatch = matchList.First(x => x.MatchId == match.MatchId);
+                        GetHandicapOdds(tempMatch, row);
+                        GetOverUnderOdds(tempMatch, row);
+                        GetThreewayOdds(tempMatch, row);
+                        GetMatchWinnerOdds(tempMatch, row);
+                    }
+                }
+            }
+
+            var oddsFeedNode = new StringBuilder("<oddsfeed>");
+            model.UserProfile = new UserProfile();
+            var userLanguage = new UserLanguage
+            {
+                IsSupportedEnglish = true
+            };
+            AppendMatches(oddsFeedNode, new List<Match>(), matchList, model, userLanguage);
+            oddsFeedNode.Append("</oddsfeed>");
+            return oddsFeedNode.ToString();
+        }
+
+        private static Match CreateMatch(DataRow row)
+        {
+            return new Match
+            {
+                MatchId = Convert.ToInt32(row["MatchID"]),
+                SportName = row["SportTypeName"].ToString(),
+                SportId = Convert.ToInt32(row["SportType"]),
+                KickOfTime = Convert.ToDateTime(row["KickOffTime"].ToString()),
+                HomeEn = row["Home"].ToString(),
+                AwayEn = row["Away"].ToString(),
+                LeagueId = Convert.ToInt32(row["LeagueID"]),
+                LeagueEn = row["LeagueName"].ToString()
+            };
+        }
+
+        private static void GetHandicapOdds(Match match, DataRow row)
+        {
+            if (!row.IsNull("OddsID_1"))
+            {
+                match.MatchOddsList.Add(new MatchOdds
+                {
+                    MatchId = Convert.ToInt32(row["MatchID"]),
+                    Tag = "ah",
+                    Time = Convert.ToDateTime(row["ChangeTime_1"]),
+                    TimeStamp = Convert.ToInt32(row["TimeStamp_1"]),
+                    BetTypeId = 1,
+                    BetChoices = new List<BetChoice>
+                    {
+                        new BetChoice
+                        {
+                            Code = "h",
+                            Value = ConvertOddsToString(GetOddsValue(row["hdp2_1"]) - GetOddsValue(row["hdp1_1"])),
+                            NotConvert = true
+                        },
+                        new BetChoice
+                        {
+                            Code = "o",
+                            Value = ConvertOddsToString(GetOddsValue(row["odds1hka_1"])),
+                            NotConvert = true
+                        },
+                        new BetChoice
+                        {
+                            Code = "u",
+                            Value = ConvertOddsToString(GetOddsValue(row["odds2hka_1"])),
+                            NotConvert = true
+                        }
+                    }
+                });
+            }
+        }
+
+        private static void GetOverUnderOdds(Match match, DataRow row)
+        {
+            if (!row.IsNull("OddsID_3"))
+            {
+                const byte OverUnderBetTypeId = 3;
+                match.MatchOddsList.Add(new MatchOdds
+                {
+                    MatchId = Convert.ToInt32(row["MatchID"]),
+                    Tag = "ou",
+                    Time = Convert.ToDateTime(row["ChangeTime_3"]),
+                    TimeStamp = Convert.ToInt32(row["TimeStamp_3"]),
+                    BetTypeId = OverUnderBetTypeId,
+                    BetChoices = new List<BetChoice>
+                    {
+                        new BetChoice
+                        {
+                            Code = "h",
+                            Value = ConvertOddsToString(GetOddsValue(row["Hdp1_3"])),
+                            NotConvert = true
+                        },
+                        new BetChoice
+                        {
+                            Code = "o",
+                            Value = ConvertOddsToString(GetOddsValue(row["odds1hka_3"])),
+                            NotConvert = true
+                        },
+                        new BetChoice
+                        {
+                            Code = "u",
+                            Value = ConvertOddsToString(GetOddsValue(row["odds2hka_3"])),
+                            NotConvert = true
+                        }
+                    }
+                });
+            }
+        }
+
+        private static void GetThreewayOdds(Match match, DataRow row)
+        {
+            if (!row.IsNull("OddsID_5"))
+            {
+                const byte ThreewayBetTypeId = 5;
+                match.MatchOddsList.Add(new MatchOdds
+                {
+                    MatchId = Convert.ToInt32(row["MatchID"]),
+                    Tag = "st",
+                    Time = Convert.ToDateTime(row["ChangeTime_5"]),
+                    TimeStamp = Convert.ToInt32(row["TimeStamp_5"]),
+                    BetTypeId = ThreewayBetTypeId,
+                    BetChoices = new List<BetChoice>
+                    {
+                        new BetChoice
+                        {
+                            Code = "o1",
+                            Value = ConvertOddsToString(GetOddsValue(row["com1_5"])),
+                            NotConvert = true
+                        },
+                        new BetChoice
+                        {
+                            Code = "o2",
+                            Value = ConvertOddsToString(GetOddsValue(row["comx_5"])),
+                            NotConvert = true
+                        },
+                        new BetChoice
+                        {
+                            Code = "o3",
+                            Value = ConvertOddsToString(GetOddsValue(row["com2_5"])),
+                            NotConvert = true
+                        }
+                    }
+                });
+            }
+        }
+
+        private static void GetMatchWinnerOdds(Match match, DataRow row)
+        {
+            if (!row.IsNull("OddsID_501"))
+            {
+                const short MatchWinnerBetTypeId = 501;
+                match.MatchOddsList.Add(new MatchOdds
+                {
+                    MatchId = Convert.ToInt32(row["MatchID"]),
+                    Tag = "ck_mw",
+                    Time = Convert.ToDateTime(row["ChangeTime_501"]),
+                    TimeStamp = Convert.ToInt32(row["TimeStamp_501"]),
+                    BetTypeId = MatchWinnerBetTypeId,
+                    BetChoices = new List<BetChoice>
+                    {
+                        new BetChoice
+                        {
+                            Code = "h",
+                            Value = ConvertOddsToString(GetOddsValue(row["odds1hka_501"])),
+                            NotConvert = true
+                        },
+                        new BetChoice
+                        {
+                            Code = "a",
+                            Value = ConvertOddsToString(GetOddsValue(row["odds2hka_501"])),
+                            NotConvert = true
+                        }
+                    }
+                });
+            }
+        }
+
+        private static decimal GetOddsValue(object value)
+        {
+            object oddValue;
+            oddValue = value is DBNull ? 0 : value;
+
+            return Convert.ToDecimal(oddValue);
+        }
+
+        private static string ConvertOddsToString(decimal odds)
+        {
+            return string.Format("{0:0.#########}", odds);
         }
 
         private static UserLanguage GetUserLanguage(OddsFeedsModel model)
@@ -159,39 +371,53 @@
             int matchesTimeStamp,
             DateTime lastUpdate)
         {
-            oddsFeedNode.Append(matchesTimeStamp > 0 ?
-                $"<matches lastupdate=\"{lastUpdate}\" timestamp=\"{matchesTimeStamp}\" oddstype=\"{GetOddsTypeName(model.UserProfile.OddRegion)}\">" :
-                "<matches>");
+            if (matchesTimeStamp > 0)
+            {
+                var oddsType = GetOddsTypeName(model.UserProfile.OddRegion);
+                oddsFeedNode.AppendFormat("<matches lastupdate=\"{0}\" timestamp=\"{1}\"{2}>",
+                    lastUpdate,
+                    matchesTimeStamp,
+                    !string.IsNullOrWhiteSpace(oddsType) ? $"oddstype=\"{GetOddsTypeName(model.UserProfile.OddRegion)}\"" : string.Empty);
+            }
+            else
+            {
+                oddsFeedNode.Append("<matches>");
+            }
         }
 
         private static string GetOddsTypeName(int oddsTypeId)
         {
-            const int hongKongTypeName = 2;
-            const int decimalTypeName = 3;
-            const int indoTypeName = 4;
-            const int usTypeName = 5;
-            var oddsTypeName = string.Empty;
+            const byte MalayOddsType = 1;
+            const byte HongKongOddsType = 2;
+            const byte DecimalOddsType = 3;
+            const byte IndoOddsType = 4;
+            const byte USOddsType = 5;
+            string oddsTypeName;
 
             switch (oddsTypeId)
             {
-                case hongKongTypeName:
+                case MalayOddsType:
+                    oddsTypeName = "Malay";
+                    break;
+
+                case HongKongOddsType:
                     oddsTypeName = "HongKong";
                     break;
 
-                case decimalTypeName:
+                case DecimalOddsType:
                     oddsTypeName = "Decimal";
                     break;
 
-                case indoTypeName:
+                case IndoOddsType:
                     oddsTypeName = "Indo";
                     break;
 
-                case usTypeName:
+                case USOddsType:
                     oddsTypeName = "US";
                     break;
 
                 default:
-                    oddsTypeName = "Malay";
+                    oddsTypeName = string.Empty;
                     break;
             }
 
