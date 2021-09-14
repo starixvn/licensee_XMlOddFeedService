@@ -377,7 +377,7 @@
                 oddsFeedNode.AppendFormat("<matches lastupdate=\"{0}\" timestamp=\"{1}\"{2}>",
                     lastUpdate,
                     matchesTimeStamp,
-                    !string.IsNullOrWhiteSpace(oddsType) ? $"oddstype=\"{GetOddsTypeName(model.UserProfile.OddRegion)}\"" : string.Empty);
+                    !string.IsNullOrWhiteSpace(oddsType) ? $" oddstype=\"{GetOddsTypeName(model.UserProfile.OddRegion)}\"" : string.Empty);
             }
             else
             {
