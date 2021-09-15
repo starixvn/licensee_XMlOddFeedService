@@ -67,6 +67,8 @@
 
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             RegisterRoutes(RouteTable.Routes);
+            var ex = new Exception("This is test loging web service");
+            LogHelper.Log(ex);
         }
 
         protected void Application_Error(object sender, EventArgs e)
