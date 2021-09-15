@@ -68,7 +68,7 @@
             if (!row.IsNull("OddsID_501"))
             {
                 oddsFeedNode.Append($"<!-- Match Winner odds -->");
-                oddsFeedNode.Append($"<OddsData type=\"ck_mw\"><AC>1</AC>");
+                oddsFeedNode.Append($"<OddsData type=\"winner\"><AC>1</AC>");
                 oddsFeedNode.Append($"<HomeOdds>{NumberFormatter.FormatOdds(row["odds1hka_501"])}</HomeOdds>");
                 oddsFeedNode.Append($"<AwayOdds>{NumberFormatter.FormatOdds(row["odds2hka_501"])}</AwayOdds>");
                 oddsFeedNode.Append("</OddsData>");
