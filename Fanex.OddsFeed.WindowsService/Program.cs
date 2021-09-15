@@ -1,6 +1,5 @@
 ﻿namespace Fanex.OddsFeed.WindowsService
 {
-    using System;
     using System.ServiceProcess;
     using Data.Configuration;
     using Fanex.Logging;
@@ -9,7 +8,6 @@
     using Fanex.Logging.Extensions.Web;
     using Fanex.Logging.Sentry.RavenClient;
     using Fanex.OddsFeed.Common.Configurations;
-    using Fanex.OddsFeed.Common.Helpers;
     using SharpRaven;
 
     public static class Program
@@ -32,9 +30,6 @@
             {
                 new OddsFeedService()
             };
-
-            var ex = new Exception("This is test loging windows service");
-            LogHelper.Log(ex);
 
             ServiceBase.Run(servicesToRun);
         }
