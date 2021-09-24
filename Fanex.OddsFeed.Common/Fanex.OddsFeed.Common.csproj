@@ -181,7 +181,6 @@
     <Compile Include="FilterAtribute\ThrottleInfo.cs" />
     <Compile Include="Formatters\NumberFormatter.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
-    <Compile Include="Helpers\MyRedisConnectorHelper.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Helpers\SchemaHelper.cs" />
     <Compile Include="Helpers\SpHelper.cs" />
