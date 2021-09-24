@@ -188,7 +188,7 @@
 
         private static IList<BetTypeSchema> GetBetTypeSchemas()
         {
-            var document = RedisRepository.ReadData<IList<BetTypeSchema>>(string.Format(Constants.RedisKeyFormat, oddsFeedBucket, AppSettings.BetTypeSchemaKey));
+            var document = RedisRepository.Get<IList<BetTypeSchema>>(string.Format(Constants.RedisKeyFormat, oddsFeedBucket, AppSettings.BetTypeSchemaKey));
 
             if (document == null || document.Count == 0)
             {
@@ -196,7 +196,7 @@
 
                 if (newValue != null)
                 {
-                    RedisRepository.StoreData<IList<BetTypeSchema>>(string.Format(Constants.RedisKeyFormat, oddsFeedBucket, AppSettings.BetTypeSchemaKey), newValue);
+                    RedisRepository.Set<IList<BetTypeSchema>>(string.Format(Constants.RedisKeyFormat, oddsFeedBucket, AppSettings.BetTypeSchemaKey), newValue);
                     return newValue;
                 }
 
@@ -210,7 +210,8 @@
         {
             try
             {
-                return RedisRepository.StoreData<T>(string.Format(Constants.RedisKeyFormat, bucketName, key), value);
+                RedisRepository.Set<T>(string.Format(Constants.RedisKeyFormat, bucketName, key), value);
+                return true;
             }
             catch (Exception ex)
             {
@@ -222,7 +223,7 @@
 
         private static int GetCurrentVersion()
         {
-            return RedisRepository.ReadData<int>(string.Format(Constants.RedisKeyFormat, oddsFeedBucket, currentVersionKey));
+            return RedisRepository.Get<int>(string.Format(Constants.RedisKeyFormat, oddsFeedBucket, currentVersionKey));
         }
     }
 }

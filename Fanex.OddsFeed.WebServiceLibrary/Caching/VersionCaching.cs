@@ -50,13 +50,13 @@
 
         private static int GetCurrentVersion()
         {
-            var currentVersion = RedisRepository.ReadData<int>(string.Format("{0}:{1}", _oddsFeedBucket, _currentVersionKey));
+            var currentVersion = RedisRepository.Get<int>(string.Format("{0}:{1}", _oddsFeedBucket, _currentVersionKey));
             return currentVersion < 0 ? 0 : currentVersion;
         }
 
         private static bool IsFullChain()
         {
-            return RedisRepository.ReadData<bool>(string.Format("{0}:{1}", _oddsFeedBucket, _isFullChainKey));
+            return RedisRepository.Get<bool>(string.Format("{0}:{1}", _oddsFeedBucket, _isFullChainKey));
         }
     }
 }

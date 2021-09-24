@@ -2,8 +2,8 @@
 {
     using System;
     using System.Web.Mvc;
-    using Fanex.Caching;
     using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.Common.Repository;
     using Fanex.OddsFeed.WebServiceLibrary.Helpers;
     using WebServiceLibrary.Services;
 
@@ -37,13 +37,12 @@
             var domainName = RequestHelper.DomainName(Request.ServerVariables);
             var ipAddress = GetClientIpAddress();
             var cacheKeySport = "Sport_" + userName + ipAddress + domainName;
-            var sports = ConfiguredCacheService.Get<string>(cacheKeySport);
+            var sports = RedisRepository.Get<string>(cacheKeySport);
             if (sports == null)
             {
                 sports = _partnerService.GetSportsXmlContent(userName, userProfile);
 
-                ConfiguredCacheService.Set(cacheKeySport, sports,
-                        new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(TimeExpireCacheForSport)));
+                RedisRepository.Set(cacheKeySport, sports, TimeSpan.FromSeconds(TimeExpireCacheForSport));
             }
 
             return sports;

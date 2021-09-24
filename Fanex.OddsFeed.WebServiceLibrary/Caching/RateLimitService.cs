@@ -1,10 +1,10 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Caching
 {
+    using System;
     using Common.Repository;
     using Fanex.OddsFeed.Common;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.Common.FilterAtribute;
-    using System;
 
     public class RateLimitService : IRateLimitService
     {
@@ -14,32 +14,32 @@
 
         public ThrottleInfo GetThrottleInfo(string ipAdress)
         {
-            var throttleInfo = RedisRepository.ReadData<ThrottleInfo>(string.Format(Constants.RedisKeyFormat, throttlerBucket, UpdateIPText(ipAdress)));
+            var throttleInfo = RedisRepository.Get<ThrottleInfo>(string.Format(Constants.RedisKeyFormat, throttlerBucket, UpdateIPText(ipAdress)));
 
             return throttleInfo ?? new ThrottleInfo();
         }
 
         public void UpdateThrottleInfo(string ipAdress, ThrottleInfo throttleInfo)
         {
-            RedisRepository.StoreData<ThrottleInfo>(string.Format(Constants.RedisKeyFormat, throttlerBucket, UpdateIPText(ipAdress)), throttleInfo);
+            RedisRepository.Set<ThrottleInfo>(string.Format(Constants.RedisKeyFormat, throttlerBucket, UpdateIPText(ipAdress)), throttleInfo);
         }
 
         public void AddToBlockList(string ipAdress, DateTime expiredAt)
         {
-            RedisRepository.StoreData<DateTime>(string.Format(Constants.RedisKeyFormat, blocklistBucket, UpdateIPText(ipAdress)), expiredAt, TimeSpan.FromSeconds(blockTimeInSeconds));
+            RedisRepository.Set<DateTime>(string.Format(Constants.RedisKeyFormat, blocklistBucket, UpdateIPText(ipAdress)), expiredAt, TimeSpan.FromSeconds(blockTimeInSeconds));
         }
 
         public bool IsBlocked(string ipAdress)
         {
             var isBlocked = true;
 
-            var expiredTime = RedisRepository.ReadData<DateTime>(string.Format(Constants.RedisKeyFormat, blocklistBucket, UpdateIPText(ipAdress)));
+            var expiredTime = RedisRepository.Get<DateTime>(string.Format(Constants.RedisKeyFormat, blocklistBucket, UpdateIPText(ipAdress)));
 
             var curTime = DateTime.Now;
 
             if (curTime >= expiredTime)
             {
-                RedisRepository.Remove(string.Format(Constants.RedisKeyFormat, blocklistBucket, UpdateIPText(ipAdress)));
+                RedisRepository.Delete(string.Format(Constants.RedisKeyFormat, blocklistBucket, UpdateIPText(ipAdress)));
                 isBlocked = false;
             }
 

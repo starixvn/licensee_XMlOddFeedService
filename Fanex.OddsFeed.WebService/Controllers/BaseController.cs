@@ -4,7 +4,7 @@
     using System.Text;
     using System.Web.Mvc;
     using App_Start;
-    using Fanex.Caching;
+    using Fanex.OddsFeed.Common.Repository;
     using OddsFeed.Common.DTO;
     using ONEbook.UM.Models;
     using ONEbook.UM.Services;
@@ -47,14 +47,14 @@
         {
             var domainName = RequestHelper.DomainName(Request.ServerVariables);
             var ipAddress = GetClientIpAddress();
-            
+
             return GetAuthenticatedPartner(userName, domainName, ipAddress);
         }
 
         protected AuthenticatedPartner GetAuthenticatedPartner(string userName, string domainName, string ip)
         {
             var cacheKeyAuthenticatedPartner = "Partner_" + userName + ip + domainName;
-            var authenticatedPartner = ConfiguredCacheService.Get<AuthenticatedPartner>(cacheKeyAuthenticatedPartner);
+            var authenticatedPartner = RedisRepository.Get<AuthenticatedPartner>(cacheKeyAuthenticatedPartner);
             if (authenticatedPartner == null)
             {
                 authenticatedPartner = _partnerRepository.GetAuthenticatedPartner(new CheckPermissionCriteria
@@ -64,8 +64,7 @@
                     Ip = ip
                 });
 
-                ConfiguredCacheService.Set(cacheKeyAuthenticatedPartner, authenticatedPartner,
-                        new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(TimeExpireCache)));
+                RedisRepository.Set(cacheKeyAuthenticatedPartner, authenticatedPartner, TimeSpan.FromSeconds(TimeExpireCache));
             }
 
             WriteLogRequestAccess(userName, ip, domainName);

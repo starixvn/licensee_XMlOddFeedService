@@ -1,37 +1,36 @@
-﻿using Fanex.OddsFeed.Common.Helpers;
+﻿using System;
+using Fanex.Caching;
 using Newtonsoft.Json;
-using System;
 
 namespace Fanex.OddsFeed.Common.Repository
 {
     public static class RedisRepository
     {
-        public static T ReadData<T>(string key)
+        public static T Get<T>(string key)
         {
-            var cache = MyRedisConnectorHelper
-               .RedisConnection.GetDatabase();
-            var value = cache.StringGet(GetKey(key));
-            return value.IsNullOrEmpty ? default(T) : JsonConvert.DeserializeObject<T>(value);
+            return DeepClone(ConfiguredCacheService.Get<T>(key));
         }
 
-        public static bool StoreData<T>(string key, T data, TimeSpan? expire = null)
+        public static void Set<T>(string key, T data, TimeSpan? expire = null)
         {
-            var cache = MyRedisConnectorHelper.RedisConnection
-               .GetDatabase();
-
-            return cache.StringSet(GetKey(key), JsonConvert.SerializeObject(data), expire);
+            if (expire != null)
+            {
+                ConfiguredCacheService.Set(key, DeepClone(data), new CacheItemOptions().SetSlidingExpiration(expire.Value));
+            }
+            else
+            {
+                ConfiguredCacheService.Set(key, DeepClone(data));
+            }
         }
 
-        public static bool Remove(string key)
+        public static void Delete(string key)
         {
-            var cache = MyRedisConnectorHelper.RedisConnection
-               .GetDatabase();
-            return cache.KeyDelete(GetKey(key));
+            ConfiguredCacheService.Remove(key);
         }
 
-        private static string GetKey(string key)
+        private static T DeepClone<T>(T source)
         {
-            return string.Format("{0}:{1}", "XMLOddsFeedService", key);
+            return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(source));
         }
     }
 }

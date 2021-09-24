@@ -49,7 +49,7 @@
 
         private static IList<T> Get<T>(string bucketName, string key)
         {
-            var result = RedisRepository.ReadData<IList<T>>(string.Format("{0}:{1}", bucketName, key));
+            var result = RedisRepository.Get<IList<T>>(string.Format("{0}:{1}", bucketName, key));
             return result ?? new List<T>();
         }
     }

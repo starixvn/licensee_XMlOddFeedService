@@ -2,8 +2,8 @@
 {
     using System;
     using System.Web.Mvc;
-    using Fanex.Caching;
     using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.Common.Repository;
     using Fanex.OddsFeed.WebServiceLibrary.Helpers;
     using WebServiceLibrary.Services;
 
@@ -36,13 +36,12 @@
             var domainName = RequestHelper.DomainName(Request.ServerVariables);
             var ipAddress = GetClientIpAddress();
             var cacheKeyBetType = "BetType_" + userName + ipAddress + domainName;
-            var betTypes = ConfiguredCacheService.Get<string>(cacheKeyBetType);
+            var betTypes = RedisRepository.Get<string>(cacheKeyBetType);
             if (betTypes == null)
             {
                 betTypes = _partnerService.GetBetTypesXmlContent(userName, userProfile);
 
-                ConfiguredCacheService.Set(cacheKeyBetType, betTypes,
-                        new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(TimeExpireCacheForBetType)));
+                RedisRepository.Set(cacheKeyBetType, betTypes, TimeSpan.FromSeconds(TimeExpireCacheForBetType));
             }
 
             return betTypes;
