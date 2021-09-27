@@ -1,11 +1,11 @@
 ﻿namespace Fanex.OddsFeed.WebService
 {
     using System;
+    using System.Diagnostics;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Routing;
     using Common.Configurations;
-    using Common.Helpers;
     using Fanex.Data.Configuration;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
@@ -73,20 +73,7 @@
         {
             var ex = Server.GetLastError();
 
-            if (!AppSettings.Environment.Equals("Local", StringComparison.OrdinalIgnoreCase))
-            {
-                if (ex is HttpUnhandledException &&
-                    ex is HttpException && ((HttpException)ex).ErrorCode == 404)
-                {
-                    Server.ClearError();
-                    Response.Redirect("~/PageNotFound.html");
-                }
-                else
-                {
-                    LogHelper.Log(ex);
-                    Response.Redirect("~/Errors/Index");
-                }
-            }
+            ExceptionHandler.Handle(ex, TraceEventType.Error);
         }
 
         #region Private register routes methods
