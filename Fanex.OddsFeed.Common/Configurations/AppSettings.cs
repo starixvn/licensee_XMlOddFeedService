@@ -72,5 +72,9 @@
         public static string SentryCategory => ConfigurationManager.AppSettings["SentryCategory"];
 
         public static string SentryDNS => ConfigurationManager.AppSettings["SentryDNS"];
+
+        public static string RedisConnectionString => ConfigurationManager.AppSettings["RedisConnectionString"];
+
+        public static string RedisApplicationName => ConfigurationManager.AppSettings["RedisApplicationName"];
     }
 }

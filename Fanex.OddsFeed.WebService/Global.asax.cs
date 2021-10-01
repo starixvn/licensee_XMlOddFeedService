@@ -6,6 +6,8 @@
     using System.Web.Mvc;
     using System.Web.Routing;
     using Common.Configurations;
+    using Fanex.Caching;
+    using Fanex.Caching.Redis;
     using Fanex.Data.Configuration;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
@@ -64,6 +66,12 @@
 
             DbSettingProviderManager.Current.Start();
             AreaRegistration.RegisterAllAreas();
+
+            CacheServiceManager.Use(() => new RedisCache(new RedisCacheOptions
+            {
+                ConnectionString = AppSettings.RedisConnectionString,
+                ApplicationName = AppSettings.RedisApplicationName
+            }));
 
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             RegisterRoutes(RouteTable.Routes);
