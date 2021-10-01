@@ -2,6 +2,8 @@
 {
     using System.ServiceProcess;
     using Data.Configuration;
+    using Fanex.Caching;
+    using Fanex.Caching.Redis;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.Database;
@@ -30,6 +32,12 @@
             {
                 new OddsFeedService()
             };
+
+            CacheServiceManager.Use(() => new RedisCache(new RedisCacheOptions
+            {
+                ConnectionString = AppSettings.RedisConnectionString,
+                ApplicationName = AppSettings.RedisApplicationName
+            }));
 
             ServiceBase.Run(servicesToRun);
         }
