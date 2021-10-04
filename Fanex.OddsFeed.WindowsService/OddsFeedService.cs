@@ -29,6 +29,7 @@
             try
             {
                 _fileLogger.Trace("OddsFeedService: OnStart");
+                _fileLogger.Trace("Oliver is testing write log file");
                 _oddsFeedService.Reset();
                 _scheduler.Start(_oddsFeedService, _maintenanceService);
             }
