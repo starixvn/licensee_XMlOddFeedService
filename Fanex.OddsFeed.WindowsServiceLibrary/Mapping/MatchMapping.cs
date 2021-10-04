@@ -8,6 +8,7 @@
     using Common.Converters;
     using Common.DTO;
     using Common.Schemas;
+    using Newtonsoft.Json;
     using NLog;
 
     public class MatchMapping : IMatchMapping
@@ -54,9 +55,7 @@
 
         private static Match CreateMatch(DataRow row, bool isLive)
         {
-            Logging.LogService.Info(row["KickOffTime"].ToString());
-            Logging.LogService.Info(row["GlobalShowtime"].ToString());
-            Logging.LogService.Info(row["GlobalShowtime"].ToString());
+            Logging.LogService.Info(JsonConvert.SerializeObject(row["KickOffTime"]));
             return new Match
             {
                 MatchId = Convert.ToInt32(row["MatchID"]),
