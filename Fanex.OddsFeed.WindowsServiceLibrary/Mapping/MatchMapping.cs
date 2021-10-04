@@ -8,6 +8,7 @@
     using Common.Converters;
     using Common.DTO;
     using Common.Schemas;
+    using Fanex.Logging;
     using NLog;
 
     public class MatchMapping : IMatchMapping
@@ -54,6 +55,9 @@
 
         private static Match CreateMatch(DataRow row, bool isLive)
         {
+            LogService.Info(row["KickOffTime"].ToString());
+            LogService.Info(row["GlobalShowtime"].ToString());
+            LogService.Info(row["GlobalShowtime"].ToString());
             return new Match
             {
                 MatchId = Convert.ToInt32(row["MatchID"]),
