@@ -8,12 +8,9 @@
     using Common.Converters;
     using Common.DTO;
     using Common.Schemas;
-    using NLog;
 
     public class MatchMapping : IMatchMapping
     {
-        private readonly Logger fileLogger = LogManager.GetCurrentClassLogger();
-
         public IList<Match> GetMatches(
             DataTable dataTable,
             IEnumerable<BetTypeSchema> schemas,
@@ -21,7 +18,6 @@
             bool isLive)
         {
             var matchList = new List<Match>();
-            var startDate = DateTime.Now;
 
             var tempMatch = new Match();
             foreach (DataRow row in dataTable.Rows)
@@ -43,11 +39,6 @@
                     }
                 }
             }
-
-            var endDate = DateTime.Now;
-            var duration = (endDate - startDate).TotalMilliseconds;
-
-            fileLogger.Trace("GetMatches-" + (isLive ? "Live" : "DeadBall") + "-" + matchList.Count + ": " + duration);
 
             return matchList;
         }
