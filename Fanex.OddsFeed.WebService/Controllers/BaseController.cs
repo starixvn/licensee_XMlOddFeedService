@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using App_Start;
     using Fanex.Caching;
+    using NLog;
     using OddsFeed.Common.DTO;
     using ONEbook.UM.Models;
     using ONEbook.UM.Services;
@@ -20,7 +21,9 @@
     {
         private readonly IMaintenanceService _maintenanceService;
         private readonly IPartnerRepository _partnerRepository;
+        private readonly Logger fileLogger = LogManager.GetCurrentClassLogger();
         private const int TimeExpireCache = 60;
+
 
         public BaseController()
         {
@@ -75,6 +78,7 @@
 
         private void WriteLogRequestAccess(string username, string clientIpAddress, string domain)
         {
+            fileLogger.Info(string.Format("UserName: {0} - DomainName: {1} - Ip: {2}", username, domain, clientIpAddress));
             var partnerRepository = new PartnerRepository();
             var criteria = new WriteLogRequestAccessCriteria
             {
