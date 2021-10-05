@@ -24,7 +24,6 @@
         private readonly IOutrightBuilder _outrightBuilder;
         private readonly IOddsFeedCachingOperator _oddsFeedCachingOperator;
         private readonly IMatchFilter _matchFilter;
-        private readonly Logger fileLogger = LogManager.GetCurrentClassLogger();
 
         public OddsFeedService()
         {

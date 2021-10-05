@@ -7,6 +7,9 @@
 
     public class EventController : BaseController
     {
+        private const int TimeExpireCacheForEvent = 60;
+
+        [OutputCache(Duration = TimeExpireCacheForEvent, VaryByParam = "username", VaryByCustom = "clientIpAddress")]
         public ActionResult Index(string username)
         {
             var domain = RequestHelper.DomainName(Request.ServerVariables);

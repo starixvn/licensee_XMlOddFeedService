@@ -12,6 +12,7 @@
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Extensions.Web;
     using Fanex.Logging.Sentry.RavenClient;
+    using Fanex.OddsFeed.WebServiceLibrary.Helpers;
     using SharpRaven;
 
     public class MvcApplication : HttpApplication
@@ -75,6 +76,18 @@
 
             ExceptionHandler.Handle(ex, TraceEventType.Error);
         }
+
+        public override string GetVaryByCustomString(HttpContext context, string custom)
+        {
+            if (custom == "clientIpAddress")
+            {
+                var clientIpAddress = RequestHelper.GetClientIpAddress();
+
+                return clientIpAddress;
+            }
+            return base.GetVaryByCustomString(context, custom);
+        }
+
 
         #region Private register routes methods
 

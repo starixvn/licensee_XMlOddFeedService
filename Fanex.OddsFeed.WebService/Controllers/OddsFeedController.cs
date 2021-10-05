@@ -18,9 +18,11 @@
     [Compress]
     public class OddsFeedController : BaseController
     {
+        private const int TimeExpireCacheForOdds = 60;
         private readonly IBetTypeService _betTypeService;
         private readonly IOddsFeedService _oddsFeedService;
         private readonly IUserService _userService;
+        private readonly NLog.Logger fileLogger = NLog.LogManager.GetCurrentClassLogger();
 
         public OddsFeedController()
         {
@@ -29,10 +31,13 @@
             _userService = new UserService();
         }
 
+        [OutputCache(Duration = TimeExpireCacheForOdds, VaryByParam = "username;Sport;Country;Bettype;League;moretime", VaryByCustom = "clientIpAddress")]
         public ActionResult Index(string username)
         {
             try
             {
+                var ipAddress = GetClientIpAddress();
+                fileLogger.Info(string.Format("Odds-{0}-{1}", username, ipAddress));
                 if (this.IsDownTime())
                 {
                     return XmlContent(GetDowntimeContent());
@@ -45,9 +50,7 @@
                     return XmlContent(ErrorBuilder.GetOverLimitedOptions());
                 }
 
-                var domainName = RequestHelper.DomainName(Request.ServerVariables);
-                var ipAddress = GetClientIpAddress();
-                var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
+                var authenticatedPartner = GetAuthenticatedPartner(username);
                 var timestamp = string.IsNullOrEmpty(HttpContext.Request["t"]) ? "0" : HttpContext.Request["t"];
 
                 return !string.IsNullOrEmpty(authenticatedPartner.Error)
@@ -55,10 +58,8 @@
                     : XmlContent(GetOddsFeed(new OddsFeedsModel
                     {
                         BookieName = authenticatedPartner.SystemName,
-                        DomainName = domainName,
                         UserProfile = authenticatedPartner.UserProfile,
                         UserQuery = userQuery,
-                        IpAddress = ipAddress,
                         TimeStamp = Convert.ToInt32(timestamp),
                         Username = username
                     }));
@@ -85,9 +86,7 @@
                 return View("UnderMaintainance");
             }
 
-            var domainName = RequestHelper.DomainName(Request.ServerVariables);
-            var ipAddress = GetClientIpAddress();
-            var authenticatedPartner = GetAuthenticatedPartner(username, domainName, ipAddress);
+            var authenticatedPartner = GetAuthenticatedPartner(username);
 
             if (!string.IsNullOrEmpty(authenticatedPartner.Error))
             {
@@ -97,10 +96,8 @@
             var sampleOdds = GetOddsFeed(new OddsFeedsModel
             {
                 BookieName = authenticatedPartner.SystemName,
-                DomainName = domainName,
                 UserProfile = authenticatedPartner.UserProfile,
                 UserQuery = new UserQuery(),
-                IpAddress = ipAddress,
                 TimeStamp = Convert.ToInt32(HttpContext.Request["t"]),
                 IsSample = true
             });

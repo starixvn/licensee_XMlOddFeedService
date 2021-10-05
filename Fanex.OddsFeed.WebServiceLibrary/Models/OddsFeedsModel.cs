@@ -10,10 +10,6 @@
 
         public string BookieName { get; set; }
 
-        public string DomainName { get; set; }
-
-        public string IpAddress { get; set; }
-
         public int TimeStamp { get; set; }
 
         public bool IsSample { get; set; }
