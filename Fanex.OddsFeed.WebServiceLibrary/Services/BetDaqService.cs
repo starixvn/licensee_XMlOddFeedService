@@ -77,27 +77,20 @@
         public int InsertBetDaq(Hashtable spParams, bool isDownTime)
         {
             var spName = isDownTime ? AppSettings.SpTestingUMTime : SpHelper.RealSp("SP.InsertBetDaq");
-
-            using (var result = DbAccess.GetInsertBetDaq(spName, spParams))
-            {
-                return Converter.ToInt(result.Rows[0]["ErrCode"]);
-            }
+            var result = DbAccess.GetInsertBetDaq(spName, spParams);
+            return Converter.ToInt(result.Rows[0]["ErrCode"]);
         }
 
         private static string GetBetDaqSchedule()
         {
-            using (var result = DbAccess.GetBetdaqScheduleData(Portal_BetDaq_Schedule))
-            {
-                return result.ToCSV(false, SeparateRow);
-            }
+            var result = DbAccess.GetBetdaqScheduleData(Portal_BetDaq_Schedule);
+            return result.ToCSV(false, SeparateRow);
         }
 
         private static string GetBetDaqScheduleBasketBall(string spName, string query)
         {
-            using (var result = DbAccess.GetBetdaqScheduleData(spName))
-            {
-                return result.Select(query).ToCSV(SeparateRow);
-            }
+            var result = DbAccess.GetBetdaqScheduleData(spName);
+            return result.Select(query).ToCSV(SeparateRow);
         }
     }
 }

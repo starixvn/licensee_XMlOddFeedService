@@ -1,17 +1,19 @@
-﻿using System;
-using StackExchange.Redis;
-
-namespace Fanex.OddsFeed.Common.Helpers
+﻿namespace Fanex.OddsFeed.Common.Helpers
 {
+    using System;
+    using StackExchange.Redis;
+
     public static class MyRedisConnectorHelper
     {
-        private static Lazy<ConnectionMultiplexer> _RedisConnection = new Lazy
+        private const int redisTimeOut = 30000;
+
+        private static readonly Lazy<ConnectionMultiplexer> redisConnection = new Lazy
                <ConnectionMultiplexer>(() =>
                {
                    var options = ConfigurationOptions.Parse(System.Configuration.ConfigurationManager.AppSettings["RedisHost"]);
-                   options.ConnectTimeout = 30000;
-                   options.SyncTimeout = 30000;
-                   options.AsyncTimeout = 30000;
+                   options.ConnectTimeout = redisTimeOut;
+                   options.SyncTimeout = redisTimeOut;
+                   options.AsyncTimeout = redisTimeOut;
 
                    return ConnectionMultiplexer.
                       Connect(options);
@@ -21,7 +23,7 @@ namespace Fanex.OddsFeed.Common.Helpers
         {
             get
             {
-                return _RedisConnection.Value;
+                return redisConnection.Value;
             }
         }
     }

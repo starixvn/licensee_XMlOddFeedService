@@ -17,6 +17,9 @@
 
     public class MvcApplication : HttpApplication
     {
+        private const string betDaq = "BetDaq";
+        private const string index = "BetDaq";
+
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -47,7 +50,7 @@
             routes.MapRoute(
                 "Default", // Route name
                 _feedUrlPath + "{controller}/{action}/{id}", // URL with parameters
-               new { controller = "Home", action = "Index", id = UrlParameter.Optional }); // Parameter defaults
+               new { controller = "Home", action = index, id = UrlParameter.Optional }); // Parameter defaults
         }
 
         protected void Application_Start()
@@ -96,7 +99,7 @@
             routes.MapRoute(
                "EventService",
                _feedUrlPath + "{username}/event.xml",
-               new { controller = "Event", action = "Index" });
+               new { controller = "Event", action = index });
         }
 
         private static void RegisterRoutesFeeds(RouteCollection routes, string _feedUrlPath)
@@ -109,7 +112,7 @@
             routes.MapRoute(
               "FeedsXmlService",
               _feedUrlPath + "{username}/{feedname}.xml",
-              new { controller = "Feeds", action = "Index" });
+              new { controller = "Feeds", action = index });
 
             routes.MapRoute(
                  "FeedsJsonService",
@@ -122,7 +125,7 @@
             routes.MapRoute(
                 "OddsFeedService",
                 _feedUrlPath + "{username}/odds.xml",
-                new { controller = "OddsFeed", action = "Index" });
+                new { controller = "OddsFeed", action = index });
 
             routes.MapRoute(
                 "OddsFeedHelp",
@@ -140,32 +143,32 @@
             routes.MapRoute(
                 "CommonOddsFeedService", // Route name
                 _feedUrlPath + "{username}/odds.txt", // URL with parameters
-               new { controller = "BetDaq", action = "GetOdds" }); // Parameter defaults
+               new { controller = betDaq, action = "GetOdds" }); // Parameter defaults
 
             routes.MapRoute(
                 "CommonScheduleService", // Route name
                 _feedUrlPath + "{username}/sch.txt", // URL with parameters
-               new { controller = "BetDaq", action = "GetSchedule" }); // Parameter defaults
+               new { controller = betDaq, action = "GetSchedule" }); // Parameter defaults
 
             routes.MapRoute(
                 "CommonInsertBetdaqService",
                 _feedUrlPath + "{username}/InsertBet.cmd",
-                new { controller = "InsertBetdaq", action = "Index" });
+                new { controller = "InsertBetdaq", action = index });
 
             routes.MapRoute(
                 "BetDaqOddsFeedService", // Route name
                 _feedUrlPath + "{username}/en-lang/odds.txt", // URL with parameters
-               new { controller = "BetDaq", action = "GetOdds" }); // Parameter defaults
+               new { controller = betDaq, action = "GetOdds" }); // Parameter defaults
 
             routes.MapRoute(
                 "BetDaqScheduleService", // Route name
                 _feedUrlPath + "{username}/en-lang/sch.txt", // URL with parameters
-               new { controller = "BetDaq", action = "GetSchedule" }); // Parameter defaults
+               new { controller = betDaq, action = "GetSchedule" }); // Parameter defaults
 
             routes.MapRoute(
                 "BetDaqInsertBetdaqService",
                 _feedUrlPath + "{username}/en-lang/InsertBet.cmd",
-                new { controller = "InsertBetdaq", action = "Index" });
+                new { controller = "InsertBetdaq", action = index });
         }
 
         private static void RegisterRoutesBetRadar(RouteCollection routes, string _feedUrlPath)
@@ -173,7 +176,7 @@
             routes.MapRoute(
                 "BetRadarOddsFeedService", // Route name
                 _feedUrlPath + "{username}/oddsfeed.xml", // URL with parameters
-               new { controller = "BetRadar", action = "Index" }); // Parameter defaults
+               new { controller = "BetRadar", action = index }); // Parameter defaults
         }
 
         private static void RegisterRoutesSportsBetTypesLeaguesFeed(RouteCollection routes, string _feedUrlPath)
@@ -181,15 +184,15 @@
             routes.MapRoute(
                 "SportService",
                 _feedUrlPath + "{username}/sports.xml",
-                new { controller = "Sport", action = "Index" });
+                new { controller = "Sport", action = index });
             routes.MapRoute(
                 "BetTypeService",
                 _feedUrlPath + "{username}/bettypes.xml",
-                new { controller = "BetType", action = "Index" });
+                new { controller = "BetType", action = index });
             routes.MapRoute(
                 "LeagueService",
                 _feedUrlPath + "{username}/leagues.xml",
-                new { controller = "League", action = "Index" });
+                new { controller = "League", action = index });
         }
 
         #endregion Private register routes methods

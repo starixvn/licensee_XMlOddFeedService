@@ -100,7 +100,7 @@
         {
             return new Match
             {
-                MatchId = Convert.ToInt32(row["MatchID"]),
+                MatchId = GetMatchId(row),
                 SportName = row["SportTypeName"].ToString(),
                 SportId = Convert.ToInt32(row["SportType"]),
                 KickOfTime = Convert.ToDateTime(row["KickOffTime"].ToString()),
@@ -117,7 +117,7 @@
             {
                 match.MatchOddsList.Add(new MatchOdds
                 {
-                    MatchId = Convert.ToInt32(row["MatchID"]),
+                    MatchId = GetMatchId(row),
                     Tag = "ah",
                     Time = Convert.ToDateTime(row["ChangeTime_1"]),
                     TimeStamp = Convert.ToInt32(row["TimeStamp_1"]),
@@ -154,7 +154,7 @@
                 const byte OverUnderBetTypeId = 3;
                 match.MatchOddsList.Add(new MatchOdds
                 {
-                    MatchId = Convert.ToInt32(row["MatchID"]),
+                    MatchId = GetMatchId(row),
                     Tag = "ou",
                     Time = Convert.ToDateTime(row["ChangeTime_3"]),
                     TimeStamp = Convert.ToInt32(row["TimeStamp_3"]),
@@ -191,7 +191,7 @@
                 const byte ThreewayBetTypeId = 5;
                 match.MatchOddsList.Add(new MatchOdds
                 {
-                    MatchId = Convert.ToInt32(row["MatchID"]),
+                    MatchId = GetMatchId(row),
                     Tag = "st",
                     Time = Convert.ToDateTime(row["ChangeTime_5"]),
                     TimeStamp = Convert.ToInt32(row["TimeStamp_5"]),
@@ -228,7 +228,7 @@
                 const short MatchWinnerBetTypeId = 501;
                 match.MatchOddsList.Add(new MatchOdds
                 {
-                    MatchId = Convert.ToInt32(row["MatchID"]),
+                    MatchId = GetMatchId(row),
                     Tag = "ck_mw",
                     Time = Convert.ToDateTime(row["ChangeTime_501"]),
                     TimeStamp = Convert.ToInt32(row["TimeStamp_501"]),
@@ -250,6 +250,11 @@
                     }
                 });
             }
+        }
+
+        private static int GetMatchId(DataRow row)
+        {
+            return Convert.ToInt32(row["MatchID"]);
         }
 
         private static decimal GetOddsValue(object value)
