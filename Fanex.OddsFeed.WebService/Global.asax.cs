@@ -18,7 +18,7 @@
     public class MvcApplication : HttpApplication
     {
         private const string betDaq = "BetDaq";
-        private const string index = "BetDaq";
+        private const string index = "Index";
 
         public static void RegisterRoutes(RouteCollection routes)
         {
