@@ -436,6 +436,10 @@
     <Content Include="Views\OddsFeed\GeneralConcepts\_Errors.cshtml" />
     <Content Include="Views\Shared\UnderMaintainance.cshtml" />
     <Content Include="SystemLog\logfile.log.txt" />
+    <Content Include="Web.Local.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.MNL.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

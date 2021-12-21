@@ -44,7 +44,8 @@
 
             if (!AppSettings.Environment.Equals("Production", StringComparison.OrdinalIgnoreCase)
                 && !AppSettings.Environment.Equals("UAT", StringComparison.OrdinalIgnoreCase)
-                && !AppSettings.Environment.Equals("SIT", StringComparison.OrdinalIgnoreCase))
+                && !AppSettings.Environment.Equals("SIT", StringComparison.OrdinalIgnoreCase)
+                && !AppSettings.Environment.Equals("Local", StringComparison.OrdinalIgnoreCase))
             {
                 fullDomainName = fullDomainName + ":" + port;
             }
