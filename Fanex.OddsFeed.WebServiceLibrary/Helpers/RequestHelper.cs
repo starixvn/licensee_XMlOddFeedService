@@ -37,7 +37,7 @@
 
         public static string DomainName(NameValueCollection variables)
         {
-            var protocol = (variables["SERVER_PORT_SECURE"] == "1") ? "https://" : "http://";
+            var protocol = HttpContext.Current.Request.IsSecureConnection ? "https://" : "http://";
             var domain = variables["SERVER_NAME"];
             var port = variables["SERVER_PORT"];
             var fullDomainName = protocol + domain;
@@ -57,7 +57,7 @@
         {
             var domain = variables["SERVER_NAME"];
             var port = variables["SERVER_PORT"];
-            var protocol = (variables["SERVER_PORT_SECURE"] == "1") ? "https://" : "http://";
+            var protocol = HttpContext.Current.Request.IsSecureConnection ? "https://" : "http://";
             var fulldomain = protocol + domain;
 
             if (!AppSettings.Environment.Equals("Production", StringComparison.OrdinalIgnoreCase)
