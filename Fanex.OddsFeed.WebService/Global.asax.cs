@@ -4,6 +4,7 @@
     using System.Diagnostics;
     using System.Web;
     using System.Web.Mvc;
+    using System.Web.Optimization;
     using System.Web.Routing;
     using Common.Configurations;
     using Fanex.Data.Configuration;
@@ -68,6 +69,7 @@
 
             DbSettingProviderManager.Current.Start();
             AreaRegistration.RegisterAllAreas();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             RegisterRoutes(RouteTable.Routes);

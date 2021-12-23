@@ -15,14 +15,7 @@
 <html>
 <head>
     <title>Odds feed user manual</title>
-    <script src="@ViewBag.FullDomainName/Scripts/jquery-latest.js" type="text/javascript"></script>
-    <link href="@ViewBag.FullDomainName/content/shCore.css" rel="stylesheet" type="text/css" />
-    <link href="@ViewBag.FullDomainName/content/shThemeDefault.css" rel="stylesheet" type="text/css" />
-    <link href="@ViewBag.FullDomainName/stylesheets/Help/menu.css" rel="stylesheet" type="text/css" />
-    <link href="@ViewBag.FullDomainName/stylesheets/Help/content.css" rel="stylesheet" type="text/css" />
-    <script src="@ViewBag.FullDomainName/Scripts/shCore.js" type="text/javascript"></script>
-    <script src="@ViewBag.FullDomainName/Scripts/shBrushXml.js" type="text/javascript"></script>
-    <script src="@ViewBag.FullDomainName/Scripts/Help/menu.js" type="text/javascript"></script>
+    @Styles.Render("~/content/help/css")
 </head>
 <body>
     <div class="container">
@@ -429,6 +422,7 @@
             </section>
         </div>
     </div>
+    @Scripts.Render("~/bundles/help/js")
     <script type="text/javascript">
         $(document).ready(function () {
             SyntaxHighlighter.all();
