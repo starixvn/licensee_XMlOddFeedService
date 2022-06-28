@@ -57,7 +57,7 @@
         protected void Application_Start()
         {
             LogManager
-                   .SetDefaultLogCategory(AppSettings.SentryDNS)
+                   .SetDefaultLogCategory(AppSettings.SentryCategory)
                    .Use(new SentryLogging(new SentryEngineOptions
                    {
                        Dsn = new Dsn(AppSettings.SentryDNS)

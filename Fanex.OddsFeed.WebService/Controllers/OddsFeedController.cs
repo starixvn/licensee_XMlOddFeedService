@@ -102,7 +102,6 @@
                 IsSample = true
             });
 
-            ViewBag.Odds = GetFormatSampleOdds(sampleOdds);
             ViewBag.UserName = username;
             ViewBag.FullDomainName = RequestHelper.FullDomainName(Request.ServerVariables);
             ViewBag.VirtualPath = GetVirtualPath();
@@ -118,28 +117,6 @@
             {
                 return Content(sampleOdds);
             }
-        }
-
-        private static string GetFormatSampleOdds(string sampleOdds)
-        {
-            var provider = new StringBuilder(sampleOdds);
-            provider.Replace("><", ">\n<");
-            provider.Replace(" />", "></odd>");
-            provider.Replace("<outrights>", "\t<outrights>")
-                .Replace("<event", "\t\t<event")
-                .Replace("<odd id", "\t\t\t<odd id")
-                .Replace("</event>", "\t\t</event>")
-                .Replace("</outrights>", "\t</outrights>")
-
-                .Replace("<matches", "\t<matches")
-                .Replace("<match id", "\t\t<match id")
-                .Replace("<bookie", "\t\t\t<bookie")
-                .Replace("<odd t", "\t\t\t\t<odd t")
-                .Replace("</bookie", "\t\t\t</bookie")
-                .Replace("</match>", "\t\t</match>")
-                .Replace("</matches>", "\t</matches>");
-
-            return provider.ToString();
         }
 
         private void GenerateAppendixData(string username)

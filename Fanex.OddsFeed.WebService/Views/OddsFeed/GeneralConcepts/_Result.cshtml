@@ -1,0 +1,76 @@
+﻿@model string
+
+<div id="div_result_feed_general">
+    <span class="sub_title">Result</span>
+    <hr />
+    You will be provided an XML Feed URL to get Result data of each supported sport with the format as below:
+    <br />
+    <br />
+    <table style="width: 800px">
+        <tr>
+            <th style="width: 30%">Sport</th>
+            <th>Link</th>
+        </tr>
+        <tr>
+            <td style="text-align: center" rowspan="2">Cricket</td>
+            <td>XML Result Feed: <a target="_blank" href="@Model/cricket/result.xml">@Model/cricket/result.xml</a></td>
+        </tr>
+        <tr>
+            <td>How to implement: click <a href="javascript:;"
+                                     onclick="activeTermAndDefinitionResultFeed(div_term_definition_cricket_result)">here</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="div_term_definition_cricket_result" class="term_definition_result_feed" style="display: none">
+    <span class="sub_title">TERM AND DEFINITION FOR CRICKET'S RESULT</span>
+    <hr />
+    <ul>
+        <li>Lastupdate: last request date for Odds data.</li>
+        <li>Timestamp: last request date convert to integer number.</li>
+        <li>ge: Event\League name in English. </li>
+        <li>gs: Event\League name in Chinese Simplified.</li>
+        <li>gt: Event\League name in Chinese Traditional.</li>
+        <li>gb: Event\League name in Bahasa Indonesia.</li>
+        <li>ga: Event\League name in Thai.</li>
+        <li>gk: Event\League name in Korean.</li>
+        <li>gv: Event\League name in Vietnamese.</li>
+        <li>gj: Event\League name in Japanese.</li>
+        <li>gh: Event\League name in Hindi.</li>
+        <li>he: Home team name in English.</li>
+        <li>hs: Home team name in Chinese Simplified.</li>
+        <li>ht: Home team name in Chinese Traditional.</li>
+        <li>hb: Home team name in Bahasa Indonesia.</li>
+        <li>ha: Home team name in Thai.</li>
+        <li>hk: Home team name in Korean.</li>
+        <li>hv: Home team name in Vietnamese.</li>
+        <li>hj: Home team name in Japanese.</li>
+        <li>hh: Home team name in Hindi.</li>
+        <li>ae: Away team name in English.</li>
+        <li>as: Away team name in Chinese Simplified.</li>
+        <li>at: Away team name in Chinese Traditional.</li>
+        <li>ab: Away team name in Bahasa Indonesia.</li>
+        <li>aa: Away team name in Thai.</li>
+        <li>ak: Away team name in Korean.</li>
+        <li>av: Away team name in Vietnamese.</li>
+        <li>aj: Away team name in Japanese.</li>
+        <li>ah: Away team name in Hindi.</li>
+        <li>mt: Match Kick-off time</li>
+        <li>bookie name: Provider of XML Result Feed in English.</li>
+        <li>simp: Provider of XML Result Feed in Chinese Simplified</li>
+        <li>trad: Provider of XML Result Feed in Chinese Simplified</li>
+        <li>
+            For sport: Cricket
+            <ul>
+                <li>h1: Result for Home in 1st Inns</li>
+                <li>a1: Result for Away in 2nd Inns</li>
+                <li>h2: Result for Home in 1st Inns</li>
+                <li>a2: Result for Away in 2nd Inns</li>
+                <li>h: Result for Home in Match</li>
+                <li>a: Result for Away in Match</li>
+            </ul>
+        </li>
+    </ul>
+    <div style="color:red">Note: When result is -, it means there is no result from that Inns.</div>
+</div>

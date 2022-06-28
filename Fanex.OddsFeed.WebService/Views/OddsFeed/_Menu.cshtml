@@ -6,13 +6,21 @@
         <a class="hasChild" href="javascript:;" onclick="ActiveMenu(div_general_concepts)">General Concepts</a>
         <ul class="subNav1">
             <li>
-                <a href="javascript:;" onclick="ActiveMenu(div_general_concepts_bettype, '.general_concepts')">Term and dedinition for Outright bet type</a>
+                <a class="haveSubMenu" href="javascript:;" onclick="ActiveMenu(div_term_definition, '.general_concepts')">Term and definition</a>
+                <ul class="subNav2">
+                    <li>
+                        <a href="javascript:;" onclick="ActiveMenu(div_term_definition_match, '.sub-general-concepts', 2)">Term and definition for Match</a>
+                    </li>
+                    <li class="endItem">
+                        <a href="javascript:;" onclick="ActiveMenu(div_term_definition_bettype, '.sub-general-concepts', 2)">Term and dedinition for Outright bet type</a>
+                    </li>
+                </ul>
             </li>
             <li>
-                <a href="javascript:;" onclick="ActiveMenu(div_general_concepts_match, '.general_concepts')">Term and definition for Match</a>
+                <a href="javascript:;" onclick="ActiveMenu(div_general_concepts_errors, '.general_concepts')">Experimental errors</a>
             </li>
             <li class="endItem">
-                <a href="javascript:;" onclick="ActiveMenu(div_general_concepts_errors, '.general_concepts')">Experimental errors</a>
+                <a href="javascript:;" onclick="ActiveMenu(div_general_concepts_result, '.general_concepts')">Result</a>
             </li>
         </ul>
     </li>
