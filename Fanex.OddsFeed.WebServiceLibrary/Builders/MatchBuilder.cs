@@ -9,33 +9,35 @@
     using Common.Converters;
     using Common.DTO;
     using Common.Helpers;
+    using Fanex.OddsFeed.Common.Configurations;
     using Filters;
     using Models;
 
     public class MatchBuilder : IMatchBuilder
     {
-        private readonly IMatchFilter _matchFilter;
+        private readonly IMatchFilter matchFilter;
 
         public MatchBuilder()
         {
-            _matchFilter = new MatchFilter();
+            matchFilter = new MatchFilter();
         }
 
         public void AppendMatchNodes(
             StringBuilder oddsFeedNode,
             IList<Match> matches,
-            UserLanguage userLanguage,
             OddsFeedsModel model)
         {
+            var userLanguage = GetUserLanguage(model.UserProfile);
             if (model.IsSample)
             {
                 AppendSampleMatchNode(oddsFeedNode, matches, userLanguage, model);
             }
             else
             {
-                foreach (var match in matches.Where(m => _matchFilter.FilterMatch(m, model)))
+                var tempMatches = matches.Where(m => matchFilter.FilterMatch(m, model)).ToList();
+                foreach (var match in tempMatches)
                 {
-                    var matchOddsList = match.MatchOddsList.Where(odds => _matchFilter.FilterBetType(odds, model));
+                    var matchOddsList = match.MatchOddsList.Where(odds => matchFilter.FilterBetType(odds, model));
 
                     if (matchOddsList.Any())
                     {
@@ -43,6 +45,35 @@
                     }
                 }
             }
+        }
+
+        public void AppendMatchResultNodes(
+            StringBuilder xmlnode,
+            IList<Match> matches,
+            OddsFeedsModel model)
+        {
+            var userLanguage = GetUserLanguage(model.UserProfile);
+            var tempMatches = matches.Where(m => matchFilter.FilterMatch(m, model)).ToList();
+            foreach (var match in tempMatches)
+            {
+                AppendMatchResultNode(xmlnode, match, userLanguage, model);
+            }
+        }
+
+        public UserLanguage GetUserLanguage(UserProfile model)
+        {
+            return new UserLanguage
+            {
+                IsSupportedEnglish = StringHelper.ContainInList(model.Languages, "en-US"),
+                IsSupportedTraditionalChinese = StringHelper.ContainInList(model.Languages, "zh-TW"),
+                IsSupportedSimplifiedChinese = StringHelper.ContainInList(model.Languages, "zh-CN"),
+                IsSupportedIndonesia = StringHelper.ContainInList(model.Languages, "id-ID"),
+                IsSupportedThai = StringHelper.ContainInList(model.Languages, "th-TH"),
+                IsSupportedKorean = StringHelper.ContainInList(model.Languages, "ko-KR"),
+                IsSupportedVietnamese = StringHelper.ContainInList(model.Languages, "vi-VN"),
+                IsSupportedJapanese = StringHelper.ContainInList(model.Languages, "ja-JP"),
+                IsSupportedHindi = StringHelper.ContainInList(model.Languages, "hi-IN")
+            };
         }
 
         private static void AppendSampleMatchNode(
@@ -69,6 +100,17 @@
             oddsFeedNode.Append("</match>");
         }
 
+        private static void AppendMatchResultNode(
+            StringBuilder xmlnode,
+            Match match,
+            UserLanguage userLanguage,
+            OddsFeedsModel model)
+        {
+            AppendBeginMatchResult(xmlnode, match, userLanguage);
+            AppendBookieNodeMatchResult(xmlnode, match.MatchResultDetails, model);
+            xmlnode.Append("</match>");
+        }
+
         private static void AppendBeginMatch(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage, OddsFeedsModel model)
         {
             var running = match.IsLive ? 1 : 0;
@@ -81,6 +123,19 @@
 
             var moreTimeStr = model.UserQuery.MoreTime ? $"gst=\"{string.Format("{0:G}", match.GlobalShowtime)}\" st=\"{string.Format("{0:G}", match.Showtime) }\"" : string.Empty;
             oddsFeedNode.Append($"mt=\"{string.Format("{0:G}", match.KickOfTime)}\" {moreTimeStr} sport=\"{SecurityElement.Escape(match.SportName)}\" running=\"{running}\">");
+        }
+
+        private static void AppendBeginMatchResult(StringBuilder xmlnode, Match match, UserLanguage userLanguage)
+        {
+            var completed = match.EventStatus.Equals("completed", StringComparison.OrdinalIgnoreCase) ? 1 : 0;
+
+            xmlnode.Append($"<match id=\"{match.MatchId}\" ");
+
+            AppendLeague(xmlnode, match, userLanguage);
+            AppendHomeTeam(xmlnode, match, userLanguage);
+            AppendAwayTeam(xmlnode, match, userLanguage);
+
+            xmlnode.Append($"mt=\"{string.Format("{0:G}", match.KickOfTime)}\" sport=\"{SecurityElement.Escape(match.SportName)}\" completed=\"{completed}\">");
         }
 
         public static void AppendLeague(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)
@@ -234,6 +289,22 @@
             matchesNode.Append("</bookie>");
         }
 
+        private static void AppendBookieNodeMatchResult(StringBuilder xmlnode, IList<MatchResultDetailOS> matchResultDetails, OddsFeedsModel model)
+        {
+            xmlnode.Append($"<bookie name=\"{model.BookieName}\" simp=\"{model.BookieName}\" trad=\"{model.BookieName}\">");
+
+            if(matchResultDetails == null || !matchResultDetails.Any())
+            {
+                xmlnode.Append("<result h1=\"-\" a1=\"-\" h2=\"-\" a2=\"-\" h=\"-\" a=\"-\" />");
+            }
+            else
+            {
+                AppendResult(xmlnode, matchResultDetails);
+            }
+
+            xmlnode.Append("</bookie>");
+        }
+
         private static void AppendOddNodeList(StringBuilder oddsFeedNode, IEnumerable<MatchOdds> matchOddsNodes, int oddsRegion)
         {
             foreach (var matchOddsNode in matchOddsNodes)
@@ -251,12 +322,85 @@
                 oddsFeedNode.Append($" {betChoice.Code}=\"{ConvertOdds(oddsRegion, betChoice)}\"");
             }
 
-            oddsFeedNode.Append($" time=\"{matchOddsNode.Time}\" timestamp=\"{matchOddsNode.TimeStamp}\" />");
+            oddsFeedNode.Append($" time=\"{matchOddsNode.Time}\" timestamp=\"{matchOddsNode.Timestamp}\" />");
         }
 
         private static string ConvertOdds(int oddsRegion, BetChoice betChoice)
         {
             return betChoice.NotConvert ? betChoice.Value : OddsConverter.ConvertOdds(oddsRegion, Convert.ToDecimal(betChoice.Value)).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private static void AppendResult(StringBuilder xmlnode, IList<MatchResultDetailOS> matchResultDetails)
+        {
+            xmlnode.Append($"<result ");
+
+            AppendInnsScores(xmlnode, matchResultDetails, "h1", "h1");
+            AppendInnsScores(xmlnode, matchResultDetails, "a1", "a1");
+            AppendInnsScores(xmlnode, matchResultDetails, "h2", "h2");
+            AppendInnsScores(xmlnode, matchResultDetails, "a2", "a2");
+            AppendFinalScore(xmlnode, matchResultDetails);
+
+            xmlnode.Append(" />");
+        }
+
+        private static void AppendInnsScores(StringBuilder xmlnode, IList<MatchResultDetailOS> matchResultDetails, string resourceId, string attribute)
+        {
+            var detail = matchResultDetails.FirstOrDefault(x => x.ResourceId.ToLowerInvariant() == resourceId);
+            if (detail == null)
+            {
+                xmlnode.Append($" {attribute}=\"-\"");
+            }
+            else
+            {
+                switch (detail.SettlementStatusId)
+                {
+                    case SettlementStatus.NA:
+                        xmlnode.Append($" {attribute}=\"-\"");
+                        break;
+
+                    case SettlementStatus.Refund:
+                        xmlnode.Append($" {attribute}=\"r\"");
+                        break;
+
+                    case SettlementStatus.Completed:
+                        xmlnode.Append($" {attribute}=\"{detail.HomeValue}\"");
+                        break;
+
+                    default:
+                        // nothing
+                        break;
+                }
+            }
+        }
+
+        private static void AppendFinalScore(StringBuilder xmlnode, IList<MatchResultDetailOS> matchResultDetails)
+        {
+            var detail = matchResultDetails.FirstOrDefault(x => x.ResourceId == "00");
+            if(detail == null)
+            {
+                xmlnode.Append(" h=\"-\" a=\"-\"");
+            }
+            else
+            {
+                switch (detail.SettlementStatusId)
+                {
+                    case SettlementStatus.NA:
+                        xmlnode.Append(" h=\"-\" a=\"-\"");
+                        break;
+
+                    case SettlementStatus.Refund:
+                        xmlnode.Append(" h=\"r\" a=\"r\"");
+                        break;
+
+                    case SettlementStatus.Completed:
+                        xmlnode.Append($" h=\"{detail.HomeValue}\" a=\"{detail.AwayValue}\"");
+                        break;
+
+                    default:
+                        // nothing
+                        break;
+                }
+            }
         }
     }
 }

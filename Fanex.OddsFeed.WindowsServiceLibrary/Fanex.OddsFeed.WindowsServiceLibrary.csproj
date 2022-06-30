@@ -155,7 +155,9 @@
     <Compile Include="Mapping\MatchMapping.cs" />
     <Compile Include="Mapping\OutrightMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IResultFeedService.cs" />
     <Compile Include="Services\IWindowsOddsFeedService.cs" />
+    <Compile Include="Services\ResultFeedService.cs" />
     <Compile Include="Services\WindowsOddsFeedService.cs" />
   </ItemGroup>
   <ItemGroup>

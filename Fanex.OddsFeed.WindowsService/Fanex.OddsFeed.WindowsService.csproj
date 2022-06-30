@@ -229,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JobScheduler.cs" />
+    <Compile Include="ResultFeedJob.cs" />
     <Compile Include="OddsFeedJob.cs" />
     <Compile Include="OddsFeedService.cs">
       <SubType>Component</SubType>

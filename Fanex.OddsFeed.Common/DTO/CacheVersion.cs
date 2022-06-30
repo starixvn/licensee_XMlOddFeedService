@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Fanex.OddsFeed.Common.DTO
+﻿namespace Fanex.OddsFeed.Common.DTO
 {
+    using System;
+
     [Serializable]
     public class CacheVersion
     {

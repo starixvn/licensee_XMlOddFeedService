@@ -1,8 +1,8 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Filters
 {
-    using Common.DTO;
-    using Common.Helpers;
-    using Models;
+    using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.Common.Helpers;
+    using Fanex.OddsFeed.WebServiceLibrary.Models;
 
     public class MatchFilter : IMatchFilter
     {
@@ -16,7 +16,7 @@
 
         public bool FilterBetType(MatchOdds matchOdds, OddsFeedsModel model)
         {
-            return (matchOdds.TimeStamp > model.TimeStamp)
+            return (matchOdds.Timestamp > model.Timestamp)
                 && FilterByOddsProfile(model.UserProfile, model.IsSample, matchOdds)
                 && FilterByOddsFeedFilter(model.UserQuery, matchOdds);
         }
@@ -38,28 +38,41 @@
 
         private static bool FilterBySport(UserProfile userProfile, UserQuery userQuery, Match match)
         {
-            var userProfileCondition = userProfile.Sports == null || userProfile.Sports.Count == 0 || userProfile.Sports.Contains(match.SportId);
-            var userQueryCondition = userQuery.Sports == null || userQuery.Sports.Count == 0 || userQuery.Sports.Contains(match.SportId);
+            var userProfileCondition = userProfile.Sports == null
+                || userProfile.Sports.Count == 0
+                || userProfile.Sports.Contains(match.SportId);
+            var userQueryCondition = userQuery.Sports == null
+                || userQuery.Sports.Count == 0
+                || userQuery.Sports.Contains(match.SportId);
             return userProfileCondition && userQueryCondition;
         }
 
         private static bool FilterByLeague(UserProfile userProfile, UserQuery userQuery, Match match)
         {
-            var userProfileCondition = userProfile.Leagues == null || userProfile.Leagues.Count == 0 || userProfile.Leagues.Contains(match.LeagueId);
-            var userQueryCondition = userQuery.Leagues == null || userQuery.Leagues.Count == 0 || StringHelper.ContainInList(userQuery.Leagues, match.LeagueEn);
+            var userProfileCondition = userProfile.Leagues == null
+                || userProfile.Leagues.Count == 0
+                || userProfile.Leagues.Contains(match.LeagueId);
+            var userQueryCondition = userQuery.Leagues == null
+                || userQuery.Leagues.Count == 0
+                || StringHelper.ContainInList(userQuery.Leagues, match.LeagueEn);
             return userProfileCondition && userQueryCondition;
         }
 
         private static bool FilterByCountry(UserProfile userProfile, UserQuery userQuery, Match match)
         {
-            var userProfileCondition = userProfile.Countries == null || userProfile.Countries.Count == 0 || StringHelper.ContainInList(userProfile.Countries, match.CountryCode);
-            var userQueryCondition = userQuery.Countries == null || userQuery.Countries.Count == 0 || StringHelper.ContainInList(userQuery.Countries, match.CountryCode);
+            var userProfileCondition = userProfile.Countries == null
+                || userProfile.Countries.Count == 0
+                || StringHelper.ContainInList(userProfile.Countries, match.CountryCode);
+            var userQueryCondition = userQuery.Countries == null
+                || userQuery.Countries.Count == 0
+                || StringHelper.ContainInList(userQuery.Countries, match.CountryCode);
             return userProfileCondition && userQueryCondition;
         }
 
         private static bool FilterByKeyword(UserProfile userProfile, Match match)
         {
-            return string.IsNullOrEmpty(userProfile.LeagueKeyword) || StringHelper.Contain(match.LeagueEn, userProfile.LeagueKeyword);
+            return string.IsNullOrEmpty(userProfile.LeagueKeyword)
+                || StringHelper.Contain(match.LeagueEn, userProfile.LeagueKeyword);
         }
     }
 }

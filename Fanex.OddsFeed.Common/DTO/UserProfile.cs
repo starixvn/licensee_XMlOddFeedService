@@ -20,7 +20,7 @@
 
         public IList<int> BetTypes { get; set; }
 
-        public IList<int> DelayTimes { get; set; }
+        public IList<int> OddsDelayTimes { get; set; }
 
         public string LeagueKeyword { get; set; }
 
@@ -31,5 +31,7 @@
         public string SpParams { get; set; }
 
         public string Domain { get; set; }
+
+        public int ResultDelayTimes { get; set; }
     }
 }

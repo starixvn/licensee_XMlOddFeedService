@@ -60,7 +60,7 @@
                         BookieName = authenticatedPartner.SystemName,
                         UserProfile = authenticatedPartner.UserProfile,
                         UserQuery = userQuery,
-                        TimeStamp = Convert.ToInt32(timestamp),
+                        Timestamp = Convert.ToInt32(timestamp),
                         Username = username
                     }));
             }
@@ -98,7 +98,7 @@
                 BookieName = authenticatedPartner.SystemName,
                 UserProfile = authenticatedPartner.UserProfile,
                 UserQuery = new UserQuery(),
-                TimeStamp = Convert.ToInt32(HttpContext.Request["t"]),
+                Timestamp = Convert.ToInt32(HttpContext.Request["t"]),
                 IsSample = true
             });
 

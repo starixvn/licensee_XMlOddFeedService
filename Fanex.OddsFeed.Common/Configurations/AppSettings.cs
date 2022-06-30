@@ -72,5 +72,11 @@
         public static string SentryCategory => ConfigurationManager.AppSettings["SentryCategory"];
 
         public static string SentryDNS => ConfigurationManager.AppSettings["SentryDNS"];
+
+        // results feed
+        public static int ResultFeed_Interval => Convert.ToInt32(ConfigurationManager.AppSettings["ResultFeed.Interval"]);
+        public static string ResultFeed_Bucket => ConfigurationManager.AppSettings["ResultFeed.Bucket"];
+        public static string ResultFeed_BucketData => ConfigurationManager.AppSettings["ResultFeed.BucketData"];
+        public static short ResultFeed_TotalVersion => Convert.ToInt16(ConfigurationManager.AppSettings["ResultFeed.TotalVersion"]);
     }
 }

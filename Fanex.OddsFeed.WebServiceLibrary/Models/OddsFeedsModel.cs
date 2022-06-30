@@ -1,5 +1,6 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Models
 {
+    using System;
     using Fanex.OddsFeed.Common.DTO;
 
     public class OddsFeedsModel
@@ -10,12 +11,14 @@
 
         public string BookieName { get; set; }
 
-        public int TimeStamp { get; set; }
+        public int Timestamp { get; set; }
 
         public bool IsSample { get; set; }
 
         public bool IsOutright { get; set; } = true;
 
         public string Username { get; set; }
+
+        public DateTime? Date { get; set; }
     }
 }

@@ -2,15 +2,21 @@
 {
     using System.Collections.Generic;
     using System.Text;
-    using Common.DTO;
-    using Models;
+    using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.WebServiceLibrary.Models;
 
     public interface IMatchBuilder
     {
         void AppendMatchNodes(
             StringBuilder oddsFeedNode,
             IList<Match> matches,
-            UserLanguage userLanguage,
             OddsFeedsModel model);
+
+        void AppendMatchResultNodes(
+            StringBuilder xmlnode,
+            IList<Match> matches,
+            OddsFeedsModel model);
+
+        UserLanguage GetUserLanguage(UserProfile model);
     }
 }

@@ -31,8 +31,7 @@
                     Error = ErrorBuilder.GetError(Converter.ToInt(outputParams[ErrorCode]), outputParams[ErrorMsg].ToString())
                 };
 
-                if (string.IsNullOrEmpty(authenticatedPartner.Error) 
-                    && authenticatedPartner.UserProfile == null)
+                if (string.IsNullOrEmpty(authenticatedPartner.Error) && authenticatedPartner.UserProfile == null)
                 {
                     authenticatedPartner.Error = ErrorBuilder.GetUnAuthenticated();
                 }
@@ -82,7 +81,7 @@
             {
                 OddsType = ListConverter.ConvertToListInt(profileData.OddsType),
                 OddRegion = profileData.OddsRegion,
-                DelayTimes = ListConverter.ConvertToListInt(profileData.DelayTimes),
+                OddsDelayTimes = ListConverter.ConvertToListInt(profileData.OddsDelayTimes),
                 Languages = ListConverter.ConvertToListString(profileData.LanguageList),
                 Sports = string.Equals(profileData.SportIDList, All) ? null : ListConverter.ConvertToListInt(profileData.SportIDList),
                 Countries = string.Equals(profileData.CountryCodeList, All) ? null : ListConverter.ConvertToListString(profileData.CountryCodeList),
@@ -91,7 +90,8 @@
                 BetTypes = string.IsNullOrEmpty(profileData.BetTypeIDList) || string.Equals(profileData.BetTypeIDList, All) ? null : ListConverter.ConvertToListInt(profileData.BetTypeIDList),
                 LeagueKeyword = profileData.LeagueKeyword,
                 OutrightsKeyword = profileData.LeagueKeyword_O,
-                Domain = profileData.Domain
+                Domain = profileData.Domain,
+                ResultDelayTimes = !string.IsNullOrWhiteSpace(profileData.ResultDelayTimes) ? int.Parse(profileData.ResultDelayTimes) : 0
             };
         }
     }

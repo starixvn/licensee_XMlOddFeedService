@@ -1,26 +1,29 @@
-﻿using Fanex.OddsFeed.Common.Configurations;
-using Fanex.OddsFeed.WindowsServiceLibrary.Services;
-using ONEbook.UM.Services;
-using Quartz;
-using Quartz.Impl;
-using System.Collections.Generic;
-
-namespace Fanex.OddsFeed.WindowsService
+﻿namespace Fanex.OddsFeed.WindowsService
 {
+    using Fanex.OddsFeed.Common.Configurations;
+    using Fanex.OddsFeed.WindowsServiceLibrary.Services;
+    using ONEbook.UM.Services;
+    using Quartz;
+    using Quartz.Impl;
+    using System.Collections.Generic;
+
     public class JobScheduler
     {
-        private readonly int _interval;
-        private readonly IScheduler _scheduler;
+        private readonly int oddsInterval;
+        private readonly int resultInterval;
+        private readonly IScheduler scheduler;
 
         public JobScheduler()
         {
-            _interval = AppSettings.Interval;
-            _scheduler = StdSchedulerFactory.GetDefaultScheduler();
+            oddsInterval = AppSettings.Interval;
+            resultInterval = AppSettings.ResultFeed_Interval;
+            scheduler = StdSchedulerFactory.GetDefaultScheduler();
         }
 
-        public void Start(IWindowsOddsFeedService oddsFeedService, IMaintenanceService maintenanceService)
+        public void Start(IWindowsOddsFeedService oddsFeedService, IResultFeedService resultFeedService, IMaintenanceService maintenanceService)
         {
-            var job = JobBuilder.Create<OddsFeedJob>()
+            // odds
+            var oddsjob = JobBuilder.Create<OddsFeedJob>()
                 .UsingJobData(new JobDataMap(new Dictionary<string, IWindowsOddsFeedService>
                 {
                     { nameof(oddsFeedService), oddsFeedService}
@@ -31,18 +34,37 @@ namespace Fanex.OddsFeed.WindowsService
                 }))
                 .Build();
 
-            var trigger = TriggerBuilder.Create()
-                   .WithSimpleSchedule(a => a.WithIntervalInSeconds(_interval)
+            var oddstrigger = TriggerBuilder.Create()
+                   .WithSimpleSchedule(a => a.WithIntervalInSeconds(oddsInterval)
                    .RepeatForever())
                    .Build();
 
-            _scheduler.ScheduleJob(job, trigger);
-            _scheduler.Start();
+            // result
+            var resultjob = JobBuilder.Create<ResultFeedJob>()
+                .UsingJobData(new JobDataMap(new Dictionary<string, IResultFeedService>
+                {
+                    { nameof(resultFeedService), resultFeedService}
+                }))
+                .UsingJobData(new JobDataMap(new Dictionary<string, IMaintenanceService>
+                {
+                    { nameof(maintenanceService), maintenanceService}
+                }))
+                .Build();
+
+            var resulttrigger = TriggerBuilder.Create()
+                   .WithSimpleSchedule(a => a.WithIntervalInSeconds(resultInterval)
+                   .RepeatForever())
+                   .Build();
+
+            scheduler.ScheduleJob(oddsjob, oddstrigger);
+            scheduler.ScheduleJob(resultjob, resulttrigger);
+
+            scheduler.Start();
         }
 
         public void Stop()
         {
-            _scheduler.Shutdown();
+            scheduler.Shutdown();
         }
     }
 }

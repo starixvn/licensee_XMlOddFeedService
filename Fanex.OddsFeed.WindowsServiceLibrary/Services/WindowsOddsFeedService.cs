@@ -32,7 +32,7 @@
 
         public bool Update()
         {
-            var result = false;
+            bool result;
             var betTypeSchemas = GetBetTypeSchemas();
             var liveMatches = GetLiveMatches(betTypeSchemas);
             var deadBallMatches = GetDeadballMatches(betTypeSchemas);

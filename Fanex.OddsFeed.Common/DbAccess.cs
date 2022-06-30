@@ -1,8 +1,13 @@
 ﻿namespace Fanex.OddsFeed.Common
 {
+    using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Data;
+    using System.Linq;
     using Data;
+    using Fanex.OddsFeed.Common.Criteria;
+    using Fanex.OddsFeed.Common.DTO;
     using Helpers;
 
     public static class DbAccess
@@ -63,6 +68,29 @@
                 var indexTable = dataset.Tables.Count - 1;
 
                 return dataset.Tables[indexTable];
+            }
+        }
+
+        public static IList<Match> GetMatchResultDetails(DateTime date)
+        {
+            var criteria = new GetMatchResultDetailCriteria
+            {
+                Date = date
+            };
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            {
+                using (GridReader multi = db.QueryMultiple(criteria.GetSpParams()))
+                {
+                    var matches = multi.Read<Match>().ToList();
+                    var matchResultDetails = multi.Read<MatchResultDetailOS>().ToList();
+
+                    foreach(var match in matches)
+                    {
+                        match.MatchResultDetails = matchResultDetails.Where(x => x.MatchId == match.MatchId).ToList();
+                    }
+
+                    return matches;
+                }
             }
         }
     }

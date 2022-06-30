@@ -2,15 +2,14 @@
 {
     using System.Collections.Generic;
     using System.Text;
-    using Common.DTO;
-    using Models;
+    using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.WebServiceLibrary.Models;
 
     public interface IOutrightBuilder
     {
         void AppendOutrightsNode(
             StringBuilder oddsFeedNode,
             IList<Outright> outrights,
-            OddsFeedsModel model,
-            UserLanguage userLanguage);
+            OddsFeedsModel model);
     }
 }

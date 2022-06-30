@@ -5,14 +5,12 @@
     using System.Data;
     using System.Linq;
     using System.Text;
-    using Builders;
-    using Caching;
-    using Common.DTO;
-    using Common.Helpers;
     using Fanex.OddsFeed.Common;
-    using Filters;
-    using Models;
-    using NLog;
+    using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.WebServiceLibrary.Builders;
+    using Fanex.OddsFeed.WebServiceLibrary.Caching;
+    using Fanex.OddsFeed.WebServiceLibrary.Filters;
+    using Fanex.OddsFeed.WebServiceLibrary.Models;
 
     public class OddsFeedService : IOddsFeedService
     {
@@ -20,17 +18,17 @@
         private const int OddsTypeLiveMatch = 4;
         private const int OddsTypeDeadBallMatch = 2;
 
-        private readonly IMatchBuilder _matchBuilder;
-        private readonly IOutrightBuilder _outrightBuilder;
-        private readonly IOddsFeedCachingOperator _oddsFeedCachingOperator;
-        private readonly IMatchFilter _matchFilter;
+        private readonly IMatchBuilder matchBuilder;
+        private readonly IOutrightBuilder outrightBuilder;
+        private readonly IFeedCachingOperator feedCachingOperator;
+        private readonly IMatchFilter matchFilter;
 
         public OddsFeedService()
         {
-            _matchBuilder = new MatchBuilder();
-            _outrightBuilder = new OutrightBuilder();
-            _oddsFeedCachingOperator = new OddsFeedCachingOperator();
-            _matchFilter = new MatchFilter();
+            matchBuilder = new MatchBuilder();
+            outrightBuilder = new OutrightBuilder();
+            feedCachingOperator = new FeedCachingOperator();
+            matchFilter = new MatchFilter();
         }
 
         public string BuildXmlDocument(OddsFeedsModel model)
@@ -44,16 +42,15 @@
             var isShownLiveMatch = IsShownLiveMatch(model.UserProfile);
             var isShownDeadMatch = IsShownDeadBallMatch(model.UserProfile);
 
-            var oddsData = _oddsFeedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
+            var oddsData = feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
             var oddsFeedNode = new StringBuilder("<oddsfeed>");
-            var userLanguage = GetUserLanguage(model);
 
             if (isShownOutright)
             {
-                _outrightBuilder.AppendOutrightsNode(oddsFeedNode, oddsData.Outrights, model, userLanguage);
+                outrightBuilder.AppendOutrightsNode(oddsFeedNode, oddsData.Outrights, model);
             }
 
-            AppendMatches(oddsFeedNode, oddsData.LiveMatches, oddsData.DeadballMatches, model, userLanguage);
+            AppendMatches(oddsFeedNode, oddsData.LiveMatches, oddsData.DeadballMatches, model);
 
             oddsFeedNode.Append("</oddsfeed>");
 
@@ -86,12 +83,11 @@
             }
 
             var oddsFeedNode = new StringBuilder("<oddsfeed>");
-            model.UserProfile = new UserProfile();
-            var userLanguage = new UserLanguage
+            model.UserProfile = new UserProfile
             {
-                IsSupportedEnglish = true
+                Languages = new List<string> { "en-US" }
             };
-            AppendMatches(oddsFeedNode, new List<Match>(), matchList, model, userLanguage);
+            AppendMatches(oddsFeedNode, new List<Match>(), matchList, model);
             oddsFeedNode.Append("</oddsfeed>");
             return oddsFeedNode.ToString();
         }
@@ -120,7 +116,7 @@
                     MatchId = GetMatchId(row),
                     Tag = "ah",
                     Time = Convert.ToDateTime(row["ChangeTime_1"]),
-                    TimeStamp = Convert.ToInt32(row["TimeStamp_1"]),
+                    Timestamp = Convert.ToInt32(row["Timestamp_1"]),
                     BetTypeId = 1,
                     BetChoices = new List<BetChoice>
                     {
@@ -157,7 +153,7 @@
                     MatchId = GetMatchId(row),
                     Tag = "ou",
                     Time = Convert.ToDateTime(row["ChangeTime_3"]),
-                    TimeStamp = Convert.ToInt32(row["TimeStamp_3"]),
+                    Timestamp = Convert.ToInt32(row["Timestamp_3"]),
                     BetTypeId = OverUnderBetTypeId,
                     BetChoices = new List<BetChoice>
                     {
@@ -194,7 +190,7 @@
                     MatchId = GetMatchId(row),
                     Tag = "st",
                     Time = Convert.ToDateTime(row["ChangeTime_5"]),
-                    TimeStamp = Convert.ToInt32(row["TimeStamp_5"]),
+                    Timestamp = Convert.ToInt32(row["Timestamp_5"]),
                     BetTypeId = ThreewayBetTypeId,
                     BetChoices = new List<BetChoice>
                     {
@@ -231,7 +227,7 @@
                     MatchId = GetMatchId(row),
                     Tag = "ck_mw",
                     Time = Convert.ToDateTime(row["ChangeTime_501"]),
-                    TimeStamp = Convert.ToInt32(row["TimeStamp_501"]),
+                    Timestamp = Convert.ToInt32(row["Timestamp_501"]),
                     BetTypeId = MatchWinnerBetTypeId,
                     BetChoices = new List<BetChoice>
                     {
@@ -270,67 +266,50 @@
             return string.Format("{0:0.#########}", odds);
         }
 
-        private static UserLanguage GetUserLanguage(OddsFeedsModel model)
-        {
-            return new UserLanguage
-            {
-                IsSupportedEnglish = StringHelper.ContainInList(model.UserProfile.Languages, "en-US"),
-                IsSupportedTraditionalChinese = StringHelper.ContainInList(model.UserProfile.Languages, "zh-TW"),
-                IsSupportedSimplifiedChinese = StringHelper.ContainInList(model.UserProfile.Languages, "zh-CN"),
-                IsSupportedIndonesia = StringHelper.ContainInList(model.UserProfile.Languages, "id-ID"),
-                IsSupportedThai = StringHelper.ContainInList(model.UserProfile.Languages, "th-TH"),
-                IsSupportedKorean = StringHelper.ContainInList(model.UserProfile.Languages, "ko-KR"),
-                IsSupportedVietnamese = StringHelper.ContainInList(model.UserProfile.Languages, "vi-VN"),
-                IsSupportedJapanese = StringHelper.ContainInList(model.UserProfile.Languages, "ja-JP"),
-                IsSupportedHindi = StringHelper.ContainInList(model.UserProfile.Languages, "hi-IN")
-            };
-        }
-
         private void AppendMatches(
             StringBuilder oddsFeedNode,
             IList<Match> liveMatches,
             IList<Match> deadMatches,
-            OddsFeedsModel model,
-            UserLanguage userLanguage)
+            OddsFeedsModel model)
         {
-            AppendBeginMatches(oddsFeedNode, model, GetMatchTimeStamp(model, liveMatches, deadMatches), GetLastUpdate());
+            AppendBeginMatches(oddsFeedNode, model, GetMatchTimestamp(model, liveMatches, deadMatches), GetLastUpdate());
 
-            _matchBuilder.AppendMatchNodes(oddsFeedNode, liveMatches, userLanguage, model);
-            _matchBuilder.AppendMatchNodes(oddsFeedNode, deadMatches, userLanguage, model);
+            matchBuilder.AppendMatchNodes(oddsFeedNode, liveMatches, model);
+            matchBuilder.AppendMatchNodes(oddsFeedNode, deadMatches, model);
 
             oddsFeedNode.Append("</matches>");
         }
 
-        private int GetMatchTimeStamp(OddsFeedsModel model, IList<Match> liveMatches, IList<Match> deadMatches)
+        private int GetMatchTimestamp(OddsFeedsModel model, IList<Match> liveMatches, IList<Match> deadMatches)
         {
-            var liveMatchesTimeStamp = 0;
-            var deadMatchesTimeStamp = 0;
+            var liveMatchesTimestamp = 0;
+            var deadMatchesTimestamp = 0;
 
             if (liveMatches.Any())
             {
-                liveMatchesTimeStamp = GetMaxTimeStampMatches(model, liveMatches);
+                liveMatchesTimestamp = GetMaxTimestampMatches(model, liveMatches);
             }
 
             if (deadMatches.Any())
             {
-                deadMatchesTimeStamp = GetMaxTimeStampMatches(model, deadMatches);
+                deadMatchesTimestamp = GetMaxTimestampMatches(model, deadMatches);
             }
 
-            return Math.Max(liveMatchesTimeStamp, deadMatchesTimeStamp);
+            return Math.Max(liveMatchesTimestamp, deadMatchesTimestamp);
         }
 
-        private int GetMaxTimeStampMatches(OddsFeedsModel model, IList<Match> matches)
+        private int GetMaxTimestampMatches(OddsFeedsModel model, IList<Match> matches)
         {
-            var matchFilter = matches.Where(m => _matchFilter.FilterMatch(m, model));
+            var tempMatches = matches.Where(m => matchFilter.FilterMatch(m, model));
 
-            return matchFilter.Any() ? matchFilter.Max(m => GetMaxTimeStampOdds(model, m.MatchOddsList)) : 0;
+            return tempMatches.Any() ? tempMatches.Max(m => GetMaxTimestampOdds(model, m.MatchOddsList)) : 0;
         }
 
-        private int GetMaxTimeStampOdds(OddsFeedsModel model, IList<MatchOdds> matchOddsList)
+        private int GetMaxTimestampOdds(OddsFeedsModel model, IList<MatchOdds> matchOddsList)
         {
-            var matchOddsFilter = matchOddsList.Where(o => _matchFilter.FilterBetType(o, model));
+            var matchOddsFilter = matchOddsList.Where(o => matchFilter.FilterBetType(o, model));
 
-            return matchOddsFilter.Any() ? matchOddsFilter.Max(o => o.TimeStamp) : 0;
+            return matchOddsFilter.Any() ? matchOddsFilter.Max(o => o.Timestamp) : 0;
         }
 
         private static bool IsShownOutright(OddsFeedsModel model)
@@ -357,15 +336,15 @@
         private static void AppendBeginMatches(
             StringBuilder oddsFeedNode,
             OddsFeedsModel model,
-            int matchesTimeStamp,
+            int matchesTimestamp,
             DateTime lastUpdate)
         {
-            if (matchesTimeStamp > 0)
+            if (matchesTimestamp > 0)
             {
                 var oddsType = GetOddsTypeName(model.UserProfile.OddRegion);
                 oddsFeedNode.AppendFormat("<matches lastupdate=\"{0}\" timestamp=\"{1}\"{2}>",
                     lastUpdate,
-                    matchesTimeStamp,
+                    matchesTimestamp,
                     !string.IsNullOrWhiteSpace(oddsType) ? $" oddstype=\"{GetOddsTypeName(model.UserProfile.OddRegion)}\"" : string.Empty);
             }
             else

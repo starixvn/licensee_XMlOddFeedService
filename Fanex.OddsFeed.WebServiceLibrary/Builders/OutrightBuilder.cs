@@ -12,19 +12,21 @@
 
     public class OutrightBuilder : IOutrightBuilder
     {
-        private readonly OutrightFilter _outrightFilter;
+        private readonly IMatchBuilder matchBuilder;
+        private readonly OutrightFilter outrightFilter;
 
         public OutrightBuilder()
         {
-            _outrightFilter = new OutrightFilter();
+            matchBuilder = new MatchBuilder();
+            outrightFilter = new OutrightFilter();
         }
 
         public void AppendOutrightsNode(
             StringBuilder oddsFeedNode,
             IList<Outright> outrights,
-            OddsFeedsModel model,
-            UserLanguage userLanguage)
+            OddsFeedsModel model)
         {
+            var userLanguage = matchBuilder.GetUserLanguage(model.UserProfile);
             oddsFeedNode.Append("<outrights>");
 
             if (IsSampleOutright(model.IsOutright, model.IsSample))
@@ -41,7 +43,7 @@
             {
                 foreach (var outright in outrights)
                 {
-                    if (_outrightFilter.FilterOutright(outright, model.UserProfile, model.UserQuery))
+                    if (outrightFilter.FilterOutright(outright, model.UserProfile, model.UserQuery))
                     {
                         AppendEventNode(oddsFeedNode, model.UserProfile, userLanguage, outright);
                     }

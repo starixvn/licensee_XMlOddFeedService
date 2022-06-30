@@ -2,46 +2,46 @@
 {
     using System.Linq;
     using System.Text;
-    using Builders;
-    using Caching;
-    using Common.DTO;
-    using Common.Helpers;
-    using Models;
+    using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.Common.Helpers;
+    using Fanex.OddsFeed.WebServiceLibrary.Builders;
+    using Fanex.OddsFeed.WebServiceLibrary.Caching;
+    using Fanex.OddsFeed.WebServiceLibrary.Models;
 
     public class EventFeedService : IEventFeedService
     {
-        private readonly UserProfile _userProfile;
-        private readonly EventBuilder _eventBuilder;
-        private readonly IOddsFeedCachingOperator _oddsFeedCachingOperator;
+        private readonly UserProfile userProfile;
+        private readonly EventBuilder eventBuilder;
+        private readonly IFeedCachingOperator feedCachingOperator;
 
         public EventFeedService(UserProfile userProfile)
         {
-            _userProfile = userProfile;
-            _eventBuilder = new EventBuilder();
-            _oddsFeedCachingOperator = new OddsFeedCachingOperator();
+            this.userProfile = userProfile;
+            eventBuilder = new EventBuilder();
+            feedCachingOperator = new FeedCachingOperator();
         }
 
         public string BuildXmlEvent(bool isSample = false, bool isOutright = true)
         {
             var eventFeedNode = new StringBuilder();
-            var data = _oddsFeedCachingOperator.GetOddsData(new OddsFeedsModel { UserProfile = _userProfile }, isOutright, true, true);
+            var data = feedCachingOperator.GetOddsData(new OddsFeedsModel { UserProfile = userProfile }, isOutright, true, true);
             var fullMatches = data.DeadballMatches.Concat(data.LiveMatches);
 
             var userLanguage = new UserLanguage
             {
-                IsSupportedEnglish = StringHelper.ContainInList(_userProfile.Languages, "en-US"),
-                IsSupportedTraditionalChinese = StringHelper.ContainInList(_userProfile.Languages, "zh-TW"),
-                IsSupportedSimplifiedChinese = StringHelper.ContainInList(_userProfile.Languages, "zh-CN"),
+                IsSupportedEnglish = StringHelper.ContainInList(userProfile.Languages, "en-US"),
+                IsSupportedTraditionalChinese = StringHelper.ContainInList(userProfile.Languages, "zh-TW"),
+                IsSupportedSimplifiedChinese = StringHelper.ContainInList(userProfile.Languages, "zh-CN"),
             };
 
             eventFeedNode.Append("<eventfeed>");
 
             if (!isSample || isOutright)
             {
-                _eventBuilder.AppendOutrightsNode(eventFeedNode, userLanguage, data.Outrights);
+                eventBuilder.AppendOutrightsNode(eventFeedNode, userLanguage, data.Outrights);
             }
 
-            _eventBuilder.AppendMatchesNode(eventFeedNode, userLanguage, fullMatches);
+            eventBuilder.AppendMatchesNode(eventFeedNode, userLanguage, fullMatches);
 
             eventFeedNode.Append("</eventfeed>");
 

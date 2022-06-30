@@ -1,19 +1,19 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Caching
 {
-    using Common.Repository;
-    using Common.Schemas;
-    using Fanex.OddsFeed.Common.Configurations;
-    using Fanex.OddsFeed.Common.DTO;
-    using Models;
     using System.Collections.Generic;
     using System.Linq;
+    using Fanex.OddsFeed.Common.Configurations;
+    using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.Common.Repository;
+    using Fanex.OddsFeed.Common.Schemas;
+    using Fanex.OddsFeed.WebServiceLibrary.Models;
 
-    public class OddsFeedCachingOperator : IOddsFeedCachingOperator
+    public class FeedCachingOperator : IFeedCachingOperator
     {
         public OddsData GetOddsData(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch)
         {
             var versionCaching = new VersionCaching();
-            var cacheVersion = versionCaching.GetRightVersion(model);
+            var cacheVersion = versionCaching.GetRightVersionOddsFeed(model.UserProfile);
 
             var outrights = isGetOutright
                 ? Get<Outright>(AppSettings.BucketOutrights, cacheVersion.CurrentVersionOutright.ToString()) :
@@ -45,6 +45,13 @@
         public IList<BetTypeSchema> GetBetTypes()
         {
             return Get<BetTypeSchema>(AppSettings.BucketOddsFeed, AppSettings.BetTypeSchemaKey);
+        }
+
+        public IList<Match> GetMatchResultDetails(int delayTimes)
+        {
+            var versionCaching = new VersionCaching();
+            var cacheVersion = versionCaching.GetRightVersionResultFeed(delayTimes);
+            return Get<Match>(AppSettings.ResultFeed_BucketData, cacheVersion.ToString());
         }
 
         private static IList<T> Get<T>(string bucketName, string key)

@@ -14,7 +14,7 @@
 
         public string Tag { get; set; }
 
-        public int TimeStamp { get; set; }
+        public int Timestamp { get; set; }
 
         public DateTime Time { get; set; }
 

@@ -28,12 +28,13 @@
 
         public string LeagueKeyword_O { get; set; }
 
-        public string DelayTimes { get; set; }
+        public string OddsDelayTimes { get; set; }
 
         public string OutrightIDList { get; set; }
 
         public short NumberOfIPs { get; set; }
 
         public string Domain { get; set; }
+        public string ResultDelayTimes { get; set; }
     }
 }

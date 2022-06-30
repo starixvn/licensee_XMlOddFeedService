@@ -271,6 +271,7 @@
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\FeedsController.cs" />
     <Compile Include="Controllers\InsertBetdaqController.cs" />
+    <Compile Include="Controllers\CricketResultFeedController.cs" />
     <Compile Include="Controllers\OddsFeedController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Global.asax.cs">

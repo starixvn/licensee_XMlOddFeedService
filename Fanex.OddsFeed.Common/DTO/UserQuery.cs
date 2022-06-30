@@ -1,16 +1,16 @@
 ﻿namespace Fanex.OddsFeed.Common.DTO
 {
-    using global::System.Collections.Generic;
+    using System.Collections.Generic;
 
     public class UserQuery
     {
-        public IList<int> Sports { get; set; }
+        public IList<int> Sports { get; set; } = new List<int>();
 
-        public IList<string> Countries { get; set; }
+        public IList<string> Countries { get; set; } = new List<string>();
 
-        public IList<int> BetTypes { get; set; }
+        public IList<int> BetTypes { get; set; } = new List<int>();
 
-        public IList<string> Leagues { get; set; }
+        public IList<string> Leagues { get; set; } = new List<string>();
 
         public bool MoreTime { get; set; }
     }

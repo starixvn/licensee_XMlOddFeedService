@@ -10,27 +10,30 @@
 
     public partial class OddsFeedService : ServiceBase
     {
-        private readonly IWindowsOddsFeedService _oddsFeedService;
-        private readonly IMaintenanceService _maintenanceService;
-        private readonly JobScheduler _scheduler;
-        private readonly NLog.Logger _fileLogger;
+        private readonly IWindowsOddsFeedService oddsFeedService;
+        private readonly IResultFeedService resultFeedService;
+        private readonly IMaintenanceService maintenanceService;
+        private readonly JobScheduler scheduler;
+        private readonly NLog.Logger fileLogger;
 
         public OddsFeedService()
         {
             InitializeComponent();
-            _oddsFeedService = new WindowsOddsFeedService();
-            _maintenanceService = new MaintenanceService();
-            _scheduler = new JobScheduler();
-            _fileLogger = NLog.LogManager.GetCurrentClassLogger();
+            oddsFeedService = new WindowsOddsFeedService();
+            resultFeedService = new ResultFeedService();
+            maintenanceService = new MaintenanceService();
+            scheduler = new JobScheduler();
+            fileLogger = NLog.LogManager.GetCurrentClassLogger();
         }
 
         protected override void OnStart(string[] args)
         {
             try
             {
-                _fileLogger.Trace("OddsFeedService: OnStart");
-                _oddsFeedService.Reset();
-                _scheduler.Start(_oddsFeedService, _maintenanceService);
+                fileLogger.Trace("OddsFeedService: OnStart");
+                oddsFeedService.Reset();
+                resultFeedService.Reset();
+                scheduler.Start(oddsFeedService, resultFeedService, maintenanceService);
             }
             catch (Exception exception)
             {
@@ -42,8 +45,8 @@
         {
             try
             {
-                _fileLogger.Trace("OddsFeedService: OnStop");
-                _scheduler.Stop();
+                fileLogger.Trace("OddsFeedService: OnStop");
+                scheduler.Stop();
             }
             catch (Exception exception)
             {

@@ -43,6 +43,8 @@
 
             RegisterRoutesFeeds(routes, _feedUrlPath);
 
+            RegisterRoutesCricketResultFeed(routes, _feedUrlPath);
+
             routes.MapRoute(
                 "OddsFeedWindowService",
                 _feedUrlPath + "{username}/analytics/cache",
@@ -195,6 +197,14 @@
                 "LeagueService",
                 _feedUrlPath + "{username}/leagues.xml",
                 new { controller = "League", action = index });
+        }
+
+        private static void RegisterRoutesCricketResultFeed(RouteCollection routes, string _feedUrlPath)
+        {
+            routes.MapRoute(
+                "CricketResultFeedService",
+                _feedUrlPath + "{username}/cricket/result.xml",
+                new { controller = "CricketResultFeed", action = index });
         }
 
         #endregion Private register routes methods

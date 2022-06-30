@@ -116,7 +116,7 @@
                 MatchId = Convert.ToInt32(row["MatchID"]),
                 Tag = schema.Tag,
                 Time = Convert.ToDateTime(row["ChangeTime"]),
-                TimeStamp = Convert.ToInt32(row["TimeStamp"]),
+                Timestamp = Convert.ToInt32(row["Timestamp"]),
                 BetTypeId = Convert.ToInt32(row["BetType"]),
                 BetChoices = schema.IsOddsFlex
                                           ? GetOddsFlexBetChoices(schema, row, oddsFlexs)
@@ -259,14 +259,7 @@
         private static string GetOddsValue(BetChoiceSchema betChoiceSchema, object value)
         {
             object oddValue;
-            if (value is DBNull)
-            {
-                oddValue = 0;
-            }
-            else
-            {
-                oddValue = value;
-            }
+            oddValue = value is DBNull ? 0 : value;
 
             if (betChoiceSchema.NotConvert)
             {

@@ -50,6 +50,9 @@
       <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Caching, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Caching.2.2.1\lib\net461\Fanex.Caching.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
       <Private>True</Private>
@@ -111,6 +114,9 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -145,15 +151,15 @@
   <ItemGroup>
     <Compile Include="Attributes\CompressAttribute.cs" />
     <Compile Include="Builders\EventBuilder.cs" />
-    <Compile Include="Builders\IEventBuilder.cs" />
-    <Compile Include="Builders\IMatchBuilder.cs" />
-    <Compile Include="Builders\IOutrightBuilder.cs" />
+    <Compile Include="Builders\Interfaces\IEventBuilder.cs" />
+    <Compile Include="Builders\Interfaces\IMatchBuilder.cs" />
+    <Compile Include="Builders\Interfaces\IOutrightBuilder.cs" />
     <Compile Include="Builders\MatchBuilder.cs" />
     <Compile Include="Builders\OutrightBuilder.cs" />
-    <Compile Include="Caching\IOddsFeedCachingOperator.cs" />
-    <Compile Include="Caching\IRateLimitService.cs" />
-    <Compile Include="Caching\IVersionCaching.cs" />
-    <Compile Include="Caching\OddsFeedCachingOperator.cs" />
+    <Compile Include="Caching\Interfaces\IFeedCachingOperator.cs" />
+    <Compile Include="Caching\Interfaces\IRateLimitService.cs" />
+    <Compile Include="Caching\Interfaces\IVersionCaching.cs" />
+    <Compile Include="Caching\FeedCachingOperator.cs" />
     <Compile Include="Caching\RateLimitService.cs" />
     <Compile Include="Caching\VersionCaching.cs" />
     <Compile Include="Criteria\WriteLogRequestAccessCriteria.cs" />
@@ -182,6 +188,7 @@
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\RequestHelper.cs" />
     <Compile Include="Helpers\SportHelper.cs" />
+    <Compile Include="Models\ResultFeedModel.cs" />
     <Compile Include="Models\OddsFeedsModel.cs" />
     <Compile Include="Models\ColumnModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,14 +204,16 @@
     <Compile Include="Services\BetTypeService.cs" />
     <Compile Include="Services\EventFeedService.cs" />
     <Compile Include="Services\FeedsService.cs" />
-    <Compile Include="Services\IBetDaqService.cs" />
-    <Compile Include="Services\IBetRadarService.cs" />
-    <Compile Include="Services\IBetTypeService.cs" />
-    <Compile Include="Services\IEventFeedService.cs" />
-    <Compile Include="Services\IFeedsService.cs" />
-    <Compile Include="Services\IOddsFeedService.cs" />
-    <Compile Include="Services\IPartnerService.cs" />
-    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\Interfaces\IBetDaqService.cs" />
+    <Compile Include="Services\Interfaces\IBetRadarService.cs" />
+    <Compile Include="Services\Interfaces\IBetTypeService.cs" />
+    <Compile Include="Services\Interfaces\IEventFeedService.cs" />
+    <Compile Include="Services\Interfaces\IFeedsService.cs" />
+    <Compile Include="Services\Interfaces\IResultFeedService.cs" />
+    <Compile Include="Services\Interfaces\IOddsFeedService.cs" />
+    <Compile Include="Services\Interfaces\IPartnerService.cs" />
+    <Compile Include="Services\Interfaces\IUserService.cs" />
+    <Compile Include="Services\ResultFeedService.cs" />
     <Compile Include="Services\OddsFeedService.cs" />
     <Compile Include="Services\PartnerService.cs" />
     <Compile Include="Services\UserService.cs" />

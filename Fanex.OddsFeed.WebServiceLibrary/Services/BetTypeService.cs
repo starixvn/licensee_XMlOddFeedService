@@ -2,18 +2,17 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Caching;
-    using Common.DTO;
-    using Common.Schemas;
-    using Helpers;
+    using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.WebServiceLibrary.Caching;
+    using Fanex.OddsFeed.WebServiceLibrary.Helpers;
 
     public class BetTypeService : IBetTypeService
     {
-        private readonly IOddsFeedCachingOperator _oddsFeedCachingOperator;
+        private readonly IFeedCachingOperator feedCachingOperator;
 
         public BetTypeService()
         {
-            _oddsFeedCachingOperator = new OddsFeedCachingOperator();
+            feedCachingOperator = new FeedCachingOperator();
         }
 
         public string GetBetTypeNameById(int betTypeId)
@@ -25,7 +24,7 @@
 
         public IDictionary<int, BetType> GetBetTypeList()
         {
-            return _oddsFeedCachingOperator.GetBetTypes().ToDictionary(
+            return feedCachingOperator.GetBetTypes().ToDictionary(
                 schema => schema.BetTypeId,
                 schema => new BetType { BetTypeName = schema.Tag, IsChildBetType = schema.IsChildBetType });
         }
