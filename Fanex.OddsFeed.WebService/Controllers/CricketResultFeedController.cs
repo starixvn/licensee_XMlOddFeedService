@@ -35,7 +35,8 @@
                 DateTime? date = null;
                 if(!string.IsNullOrEmpty(Request["date"]))
                 {
-                    _ = DateTime.TryParse(Request["date"], out DateTime requestDate);
+                    DateTime requestDate;
+                    DateTime.TryParse(Request["date"], out requestDate);
                     date = requestDate;
                 }
 

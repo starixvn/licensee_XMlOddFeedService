@@ -28,19 +28,16 @@
             var outrights = GetOutrightNodes();
             var model = new OddsFeedsModel
             {
-                UserProfile = new UserProfile(),
+                UserProfile = new UserProfile
+                {
+                    Languages = new List<string> { "en-US", "zh-TW", "zh-CN" }
+                },
                 UserQuery = new UserQuery(),
                 IsOutright = true
             };
-            var userLanguage = new UserLanguage
-            {
-                IsSupportedEnglish = true,
-                IsSupportedTraditionalChinese = true,
-                IsSupportedSimplifiedChinese = true
-            };
 
             // Action
-            _target.AppendOutrightsNode(oddsFeedNode, outrights, model, userLanguage);
+            _target.AppendOutrightsNode(oddsFeedNode, outrights, model);
 
             // Assert
             Assert.AreEqual(outrightXmlNode, oddsFeedNode.ToString());

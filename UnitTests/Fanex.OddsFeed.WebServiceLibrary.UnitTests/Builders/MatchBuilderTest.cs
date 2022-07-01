@@ -1,6 +1,7 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.UnitTests.Builders
 {
     using System;
+    using System.Collections.Generic;
     using System.Text;
     using Common.DTO;
     using Models;
@@ -27,21 +28,19 @@
             var model = new OddsFeedsModel
             {
                 BookieName = "111candy",
-                UserProfile = new UserProfile { OddRegion = 1, OddsType = new []{ 2 } },
+                UserProfile = new UserProfile
+                {
+                    OddRegion = 1,
+                    OddsType = new []{ 2 },
+                    Languages = new List<string> { "en-US", "zh-TW", "zh-CN" }
+                },
                 UserQuery = new UserQuery()
-            };
-            var userLanguage = new UserLanguage
-            {
-                IsSupportedEnglish = true,
-                IsSupportedTraditionalChinese = true,
-                IsSupportedSimplifiedChinese = true
             };
 
             // Action
             _target.AppendMatchNodes(
                 oddsFeedNode,
                 GetMatchNodes(false),
-                userLanguage,
                 model);
 
             // Assert
@@ -54,25 +53,22 @@
             // Arrange 
             var matchXmlNode = GetLiveMatchXmlNode();
             var oddsFeedNode = new StringBuilder();
-            var lastUpdate = new DateTime(2016, 11, 2, 15, 51, 07);
             var model = new OddsFeedsModel
             {
                 BookieName = "111candy",
-                UserProfile = new UserProfile { OddRegion = 1, OddsType = new[] { 2 } },
+                UserProfile = new UserProfile
+                {
+                    OddRegion = 1,
+                    OddsType = new[] { 2 },
+                    Languages = new List<string> { "en-US", "zh-TW", "zh-CN" }
+                },
                 UserQuery = new UserQuery()
-            };
-            var userLanguage = new UserLanguage
-            {
-                IsSupportedEnglish = true,
-                IsSupportedTraditionalChinese = true,
-                IsSupportedSimplifiedChinese = true
             };
 
             // Action
             _target.AppendMatchNodes(
                 oddsFeedNode,
                 GetMatchNodes(true),
-                userLanguage,
                 model);
 
             // Assert
@@ -115,7 +111,7 @@
                     AwayCn = "Olympiakos",
                     KickOfTime = new DateTime(2016, 11, 3, 11, 59, 59),
                     SportName = "Soccer",
-                    TimeStamp = 1477878874,
+                    Timestamp = 1477878874,
                     IsLive = isLive,
                     MatchOddsList = new []
                     {
@@ -124,7 +120,7 @@
                             Tag = "oe",
                             BetTypeId = 1,
                             Time = new DateTime(2016, 11, 2, 15, 51, 07),
-                            TimeStamp = 1477332693,
+                            Timestamp = 1477332693,
                             BetChoices = new[]
                             {
                                 new BetChoice { Code = "o", Value = "2.0" },
