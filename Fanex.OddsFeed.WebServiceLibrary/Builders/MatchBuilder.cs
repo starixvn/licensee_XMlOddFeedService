@@ -121,8 +121,11 @@
             AppendHomeTeam(oddsFeedNode, match, userLanguage);
             AppendAwayTeam(oddsFeedNode, match, userLanguage);
 
-            var moreTimeStr = model.UserQuery.MoreTime ? $"gst=\"{string.Format("{0:G}", match.GlobalShowtime)}\" st=\"{string.Format("{0:G}", match.Showtime) }\"" : string.Empty;
-            oddsFeedNode.Append($"mt=\"{string.Format("{0:G}", match.KickOfTime)}\" {moreTimeStr} sport=\"{SecurityElement.Escape(match.SportName)}\" running=\"{running}\">");
+            const string FormatDate = "{0:G}";
+            var moreTimeStr = model.UserQuery.MoreTime
+                ? $"gst=\"{string.Format(FormatDate, match.GlobalShowtime)}\" st=\"{string.Format(FormatDate, match.Showtime) }\""
+                : string.Empty;
+            oddsFeedNode.Append($"mt=\"{string.Format(FormatDate, match.KickOfTime)}\" {moreTimeStr} sport=\"{SecurityElement.Escape(match.SportName)}\" running=\"{running}\">");
         }
 
         private static void AppendBeginMatchResult(StringBuilder xmlnode, Match match, UserLanguage userLanguage)
