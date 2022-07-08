@@ -258,23 +258,21 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Fanex.OddsFeed.WindowsService.AWS.exe.config">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Fanex.OddsFeed.WindowsService.PROD.exe.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="App.AWS.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Fanex.OddsFeed.WindowsService.MNL.exe.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="App.PROD.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.MNL.config">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Fanex.OddsFeed.WindowsService.ruleset" />
-    <None Include="Fanex.OddsFeed.WindowsService.SIT.exe.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="App.SIT.config">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Fanex.OddsFeed.WindowsService.UAT.exe.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="App.UAT.config">
+      <SubType>Designer</SubType>
     </None>
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
@@ -284,15 +282,12 @@
     </AdditionalFiles>
     <Content Include="App_Data\SpNames.AWS.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\SpNames.MNL.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\SpNames.SIT.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -327,15 +322,12 @@
   <ItemGroup>
     <Content Include="App_Data\SpNames.PROD.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\SpNames.UAT.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\SpNames.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
