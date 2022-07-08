@@ -27,8 +27,7 @@
     <span class="sub_title">TERM AND DEFINITION FOR CRICKET'S RESULT</span>
     <hr />
     <ul>
-        <li>Lastupdate: last request date for Odds data.</li>
-        <li>Timestamp: last request date convert to integer number.</li>
+        <li>date: query time.</li>
         <li>ge: Event\League name in English. </li>
         <li>gs: Event\League name in Chinese Simplified.</li>
         <li>gt: Event\League name in Chinese Traditional.</li>
@@ -56,19 +55,83 @@
         <li>av: Away team name in Vietnamese.</li>
         <li>aj: Away team name in Japanese.</li>
         <li>ah: Away team name in Hindi.</li>
-        <li>mt: Match Kick-off time</li>
+        <li>mt: Match Kick-off time.</li>
         <li>bookie name: Provider of XML Result Feed in English.</li>
-        <li>simp: Provider of XML Result Feed in Chinese Simplified</li>
-        <li>trad: Provider of XML Result Feed in Chinese Simplified</li>
+        <li>simp: Provider of XML Result Feed in Chinese Simplified.</li>
+        <li>trad: Provider of XML Result Feed in Chinese Simplified.</li>
         <li>
             For sport: Cricket
             <ul>
-                <li>h1: Result for Home in 1st Inns</li>
-                <li>a1: Result for Away in 2nd Inns</li>
-                <li>h2: Result for Home in 1st Inns</li>
-                <li>a2: Result for Away in 2nd Inns</li>
-                <li>h: Result for Home in Match</li>
-                <li>a: Result for Away in Match</li>
+                <li>h1: Total runs in the first innings of the home team.</li>
+                <li>a1: Total runs in the first innings of the away team.</li>
+                <li>h2: Total runs in the second innings of the home team.</li>
+                <li>a2: Total runs in the second innings of the away team.</li>
+                <li>h: Results for Home in the Match (The match results in a winner/loser/draw (1-0, 0-1, 1-1), regardless of the number of innings.)</li>
+                <li>a: Results for Away in the Match (The match results in a winner/loser/draw (1-0, 0-1, 1-1), regardless of the number of innings.)</li>
+                <li>
+                    complete:
+                    <ul>
+                        <li>0: The match is running.</li>
+                        <li>1: The match was completed.</li>
+                    </ul>
+                </li>
+                <li>
+                    When complete = 0 and some results are '-': Because at least one innings has been completed and the remaining innings have not been completed yet, it will return a value of '-'.
+                    <ul>
+                        I.g.
+                        <pre class="brush: xml;">
+                            <match id="54127051" ge="LANKA PREMIER LEAGUE2" ... sport="cricket" complete="0">
+                                <bookie ...>
+                                    <result h1="242" a1="-" h2="-" a2="-" h="-" a="-"></result>
+                                </bookie>
+                            </match>
+                        </pre>
+                    </ul>
+                </li>
+                <li>
+                    When complete = 1 and some results are '-': Because this is the event of a match without innings 2 (Not a Test Match).
+                    <ul>
+                        I.g.
+                        <pre class="brush: xml;">
+                            <match id="54127051" ge="LANKA PREMIER LEAGUE2" ... sport="cricket" complete="1">
+                                <bookie ...>
+                                    <result h1="242" a1="100" h2="-" a2="-" h="1" a="0"></result>
+                                </bookie>
+                            </match>
+                        </pre>
+                    </ul>
+                </li>
+                <li>
+                    When complete = 1 and h,a = ‘r’: Match is refunded.
+                    <ul>
+                        I.g.
+                        <pre class="brush: xml;">
+                            <match id="54127053" ge="LANKA PREMIER LEAGUE1" ... sport="cricket" complete="1">
+                                <bookie ...>
+                                    <result h1="r" a1="r" h2="r" a2="r" h="r" a="r"></result>
+                                </bookie>
+                            </match>
+                            <match id="54127053" ge="LANKA PREMIER LEAGUE1" ... sport="cricket" complete="1">
+                                <bookie ...>
+                                    <result h1="88" a1="125" h2="102" a2="110" h="r" a="r"></result>
+                                </bookie>
+                            </match>
+                        </pre>
+                    </ul>
+                </li>
+                <li>
+                    We return ‘r’ when that innings is refunded.
+                    <ul>
+                        I.g.
+                        <pre class="brush: xml;">
+                            <match id="54127051" ge="LANKA PREMIER LEAGUE2" ... sport="cricket" complete="1">
+                                <bookie ...>
+                                    <result h1="110" a1="100" h2="r" a2="r" h="1" a="0"></result>
+                                </bookie>
+                            </match>
+                        </pre>
+                    </ul>
+                </li>
             </ul>
         </li>
     </ul>

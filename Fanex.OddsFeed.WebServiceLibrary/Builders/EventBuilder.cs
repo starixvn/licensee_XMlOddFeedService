@@ -49,7 +49,7 @@
                 MatchBuilder.AppendHomeTeam(oddsFeedNode, match, userLanguage);
                 MatchBuilder.AppendAwayTeam(oddsFeedNode, match, userLanguage);
 
-                oddsFeedNode.Append($"mt=\"{match.KickOfTime}\" running=\"{match.IsLive}\"/>");
+                oddsFeedNode.Append($"mt=\"{match.KickOffTime}\" running=\"{match.IsLive}\"/>");
             }
 
             oddsFeedNode.Append("</league>");

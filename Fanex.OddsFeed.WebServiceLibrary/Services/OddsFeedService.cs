@@ -99,7 +99,7 @@
                 MatchId = GetMatchId(row),
                 SportName = row["SportTypeName"].ToString(),
                 SportId = Convert.ToInt32(row["SportType"]),
-                KickOfTime = Convert.ToDateTime(row["KickOffTime"].ToString()),
+                KickOffTime = Convert.ToDateTime(row["KickOffTime"].ToString()),
                 HomeEn = row["Home"].ToString(),
                 AwayEn = row["Away"].ToString(),
                 LeagueId = Convert.ToInt32(row["LeagueID"]),

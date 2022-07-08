@@ -1,11 +1,11 @@
 ﻿namespace Fanex.OddsFeed.WindowsService
 {
+    using System.Collections.Generic;
     using Fanex.OddsFeed.Common.Configurations;
     using Fanex.OddsFeed.WindowsServiceLibrary.Services;
     using ONEbook.UM.Services;
     using Quartz;
     using Quartz.Impl;
-    using System.Collections.Generic;
 
     public class JobScheduler
     {

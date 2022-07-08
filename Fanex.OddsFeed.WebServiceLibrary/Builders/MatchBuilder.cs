@@ -125,7 +125,7 @@
             var moreTimeStr = model.UserQuery.MoreTime
                 ? $"gst=\"{string.Format(FormatDate, match.GlobalShowtime)}\" st=\"{string.Format(FormatDate, match.Showtime) }\""
                 : string.Empty;
-            oddsFeedNode.Append($"mt=\"{string.Format(FormatDate, match.KickOfTime)}\" {moreTimeStr} sport=\"{SecurityElement.Escape(match.SportName)}\" running=\"{running}\">");
+            oddsFeedNode.Append($"mt=\"{string.Format(FormatDate, match.KickOffTime)}\" {moreTimeStr} sport=\"{SecurityElement.Escape(match.SportName)}\" running=\"{running}\">");
         }
 
         private static void AppendBeginMatchResult(StringBuilder xmlnode, Match match, UserLanguage userLanguage)
@@ -138,7 +138,7 @@
             AppendHomeTeam(xmlnode, match, userLanguage);
             AppendAwayTeam(xmlnode, match, userLanguage);
 
-            xmlnode.Append($"mt=\"{string.Format("{0:G}", match.KickOfTime)}\" sport=\"{SecurityElement.Escape(match.SportName)}\" completed=\"{completed}\">");
+            xmlnode.Append($"mt=\"{string.Format("{0:G}", match.GlobalShowtime)}\" sport=\"{SecurityElement.Escape(match.SportName)}\" completed=\"{completed}\">");
         }
 
         public static void AppendLeague(StringBuilder oddsFeedNode, Match match, UserLanguage userLanguage)
@@ -292,7 +292,7 @@
             matchesNode.Append("</bookie>");
         }
 
-        private static void AppendBookieNodeMatchResult(StringBuilder xmlnode, IList<MatchResultDetailOS> matchResultDetails, OddsFeedsModel model)
+        private static void AppendBookieNodeMatchResult(StringBuilder xmlnode, IList<MatchResultDetail> matchResultDetails, OddsFeedsModel model)
         {
             xmlnode.Append($"<bookie name=\"{model.BookieName}\" simp=\"{model.BookieName}\" trad=\"{model.BookieName}\">");
 
@@ -333,7 +333,7 @@
             return betChoice.NotConvert ? betChoice.Value : OddsConverter.ConvertOdds(oddsRegion, Convert.ToDecimal(betChoice.Value)).ToString(CultureInfo.InvariantCulture);
         }
 
-        private static void AppendResult(StringBuilder xmlnode, IList<MatchResultDetailOS> matchResultDetails)
+        private static void AppendResult(StringBuilder xmlnode, IList<MatchResultDetail> matchResultDetails)
         {
             xmlnode.Append($"<result ");
 
@@ -346,7 +346,7 @@
             xmlnode.Append(" />");
         }
 
-        private static void AppendInnsScores(StringBuilder xmlnode, IList<MatchResultDetailOS> matchResultDetails, string resourceId, string attribute)
+        private static void AppendInnsScores(StringBuilder xmlnode, IList<MatchResultDetail> matchResultDetails, string resourceId, string attribute)
         {
             var detail = matchResultDetails.FirstOrDefault(x => x.ResourceId.ToLowerInvariant() == resourceId);
             if (detail == null)
@@ -370,13 +370,13 @@
                         break;
 
                     default:
-                        // nothing
+                        xmlnode.Append($" {attribute}=\"-\"");
                         break;
                 }
             }
         }
 
-        private static void AppendFinalScore(StringBuilder xmlnode, IList<MatchResultDetailOS> matchResultDetails)
+        private static void AppendFinalScore(StringBuilder xmlnode, IList<MatchResultDetail> matchResultDetails)
         {
             var detail = matchResultDetails.FirstOrDefault(x => x.ResourceId == "00");
             if(detail == null)
@@ -400,7 +400,7 @@
                         break;
 
                     default:
-                        // nothing
+                        xmlnode.Append(" h=\"-\" a=\"-\"");
                         break;
                 }
             }

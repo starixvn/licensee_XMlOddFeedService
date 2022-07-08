@@ -71,18 +71,18 @@
             }
         }
 
-        public static IList<Match> GetMatchResultDetails(DateTime date)
+        public static IList<Match> GetMatchResultDetails(DateTime eventDate)
         {
             var criteria = new GetMatchResultDetailCriteria
             {
-                Date = date
+                EventDate = eventDate
             };
             using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
                 using (GridReader multi = db.QueryMultiple(criteria.GetSpParams()))
                 {
                     var matches = multi.Read<Match>().ToList();
-                    var matchResultDetails = multi.Read<MatchResultDetailOS>().ToList();
+                    var matchResultDetails = multi.Read<MatchResultDetail>().ToList();
 
                     foreach(var match in matches)
                     {

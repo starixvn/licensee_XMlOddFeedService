@@ -109,7 +109,7 @@
                     AwayEn = "Olympiakos",
                     AwayTw = "Olympiakos",
                     AwayCn = "Olympiakos",
-                    KickOfTime = new DateTime(2016, 11, 3, 11, 59, 59),
+                    KickOffTime = new DateTime(2016, 11, 3, 11, 59, 59),
                     SportName = "Soccer",
                     Timestamp = 1477878874,
                     IsLive = isLive,

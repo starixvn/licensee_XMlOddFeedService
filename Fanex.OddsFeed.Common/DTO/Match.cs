@@ -44,7 +44,7 @@
 
         public string CountryCode { get; set; }
 
-        public DateTime KickOfTime { get; set; }
+        public DateTime KickOffTime { get; set; }
         public DateTime GlobalShowtime { get; set; }
         public DateTime Showtime { get; set; }
         public string EventStatus { get; set; }
@@ -55,6 +55,6 @@
 
         public IList<MatchOdds> MatchOddsList { get; set; }
 
-        public IList<MatchResultDetailOS> MatchResultDetails { get; set; } = new List<MatchResultDetailOS>();
+        public IList<MatchResultDetail> MatchResultDetails { get; set; } = new List<MatchResultDetail>();
     }
 }

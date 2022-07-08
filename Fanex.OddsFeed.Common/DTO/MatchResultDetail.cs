@@ -4,7 +4,7 @@
     using Newtonsoft.Json;
 
     [Serializable]
-    public class MatchResultDetailOS
+    public class MatchResultDetail
     {
         [JsonIgnore]
         public int MatchId { get; set; }

@@ -1,6 +1,7 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Web.Mvc;
     using Fanex.Logging;
     using Fanex.OddsFeed.Common.DTO;
@@ -11,9 +12,8 @@
     [Compress]
     public class CricketResultFeedController : BaseController
     {
-        private const int TimeExpireCacheForOdds = 60;
+        private const int TimeExpireCacheForOdds = 5;
         private readonly IResultFeedService resultFeedService;
-        private readonly NLog.Logger fileLogger = NLog.LogManager.GetCurrentClassLogger();
 
         public CricketResultFeedController()
         {
@@ -25,8 +25,6 @@
         {
             try
             {
-                var ipAddress = GetClientIpAddress();
-                fileLogger.Info(string.Format("CricketResultFeed-{0}-{1}", username, ipAddress));
                 if (IsDownTime())
                 {
                     return XmlContent(GetDowntimeContent());
@@ -40,6 +38,18 @@
                     date = requestDate;
                 }
 
+                const short MinDays = -5;
+                if (date.HasValue && (date.Value.Date < DateTime.Today.AddDays(MinDays) || date.Value.Date > DateTime.Today))
+                {
+                    return XmlContent($"<Error id=\"10025\" message=\"You can only view historical data up to 5 days from today. You can only view 1 day's data at a time.\" />");
+                }
+
+                if (date.HasValue && date.Value.Date == DateTime.Today)
+                {
+                    date = null;
+                }
+
+                const byte Cricket = 50;
                 var timestamp = string.IsNullOrEmpty(Request["t"]) ? "0" : Request["t"];
                 var authenticatedPartner = GetAuthenticatedPartner(username);
 
@@ -49,7 +59,10 @@
                     {
                         BookieName = authenticatedPartner.SystemName,
                         UserProfile = authenticatedPartner.UserProfile,
-                        UserQuery = new UserQuery(),
+                        UserQuery = new UserQuery
+                        {
+                            Sports = new List<int> { Cricket }
+                        },
                         Timestamp = Convert.ToInt32(timestamp),
                         Username = username,
                         Date = date

@@ -53,37 +53,9 @@
             IList<Match> matches,
             OddsFeedsModel model)
         {
-            AppendBeginMatches(xmlnode, GetMatchTimestamp(matches), GetLastUpdate());
-
-            matchBuilder.AppendMatchNodes(xmlnode, matches, model);
-
+            xmlnode.AppendFormat("<matches date=\"{0}\">", model.Date.HasValue ? model.Date.Value.Date : DateTime.Today);
+            matchBuilder.AppendMatchResultNodes(xmlnode, matches, model);
             xmlnode.Append("</matches>");
-        }
-
-        private static int GetMatchTimestamp(IList<Match> matches)
-        {
-            return matches.Max(x => x.Timestamp);
-        }
-
-        private static DateTime GetLastUpdate()
-        {
-            const int addHour = 12;
-            return DateTime.Now.AddHours(addHour);
-        }
-
-        private static void AppendBeginMatches(
-            StringBuilder xmlnode,
-            int matchesTimestamp,
-            DateTime lastUpdate)
-        {
-            if (matchesTimestamp > 0)
-            {
-                xmlnode.AppendFormat("<matches lastupdate=\"{0}\" timestamp=\"{1}\">", lastUpdate, matchesTimestamp);
-            }
-            else
-            {
-                xmlnode.Append("<matches>");
-            }
         }
     }
 }

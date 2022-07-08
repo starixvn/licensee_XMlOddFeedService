@@ -50,7 +50,7 @@
                 MatchId = Convert.ToInt32(row["MatchID"]),
                 SportName = row["SportTypeName"].ToString(),
                 SportId = Convert.ToInt32(row["SportType"]),
-                KickOfTime = Convert.ToDateTime(row["KickOffTime"].ToString()),
+                KickOffTime = Convert.ToDateTime(row["KickOffTime"].ToString()),
                 GlobalShowtime = Convert.ToDateTime(row["GlobalShowtime"].ToString()),
                 Showtime = GetShowtime(row["GlobalShowtime"].ToString(), row["Showtime"].ToString()),
                 HomeEn = row["Home"].ToString(),

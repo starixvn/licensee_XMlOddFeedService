@@ -155,7 +155,7 @@
     <Compile Include="DTO\League.cs" />
     <Compile Include="DTO\Match.cs" />
     <Compile Include="DTO\MatchOdds.cs" />
-    <Compile Include="DTO\MatchResultDetailOS.cs" />
+    <Compile Include="DTO\MatchResultDetail.cs" />
     <Compile Include="DTO\OddsFlex.cs" />
     <Compile Include="DTO\OddsData.cs" />
     <Compile Include="DTO\OddsFlexGroup.cs" />
