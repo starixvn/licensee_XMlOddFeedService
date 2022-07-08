@@ -8,7 +8,6 @@
     using Common.Schemas;
     using Logging;
     using OddsFeed.Common.Configurations;
-    using OddsFeed.Common.DTO;
     using WebServiceLibrary;
     using WebServiceLibrary.Attributes;
     using WebServiceLibrary.Helpers;
@@ -93,15 +92,6 @@
                 return Content(authenticatedPartner.Error);
             }
 
-            var sampleOdds = GetOddsFeed(new OddsFeedsModel
-            {
-                BookieName = authenticatedPartner.SystemName,
-                UserProfile = authenticatedPartner.UserProfile,
-                UserQuery = new UserQuery(),
-                Timestamp = Convert.ToInt32(HttpContext.Request["t"]),
-                IsSample = true
-            });
-
             ViewBag.UserName = username;
             ViewBag.FullDomainName = RequestHelper.FullDomainName(Request.ServerVariables);
             ViewBag.VirtualPath = GetVirtualPath();
@@ -109,14 +99,7 @@
 
             GenerateAppendixData(username);
 
-            if (string.IsNullOrEmpty(authenticatedPartner.Error))
-            {
-                return View("Help", authenticatedPartner.UserProfile);
-            }
-            else
-            {
-                return Content(sampleOdds);
-            }
+            return View("Help", authenticatedPartner.UserProfile);
         }
 
         private void GenerateAppendixData(string username)

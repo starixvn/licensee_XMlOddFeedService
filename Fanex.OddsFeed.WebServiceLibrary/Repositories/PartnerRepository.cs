@@ -13,8 +13,6 @@
 
     public class PartnerRepository : BaseRepository, IPartnerRepository
     {
-        private const string All = "all";
-
         public AuthenticatedPartner GetAuthenticatedPartner(CheckPermissionCriteria criteria)
         {
             using (var db = new ObjectDb(criteria.GetSettingKey()))
@@ -77,6 +75,7 @@
 
         private static UserProfile GetUserProfile(ProfileData profileData)
         {
+            const string All = "all";
             return new UserProfile
             {
                 OddsType = ListConverter.ConvertToListInt(profileData.OddsType),

@@ -1,6 +1,5 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Criteria
 {
-    using Common.Helpers;
     using Fanex.Data.Repository;
 
     public class CheckPermissionCriteria : CriteriaBase
@@ -13,9 +12,8 @@
 
         public string SystemName { get; set; }
 
-        public override string GetSettingKey()
-        {
-            return SpHelper.RealSp("Odds_PartnerCheckPermission");
-        }
+        public override string GetSettingKey() => "Odds_PartnerCheckPermission";
+
+        public override bool IsValid() => true;
     }
 }
