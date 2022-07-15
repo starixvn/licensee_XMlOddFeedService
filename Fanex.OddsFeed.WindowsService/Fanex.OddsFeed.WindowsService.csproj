@@ -259,24 +259,24 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App.AWS.config">
+    <Content Include="Fanex.OddsFeed.WindowsService.AWS.exe.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App.PROD.config">
+    <Content Include="Fanex.OddsFeed.WindowsService.PROD.exe.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App.MNL.config">
+    <Content Include="Fanex.OddsFeed.WindowsService.MNL.exe.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Fanex.OddsFeed.WindowsService.ruleset" />
-    <Content Include="App.SIT.config">
+    <Content Include="Fanex.OddsFeed.WindowsService.SIT.exe.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App.UAT.config">
+    <Content Include="Fanex.OddsFeed.WindowsService.UAT.exe.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
