@@ -20,7 +20,7 @@
             resultFeedService = new ResultFeedService();
         }
 
-        [OutputCache(Duration = TimeExpireCacheForOdds, VaryByParam = "username", VaryByCustom = "clientIpAddress")]
+        [OutputCache(Duration = TimeExpireCacheForOdds, VaryByParam = "username;date", VaryByCustom = "clientIpAddress")]
         public ActionResult Index(string username)
         {
             try
