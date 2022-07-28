@@ -4,7 +4,7 @@
         <Setting Key="Is_Odds_GetLiveOddsData" SpName="Is_Odds_GetLiveOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
         <Setting Key="Is_Odds_GetDeadballOddsData" SpName="Is_Odds_GetDeadballOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
         <Setting Key="Is_Odds_GetOutrightOddsData" SpName="Is_Odds_GetOutrightOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
-        <Setting Key="Odds_PartnerCheckPermission" SpName="Odds_PartnerCheckPermission_xtest" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+        <Setting Key="Odds_PartnerCheckPermission" SpName="Odds_PartnerCheckPermission" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
         <Setting Key="Odds_PartnerCheckPermission_WriteLog" SpName="Odds_PartnerCheckPermission_WriteLog" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
         <Setting Key="SP.GetSportByUserName" SpName="Odds_SportSelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
         <Setting Key="SP.GetBetTypeByUserName" SpName="Odds_BetTypeSelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
@@ -25,7 +25,7 @@
         <Setting Key="SP.GetOddsFeed_2" SpName="Portal_BetDaq_Odds_2_V2" DbName="DBPRO.bodb02.portal" />
 
         <!-- BetRadar feed -->
-        <Setting Key="SP.BetRadarOddsSel" SpName="Odds_BetRadar_OddsSel_xtest" DbName="DBACC.bodb02.bodbAdminNet" />
+        <Setting Key="SP.BetRadarOddsSel" SpName="Odds_BetRadar_OddsSel" DbName="DBACC.bodb02.bodbAdminNet" />
 
         <!-- OCS XML Feed -->
         <Setting Key="SP.Ocs_Ip" SpName="ocs_ips_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
@@ -37,7 +37,7 @@
         <Setting Key="SP.Ocs_Match" SpName="ocs_matches_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
 
         <!-- Cricket result -->
-        <Setting Key="Odds_CricketResult_Sel" SpName="Odds_CricketResult_Sel_xtest" DbName="DBACC.bodb02.bodbAdminNet">
+        <Setting Key="Odds_CricketResult_Sel" SpName="Odds_CricketResult_Sel" DbName="DBACC.bodb02.bodbAdminNet">
             <Mapping DataField="SportType" ObjectProperty="SportId" />
             <Mapping DataField="SportTypeName" ObjectProperty="SportName" />
 

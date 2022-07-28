@@ -25,7 +25,7 @@
         <Setting Key="SP.GetOddsFeed_2" SpName="Portal_BetDaq_Odds_2_V2" DbName="DBPRO.bodb02.portal" />
 
         <!-- BetRadar feed -->
-        <Setting Key="SP.BetRadarOddsSel" SpName="Odds_BetRadar_OddsSel_xtest" DbName="DBACC.bodb02.bodbAdminNet" />
+        <Setting Key="SP.BetRadarOddsSel" SpName="Odds_BetRadar_OddsSel" DbName="DBACC.bodb02.bodbAdminNet" />
 
         <!-- OCS XML Feed -->
         <Setting Key="SP.Ocs_Ip" SpName="ocs_ips_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
