@@ -1,0 +1,64 @@
+﻿namespace Fanex.OddsFeed.Core.Services
+{
+    using Fanex.Caching;
+    using Newtonsoft.Json;
+
+    public interface IRedisCacheService
+    {
+        T Get<T>(string key);
+
+        Task<T> GetAsync<T>(string key);
+
+        Task SetAsync<T>(string key, T value, CacheItemOptions? options = null);
+
+        void Set<T>(string key, T value, CacheItemOptions? options = null);
+    }
+
+    public class RedisCacheService : IRedisCacheService
+    {
+        private readonly ICacheService cacheService;
+
+        public RedisCacheService(ICacheService cacheService)
+        {
+            this.cacheService = cacheService;
+        }
+
+        public T Get<T>(string key)
+        {
+            string valueOnCache = cacheService.Get<string>(key);
+            return JsonConvert.DeserializeObject<T>(valueOnCache);
+        }
+
+        public async Task<T> GetAsync<T>(string key)
+        {
+            string valueOnCache = await cacheService.GetAsync<string>(key);
+            return JsonConvert.DeserializeObject<T>(valueOnCache);
+        }
+
+        public void Set<T>(string key, T value, CacheItemOptions? options = null)
+        {
+            string json = JsonConvert.SerializeObject(value, Formatting.Indented);
+            if (options != null)
+            {
+                cacheService.Set(key, json, options);
+            }
+            else
+            {
+                cacheService.Set(key, json);
+            }
+        }
+
+        public async Task SetAsync<T>(string key, T value, CacheItemOptions? options = null)
+        {
+            string json = JsonConvert.SerializeObject(value, Formatting.Indented);
+            if (options != null)
+            {
+                await cacheService.SetAsync(key, json, options);
+            }
+            else
+            {
+                await cacheService.SetAsync(key, json);
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Fanex.OddsFeed.AutoJobs": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
