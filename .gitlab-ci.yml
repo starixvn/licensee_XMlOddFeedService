@@ -1,0 +1,5 @@
+include:
+  - project: 'ci/repos-ci/nexus_xml_oddsfeed_auto_jobs'
+    ref: master
+    file: 'gitlab-ci.yml'
+    

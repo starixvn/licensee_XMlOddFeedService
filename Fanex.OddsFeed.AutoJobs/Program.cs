@@ -25,13 +25,7 @@ public static class Program
 
     private static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
-            .ConfigureLogging(logging =>
-                {
-                    logging.ClearProviders();
-                    logging.SetMinimumLevel(LogLevel.Trace);
-                })
-
-            .UseNLog()
             .UseUrls($"http://*:5000")
-            .UseStartup<Startup>();
+            .UseStartup<Startup>()
+            .UseNLog();
 }
