@@ -19,7 +19,7 @@
     public class LogServiceProvider : ILogServiceProvider
     {
         private readonly Logging.ILogger logger;
-        private readonly Logger nlog = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+        private readonly Logger nlog = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
 
         public LogServiceProvider(
             Logging.ILogger logger)

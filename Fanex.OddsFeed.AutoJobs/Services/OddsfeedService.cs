@@ -8,6 +8,7 @@
     using Fanex.OddsFeed.Core.Constants;
     using Fanex.OddsFeed.Core.Extensions;
     using Fanex.OddsFeed.Core.Services;
+    using Microsoft.AspNetCore.Hosting;
 
     public class OddsfeedService : IOddsfeedService
     {
@@ -17,18 +18,21 @@
         private readonly IRedisCacheService redisCacheService;
         private readonly ILogServiceProvider logServiceProvider;
         private readonly IOddsDataService oddsDataService;
+        private readonly IWebHostEnvironment hostEnvironment;
 
         public OddsfeedService(AppSettings appSettings,
             ICacheService cacheService,
             IRedisCacheService redisCacheService,
             ILogServiceProvider logServiceProvider,
-            IOddsDataService oddsDataService)
+            IOddsDataService oddsDataService,
+            IWebHostEnvironment hostEnvironment)
         {
             this.appSettings = appSettings;
             this.cacheService = cacheService;
             this.logServiceProvider = logServiceProvider;
             this.redisCacheService = redisCacheService;
             this.oddsDataService = oddsDataService;
+            this.hostEnvironment = hostEnvironment;
         }
 
         public async Task Reset()
@@ -90,7 +94,7 @@
 
             if (document == null || document.Count == 0)
             {
-                var newValue = ReadJsonFromFile.GetBetTypeSchemas<BetTypeSchema>(appSettings.BetTypeSchemaPath);
+                var newValue = ReadBetTypeFromFile();
 
                 if (newValue != null)
                 {
@@ -102,6 +106,13 @@
             }
 
             return document;
+        }
+
+        private IList<BetTypeSchema> ReadBetTypeFromFile()
+        {
+            var filePath = Path.Combine(hostEnvironment.ContentRootPath, appSettings.BetTypeSchemaPath);
+            var values = ReadJsonFromFile.GetBetTypeSchemas<BetTypeSchema>(filePath);
+            return values;
         }
 
         private async Task<int> GetCurrentVersion()

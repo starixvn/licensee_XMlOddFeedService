@@ -26,13 +26,22 @@
         public T Get<T>(string key)
         {
             string valueOnCache = cacheService.Get<string>(key);
-            return JsonConvert.DeserializeObject<T>(valueOnCache);
+            if (!string.IsNullOrWhiteSpace(valueOnCache))
+            {
+                return JsonConvert.DeserializeObject<T>(valueOnCache);
+            }
+            return default;
         }
 
         public async Task<T> GetAsync<T>(string key)
         {
             string valueOnCache = await cacheService.GetAsync<string>(key);
-            return JsonConvert.DeserializeObject<T>(valueOnCache);
+
+            if (!string.IsNullOrWhiteSpace(valueOnCache))
+            {
+                return JsonConvert.DeserializeObject<T>(valueOnCache);
+            }
+            return default;
         }
 
         public void Set<T>(string key, T value, CacheItemOptions? options = null)
