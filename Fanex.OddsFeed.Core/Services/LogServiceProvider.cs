@@ -11,7 +11,7 @@
 
         Task LogSentryAsync(string message);
 
-        void LogInfo(string message);
+        void LogFile(string message);
 
         void LogInfo(Exception exception);
     }
@@ -42,9 +42,9 @@
             await logger.ErrorAsync(message);
         }
 
-        public void LogInfo(string message)
+        public void LogFile(string message)
         {
-            nlog.Info(message);
+            nlog.Error(message);
         }
 
         public void LogInfo(Exception exception)

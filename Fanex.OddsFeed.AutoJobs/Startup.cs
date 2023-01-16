@@ -135,20 +135,12 @@ public class Startup
         string appName = configuration.GetValue<string>("RedisConfig:ApplicationName");
         services.AddDataProtection()
             .SetApplicationName(appName)
-            .PersistKeysToStackExchangeRedis(redis, $"{appName}:DataProtection:Keys");
+            .PersistKeysToStackExchangeRedis(redis, $"{appName}:DataProtectionKeys");
     }
 
     public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-        else
-        {
-            app.UseHsts();
-        }
-
+        app.UseHsts();
         app.UseMiddleware<ErrorHandler>();
         app.UseStaticFiles();
         app.UseRouting();

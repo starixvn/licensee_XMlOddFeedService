@@ -10,6 +10,7 @@ public static class Program
         var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
         try
         {
+            logger.Info("Application start.");
             CreateWebHostBuilder(args).Build().Run();
         }
         catch (Exception exception)
@@ -27,5 +28,10 @@ public static class Program
         WebHost.CreateDefaultBuilder(args)
             .UseUrls($"http://*:5000")
             .UseStartup<Startup>()
+            .ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging.SetMinimumLevel(LogLevel.Trace);
+            })
             .UseNLog();
 }
