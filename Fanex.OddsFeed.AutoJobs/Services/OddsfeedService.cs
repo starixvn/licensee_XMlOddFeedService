@@ -1,13 +1,13 @@
 ﻿namespace Fanex.OddsFeed.AutoJobs.Services
 {
     using Fanex.Caching;
-    using Fanex.OddsFeed.AutoJobs.Models;
-    using Fanex.OddsFeed.AutoJobs.Models.Matches;
     using Fanex.OddsFeed.AutoJobs.Services.Interfaces;
     using Fanex.OddsFeed.Core.Configurations;
     using Fanex.OddsFeed.Core.Constants;
     using Fanex.OddsFeed.Core.Extensions;
     using Fanex.OddsFeed.Core.Services;
+    using Fanex.OddsFeed.Models;
+    using Fanex.OddsFeed.Models.Matches;
     using Microsoft.AspNetCore.Hosting;
 
     public class OddsfeedService : IOddsfeedService

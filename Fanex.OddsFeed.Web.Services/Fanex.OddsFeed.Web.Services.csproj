@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fanex.OddsFeed.Core\Fanex.OddsFeed.Core.csproj" />
+    <ProjectReference Include="..\Fanex.OddsFeed.Models\Fanex.OddsFeed.Models.csproj" />
+  </ItemGroup>
+
+</Project>

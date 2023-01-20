@@ -1,11 +1,11 @@
 ﻿using System.Collections.Concurrent;
 using System.Data;
 using System.Globalization;
-using Fanex.OddsFeed.AutoJobs.Models;
-using Fanex.OddsFeed.AutoJobs.Models.Matches;
-using Fanex.OddsFeed.AutoJobs.Models.Oddsfeed;
-using Fanex.OddsFeed.AutoJobs.Models.Outright;
 using Fanex.OddsFeed.Core.Extensions;
+using Fanex.OddsFeed.Models;
+using Fanex.OddsFeed.Models.Matches;
+using Fanex.OddsFeed.Models.Oddsfeed;
+using Fanex.OddsFeed.Models.Outright;
 
 namespace Fanex.OddsFeed.AutoJobs.Helpers
 {

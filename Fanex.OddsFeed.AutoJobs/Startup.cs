@@ -14,16 +14,11 @@ using Fanex.OddsFeed.AutoJobs.Services.Interfaces;
 using Fanex.OddsFeed.AutoJobs.Workers;
 using Fanex.OddsFeed.Core;
 using Fanex.OddsFeed.Core.Configurations;
+using Fanex.OddsFeed.Core.Extensions;
 using Fanex.OddsFeed.Core.Repositories;
-using Fanex.OddsFeed.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
-using ONEbook.UM.AspNetCore;
-using ONEbook.UM.Configurations;
-using ONEbook.UM.Helpers;
-using ONEbook.UM.Services;
-using ONEbook.UM.Transport;
 using Sentry;
 using StackExchange.Redis;
 
@@ -74,6 +69,7 @@ public class Startup
         services.AddSingleton(Configuration);
         services.AddControllers();
         ConfigDataProtection(services, Configuration);
+        CoreDI.RegistryCoreServices(services, Configuration);
         InjectRepositories(services);
         InjectServices(services, Configuration);
         AddConfiguration(services, Configuration);
@@ -97,21 +93,6 @@ public class Startup
 
     private void InjectServices(IServiceCollection services, IConfiguration configuration)
     {
-        #region ONEbookUM
-
-        services.AddSingleton(new UMClientConfiguration().Initialize(configuration));
-        services.AddSingleton<IHttpContextHelper, HttpContextHelper>();
-        services.AddSingleton<IUMCacheService, UMCacheService>();
-        services.AddSingleton<IUMRestClient, UMRestClient>();
-        services.AddSingleton<IMaintenanceService, MaintenanceService>();
-
-        #endregion ONEbookUM
-
-        services.AddSingleton<IBaseService, BaseService>();
-        services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
-        services.AddSingleton<IRedisCacheService, RedisCacheService>();
-        services.AddSingleton<Fanex.Logging.ILogger, Logger>();
-
         services.AddSingleton<IOddsDataService, OddsDataService>();
         services.AddSingleton<IOddsfeedService, OddsfeedService>();
         services.AddSingleton<IResultFeedService, ResultFeedService>();
@@ -140,8 +121,15 @@ public class Startup
 
     public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        app.UseHsts();
-        app.UseMiddleware<ErrorHandler>();
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+        else
+        {
+            app.UseMiddleware<ErrorHandler>();
+            app.UseHsts();
+        }
         app.UseStaticFiles();
         app.UseRouting();
         app.UseEndpoints(endpoints =>

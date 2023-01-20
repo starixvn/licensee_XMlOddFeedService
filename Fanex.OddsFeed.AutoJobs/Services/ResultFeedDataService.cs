@@ -1,8 +1,8 @@
 ﻿namespace Fanex.OddsFeed.AutoJobs.Services
 {
     using Fanex.OddsFeed.AutoJobs.Criteria.FeedResult;
-    using Fanex.OddsFeed.AutoJobs.Models.Matches;
     using Fanex.OddsFeed.AutoJobs.Repositories;
+    using Fanex.OddsFeed.Models.Matches;
 
     public interface IResultFeedDataService
     {

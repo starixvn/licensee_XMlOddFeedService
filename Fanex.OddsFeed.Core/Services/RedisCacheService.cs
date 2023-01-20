@@ -12,6 +12,10 @@
         Task SetAsync<T>(string key, T value, CacheItemOptions? options = null);
 
         void Set<T>(string key, T value, CacheItemOptions? options = null);
+
+        void Remove(string key);
+
+        Task RemoveAsync(string key);
     }
 
     public class RedisCacheService : IRedisCacheService
@@ -42,6 +46,16 @@
                 return JsonConvert.DeserializeObject<T>(valueOnCache);
             }
             return default;
+        }
+
+        public void Remove(string key)
+        {
+            cacheService.Remove(key);
+        }
+
+        public async Task RemoveAsync(string key)
+        {
+            await cacheService.RemoveAsync(key);
         }
 
         public void Set<T>(string key, T value, CacheItemOptions? options = null)

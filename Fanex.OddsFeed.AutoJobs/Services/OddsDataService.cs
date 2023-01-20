@@ -2,11 +2,11 @@
 {
     using System.Collections.Generic;
     using Fanex.OddsFeed.AutoJobs.Criteria.OddsData;
-    using Fanex.OddsFeed.AutoJobs.Models;
-    using Fanex.OddsFeed.AutoJobs.Models.Matches;
-    using Fanex.OddsFeed.AutoJobs.Models.Outright;
     using Fanex.OddsFeed.AutoJobs.Repositories;
     using Fanex.OddsFeed.AutoJobs.Services.Interfaces;
+    using Fanex.OddsFeed.Models;
+    using Fanex.OddsFeed.Models.Matches;
+    using Fanex.OddsFeed.Models.Outright;
 
     public class OddsDataService : IOddsDataService
     {

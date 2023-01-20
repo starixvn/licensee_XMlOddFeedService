@@ -2,7 +2,7 @@
 {
     using Fanex.Data;
     using Fanex.Data.Repository;
-    using Fanex.OddsFeed.AutoJobs.Models.Matches;
+    using Fanex.OddsFeed.Models.Matches;
 
     public interface IResultFeedRepository
     {

@@ -1,9 +1,9 @@
-﻿namespace Fanex.OddsFeed.AutoJobs.Services.Interfaces
-{
-    using Fanex.OddsFeed.AutoJobs.Models;
-    using Fanex.OddsFeed.AutoJobs.Models.Matches;
-    using Fanex.OddsFeed.AutoJobs.Models.Outright;
+﻿using Fanex.OddsFeed.Models;
+using Fanex.OddsFeed.Models.Matches;
+using Fanex.OddsFeed.Models.Outright;
 
+namespace Fanex.OddsFeed.AutoJobs.Services.Interfaces
+{
     public interface IOddsDataService
     {
         Task<IList<Match>> GetLiveMatches(IList<BetTypeSchema> betTypeSchemas);

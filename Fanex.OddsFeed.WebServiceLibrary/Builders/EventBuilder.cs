@@ -1,11 +1,11 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Builders
 {
-    using Common.DTO;
-    using Common.Helpers;
     using System.Collections.Generic;
     using System.Linq;
     using System.Security;
     using System.Text;
+    using Common.DTO;
+    using Common.Helpers;
 
     public class EventBuilder : IEventBuilder
     {
