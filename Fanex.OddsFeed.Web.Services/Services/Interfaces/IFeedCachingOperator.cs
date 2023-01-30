@@ -6,10 +6,10 @@
 
     public interface IFeedCachingOperator
     {
-        OddsData GetOddsData(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch);
+        Task<OddsData> GetOddsData(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch);
 
-        IList<BetTypeSchema> GetBetTypes();
+        Task<IList<BetTypeSchema>> GetBetTypes();
 
-        IList<Match> GetMatchResultDetails(int delayTimes);
+        Task<IList<Match>> GetMatchResultDetails(int delayTimes);
     }
 }

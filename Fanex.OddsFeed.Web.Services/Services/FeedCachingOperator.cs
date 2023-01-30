@@ -21,16 +21,16 @@
             this.redisCacheService = redisCacheService;
         }
 
-        public OddsData GetOddsData(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch)
+        public async Task<OddsData> GetOddsData(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch)
         {
             var cacheVersion = versionCachingService.GetRightVersionOddsFeed(model.UserProfile);
 
             var outrights = isGetOutright
-                ? Get<Outright>(webSettings.Bucket.Outrights, cacheVersion.CurrentVersionOutright.ToString()) :
+                ? await Get<Outright>(webSettings.Bucket.Outrights, cacheVersion.CurrentVersionOutright.ToString()) :
                 new List<Outright>();
 
             var liveMatches = isGetLiveMatch
-                ? Get<Match>(webSettings.Bucket.LiveMatches, cacheVersion.CurrentVersionLiveMatch.ToString())
+                ? await Get<Match>(webSettings.Bucket.LiveMatches, cacheVersion.CurrentVersionLiveMatch.ToString())
                 : new List<Match>();
 
             var deadballs1 = new List<Match>();
@@ -38,8 +38,8 @@
 
             if (isGetDeadballMatch)
             {
-                deadballs1 = Get<Match>(webSettings.Bucket.DeadMatches, cacheVersion.CurrentVersionDeadballMatch.ToString() + "_1").ToList();
-                deadballs2 = Get<Match>(webSettings.Bucket.DeadMatches, cacheVersion.CurrentVersionDeadballMatch.ToString() + "_2").ToList();
+                deadballs1 = (await Get<Match>(webSettings.Bucket.DeadMatches, cacheVersion.CurrentVersionDeadballMatch.ToString() + "_1")).ToList();
+                deadballs2 = (await Get<Match>(webSettings.Bucket.DeadMatches, cacheVersion.CurrentVersionDeadballMatch.ToString() + "_2")).ToList();
             }
 
             var deadballMatches = deadballs1.Union(deadballs2).ToList();
@@ -52,20 +52,18 @@
             };
         }
 
-        public IList<BetTypeSchema> GetBetTypes()
-        {
-            return Get<BetTypeSchema>(webSettings.Bucket.OddsFeed, webSettings.BetTypeSchemaKey);
-        }
+        public async Task<IList<BetTypeSchema>> GetBetTypes()
+            => await Get<BetTypeSchema>(webSettings.Bucket.OddsFeed, webSettings.BetTypeSchemaKey);
 
-        public IList<Match> GetMatchResultDetails(int delayTimes)
+        public async Task<IList<Match>> GetMatchResultDetails(int delayTimes)
         {
             var cacheVersion = versionCachingService.GetRightVersionResultFeed(delayTimes);
-            return Get<Match>(webSettings.ResultFeed.BucketData, cacheVersion.ToString());
+            return await Get<Match>(webSettings.ResultFeed.BucketData, cacheVersion.ToString());
         }
 
-        private IList<T> Get<T>(string bucketName, string key)
+        private async Task<IList<T>> Get<T>(string bucketName, string key)
         {
-            var result = redisCacheService.Get<IList<T>>(string.Format("{0}:{1}", bucketName, key));
+            var result = await redisCacheService.GetAsync<IList<T>>(string.Format("{0}:{1}", bucketName, key));
             return result ?? new List<T>();
         }
     }

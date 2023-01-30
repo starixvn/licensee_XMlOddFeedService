@@ -8,7 +8,6 @@ using Fanex.Logging.Extensions.AspNetCore;
 using Fanex.Logging.Extensions.Database;
 using Fanex.Logging.Sentry;
 using Fanex.OddsFeed.AutoJobs.Models;
-using Fanex.OddsFeed.AutoJobs.Repositories;
 using Fanex.OddsFeed.AutoJobs.Services;
 using Fanex.OddsFeed.AutoJobs.Services.Interfaces;
 using Fanex.OddsFeed.AutoJobs.Workers;
@@ -16,6 +15,8 @@ using Fanex.OddsFeed.Core;
 using Fanex.OddsFeed.Core.Configurations;
 using Fanex.OddsFeed.Core.Extensions;
 using Fanex.OddsFeed.Core.Repositories;
+using Fanex.OddsFeed.Repository;
+using Fanex.OddsFeed.Repository.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
@@ -104,8 +105,7 @@ public class Startup
         services.AddSingleton<IDynamicRepository, DynamicRepository>();
         services.AddSingleton<IBaseRepository, BaseRepository>();
 
-        services.AddSingleton<IOddsDataRepository, OddsDataRepository>();
-        services.AddSingleton<IResultFeedRepository, ResultFeedRepository>();
+        services.AddSingleton<IDbAccessRepository, DbAccessRepository>();
     }
 
     private static void ConfigDataProtection(IServiceCollection services, IConfiguration configuration)

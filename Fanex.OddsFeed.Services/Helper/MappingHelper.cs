@@ -7,7 +7,7 @@ using Fanex.OddsFeed.Models.Matches;
 using Fanex.OddsFeed.Models.Oddsfeed;
 using Fanex.OddsFeed.Models.Outright;
 
-namespace Fanex.OddsFeed.AutoJobs.Helpers
+namespace Fanex.OddsFeed.Repository.Helpers
 {
     public static class MappingHelper
     {

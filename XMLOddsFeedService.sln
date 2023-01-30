@@ -45,11 +45,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fanex.OddsFeed.Web", "Fanex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.OddsFeed.Web", "Fanex.OddsFeed.Web\Fanex.OddsFeed.Web.csproj", "{65AE72CC-60A8-4419-80CF-ADFC36E8C019}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.OddsFeed.Services", "Fanex.OddsFeed.Services\Fanex.OddsFeed.Services.csproj", "{6BF8E960-8762-4B94-B8ED-ADD89DD2BB06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.OddsFeed.Repository", "Fanex.OddsFeed.Services\Fanex.OddsFeed.Repository.csproj", "{6BF8E960-8762-4B94-B8ED-ADD89DD2BB06}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.OddsFeed.Web.Services", "Fanex.OddsFeed.Web.Services\Fanex.OddsFeed.Web.Services.csproj", "{147DA595-2927-4CCF-A231-14DBE6F087BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.OddsFeed.Models", "Fanex.OddsFeed.Models\Fanex.OddsFeed.Models.csproj", "{18F8B35A-1727-4D59-98F7-E9B8463484FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.OddsFeed.Models", "Fanex.OddsFeed.Models\Fanex.OddsFeed.Models.csproj", "{18F8B35A-1727-4D59-98F7-E9B8463484FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -231,7 +231,7 @@ Global
 		{147DA595-2927-4CCF-A231-14DBE6F087BF} = {77C3E89D-6F5D-4E8E-B14F-9E2DA92C7B99}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2729113D-6089-46C8-A527-C77F6C977E43}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Caching.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.0\lib\NET35
+		SolutionGuid = {2729113D-6089-46C8-A527-C77F6C977E43}
 	EndGlobalSection
 EndGlobal
