@@ -1,0 +1,113 @@
+ul.topnav {
+	list-style: none;
+	margin: 0;
+	float: left;
+	width: 960px;
+	background: #222;
+	font-size: 1.2em;
+	background: url(../../App_Themes/Help/dropdown-menu_files/topnav_bg.gif) repeat-x;
+	padding-left: 0;
+}
+ul.topnav li {
+	float: left;
+	margin: 0;
+	position: relative; /*--Declare X and Y axis base--*/
+	z-index:2;
+}
+	
+ul.topnav li .hasChild:hover, ul.topnav li a.hasChild.hoverItem{
+	padding: 10px;
+	color: red;
+	display: block;
+	text-decoration: none;
+	float: left;
+	background: url(../../App_Themes/Help/dropdown-menu_files/dropdown_arrowbg.png) no-repeat center 26px !important;
+}
+
+ul.topnav li a.actived{
+	padding: 10px;
+	color: red;
+	display: block;
+	text-decoration: none;
+	float: left;
+	background: url(../../App_Themes/Help/dropdown-menu_files/arrow-filter.png) no-repeat center 26px;
+}
+
+ul.topnav li .hasChild, ul.topnav li .noneChild{
+	padding: 10px;
+	color: #FFFFFF;
+	display: block;
+	text-decoration: none;
+	float: left;
+	width: 120px;
+	text-align: center;
+}
+ul.topnav li .noneChild:hover {
+	padding: 10px;
+	color: red;
+	display: block;
+	text-decoration: none;
+	float: left;
+}
+
+ul.topnav li .FAQs, ul.topnav li .FAQs:hover {
+	width: 60px;
+}
+ul.topnav li .Appendix, ul.topnav li .Appendix:hover {
+	width: 80px;
+}
+
+ul.topnav li ul.subNav1 {
+	list-style: none;
+	position: absolute; 
+    display: none;
+	left: 0; top: 35px;
+	background: #e84c3d;
+	margin: 0; padding: 0;
+	float: left;
+	width: 190px;
+	border: 1px solid #bdc3c7;
+	border-top:none;
+}
+ul.topnav li ul.subNav1 li ul.subNav2 {
+	list-style: none;
+	position: absolute; 
+	left: 190px; top: -2px;
+	background: #f25f51;
+	display: none;
+	margin: 0; padding: 0;
+	float: left;
+	width: 190px;
+	border: 1px solid #bdc3c7;
+}
+ul.topnav li ul.subNav1 li{
+	margin: 0; 
+	padding: 0;
+	border-bottom: 1px dashed #bdc3c7; /*--Create bevel effect--*/
+	clear: both;
+	width: 190px;
+	position: relative;
+}
+ul.topnav li ul.subNav1 li a {
+	float: left;
+	width: 180px;
+	background: #e84c3d;
+	padding: 10px 0 10px 10px;
+	color: #FFF;
+	text-decoration: none;	
+}
+ul.topnav li ul.subNav1 li a.haveSubMenu {
+	background: #e84c3d url(../../App_Themes/Help/dropdown-menu_files/dropdown_linkbg.gif) no-repeat 175px center;
+}
+ul.topnav li ul.subNav1 li a.haveSubMenu:hover {
+	background: #cd3527 url(../../App_Themes/Help/dropdown-menu_files/dropdown_linkbg.gif) no-repeat 175px center;
+}
+ ul.topnav li ul.subNav1 li a:hover {
+	background: #cd3527;
+}
+#header img {
+	margin: 20px 0 10px;
+}
+ul.topnav li ul.subNav1 li.endItem, ul.topnav li ul.subNav1 li ul.subNav2 li.endItem {
+	border-bottom: none;
+}

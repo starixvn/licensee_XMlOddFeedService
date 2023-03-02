@@ -7,13 +7,46 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\scss\ie.scss" />
+    <Content Remove="wwwroot\scss\print.scss" />
+    <Content Remove="wwwroot\scss\screen.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="App_Data\SpNames.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_Data\SpNames.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Fanex.OddsFeed.Core\Fanex.OddsFeed.Core.csproj" />
     <ProjectReference Include="..\Fanex.OddsFeed.Web.Services\Fanex.OddsFeed.Web.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Filters\" />
+    <Folder Include="wwwroot\minify\css\" />
+    <Folder Include="wwwroot\minify\js\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\scss\ie.scss" />
+    <None Include="wwwroot\scss\print.scss" />
+    <None Include="wwwroot\scss\screen.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

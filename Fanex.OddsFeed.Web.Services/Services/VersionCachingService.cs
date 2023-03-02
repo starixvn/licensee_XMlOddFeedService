@@ -1,18 +1,18 @@
 ﻿namespace Fanex.OddsFeed.Web.Services.Services
 {
-    using Fanex.OddsFeed.Core.Configurations;
     using Fanex.OddsFeed.Core.Extensions;
     using Fanex.OddsFeed.Core.Services;
     using Fanex.OddsFeed.Models.DTO;
+    using Fanex.OddsFeed.Web.Services.Models;
     using Fanex.OddsFeed.Web.Services.Models.Cache;
     using Fanex.OddsFeed.Web.Services.Services.Interfaces;
 
     public class VersionCachingService : IVersionCachingService
     {
-        private readonly AppSettings appSettings;
+        private readonly WebSettings appSettings;
         private readonly IRedisCacheService redisCacheService;
 
-        public VersionCachingService(AppSettings appSettings, IRedisCacheService redisCacheService)
+        public VersionCachingService(WebSettings appSettings, IRedisCacheService redisCacheService)
         {
             this.appSettings = appSettings;
             this.redisCacheService = redisCacheService;

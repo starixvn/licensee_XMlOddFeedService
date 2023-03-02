@@ -8,7 +8,14 @@ using Fanex.Logging.Extensions.Database;
 using Fanex.Logging.Sentry;
 using Fanex.OddsFeed.Core;
 using Fanex.OddsFeed.Core.Extensions;
-using Fanex.OddsFeed.Web.Services.Extensions;
+using Fanex.OddsFeed.Core.Models.Email;
+using Fanex.OddsFeed.Repository;
+using Fanex.OddsFeed.Repository.Interfaces;
+using Fanex.OddsFeed.Web.Services.Models;
+using Fanex.OddsFeed.Web.Services.Repositories;
+using Fanex.OddsFeed.Web.Services.Repositories.Interfaces;
+using Fanex.OddsFeed.Web.Services.Services;
+using Fanex.OddsFeed.Web.Services.Services.Interfaces;
 using Microsoft.AspNetCore.DataProtection;
 using Sentry;
 using StackExchange.Redis;
@@ -58,15 +65,44 @@ public class Startup
                .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
 
         services.AddSingleton(Configuration);
-        services.AddControllers();
+        services.AddControllersWithViews();
+        services.AddSession();
         ConfigDataProtection(services, Configuration);
         CoreDI.RegistryCoreServices(services, Configuration);
-        DI.RegisterServices(services);
         AddConfiguration(services, Configuration);
+        AddRepositories(services);
+        AddServices(services);
     }
 
     private void AddConfiguration(IServiceCollection services, IConfiguration configuration)
     {
+        var webSettings = configuration.GetSection("AppSettings").Get<WebSettings>();
+        services.AddSingleton(webSettings);
+
+        var emailSettings = configuration.GetSection("EmailSettings").Get<EmailSettings>();
+        services.AddSingleton(emailSettings);
+    }
+
+    private void AddRepositories(IServiceCollection services)
+    {
+        services.AddSingleton<IPartnerRepository, PartnerRepository>();
+        services.AddSingleton<IDbAccessRepository, DbAccessRepository>();
+    }
+
+    private void AddServices(IServiceCollection services)
+    {
+        services.AddSingleton<IBetDaqService, BetDaqService>();
+        services.AddSingleton<IBetRadarService, BetRadarService>();
+        services.AddSingleton<IBetTypeService, BetTypeService>();
+        services.AddSingleton<IEventFeedService, EventFeedService>();
+        services.AddSingleton<IFeedCachingOperator, FeedCachingOperator>();
+        services.AddSingleton<IFeedsService, FeedsService>();
+        services.AddSingleton<IOddsFeedService, OddsFeedService>();
+        services.AddSingleton<IPartnerService, PartnerService>();
+        services.AddSingleton<IRateLimitService, RateLimitService>();
+        services.AddSingleton<IResultFeedService, ResultFeedService>();
+        services.AddSingleton<IUserService, UserService>();
+        services.AddSingleton<IVersionCachingService, VersionCachingService>();
     }
 
     private static void ConfigDataProtection(IServiceCollection services, IConfiguration configuration)
@@ -82,10 +118,18 @@ public class Startup
 
     public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+        else
+        {
+            app.UseMiddleware<ErrorHandler>();
+        }
         app.UseHsts();
-        app.UseMiddleware<ErrorHandler>();
         app.UseStaticFiles();
         app.UseRouting();
+        app.UseSession();
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllerRoute(

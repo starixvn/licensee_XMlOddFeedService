@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    public class WriteLogRequestAccessCriteria : CriteriaBase
+    public class WriteLogRequestAccessCriteria : CriteriaBase, INonQueryCommand
     {
         public string UserName { get; set; }
 

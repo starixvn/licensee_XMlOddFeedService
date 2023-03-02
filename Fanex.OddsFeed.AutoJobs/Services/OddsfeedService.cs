@@ -12,7 +12,7 @@
 
     public class OddsfeedService : IOddsfeedService
     {
-        private readonly CacheItemOptions cacheOptions = new CacheItemOptions { RelativeExpiration = null };
+        private readonly CacheItemOptions cacheOptions = new() { RelativeExpiration = null };
         private readonly AppSettings appSettings;
         private readonly ICacheService cacheService;
         private readonly IRedisCacheService redisCacheService;
@@ -47,7 +47,7 @@
         {
             var betTypeSchemas = await GetBetTypeSchemas();
             var liveMatches = await oddsDataService.GetLiveMatches(betTypeSchemas);
-            var deadBallMatches = oddsDataService.GetDeadballMatches(betTypeSchemas);
+            var deadBallMatches = await oddsDataService.GetDeadballMatches(betTypeSchemas);
 
             var deadBallLength = deadBallMatches.Count;
             var splitIndex = deadBallLength / 2;

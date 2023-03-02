@@ -244,9 +244,7 @@
         }
 
         private static int GetMatchId(DataRow row)
-        {
-            return Convert.ToInt32(row["MatchID"]);
-        }
+            => Convert.ToInt32(row["MatchID"]);
 
         private static decimal GetOddsValue(object value)
         {
@@ -257,9 +255,7 @@
         }
 
         private static string ConvertOddsToString(decimal odds)
-        {
-            return string.Format("{0:0.#########}", odds);
-        }
+            => string.Format("{0:0.#########}", odds);
 
         private void AppendMatches(
             StringBuilder oddsFeedNode,
@@ -386,5 +382,8 @@
 
             return oddsTypeName;
         }
+
+        public async Task<DataTable> GetCountryListAsync()
+            => await dbAccessRepository.GetDataTableAsync(new GetCountryListCriteria());
     }
 }
