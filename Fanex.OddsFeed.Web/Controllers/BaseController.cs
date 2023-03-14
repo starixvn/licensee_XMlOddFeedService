@@ -4,6 +4,7 @@
     using Fanex.Caching;
     using Fanex.OddsFeed.Core.Services;
     using Fanex.OddsFeed.Models.DTO;
+    using Fanex.OddsFeed.Web.Filters;
     using Fanex.OddsFeed.Web.Services.Constants;
     using Fanex.OddsFeed.Web.Services.Criteria;
     using Fanex.OddsFeed.Web.Services.Extensions;
@@ -12,12 +13,14 @@
     using ONEbook.UM.Models;
     using ONEbook.UM.Services;
 
+    [ServiceFilter(typeof(RateLimitFilterAttribute))]
     public class BaseController : Controller
     {
         private readonly IMaintenanceService maintenanceService;
         private readonly IPartnerRepository partnerRepository;
         private readonly IBaseService baseService;
         private readonly IRedisCacheService redisCacheService;
+        private readonly ILogServiceProvider logServiceProvider;
         private const int TimeExpireCache = 60;
 
         public BaseController(IServiceProvider serviceProvider)
@@ -26,6 +29,7 @@
             partnerRepository = serviceProvider.GetRequiredService<IPartnerRepository>();
             baseService = serviceProvider.GetRequiredService<IBaseService>();
             redisCacheService = serviceProvider.GetRequiredService<IRedisCacheService>();
+            logServiceProvider = serviceProvider.GetRequiredService<ILogServiceProvider>();
         }
 
         protected async Task<bool> IsDownTimeAsync()
@@ -48,7 +52,7 @@
         protected async Task<AuthenticatedPartner> GetAuthenticatedPartner(string userName, string domainName, string ip)
         {
             var cacheKeyAuthenticatedPartner = "Partner" + userName + ip + domainName;
-            var authenticatedPartner = ConfiguredCacheService.Get<AuthenticatedPartner>(cacheKeyAuthenticatedPartner);
+            var authenticatedPartner = await redisCacheService.GetAsync<AuthenticatedPartner>(cacheKeyAuthenticatedPartner);
             if (authenticatedPartner == null)
             {
                 authenticatedPartner = await partnerRepository.GetAuthenticatedPartner(new CheckPermissionCriteria

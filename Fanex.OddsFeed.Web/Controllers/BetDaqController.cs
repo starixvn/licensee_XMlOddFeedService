@@ -63,7 +63,7 @@
             return string.Empty;
         }
 
-        private async Task<string> GetOdds(string username, string domainName, string filter = null)
+        private async Task<string> GetOdds(string username, string domainName, string filter)
         {
             if (string.IsNullOrEmpty(username))
             {

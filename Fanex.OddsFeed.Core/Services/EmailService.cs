@@ -35,9 +35,10 @@
             try
             {
                 var client = new SmtpClient(emailSettings.Host, emailSettings.Port);
-                var msg = new MailMessage();
-
-                msg.From = new MailAddress(emailSettings.Email, emailSettings.DisplayName);
+                var msg = new MailMessage
+                {
+                    From = new MailAddress(emailSettings.Email, emailSettings.DisplayName)
+                };
                 GetMailFromString(model.ReceiverEmail, msg.To);
                 GetMailFromString(model.MailCC, msg.CC);
                 msg.Subject = model.Subject;

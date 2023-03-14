@@ -6,13 +6,13 @@
     using Fanex.OddsFeed.Web.Services.Services.Interfaces;
     using Microsoft.AspNetCore.Mvc;
 
-    public class LanguageController : BaseController
+    public class LeagueController : BaseController
     {
         private const int TimeExpireCacheForLeague = 277;
         private readonly IPartnerService partnerService;
         private readonly ILogServiceProvider logServiceProvider;
 
-        public LanguageController(IServiceProvider serviceProvider) : base(serviceProvider)
+        public LeagueController(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             partnerService = serviceProvider.GetRequiredService<IPartnerService>();
             logServiceProvider = serviceProvider.GetRequiredService<ILogServiceProvider>();

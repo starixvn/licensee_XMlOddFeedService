@@ -11,12 +11,15 @@ using Fanex.OddsFeed.Core.Extensions;
 using Fanex.OddsFeed.Core.Models.Email;
 using Fanex.OddsFeed.Repository;
 using Fanex.OddsFeed.Repository.Interfaces;
+using Fanex.OddsFeed.Web.Extensions;
+using Fanex.OddsFeed.Web.Filters;
 using Fanex.OddsFeed.Web.Services.Models;
 using Fanex.OddsFeed.Web.Services.Repositories;
 using Fanex.OddsFeed.Web.Services.Repositories.Interfaces;
 using Fanex.OddsFeed.Web.Services.Services;
 using Fanex.OddsFeed.Web.Services.Services.Interfaces;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.HttpOverrides;
 using Sentry;
 using StackExchange.Redis;
 
@@ -65,9 +68,15 @@ public class Startup
                .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
 
         services.AddSingleton(Configuration);
-        services.AddControllersWithViews();
+        services.AddControllersWithViews(x => x.EnableEndpointRouting = false);
         services.AddSession();
+        services.AddResponseCaching();
+        services.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        });
         ConfigDataProtection(services, Configuration);
+        services.AddSingleton<RateLimitFilterAttribute>();
         CoreDI.RegistryCoreServices(services, Configuration);
         AddConfiguration(services, Configuration);
         AddRepositories(services);
@@ -128,13 +137,24 @@ public class Startup
         }
         app.UseHsts();
         app.UseStaticFiles();
-        app.UseRouting();
         app.UseSession();
-        app.UseEndpoints(endpoints =>
+        app.UseResponseCaching();
+        app.UseForwardedHeaders();
+
+        app.Use(async (ctx, next) =>
         {
-            endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Whoami}/{action=Index}/{id?}");
+            ctx.Request.GetTypedHeaders().CacheControl = new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+            {
+                Public = true,
+                MaxAge = TimeSpan.FromSeconds(60)
+            };
+            await next();
         });
+
+        var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
+        string feedUrlPath = configuration.GetValue<string>("AppSettings:FeedUrlPath");
+        if (!string.IsNullOrWhiteSpace(feedUrlPath)) feedUrlPath = "/";
+
+        app.RegisterXMLOddsfeedRoutes(feedUrlPath);
     }
 }

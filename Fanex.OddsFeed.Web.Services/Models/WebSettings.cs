@@ -5,7 +5,6 @@
     public class WebSettings : AppSettings
     {
         public string SpTestingUMTime { get; set; }
-        public string IsDisableUMTime { get; set; }
         public bool IsDisableUMTimeFlag { get; set; }
         public string VirtualPathWebService { get; set; }
         public int LimitedOptions { get; set; }

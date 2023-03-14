@@ -11,6 +11,7 @@
     public class PartnerService : IPartnerService
     {
         private readonly IBaseService baseService;
+        private readonly IBetTypeService betTypeService;
         private const string Language_English = "en-US";
         private const string Language_TraditionalChinese = "zh-TW";
         private const string Language_SimplifiedChinese = "zh-CN";
@@ -21,6 +22,12 @@
         private const string Language_Japanese = "ja-JP";
         private const string Language_Hindi = "hi-IN";
 
+        public PartnerService(IBaseService baseService, IBetTypeService betTypeService)
+        {
+            this.baseService = baseService;
+            this.betTypeService = betTypeService;
+        }
+
         public async Task<string> GetBetTypesXmlContent(string username, UserProfile userProfile)
         {
             var bettypes = await baseService.GetDataAsync<PartnerBetType>(new GetPartnerBetTypeCriteria { Username = username });
@@ -28,7 +35,8 @@
 
             foreach (var bettype in bettypes)
             {
-                //content.Append($"<type id=\"{bettype.Id}\" t=\"{_betTypeService.GetBetTypeNameById(bettype.Id)}\"");
+                string bettypeName = await betTypeService.GetBetTypeNameById(bettype.Id);
+                content.Append($"<type id=\"{bettype.Id}\" t=\"{bettypeName}\"");
 
                 BuilderWriteContent(
                     content,

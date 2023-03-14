@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace Fanex.OddsFeed.Web.Services.Extensions
+﻿namespace Fanex.OddsFeed.Web.Services.Extensions
 {
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Http.Features;
+
     public static class RequestHelper
     {
         public static string GetClientIpAddress(HttpContext httpContext)
@@ -10,7 +11,8 @@ namespace Fanex.OddsFeed.Web.Services.Extensions
 
             if (string.IsNullOrEmpty(clientIp))
             {
-                clientIp = httpContext?.Connection?.RemoteIpAddress?.ToString();
+                var feature = httpContext.Features.Get<IHttpConnectionFeature>();
+                clientIp = feature?.RemoteIpAddress?.ToString();
             }
             else
             {
@@ -24,17 +26,21 @@ namespace Fanex.OddsFeed.Web.Services.Extensions
                 clientIp = "127.0.0.1";
             }
 
+            if (clientIp.StartsWith("::ffff:"))
+            {
+                clientIp = clientIp.Replace("::ffff:", string.Empty);
+            }
+
             return clientIp;
         }
 
-        public static string DomainName(HttpContext httpContext, bool isDevelopment = true)
+        public static string DomainName(HttpContext httpContext)
         {
-            var protocol = httpContext.Request.IsHttps ? "https://" : "http://";
-            var domain = httpContext.GetServerVariable("SERVER_NAME");
-            var port = httpContext.GetServerVariable("SERVER_PORT");
-            var fullDomainName = protocol + domain;
+            var domain = httpContext.Request.Host.Value;
+            var port = httpContext.Request.Host.Port;
+            var fullDomainName = $"{httpContext.Request.Scheme}://{domain}";
 
-            if (isDevelopment)
+            if (port is not null)
             {
                 fullDomainName = fullDomainName + ":" + port;
             }
