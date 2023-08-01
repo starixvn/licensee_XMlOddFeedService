@@ -1,7 +1,7 @@
 ﻿namespace Fanex.OddsFeed.WebService.Controllers
 {
-    using OddsFeed.Common.Configurations;
     using System.Web.Mvc;
+    using OddsFeed.Common.Configurations;
     using WebServiceLibrary.Helpers;
     using WebServiceLibrary.Services;
 
