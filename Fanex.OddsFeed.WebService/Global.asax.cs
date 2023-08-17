@@ -31,8 +31,6 @@
                 _feedUrlPath += "/";
             }
 
-            RegisterRoutesBetRadar(routes, _feedUrlPath);
-
             RegisterRoutesBedDaq(routes, _feedUrlPath);
 
             RegisterRoutesOddsFeed(routes, _feedUrlPath);
@@ -173,14 +171,6 @@
                 "BetDaqInsertBetdaqService",
                 _feedUrlPath + "{username}/en-lang/InsertBet.cmd",
                 new { controller = "InsertBetdaq", action = index });
-        }
-
-        private static void RegisterRoutesBetRadar(RouteCollection routes, string _feedUrlPath)
-        {
-            routes.MapRoute(
-                "BetRadarOddsFeedService", // Route name
-                _feedUrlPath + "{username}/oddsfeed.xml", // URL with parameters
-               new { controller = "BetRadar", action = index }); // Parameter defaults
         }
 
         private static void RegisterRoutesSportsBetTypesLeaguesFeed(RouteCollection routes, string _feedUrlPath)

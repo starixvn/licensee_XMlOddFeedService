@@ -265,9 +265,6 @@
     <Compile Include="Controllers\AnalyticsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BetDaqController.cs" />
-    <Compile Include="Controllers\BetRadarController.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\FeedsController.cs" />
     <Compile Include="Controllers\InsertBetdaqController.cs" />
