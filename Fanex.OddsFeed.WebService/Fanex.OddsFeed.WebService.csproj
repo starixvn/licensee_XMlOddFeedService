@@ -266,7 +266,6 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BetDaqController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
-    <Compile Include="Controllers\FeedsController.cs" />
     <Compile Include="Controllers\InsertBetdaqController.cs" />
     <Compile Include="Controllers\CricketResultFeedController.cs" />
     <Compile Include="Controllers\OddsFeedController.cs" />

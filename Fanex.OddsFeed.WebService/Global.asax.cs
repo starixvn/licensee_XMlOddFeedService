@@ -39,8 +39,6 @@
 
             RegisterRoutesEvent(routes, _feedUrlPath);
 
-            RegisterRoutesFeeds(routes, _feedUrlPath);
-
             RegisterRoutesCricketResultFeed(routes, _feedUrlPath);
 
             routes.MapRoute(
@@ -102,24 +100,6 @@
                "EventService",
                _feedUrlPath + "{username}/event.xml",
                new { controller = "Event", action = index });
-        }
-
-        private static void RegisterRoutesFeeds(RouteCollection routes, string _feedUrlPath)
-        {
-            routes.MapRoute(
-              "FeedsCsvService",
-              _feedUrlPath + "{username}/{feedname}.csv",
-              new { controller = "Feeds", action = "GetCsv" });
-
-            routes.MapRoute(
-              "FeedsXmlService",
-              _feedUrlPath + "{username}/{feedname}.xml",
-              new { controller = "Feeds", action = index });
-
-            routes.MapRoute(
-                 "FeedsJsonService",
-                 _feedUrlPath + "{username}/{feedname}.json",
-                 new { controller = "Feeds", action = "GetJson" });
         }
 
         private static void RegisterRoutesOddsFeed(RouteCollection routes, string _feedUrlPath)

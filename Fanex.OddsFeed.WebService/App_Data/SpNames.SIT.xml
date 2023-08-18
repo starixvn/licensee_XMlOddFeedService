@@ -26,15 +26,6 @@
         <!-- BetRadar feed -->
         <Setting Key="SP.BetRadarOddsSel" SpName="Odds_BetRadar_OddsSel" DbName="DBACC.bodb02.bodbAdminNet" />
 
-        <!-- OCS XML Feed -->
-        <Setting Key="SP.Ocs_Ip" SpName="ocs_ips_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
-        <Setting Key="SP.Ocs_Country" SpName="ocs_countries_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
-        <Setting Key="SP.Ocs_Sport" SpName="ocs_sports_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
-        <Setting Key="SP.Ocs_Team" SpName="ocs_teams_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
-        <Setting Key="SP.Ocs_League" SpName="ocs_leagues_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
-        <Setting Key="SP.Ocs_Event" SpName="ocs_events_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
-        <Setting Key="SP.Ocs_Match" SpName="ocs_matches_sel" DbName="DBEXT.bodb02.bodbAdminNet" />
-
         <!-- Cricket result -->
         <Setting Key="Odds_CricketResult_Sel" SpName="Odds_CricketResult_Sel" DbName="DBACC.bodb02.bodbAdminNet">
             <Mapping DataField="SportType" ObjectProperty="SportId" />
