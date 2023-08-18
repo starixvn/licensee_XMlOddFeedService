@@ -1,6 +1,5 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Criteria
 {
-    using Common.Helpers;
     using Fanex.Data.Repository;
 
     public class WriteLogRequestAccessCriteria : CriteriaBase
@@ -11,9 +10,6 @@
 
         public string Ip { get; set; }
 
-        public override string GetSettingKey()
-        {
-            return SpHelper.RealSp("Odds_PartnerCheckPermission_WriteLog");
-        }
+        public override string GetSettingKey() => "Odds_PartnerCheckPermission_WriteLog";
     }
 }

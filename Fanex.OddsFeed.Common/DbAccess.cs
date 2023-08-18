@@ -8,13 +8,13 @@
     using Data;
     using Fanex.OddsFeed.Common.Criteria;
     using Fanex.OddsFeed.Common.DTO;
-    using Helpers;
 
     public static class DbAccess
     {
         public static DataSet GetLiveOddsData()
         {
-            using (var db = new ObjectDb(SpHelper.RealSp("Is_Odds_GetLiveOddsData")))
+            var criteria = new GetLiveOddsDataCriteria();
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
                 return db.ExecuteDataSet();
             }
@@ -22,7 +22,8 @@
 
         public static DataSet GetDeadballOddsData()
         {
-            using (var db = new ObjectDb(SpHelper.RealSp("Is_Odds_GetDeadballOddsData")))
+            var criteria = new GetDeadballOddsDataCriteria();
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
                 return db.ExecuteDataSet();
             }
@@ -30,7 +31,8 @@
 
         public static DataTable GetOutrightOddsData()
         {
-            using (var db = new ObjectDb(SpHelper.RealSp("Is_Odds_GetOutrightOddsData")))
+            var criteria = new GetOutrightOddsDataCriteria();
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
                 return db.ExecuteDataSet().Tables[0];
             }
@@ -38,7 +40,7 @@
 
         public static DataTable GetBetdaqScheduleData(string uspName)
         {
-            using (var db = new ObjectDb(SpHelper.RealSp(uspName)))
+            using (var db = new ObjectDb(uspName))
             {
                 return db.ExecuteDataSet().Tables[0];
             }
@@ -46,7 +48,8 @@
 
         public static DataTable GetBetRadar()
         {
-            using (var db = new ObjectDb(SpHelper.RealSp("SP.BetRadarOddsSel")))
+            var criteria = new GetBetRadarOddsCriteria();
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
                 return db.ExecuteDataSet().Tables[0];
             }
@@ -54,7 +57,8 @@
 
         public static DataTable GetCountryList()
         {
-            using (var db = new ObjectDb(SpHelper.RealSp("SP.GetCountryList")))
+            var criteria = new GetCountryListCriteria();
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
                 return db.ExecuteDataSet().Tables[0];
             }
@@ -84,7 +88,7 @@
                     var matches = multi.Read<Match>().ToList();
                     var matchResultDetails = multi.Read<MatchResultDetail>().ToList();
 
-                    foreach(var match in matches)
+                    foreach (var match in matches)
                     {
                         match.MatchResultDetails = matchResultDetails.Where(x => x.MatchId == match.MatchId).ToList();
                     }

@@ -1,15 +1,11 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Criteria
 {
-    using Common.Helpers;
     using Fanex.Data.Repository;
 
     public class GetBetTypeByUserNameCriteria : CriteriaBase
     {
         public string Username { get; set; }
 
-        public override string GetSettingKey()
-        {
-            return SpHelper.RealSp("SP.GetBetTypeByUserName");
-        }
+        public override string GetSettingKey() => "Odds_BetTypeSelByUserName";
     }
 }

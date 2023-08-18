@@ -3,7 +3,6 @@
     using System.Collections;
     using Common;
     using Common.Configurations;
-    using Common.Helpers;
     using Extensions;
     using Fanex.Common;
 
@@ -76,7 +75,7 @@
 
         public int InsertBetDaq(Hashtable spParams, bool isDownTime)
         {
-            var spName = isDownTime ? AppSettings.SpTestingUMTime : SpHelper.RealSp("SP.InsertBetDaq");
+            var spName = isDownTime ? AppSettings.SpTestingUMTime : "SP.InsertBetDaq";
             var result = DbAccess.GetInsertBetDaq(spName, spParams);
             return Converter.ToInt(result.Rows[0]["ErrCode"]);
         }
