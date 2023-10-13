@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class ReadJsonFromFile
+    public static class ReadJsonFromFile
     {
         public static IList<T> GetBetTypeSchemas<T>(string filePath)
         {
@@ -19,6 +19,7 @@
                     return new List<T>();
                 }
             }
+
             return new List<T>();
         }
     }

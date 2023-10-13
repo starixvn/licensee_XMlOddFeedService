@@ -72,7 +72,9 @@
                 return Truncate(0);
             }
 
-            return decimalOdds < maxOdds ? Truncate(-hundred / (decimalOdds - 1)) : Truncate((decimalOdds - 1) * hundred);
+            return decimalOdds < maxOdds
+                ? Truncate(-hundred / (decimalOdds - 1))
+                : Truncate((decimalOdds - 1) * hundred);
         }
 
         public static decimal DecimalToHK(decimal decimalOdds)
@@ -90,7 +92,9 @@
                 return Truncate(0);
             }
 
-            return decimalOdds >= maxOdds ? Truncate(decimalOdds - 1) : Truncate(1 / (1 - decimalOdds));
+            return decimalOdds >= maxOdds
+                ? Truncate(decimalOdds - 1)
+                : Truncate(1 / (1 - decimalOdds));
         }
 
         public static decimal DecimalToMalay(decimal dec)

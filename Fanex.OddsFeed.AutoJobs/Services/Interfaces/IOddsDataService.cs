@@ -1,4 +1,4 @@
-﻿namespace Fanex.OddsFeed.AutoJobs.Services.Interfaces
+﻿namespace Fanex.OddsFeed.AutoJobs.Services
 {
     using Fanex.OddsFeed.Models;
     using Fanex.OddsFeed.Models.Matches;
@@ -6,10 +6,10 @@
 
     public interface IOddsDataService
     {
-        Task<IList<Match>> GetLiveMatches(IList<BetTypeSchema> betTypeSchemas);
+        Task<IList<Match>> GetLiveMatchAsync(IList<BetTypeSchema> betTypeSchemas);
 
-        Task<IList<Match>> GetDeadballMatches(IList<BetTypeSchema> betTypeSchemas);
+        Task<IList<Match>> GetDeadballMatchAsync(IList<BetTypeSchema> betTypeSchemas);
 
-        Task<IList<Outright>> GetOutrights();
+        Task<IList<Outright>> GetOutrightAsync();
     }
 }

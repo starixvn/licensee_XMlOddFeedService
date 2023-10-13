@@ -37,7 +37,6 @@
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
             services.AddSingleton<IRedisCacheService, RedisCacheService>();
             services.AddSingleton<ILogger, Logger>();
-            services.AddSingleton<IEmailService, EmailService>();
         }
     }
 }

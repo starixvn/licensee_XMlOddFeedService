@@ -1,8 +1,8 @@
-﻿using Fanex.OddsFeed.Core.Services;
-using Microsoft.AspNetCore.Http;
-
-namespace Fanex.OddsFeed.Core
+﻿namespace Fanex.OddsFeed.Core
 {
+    using Fanex.OddsFeed.Core.Services;
+    using Microsoft.AspNetCore.Http;
+
     public class ErrorHandler
     {
         private readonly RequestDelegate next;

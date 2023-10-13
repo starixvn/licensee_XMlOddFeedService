@@ -8,7 +8,6 @@ using Fanex.Logging.Extensions.Database;
 using Fanex.Logging.Sentry;
 using Fanex.OddsFeed.Core;
 using Fanex.OddsFeed.Core.Extensions;
-using Fanex.OddsFeed.Core.Models.Email;
 using Fanex.OddsFeed.Repository;
 using Fanex.OddsFeed.Repository.Interfaces;
 using Fanex.OddsFeed.Web.Extensions;
@@ -51,17 +50,12 @@ public class Startup
                 .ToDictionary(x => x.GetValue<string>("Name"),
                     y => new ConnectionConfiguration(y.GetValue<string>("Name"), y.GetValue<string>("ConnectionString"), y.GetValue<string>("ProviderName")));
 
-        Dictionary<string, string> connectionString = Configuration
-                .GetSection("ConnectionStrings")
-                .GetChildren()
-                .ToDictionary(connection => connection.Key, connection => connection.Value, StringComparer.OrdinalIgnoreCase);
-
         DbSettingProviderManager
-          .StartNewSession()
-           .Use(connections)
-           .WithSqlServer()
-           .UseDefaultDbSettingProvider("~/App_Data/SpNames.xml")
-           .Run();
+            .StartNewSession()
+            .Use(connections)
+            .WithSqlServer()
+            .UseDefaultDbSettingProvider("~/App_Data/SpNames.xml")
+            .Run();
 
         ExceptionHandler
                .UseConfig(new LoggingConfiguration())
@@ -87,9 +81,6 @@ public class Startup
     {
         var webSettings = configuration.GetSection("AppSettings").Get<WebSettings>();
         services.AddSingleton(webSettings);
-
-        var emailSettings = configuration.GetSection("EmailSettings").Get<EmailSettings>();
-        services.AddSingleton(emailSettings);
     }
 
     private void AddRepositories(IServiceCollection services)

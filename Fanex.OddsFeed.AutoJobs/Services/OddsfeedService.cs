@@ -1,7 +1,6 @@
 ﻿namespace Fanex.OddsFeed.AutoJobs.Services
 {
     using Fanex.Caching;
-    using Fanex.OddsFeed.AutoJobs.Services.Interfaces;
     using Fanex.OddsFeed.Core.Configurations;
     using Fanex.OddsFeed.Core.Constants;
     using Fanex.OddsFeed.Core.Extensions;
@@ -46,8 +45,8 @@
         public async Task Update()
         {
             var betTypeSchemas = await GetBetTypeSchemas();
-            var liveMatches = await oddsDataService.GetLiveMatches(betTypeSchemas);
-            var deadBallMatches = await oddsDataService.GetDeadballMatches(betTypeSchemas);
+            var liveMatches = await oddsDataService.GetLiveMatchAsync(betTypeSchemas);
+            var deadBallMatches = await oddsDataService.GetDeadballMatchAsync(betTypeSchemas);
 
             var deadBallLength = deadBallMatches.Count;
             var splitIndex = deadBallLength / 2;
@@ -64,7 +63,7 @@
                 deadBalls2.Add(deadBallMatches[j]);
             }
 
-            var outrights = oddsDataService.GetOutrights();
+            var outrights = oddsDataService.GetOutrightAsync();
 
             var currentVersion = await GetCurrentVersion() + 1;
             if (currentVersion == appSettings.TotalVersion)

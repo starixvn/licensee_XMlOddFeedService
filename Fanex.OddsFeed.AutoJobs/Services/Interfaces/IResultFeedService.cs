@@ -1,4 +1,4 @@
-﻿namespace Fanex.OddsFeed.AutoJobs.Services.Interfaces
+﻿namespace Fanex.OddsFeed.AutoJobs.Services
 {
     public interface IResultFeedService
     {

@@ -1,12 +1,12 @@
-﻿using Fanex.OddsFeed.AutoJobs.Constants;
-using Fanex.OddsFeed.AutoJobs.Helpers;
-using Fanex.OddsFeed.AutoJobs.Models;
-using Fanex.OddsFeed.AutoJobs.Services.Interfaces;
-using Fanex.OddsFeed.Core.Services;
-using ONEbook.UM.Services;
-
-namespace Fanex.OddsFeed.AutoJobs.Workers
+﻿namespace Fanex.OddsFeed.AutoJobs.Workers
 {
+    using Fanex.OddsFeed.AutoJobs.Constants;
+    using Fanex.OddsFeed.AutoJobs.Helpers;
+    using Fanex.OddsFeed.AutoJobs.Models;
+    using Fanex.OddsFeed.AutoJobs.Services;
+    using Fanex.OddsFeed.Core.Services;
+    using ONEbook.UM.Services;
+
     public class OddsfeedWorker : BaseWorker
     {
         private readonly IOddsfeedService oddsfeedService;

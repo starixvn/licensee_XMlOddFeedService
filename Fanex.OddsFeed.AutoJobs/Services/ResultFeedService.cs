@@ -2,7 +2,6 @@
 {
     using System.Threading.Tasks;
     using Fanex.Caching;
-    using Fanex.OddsFeed.AutoJobs.Services.Interfaces;
     using Fanex.OddsFeed.Core.Configurations;
     using Fanex.OddsFeed.Core.Constants;
     using Fanex.OddsFeed.Core.Extensions;
