@@ -4,7 +4,7 @@
     using System.Security;
     using System.Text;
     using System.Threading.Tasks;
-    using Fanex.OddsFeed.Repository.Interfaces;
+    using Fanex.OddsFeed.Repository;
     using Fanex.OddsFeed.Web.Services.Criteria;
     using Fanex.OddsFeed.Web.Services.Services.Interfaces;
 

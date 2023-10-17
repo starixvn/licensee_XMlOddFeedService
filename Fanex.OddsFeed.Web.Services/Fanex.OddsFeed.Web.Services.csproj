@@ -8,7 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Fanex.OddsFeed.Core\Fanex.OddsFeed.Core.csproj" />
     <ProjectReference Include="..\Fanex.OddsFeed.Models\Fanex.OddsFeed.Models.csproj" />
-    <ProjectReference Include="..\Fanex.OddsFeed.Services\Fanex.OddsFeed.Repository.csproj" />
+    <ProjectReference Include="..\Fanex.OddsFeed.Repository\Fanex.OddsFeed.Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -41,6 +41,7 @@
                 logService.LogFile($"{jobSetting.JobName}: Start Function Run");
                 StartJobAsync();
             }
+
             return base.StartAsync(cancellationToken);
         }
 
@@ -48,8 +49,7 @@
         {
             try
             {
-                if (jobSetting.IsEnabled
-                    && (!jobSetting.HasCheckUM || !IsUM()))
+                if (jobSetting.IsEnabled && (!jobSetting.HasCheckUM || !IsUM()))
                 {
                     await ExecuteJobAsync();
                 }

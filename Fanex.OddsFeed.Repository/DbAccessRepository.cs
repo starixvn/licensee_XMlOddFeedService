@@ -6,7 +6,6 @@
     using Fanex.Data.Repository;
     using Fanex.OddsFeed.Models.Matches;
     using Fanex.OddsFeed.Models.Oddsfeed;
-    using Fanex.OddsFeed.Repository.Interfaces;
 
     public class DbAccessRepository : IDbAccessRepository
     {
@@ -21,7 +20,7 @@
             }
         }
 
-        public async Task<DataTable> GetInsertBetDaq(ICriteria criteria)
+        public async Task<DataTable> GetInsertBetDaqAsync(ICriteria criteria)
         {
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
@@ -32,7 +31,7 @@
             }
         }
 
-        public async Task<IList<Match>> GetMatchResultDetails(ICriteria criteria)
+        public async Task<IList<Match>> GetMatchResultDetailsAsync(ICriteria criteria)
         {
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
@@ -51,7 +50,7 @@
             }
         }
 
-        public async Task<(DataTable, IEnumerable<OddsFlexGroup>)> GetDeadballMatches(ICriteria criteria)
+        public async Task<(DataTable, IEnumerable<OddsFlexGroup>)> GetDeadballMatchAsync(ICriteria criteria)
         {
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
@@ -59,13 +58,13 @@
                 {
                     var deadballTables = dataSet.Tables[0].Copy();
                     var oddsFlexTables = dataSet.Tables[1].Copy();
-                    var oddsFlex = GetOddsFlexGroups(oddsFlexTables);
-                    return new(deadballTables, oddsFlex);
+                    var oddsFlexes = GetOddsFlexGroups(oddsFlexTables);
+                    return new(deadballTables, oddsFlexes);
                 }
             }
         }
 
-        public async Task<(DataTable, IEnumerable<OddsFlexGroup>)> GetLiveMatches(ICriteria criteria)
+        public async Task<(DataTable, IEnumerable<OddsFlexGroup>)> GetLiveMatchAsync(ICriteria criteria)
         {
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {

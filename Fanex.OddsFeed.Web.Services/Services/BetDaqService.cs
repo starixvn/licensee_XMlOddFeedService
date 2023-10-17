@@ -2,7 +2,7 @@
 {
     using System.Collections;
     using Fanex.Data.Repository;
-    using Fanex.OddsFeed.Repository.Interfaces;
+    using Fanex.OddsFeed.Repository;
     using Fanex.OddsFeed.Web.Services.Criteria.BetDaq;
     using Fanex.OddsFeed.Web.Services.Extensions;
     using Fanex.OddsFeed.Web.Services.Models;

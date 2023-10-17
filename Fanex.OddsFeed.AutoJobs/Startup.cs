@@ -17,7 +17,6 @@
     using Fanex.OddsFeed.Core.Extensions;
     using Fanex.OddsFeed.Core.Repositories;
     using Fanex.OddsFeed.Repository;
-    using Fanex.OddsFeed.Repository.Interfaces;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;

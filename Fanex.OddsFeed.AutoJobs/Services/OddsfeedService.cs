@@ -66,7 +66,7 @@
             var outrights = oddsDataService.GetOutrightAsync();
 
             var currentVersion = await GetCurrentVersion() + 1;
-            if (currentVersion == appSettings.TotalVersion)
+            if (currentVersion == appSettings.Bucket.TotalVersion)
             {
                 currentVersion = 0;
             }
@@ -79,7 +79,7 @@
             await StoreCache(appSettings.Bucket.DeadMatches, versionKey + "_2", deadBalls2);
             await StoreCache(appSettings.Bucket.Outrights, versionKey, outrights);
 
-            if (currentVersion == appSettings.TotalVersion - 1)
+            if (currentVersion == appSettings.Bucket.TotalVersion - 1)
             {
                 await StoreCache(appSettings.Bucket.OddsFeed, CacheKeys.FullChainKey(appSettings.CachePrefix), true);
             }

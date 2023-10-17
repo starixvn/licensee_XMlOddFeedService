@@ -1,31 +1,31 @@
 ﻿namespace Fanex.OddsFeed.AutoJobs.Services
 {
     using Fanex.OddsFeed.AutoJobs.Criteria.FeedResult;
+    using Fanex.OddsFeed.Repository;
     using Fanex.OddsFeed.Models.Matches;
-    using Fanex.OddsFeed.Repository.Interfaces;
 
     public interface IResultFeedDataService
     {
-        Task<IList<Match>> GetMatchResultDetails(DateTime eventDate);
+        Task<IList<Match>> GetMatchResultDetailsAsync(DateTime eventDate);
     }
 
     public class ResultFeedDataService : IResultFeedDataService
     {
-        private readonly IDbAccessRepository dbAccess;
+        private readonly IDbAccessRepository dbAccessRepository;
 
-        public ResultFeedDataService(IDbAccessRepository dbAccess)
+        public ResultFeedDataService(IDbAccessRepository dbAccessRepository)
         {
-            this.dbAccess = dbAccess;
+            this.dbAccessRepository = dbAccessRepository;
         }
 
-        public async Task<IList<Match>> GetMatchResultDetails(DateTime eventDate)
+        public async Task<IList<Match>> GetMatchResultDetailsAsync(DateTime eventDate)
         {
             var criteria = new GetMatchResultDetailsCriteria
             {
                 EventDate = eventDate,
             };
 
-            return await dbAccess.GetMatchResultDetails(criteria);
+            return await dbAccessRepository.GetMatchResultDetailsAsync(criteria);
         }
     }
 }

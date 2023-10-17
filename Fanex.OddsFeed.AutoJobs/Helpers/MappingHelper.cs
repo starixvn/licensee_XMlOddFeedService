@@ -1,14 +1,14 @@
-﻿using System.Collections.Concurrent;
-using System.Data;
-using System.Globalization;
-using Fanex.OddsFeed.Core.Extensions;
-using Fanex.OddsFeed.Models;
-using Fanex.OddsFeed.Models.Matches;
-using Fanex.OddsFeed.Models.Oddsfeed;
-using Fanex.OddsFeed.Models.Outright;
-
-namespace Fanex.OddsFeed.Repository.Helpers
+﻿namespace Fanex.OddsFeed.AutoJobs.Helpers
 {
+    using System.Collections.Concurrent;
+    using System.Data;
+    using System.Globalization;
+    using Fanex.OddsFeed.Core.Extensions;
+    using Fanex.OddsFeed.Models;
+    using Fanex.OddsFeed.Models.Matches;
+    using Fanex.OddsFeed.Models.Oddsfeed;
+    using Fanex.OddsFeed.Models.Outright;
+
     public static class MappingHelper
     {
         public static IList<Match> MappingMatches(
@@ -97,6 +97,7 @@ namespace Fanex.OddsFeed.Repository.Helpers
             {
                 return DateTime.MinValue;
             }
+            
             DateTime gsTime = Convert.ToDateTime(globalShowtime);
             DateTime sTime;
             var canParseShowtime = DateTime.TryParseExact(
@@ -315,7 +316,7 @@ namespace Fanex.OddsFeed.Repository.Helpers
                                 SportName = g.FirstOrDefault()?["LeagueNameTC"].ToString(),
                                 CountryCode = g.FirstOrDefault()?["CountryCode"].ToString(),
                                 Time = Convert.ToDateTime(g.FirstOrDefault()?["EventDate"].ToString()),
-                                OutrightOddsList = (new List<OutrightOdds>(g.Select(i => GetEventOdds(i))))
+                                OutrightOddsList = new List<OutrightOdds>(g.Select(i => GetEventOdds(i)))
                             };
 
             return outrights.ToList();

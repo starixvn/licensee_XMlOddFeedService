@@ -41,7 +41,7 @@
                 currentVersion = 0;
             }
             var versionKey = currentVersion.ToString();
-            IList<Match> matches = await resultFeedDataService.GetMatchResultDetails(DateTime.Today);
+            IList<Match> matches = await resultFeedDataService.GetMatchResultDetailsAsync(DateTime.Today);
 
             await StoreCache(appSettings.ResultFeed.Bucket, CacheKeys.CurrentKey(appSettings.CachePrefix), currentVersion);
             await StoreCache(appSettings.ResultFeed.BucketData, versionKey, matches);

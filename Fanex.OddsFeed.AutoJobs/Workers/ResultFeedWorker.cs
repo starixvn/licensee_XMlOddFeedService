@@ -18,7 +18,7 @@
             : base(logService, maintenanceService)
         {
             this.oddsfeedService = oddsfeedService;
-            jobSetting = JobHelper.GetJobConfig(jobSettings, JobNames.FeedResultUpdateJob);
+            jobSetting = JobHelper.GetJobConfig(jobSettings, JobNames.ResultFeedUpdateJob);
         }
 
         public override async Task ExecuteJobAsync()

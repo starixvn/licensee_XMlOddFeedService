@@ -6,7 +6,7 @@
     using Fanex.OddsFeed.Models.DTO;
     using Fanex.OddsFeed.Models.Matches;
     using Fanex.OddsFeed.Models.OddsData;
-    using Fanex.OddsFeed.Repository.Interfaces;
+    using Fanex.OddsFeed.Repository;
     using Fanex.OddsFeed.Web.Services.Builders;
     using Fanex.OddsFeed.Web.Services.Criteria;
     using Fanex.OddsFeed.Web.Services.Extensions;

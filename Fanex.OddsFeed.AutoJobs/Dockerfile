@@ -2,29 +2,32 @@ FROM hub.nexdev.net/base/dotnet/core/sdk:6.0-alpine AS builder
 
 WORKDIR /src
 
-COPY ["nuget.config", "."]
-COPY ["Fanex.OddsFeed.AutoJobs/Fanex.OddsFeed.AutoJobs.csproj", "Fanex.OddsFeed.AutoJobs/"]
-COPY ["Fanex.OddsFeed.AutoJobs.Services/Fanex.OddsFeed.AutoJobs.Services.csproj", "Fanex.OddsFeed.AutoJobs.Services/"]
+COPY ["Fanex.OddsFeed.Models/Fanex.OddsFeed.Models.csproj", "Fanex.OddsFeed.Models/"]
 COPY ["Fanex.OddsFeed.Core/Fanex.OddsFeed.Core.csproj", "Fanex.OddsFeed.Core/"]
-
-RUN dotnet restore "Fanex.OddsFeed.AutoJobs/Fanex.OddsFeed.AutoJobs.csproj"
-
-COPY . .
+COPY ["Fanex.OddsFeed.Repository/Fanex.OddsFeed.Repository.csproj", "Fanex.OddsFeed.Repository/"]
+COPY ["Fanex.OddsFeed.AutoJobs/Fanex.OddsFeed.AutoJobs.csproj", "Fanex.OddsFeed.AutoJobs/"]
 
 WORKDIR "/src/Fanex.OddsFeed.AutoJobs"
 
-RUN dotnet publish -r linux-x64 --self-contained false -o /app
+RUN dotnet nuget add source https://nuget.nexdev.net/api/v2
+RUN --mount=type=cache,target=/root/.nuget/packages \
+    dotnet restore -v n
+
+COPY . .
+
+RUN --mount=type=cache,target=/root/.nuget/packages \
+    dotnet publish -r linux-x64 --self-contained false -o /app
 
 FROM hub.nexdev.net/base/dotnet/core/aspnet:6.0-final AS base
 
+# Don’t run as root
+RUN adduser --disabled-password \
+  --home /app \
+  --gecos '' dotnetuser && chown -R dotnetuser /app && chown -R dotnetuser /tmp
+USER dotnetuser
+#
+
 WORKDIR /app
-
 COPY --from=builder /app .
-
-RUN set -x \
- 	&& apt-get update \
-     && apt-get -y install nano \
-     && apt-get -y install curl \
-     && apt-get -y install telnet
 
 ENTRYPOINT ["dotnet", "Fanex.OddsFeed.AutoJobs.dll"]
