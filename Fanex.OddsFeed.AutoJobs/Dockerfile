@@ -7,13 +7,13 @@ COPY ["Fanex.OddsFeed.Core/Fanex.OddsFeed.Core.csproj", "Fanex.OddsFeed.Core/"]
 COPY ["Fanex.OddsFeed.Repository/Fanex.OddsFeed.Repository.csproj", "Fanex.OddsFeed.Repository/"]
 COPY ["Fanex.OddsFeed.AutoJobs/Fanex.OddsFeed.AutoJobs.csproj", "Fanex.OddsFeed.AutoJobs/"]
 
-WORKDIR "/src/Fanex.OddsFeed.AutoJobs"
-
 RUN dotnet nuget add source https://nuget.nexdev.net/api/v2
 RUN --mount=type=cache,target=/root/.nuget/packages \
-    dotnet restore -v n
+    dotnet restore -v n "Fanex.OddsFeed.AutoJobs/Fanex.OddsFeed.AutoJobs.csproj"
 
 COPY . .
+
+WORKDIR "/src/Fanex.OddsFeed.AutoJobs"
 
 RUN --mount=type=cache,target=/root/.nuget/packages \
     dotnet publish -r linux-x64 --self-contained false -o /app
