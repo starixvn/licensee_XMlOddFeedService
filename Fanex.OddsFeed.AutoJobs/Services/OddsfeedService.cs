@@ -13,21 +13,19 @@
     {
         private readonly CacheItemOptions cacheOptions = new() { RelativeExpiration = null };
         private readonly AppSettings appSettings;
-        private readonly ICacheService cacheService;
         private readonly IRedisCacheService redisCacheService;
         private readonly ILogServiceProvider logServiceProvider;
         private readonly IOddsDataService oddsDataService;
         private readonly IWebHostEnvironment hostEnvironment;
 
-        public OddsfeedService(AppSettings appSettings,
-            ICacheService cacheService,
+        public OddsfeedService(
+            AppSettings appSettings,
             IRedisCacheService redisCacheService,
             ILogServiceProvider logServiceProvider,
             IOddsDataService oddsDataService,
             IWebHostEnvironment hostEnvironment)
         {
             this.appSettings = appSettings;
-            this.cacheService = cacheService;
             this.logServiceProvider = logServiceProvider;
             this.redisCacheService = redisCacheService;
             this.oddsDataService = oddsDataService;
@@ -63,7 +61,7 @@
                 deadBalls2.Add(deadBallMatches[j]);
             }
 
-            var outrights = oddsDataService.GetOutrightAsync();
+            var outrights = await oddsDataService.GetOutrightAsync();
 
             var currentVersion = await GetCurrentVersion() + 1;
             if (currentVersion == appSettings.Bucket.TotalVersion)
@@ -115,13 +113,18 @@
         }
 
         private async Task<int> GetCurrentVersion()
-            => await cacheService.GetAsync<int>(string.Format(Constants.RedisKeyFormat, appSettings.Bucket.OddsFeed, CacheKeys.CurrentKey(appSettings.CachePrefix)));
+        {
+            var rediskey = string.Format(Constants.RedisKeyFormat, appSettings.Bucket.OddsFeed, CacheKeys.CurrentKey(appSettings.CachePrefix));
+            var version = await redisCacheService.GetAsync<int>(rediskey);
+            return version;
+        }
 
         private async Task StoreCache<T>(string bucketName, string key, T value)
         {
             try
             {
-                await redisCacheService.SetAsync(string.Format(Constants.RedisKeyFormat, bucketName, key), value, cacheOptions);
+                var rediskey = string.Format(Constants.RedisKeyFormat, bucketName, key);
+                await redisCacheService.SetAsync(rediskey, value, cacheOptions);
             }
             catch (Exception ex)
             {

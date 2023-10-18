@@ -1,5 +1,6 @@
 ﻿namespace Fanex.OddsFeed.Models
 {
+    [Serializable]
     public class BetChoiceSchema
     {
         public string MatchAttribute { get; set; }

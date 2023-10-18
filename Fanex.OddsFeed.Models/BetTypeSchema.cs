@@ -1,5 +1,6 @@
 ﻿namespace Fanex.OddsFeed.Models
 {
+    [Serializable]
     public class BetTypeSchema
     {
         public int BetTypeId { get; set; }

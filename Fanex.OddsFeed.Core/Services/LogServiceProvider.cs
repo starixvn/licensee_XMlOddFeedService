@@ -13,9 +13,9 @@
 
         Task LogSentryAsync(string message);
 
-        void LogFile(string message);
+        void LogInfoToFile(string message);
 
-        void LogInfo(Exception exception);
+        void LogErrorToFile(Exception exception);
     }
 
     public class LogServiceProvider : ILogServiceProvider
@@ -44,12 +44,12 @@
             await logger.ErrorAsync(message);
         }
 
-        public void LogFile(string message)
+        public void LogInfoToFile(string message)
         {
-            nlog.Error(message);
+            nlog.Info(message);
         }
 
-        public void LogInfo(Exception exception)
+        public void LogErrorToFile(Exception exception)
         {
             nlog.Error(exception);
         }

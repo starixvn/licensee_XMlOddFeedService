@@ -29,22 +29,23 @@
 
         public T Get<T>(string key)
         {
-            string valueOnCache = cacheService.Get<string>(key);
+            var valueOnCache = cacheService.Get<string>(key);
             if (!string.IsNullOrWhiteSpace(valueOnCache))
             {
                 return JsonConvert.DeserializeObject<T>(valueOnCache);
             }
+            
             return default;
         }
 
         public async Task<T> GetAsync<T>(string key)
         {
-            string valueOnCache = await cacheService.GetAsync<string>(key);
-
+            var valueOnCache = await cacheService.GetAsync<string>(key);
             if (!string.IsNullOrWhiteSpace(valueOnCache))
             {
                 return JsonConvert.DeserializeObject<T>(valueOnCache);
             }
+
             return default;
         }
 
@@ -60,7 +61,7 @@
 
         public void Set<T>(string key, T value, CacheItemOptions? options = null)
         {
-            string json = JsonConvert.SerializeObject(value, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(value, Formatting.Indented);
             if (options != null)
             {
                 cacheService.Set(key, json, options);
@@ -73,7 +74,7 @@
 
         public async Task SetAsync<T>(string key, T value, CacheItemOptions? options = null)
         {
-            string json = JsonConvert.SerializeObject(value, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(value, Formatting.Indented);
             if (options != null)
             {
                 await cacheService.SetAsync(key, json, options);

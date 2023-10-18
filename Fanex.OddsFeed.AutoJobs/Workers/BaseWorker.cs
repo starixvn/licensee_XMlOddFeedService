@@ -24,21 +24,21 @@
 
             while (!stoppingToken.IsCancellationRequested)
             {
-                logService.LogFile($"{jobSetting.JobName} start run");
+                logService.LogInfoToFile($"{jobSetting.JobName} start run");
                 await RunJobAsync();
-                logService.LogFile($"{jobSetting.JobName} end run");
+                logService.LogInfoToFile($"{jobSetting.JobName} end run");
                 await Task.Delay(TimeSpan.FromSeconds(jobSetting.TimeInterval), stoppingToken);
             }
 
-            logService.LogFile($"Execution ended. Cancelation token cancelled = {stoppingToken.IsCancellationRequested}");
+            logService.LogInfoToFile($"Execution ended. Cancelation token cancelled = {stoppingToken.IsCancellationRequested}");
         }
 
         public override Task StartAsync(CancellationToken cancellationToken)
         {
-            logService.LogFile($"{jobSetting.JobName}: StartAsync");
+            logService.LogInfoToFile($"{jobSetting.JobName}: StartAsync");
             if (jobSetting.HasStartFunction)
             {
-                logService.LogFile($"{jobSetting.JobName}: Start Function Run");
+                logService.LogInfoToFile($"{jobSetting.JobName}: Start Function Run");
                 StartJobAsync();
             }
 
@@ -66,14 +66,14 @@
 
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
-            logService.LogFile($"{jobSetting.JobName}: Stopping Service");
+            logService.LogInfoToFile($"{jobSetting.JobName}: Stopping Service");
 
             await base.StopAsync(cancellationToken);
         }
 
         public override void Dispose()
         {
-            logService.LogFile($"{jobSetting.JobName}: Disposing Service");
+            logService.LogInfoToFile($"{jobSetting.JobName}: Disposing Service");
             base.Dispose();
         }
 

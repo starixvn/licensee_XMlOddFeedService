@@ -1,5 +1,6 @@
 ﻿namespace Fanex.OddsFeed.Models.Outright
 {
+    [Serializable]
     public class OutrightOdds
     {
         public int OddsId { get; set; }

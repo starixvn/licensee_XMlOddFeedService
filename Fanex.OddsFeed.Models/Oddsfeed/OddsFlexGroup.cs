@@ -1,5 +1,6 @@
 ﻿namespace Fanex.OddsFeed.Models.Oddsfeed
 {
+    [Serializable]
     public class OddsFlexGroup
     {
         public int OddsId { get; set; }
