@@ -1,6 +1,6 @@
 ﻿namespace Fanex.OddsFeed.Common.DTO
 {
-    using global::System;
+    using System;
 
     [Serializable]
     public class BetChoice

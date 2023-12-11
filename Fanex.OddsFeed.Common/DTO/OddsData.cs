@@ -1,6 +1,6 @@
 ﻿namespace Fanex.OddsFeed.Common.DTO
 {
-    using global::System.Collections.Generic;
+    using System.Collections.Generic;
 
     public class OddsData
     {

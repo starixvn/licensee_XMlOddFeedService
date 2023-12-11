@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="App_Data\SpNames.LOCAL.xml" />
+    <None Remove="App_Data\SpNames.PROD.xml" />
+    <None Remove="App_Data\SpNames.UAT.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_Data\SpNames.LOCAL.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\SpNames.PROD.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\SpNames.UAT.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\SpNames.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+      <Content Update="nlog.config">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="logs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OddsFeed.Core\OddsFeed.Core.csproj" />
+    <ProjectReference Include="..\OddsFeed.Models\OddsFeed.Models.csproj" />
+    <ProjectReference Include="..\OddsFeed.Repository\OddsFeed.Repository.csproj" />
+  </ItemGroup>
+</Project>

@@ -178,7 +178,6 @@
     <Compile Include="Filters\OutrightFilter.cs" />
     <Compile Include="Helpers\BetTypeHelper.cs" />
     <Compile Include="Helpers\RequestHelper.cs" />
-    <Compile Include="Helpers\SportHelper.cs" />
     <Compile Include="Models\ResultFeedModel.cs" />
     <Compile Include="Models\OddsFeedsModel.cs" />
     <Compile Include="Models\ColumnModel.cs" />

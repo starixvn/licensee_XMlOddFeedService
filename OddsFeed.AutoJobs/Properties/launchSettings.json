@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "OddsFeed.AutoJobs": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -13,7 +13,7 @@
     public class OutrightBuilder : IOutrightBuilder
     {
         private readonly IMatchBuilder matchBuilder;
-        private readonly OutrightFilter outrightFilter;
+        private readonly IOutrightFilter outrightFilter;
 
         public OutrightBuilder()
         {
