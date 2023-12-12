@@ -1,13 +1,13 @@
 ﻿namespace OddsFeed.WebService.Controllers
 {
     using System;
-    using System.Collections;
     using System.Threading.Tasks;
-    using OddsFeed.WebService.Extensions;
-    using OddsFeed.WebService.Models;
-    using OddsFeed.WebService.Services.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
+    using OddsFeed.WebService.Extensions;
+    using OddsFeed.WebService.Models;
+    using OddsFeed.WebService.Models.Betdaq;
+    using OddsFeed.WebService.Services.Interfaces;
 
     public class InsertBetdaqController : BaseController
     {
@@ -50,21 +50,21 @@
                 return FailedBadOddsId;
             }
 
-            return GetMessage(await betDaqService.InsertBetDaq(GetSpParams(ipAddress), await IsDownTimeAsync()));
+            return GetMessage(await betDaqService.InsertBetDaqAsync(GetSpParams(ipAddress), await IsDownTimeAsync()));
         }
 
-        private Hashtable GetSpParams(string ipAddress)
+        private InsertBetDaqParam GetSpParams(string ipAddress)
         {
-            return new Hashtable
+            return new InsertBetDaqParam
             {
-                { "oddsid", Request.GetValueFromRequestByKey("OddsId") },
-                { "hdp1", Request.GetValueFromRequestByKey("Handicap1") },
-                { "hdp2", Request.GetValueFromRequestByKey("Handicap2") },
-                { "betteam", Request.GetValueFromRequestByKey("BetTeam") },
-                { "odds", Request.GetValueFromRequestByKey("Odds") },
-                { "stake", Request.GetValueFromRequestByKey("Stake") },
-                { "betdaqid", Request.GetValueFromRequestByKey("RequestId") },
-                { "bet_ip", ipAddress }
+                OddsId = int.Parse(Request.GetValueFromRequestByKey("OddsId")),
+                hdp1 = decimal.Parse(Request.GetValueFromRequestByKey("Handicap1")),
+                hdp2 = decimal.Parse(Request.GetValueFromRequestByKey("Handicap2")),
+                betteam = Request.GetValueFromRequestByKey("BetTeam"),
+                odds = decimal.Parse(Request.GetValueFromRequestByKey("Odds")),
+                stake = decimal.Parse(Request.GetValueFromRequestByKey("Stake")),
+                betdaqid = int.Parse(Request.GetValueFromRequestByKey("RequestId")),
+                bet_ip = ipAddress
             };
         }
 

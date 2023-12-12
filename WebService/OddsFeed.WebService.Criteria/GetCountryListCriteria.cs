@@ -4,7 +4,7 @@
 
     public class GetCountryListCriteria : CriteriaBase
     {
-        public override string GetSettingKey() => "SP.GetCountryList";
+        public override string GetSettingKey() => "Odds_GetCountryList";
 
         public override bool IsValid() => true;
     }

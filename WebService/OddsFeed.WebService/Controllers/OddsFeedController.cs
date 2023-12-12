@@ -131,11 +131,10 @@
 
         private async Task<string> StandardizeCountryCodeList(string countryCodeList)
         {
-            const int valueIndex = 2;
-
-            var countryCodeTable = await oddsFeedService.GetCountryListAsync();
-            var filteredRows = countryCodeTable.Select($"{"CountryCode"} in ('{countryCodeList.Replace(",", "','")}')");
-            return string.Join(",", filteredRows.Select(x => x.ItemArray.GetValue(valueIndex)).AsEnumerable());
+            var countryCodes = countryCodeList.Split(',').ToList();
+            var countries = await oddsFeedService.GetCountryListAsync();
+            var filteredRows = countries.Select(x => countryCodes.Exists(y => y == x.CountryCode));
+            return string.Join(",", filteredRows.Select(x => x).AsEnumerable());
         }
 
         #endregion Index
@@ -186,7 +185,7 @@
 
             ViewBag.HighlightSportType = webSettings.HighlightSportType.Split(',');
             ViewBag.HighlightBetType = GetHighlightBetType();
-            ViewBag.BetTypeList = await betTypeService.GetBetTypeList();
+            ViewBag.BetTypeList = await betTypeService.GetBetTypeListAsync();
 
             ViewBag.BetTypeDescriptions = ReadBetTypeDescriptionFromFile();
         }

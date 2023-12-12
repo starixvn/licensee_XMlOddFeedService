@@ -11,20 +11,20 @@
     using Fanex.Logging.Extensions.AspNetCore;
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Sentry;
-    using OddsFeed.AutoJobs.Models;
-    using OddsFeed.AutoJobs.Services;
-    using OddsFeed.AutoJobs.Workers;
-    using OddsFeed.Repository;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using OddsFeed.AutoJobs.Models;
+    using OddsFeed.AutoJobs.Services;
+    using OddsFeed.AutoJobs.Workers;
     using OddsFeed.Core;
     using OddsFeed.Core.Configurations;
     using OddsFeed.Core.Extensions;
-    using OddsFeed.Core.Repositories;
+    using OddsFeed.Repository;
+    using OddsFeed.Services;
     using Sentry;
     using StackExchange.Redis;
 
@@ -103,7 +103,6 @@
         private static void InjectRepositories(IServiceCollection services)
         {
             services.AddSingleton<IDynamicRepository, DynamicRepository>();
-            services.AddSingleton<IBaseRepository, BaseRepository>();
 
             services.AddSingleton<IDbAccessRepository, DbAccessRepository>();
         }

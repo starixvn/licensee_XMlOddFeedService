@@ -6,10 +6,10 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using OddsFeed.Core.Services;
     using OddsFeed.Models.DTO;
     using OddsFeed.Models.Matches;
     using OddsFeed.Models.OddsData;
-    using OddsFeed.Repository;
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Core.Filters;
     using OddsFeed.WebService.Criteria;
@@ -25,20 +25,20 @@
         private readonly IOutrightBuilder outrightBuilder;
         private readonly IMatchFilter matchFilter;
         private readonly IFeedCachingOperator feedCachingOperator;
-        private readonly IDbAccessRepository dbAccessRepository;
+        private readonly IBaseService baseService;
 
         public OddsFeedService(
             IMatchBuilder matchBuilder,
             IOutrightBuilder outrightBuilder,
             IMatchFilter matchFilter,
             IFeedCachingOperator feedCachingOperator,
-            IDbAccessRepository dbAccessRepository)
+            IBaseService baseService)
         {
             this.matchBuilder = matchBuilder;
             this.outrightBuilder = outrightBuilder;
             this.matchFilter = matchFilter;
             this.feedCachingOperator = feedCachingOperator;
-            this.dbAccessRepository = dbAccessRepository;
+            this.baseService = baseService;
         }
 
         public async Task<string> BuildXmlDocument(OddsFeedsModel model)
@@ -61,6 +61,9 @@
 
             return oddsFeedNode.ToString();
         }
+
+        public async Task<IEnumerable<Country>> GetCountryListAsync()
+            => await baseService.GetDataAsync<Country>(new GetCountryListCriteria());
 
         private void AppendMatches(
             StringBuilder oddsFeedNode,
@@ -187,8 +190,5 @@
 
             return oddsTypeName;
         }
-
-        public async Task<DataTable> GetCountryListAsync()
-            => await dbAccessRepository.GetDataTableAsync(new GetCountryListCriteria());
     }
 }

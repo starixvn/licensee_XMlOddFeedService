@@ -10,6 +10,7 @@
 
         public string Name_ct { get; set; }
 
+        public string CountryCode { get; set; }
         public string CountryName { get; set; }
     }
 }

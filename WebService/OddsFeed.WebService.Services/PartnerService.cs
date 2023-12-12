@@ -39,7 +39,7 @@
 
             foreach (var bettype in bettypes)
             {
-                string bettypeName = await betTypeService.GetBetTypeNameById(bettype.Id);
+                string bettypeName = await betTypeService.GetBetTypeNameByIdAsync(bettype.Id);
                 content.Append($"<type id=\"{bettype.Id}\" t=\"{bettypeName}\"");
 
                 BuilderWriteContent(

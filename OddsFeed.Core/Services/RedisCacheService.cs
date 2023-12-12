@@ -4,21 +4,6 @@
     using Fanex.Caching;
     using Newtonsoft.Json;
 
-    public interface IRedisCacheService
-    {
-        T Get<T>(string key);
-
-        Task<T> GetAsync<T>(string key);
-
-        Task SetAsync<T>(string key, T value, CacheItemOptions? options = null);
-
-        void Set<T>(string key, T value, CacheItemOptions? options = null);
-
-        void Remove(string key);
-
-        Task RemoveAsync(string key);
-    }
-
     public class RedisCacheService : IRedisCacheService
     {
         private readonly ICacheService cacheService;
@@ -35,7 +20,7 @@
             {
                 return JsonConvert.DeserializeObject<T>(valueOnCache);
             }
-            
+
             return default;
         }
 

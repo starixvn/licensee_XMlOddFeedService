@@ -1,16 +1,16 @@
 ﻿namespace OddsFeed.AutoJobs.Helpers
 {
     using System;
-    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Data;
     using System.Globalization;
     using System.Linq;
+    using OddsFeed.AutoJobs.Models;
+    using OddsFeed.Core.Extensions;
     using OddsFeed.Models;
     using OddsFeed.Models.Matches;
     using OddsFeed.Models.Oddsfeed;
     using OddsFeed.Models.Outright;
-    using OddsFeed.Core.Extensions;
 
     public static class MappingHelper
     {
@@ -292,104 +292,55 @@
 
         #endregion Mapping Matches Private
 
-        public static List<Outright> MappingOutrights(DataTable? dataTable)
+        public static List<Outright> MappingOutrights(IEnumerable<OutrightOddsData> odds)
         {
-            if (dataTable == null)
+            if (odds == null)
             {
                 return new List<Outright>();
             }
 
-            Partitioner<DataRow> partionerList = Partitioner.Create(dataTable.AsEnumerable().ToList(), true);
-
-            var outrights = from row in partionerList.AsParallel()
-                            group row by row["LeagueID"].ToString() into g
-                            select new Outright
-                            {
-                                EventId = Convert.ToInt32(g.Key),
-                                EventEn = GetEventEn(g),
-                                EventTw = GetEventTw(g),
-                                EventCn = GetEventCn(g),
-                                EventIndonesia = GetEventIndonesia(g),
-                                EventThai = GetEventThai(g),
-                                EventKorean = GetEventKorean(g),
-                                EventVietnamese = GetEventVietnamese(g),
-                                EventJapanese = GetEventJapanese(g),
-                                EventHindi = GetEventHindi(g),
-                                SportId = Convert.ToInt32(g.FirstOrDefault()?["SportID"]),
-                                SportName = g.FirstOrDefault()?["LeagueNameTC"].ToString(),
-                                CountryCode = g.FirstOrDefault()?["CountryCode"].ToString(),
-                                Time = Convert.ToDateTime(g.FirstOrDefault()?["EventDate"].ToString()),
-                                OutrightOddsList = new List<OutrightOdds>(g.Select(i => GetEventOdds(i)))
-                            };
+            var outrights = odds.AsParallel().GroupBy(x => x.LeagueID).Select(x =>
+            {
+                var row = x.First();
+                return new Outright
+                {
+                    EventId = x.Key,
+                    EventEn = row.LeagueName,
+                    EventTw = row.LeagueNameC_UNI,
+                    EventCn = row.LeagueNameCN,
+                    EventIndonesia = row.LeagueNameId,
+                    EventThai = row.LeagueNameTh,
+                    EventKorean = row.LeagueNameKo,
+                    EventVietnamese = row.LeagueNameVn,
+                    EventJapanese = row.LeagueNameJp,
+                    EventHindi = row.LeagueNameHi,
+                    SportId = row.SportID,
+                    SportName = row.LeagueNameTC,
+                    CountryCode = row.CountryCode,
+                    Time = row.EventDate,
+                    OutrightOddsList = new List<OutrightOdds>(x.Select(i => GetEventOdds(i)))
+                };
+            });
 
             return outrights.ToList();
         }
 
-        #region Mapping Outrights Private
-
-        private static string GetEventEn(IGrouping<string, DataRow> dataRow)
-        {
-            return dataRow.FirstOrDefault()?["LeagueName"].ToString();
-        }
-
-        private static string GetEventTw(IGrouping<string, DataRow> dataRow)
-        {
-            return dataRow.FirstOrDefault()?["LeagueNameC_UNI"].ToString();
-        }
-
-        private static string GetEventCn(IGrouping<string, DataRow> dataRow)
-        {
-            return dataRow.FirstOrDefault()?["LeagueNameCN"].ToString();
-        }
-
-        private static string GetEventIndonesia(IGrouping<string, DataRow> dataRow)
-        {
-            return dataRow.FirstOrDefault()?["leaguenameId"].ToString();
-        }
-
-        private static string GetEventThai(IGrouping<string, DataRow> dataRow)
-        {
-            return dataRow.FirstOrDefault()?["leaguenameTh"].ToString();
-        }
-
-        private static string GetEventKorean(IGrouping<string, DataRow> dataRow)
-        {
-            return dataRow.FirstOrDefault()?["leaguenameKo"].ToString();
-        }
-
-        private static string GetEventVietnamese(IGrouping<string, DataRow> dataRow)
-        {
-            return dataRow.FirstOrDefault()?["leaguenameVn"].ToString();
-        }
-
-        private static string GetEventJapanese(IGrouping<string, DataRow> dataRow)
-        {
-            return dataRow.FirstOrDefault()?["leaguenameJp"].ToString();
-        }
-
-        private static string GetEventHindi(IGrouping<string, DataRow> dataRow)
-        {
-            return dataRow.FirstOrDefault()?["leaguenameHi"].ToString();
-        }
-
-        private static OutrightOdds GetEventOdds(DataRow row)
+        private static OutrightOdds GetEventOdds(OutrightOddsData row)
         {
             return new OutrightOdds
             {
-                OddsId = Convert.ToInt32(row["OrID"]),
-                OddNameEn = row["TeamName"].ToString(),
-                OddNameTw = row["TeamNameC_UNI"].ToString(),
-                OddNameCn = row["TeamNameCN"].ToString(),
-                OddNameIndonesia = row["teamnameId"].ToString(),
-                OddNameThai = row["teamnameTh"].ToString(),
-                OddNameKorean = row["teamnameKo"].ToString(),
-                OddNameVietnamese = row["teamnameVn"].ToString(),
-                OddNameJapanese = row["teamnameJp"].ToString(),
-                OddNameHindi = row["teamnameHi"].ToString(),
-                Value = Convert.ToDecimal(row["Odds"])
+                OddsId = row.OrID,
+                OddNameEn = row.TeamName,
+                OddNameTw = row.TeamNameC_UNI,
+                OddNameCn = row.TeamNameCN,
+                OddNameIndonesia = row.TeamNameId,
+                OddNameThai = row.TeamNameTh,
+                OddNameKorean = row.TeamNameKo,
+                OddNameVietnamese = row.TeamNameVn,
+                OddNameJapanese = row.TeamNameJp,
+                OddNameHindi = row.TeamNameHi,
+                Value = row.Odds
             };
         }
-
-        #endregion Mapping Outrights Private
     }
 }

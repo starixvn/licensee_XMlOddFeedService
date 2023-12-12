@@ -1,8 +1,8 @@
 ﻿namespace OddsFeed.WebService.Criteria
 {
-    using Fanex.Data.Repository;
+    using OddsFeed.Core.Models;
 
-    public class WriteLogRequestAccessCriteria : CriteriaBase, INonQueryCommand
+    public class WriteLogRequestAccessCriteria : BaseNonQueryCommand
     {
         public string UserName { get; set; }
 

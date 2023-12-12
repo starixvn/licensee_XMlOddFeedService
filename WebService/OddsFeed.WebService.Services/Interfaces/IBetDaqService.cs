@@ -1,14 +1,14 @@
 ﻿namespace OddsFeed.WebService.Services.Interfaces
 {
-    using System.Collections;
     using System.Threading.Tasks;
+    using OddsFeed.WebService.Models.Betdaq;
 
     public interface IBetDaqService
     {
-        Task<string> GetSchedule(string filter);
+        Task<string> GetScheduleAsync(string filter);
 
-        Task<string> GetOddWithUserIsBetdaq(string filter);
+        Task<string> GetOddWithUserIsBetdaqAsync(string filter);
 
-        Task<int> InsertBetDaq(Hashtable spParams, bool isDownTime);
+        Task<int> InsertBetDaqAsync(InsertBetDaqParam param, bool isDownTime);
     }
 }

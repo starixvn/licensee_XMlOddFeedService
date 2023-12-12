@@ -2,10 +2,9 @@
 {
     using Fanex.Data.Repository;
     using Fanex.Logging;
-    using OddsFeed.Core.Repositories;
-    using OddsFeed.Core.Services;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using OddsFeed.Core.Services;
     using ONEbook.UM.AspNetCore;
     using ONEbook.UM.Configurations;
     using ONEbook.UM.Helpers;
@@ -19,7 +18,6 @@
             #region Core repository
 
             services.AddSingleton<IDynamicRepository, DynamicRepository>();
-            services.AddSingleton<IBaseRepository, BaseRepository>();
 
             #endregion Core repository
 

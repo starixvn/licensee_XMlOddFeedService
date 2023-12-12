@@ -15,7 +15,7 @@
             this.feedCachingOperator = feedCachingOperator;
         }
 
-        public async Task<IDictionary<int, BetType>> GetBetTypeList()
+        public async Task<IDictionary<int, BetType>> GetBetTypeListAsync()
             => (await feedCachingOperator.GetBetTypes()).ToDictionary(
                     schema => schema.BetTypeId,
                     schema => new BetType
@@ -24,9 +24,9 @@
                         IsChildBetType = schema.IsChildBetType
                     });
 
-        public async Task<string> GetBetTypeNameById(int betTypeId)
+        public async Task<string> GetBetTypeNameByIdAsync(int betTypeId)
         {
-            var betTypeList = await GetBetTypeList();
+            var betTypeList = await GetBetTypeListAsync();
             return GetBetTypeName(betTypeList, betTypeId);
         }
 

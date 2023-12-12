@@ -6,19 +6,6 @@
     using Fanex.Logging.Extensions.Database;
     using Microsoft.Extensions.Logging;
 
-    public interface ILogServiceProvider
-    {
-        Task LogSentryAsync(string message);
-
-        Task LogSentryAsync(Exception exception);
-
-        Task LogSentryAsync(string message, Exception exception);
-
-        void LogInfoToFile(string message);
-
-        void LogErrorToFile(Exception exception);
-    }
-
     public class LogServiceProvider : ILogServiceProvider
     {
         private readonly Fanex.Logging.ILogger logger;

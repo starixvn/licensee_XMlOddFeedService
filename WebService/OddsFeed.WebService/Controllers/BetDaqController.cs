@@ -59,7 +59,7 @@
 
             if (string.IsNullOrEmpty(authenticatedPartner.Error))
             {
-                return await betdaqService.GetSchedule(filter);
+                return await betdaqService.GetScheduleAsync(filter);
             }
 
             return string.Empty;
@@ -76,7 +76,7 @@
 
             if (string.IsNullOrEmpty(authenticatedPartner.Error))
             {
-                return await betdaqService.GetOddWithUserIsBetdaq(filter);
+                return await betdaqService.GetOddWithUserIsBetdaqAsync(filter);
             }
 
             return string.Empty;

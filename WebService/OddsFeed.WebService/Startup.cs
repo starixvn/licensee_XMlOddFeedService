@@ -22,7 +22,7 @@
     using Microsoft.Net.Http.Headers;
     using OddsFeed.Core;
     using OddsFeed.Core.Extensions;
-    using OddsFeed.Repository;
+    using OddsFeed.Services;
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Core.Filters;
     using OddsFeed.WebService.Extensions;
@@ -84,7 +84,6 @@
             services.AddSingleton<RateLimitFilterAttribute>();
             CoreDI.RegistryCoreServices(services, Configuration);
             AddConfiguration(services, Configuration);
-            AddRepositories(services);
             AddServices(services);
         }
 
@@ -92,11 +91,6 @@
         {
             var webSettings = configuration.GetSection("AppSettings").Get<WebSettings>();
             services.AddSingleton(webSettings);
-        }
-
-        private static void AddRepositories(IServiceCollection services)
-        {
-            services.AddSingleton<IDbAccessRepository, DbAccessRepository>();
         }
 
         private static void AddServices(IServiceCollection services)
@@ -119,6 +113,7 @@
             services.AddSingleton<IResultFeedService, ResultFeedService>();
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IVersionCachingService, VersionCachingService>();
+            services.AddSingleton<IResultFeedDataService, ResultFeedDataService>();
         }
 
         private static void ConfigDataProtection(IServiceCollection services, IConfiguration configuration)

@@ -5,30 +5,14 @@
     using System.Threading.Tasks;
     using Fanex.Data.Repository;
     using OddsFeed.Core.Models;
-    using OddsFeed.Core.Repositories;
-
-    public interface IBaseService
-    {
-        Task<IEnumerable<T>> GetDataAsync<T>(ICriteria criteria);
-
-        Task<T> GetDataEntityAsync<T>(ICriteria criteria);
-
-        Task<ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>>> FetchMultipleAsync<TFirst, TSecond>(ICriteria criteria);
-
-        Task<ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>, IEnumerable<TThird>>> FetchMultipleAsync<TFirst, TSecond, TThird>(ICriteria criteria);
-
-        Task<CommandResult> ExecuteNonQueryAsync(INonQueryCommand command);
-    }
 
     public class BaseService : IBaseService
     {
         private readonly IDynamicRepository dynamicRepository;
-        private readonly IBaseRepository baseRepository;
 
-        public BaseService(IDynamicRepository dynamicRepository, IBaseRepository baseRepository)
+        public BaseService(IDynamicRepository dynamicRepository)
         {
             this.dynamicRepository = dynamicRepository;
-            this.baseRepository = baseRepository;
         }
 
         public async Task<IEnumerable<T>> GetDataAsync<T>(ICriteria criteria)
@@ -71,12 +55,14 @@
             return new ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>, IEnumerable<TThird>>(new List<TFirst>(), new List<TSecond>(), new List<TThird>());
         }
 
-        public async Task<CommandResult> ExecuteNonQueryAsync(INonQueryCommand command)
+        public async Task<CommandResult> ExecuteNonQueryAsync(BaseNonQueryCommand command)
         {
             var commandResult = new CommandResult();
             if (command != null && command.IsValid())
             {
-                commandResult = await baseRepository.ExecuteNonQueryAsync(command);
+                await dynamicRepository.ExecuteAsync(command);
+                commandResult.Code = command.ErrCode;
+                commandResult.Message = command.ErrMsg;
             }
 
             return commandResult;

@@ -3,56 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Data;
-    using System.Linq;
     using System.Threading.Tasks;
     using Fanex.Data;
     using Fanex.Data.Repository;
-    using OddsFeed.Models.Matches;
     using OddsFeed.Models.Oddsfeed;
 
     public class DbAccessRepository : IDbAccessRepository
     {
-        public async Task<DataTable> GetDataTableAsync(ICriteria criteria)
-        {
-            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
-            {
-                using (DataSet dataSet = await db.ExecuteDataSetAsync(criteria))
-                {
-                    return dataSet.Tables[0];
-                }
-            }
-        }
-
-        public async Task<DataTable> GetInsertBetDaqAsync(ICriteria criteria)
-        {
-            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
-            {
-                var dataset = await db.ExecuteDataSetAsync(criteria);
-                var indexTable = dataset.Tables.Count - 1;
-
-                return dataset.Tables[indexTable];
-            }
-        }
-
-        public async Task<IList<Match>> GetMatchResultDetailsAsync(ICriteria criteria)
-        {
-            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
-            {
-                using (IMultiResultReader multi = await db.QueryMultipleAsync(criteria))
-                {
-                    var matches = multi.Read<Match>().ToList();
-                    var matchResultDetails = multi.Read<MatchResultDetail>().ToList();
-
-                    foreach (var match in matches)
-                    {
-                        match.MatchResultDetails = matchResultDetails.Where(x => x.MatchId == match.MatchId).ToList();
-                    }
-
-                    return matches;
-                }
-            }
-        }
-
         public async Task<(DataTable, IEnumerable<OddsFlexGroup>)> GetDeadballMatchAsync(ICriteria criteria)
         {
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
@@ -91,11 +48,11 @@
                 {
                     BetChoice = row["betChoice"].ToString(),
                     BetType = Convert.ToInt32(row["bettype"]),
-                    OddId = oddsId,
+                    OddsId = oddsId,
                     Odds = Convert.ToDecimal(row["odds"]),
                     OddsInfo = row["OddsInfo"].ToString()
                 };
-                var oddsFlexGroup = oddsFlexGroups.FirstOrDefault(odds => odds.OddsId == oddsId);
+                var oddsFlexGroup = oddsFlexGroups.Find(odds => odds.OddsId == oddsId);
 
                 if (oddsFlexGroup == null)
                 {

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\OddsFeed.Repository\OddsFeed.Repository.csproj" />
+    <ProjectReference Include="..\..\OddsFeed.Services\OddsFeed.Services.csproj" />
     <ProjectReference Include="..\OddsFeed.WebService.Core\OddsFeed.WebService.Core.csproj" />
     <ProjectReference Include="..\OddsFeed.WebService.Criteria\OddsFeed.WebService.Criteria.csproj" />
     <ProjectReference Include="..\OddsFeed.WebService.Models\OddsFeed.WebService.Models.csproj" />

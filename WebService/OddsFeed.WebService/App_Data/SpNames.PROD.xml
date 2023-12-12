@@ -12,17 +12,11 @@
         <Setting Key="Odds_ContactEmailSelByUserName" SpName="Odds_ContactEmailSelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
         <Setting Key="Odds_GetCountryList" SpName="Odds_GetCountryList" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
 
-        <!-- Betdaq schedule text feed -->
+        <!-- Betdaq -->
         <Setting Key="Portal_BetDaq_Schedule" SpName="dbo.Portal_BetDaq_Schedule" DbName="DBPRO.bodb02.portal" />
-        <!--Insert betdaq for testing account (member10)-->
-        <!--<add key="SP.InsertBetDaq" value="Portal_BetDaq_InsertBet_V2"/>-->
-        <!--
-          Portal_BetDaq_InsertBet:    Insert betdaq for real account
-          Portal_BetDaq_InsertBet_V2: Insert betdaq for testing account (member10)
-        -->
-        <Setting Key="SP.InsertBetDaq" SpName="Portal_BetDaq_InsertBet" DbName="DBPRO.bodb02.portal" />
-        <Setting Key="SP.GetOddsFeed" SpName="Portal_BetDaq_Odds_V2" DbName="DBPRO.bodb02.portal" />
-        <Setting Key="SP.GetOddsFeed_2" SpName="Portal_BetDaq_Odds_2_V2" DbName="DBPRO.bodb02.portal" />
+        <Setting Key="Portal_BetDaq_InsertBet" SpName="Portal_BetDaq_InsertBet" DbName="DBPRO.bodb02.portal" />
+        <Setting Key="Portal_BetDaq_Odds_V2" SpName="Portal_BetDaq_Odds_V2" DbName="DBPRO.bodb02.portal" />
+        <Setting Key="Portal_BetDaq_Odds_2_V2" SpName="Portal_BetDaq_Odds_2_V2" DbName="DBPRO.bodb02.portal" />
 
         <!-- BetRadar feed -->
         <Setting Key="Odds_BetRadar_OddsSel" SpName="Odds_BetRadar_OddsSel" DbName="DBACC.bodb02.bodbAdminNet" />

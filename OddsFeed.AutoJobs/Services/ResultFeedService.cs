@@ -4,11 +4,13 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Fanex.Caching;
+    using OddsFeed.AutoJobs.Criteria.FeedResult;
     using OddsFeed.Core.Configurations;
     using OddsFeed.Core.Constants;
     using OddsFeed.Core.Extensions;
     using OddsFeed.Core.Services;
     using OddsFeed.Models.Matches;
+    using OddsFeed.Services;
 
     public class ResultFeedService : IResultFeedService
     {
@@ -43,7 +45,9 @@
                 currentVersion = 0;
             }
             var versionKey = currentVersion.ToString();
-            IList<Match> matches = await resultFeedDataService.GetMatchResultDetailsAsync(DateTime.Today);
+
+            var criteria = new GetMatchResultDetailsCriteria { EventDate = DateTime.Today };
+            IList<Match> matches = await resultFeedDataService.GetMatchResultDetailsAsync(criteria);
 
             await StoreCache(appSettings.ResultFeed.Bucket, CacheKeys.CurrentKey(appSettings.CachePrefix), currentVersion);
             await StoreCache(appSettings.ResultFeed.BucketData, versionKey, matches);

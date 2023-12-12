@@ -6,8 +6,8 @@
 
     public interface IBetTypeService
     {
-        Task<string> GetBetTypeNameById(int betTypeId);
+        Task<string> GetBetTypeNameByIdAsync(int betTypeId);
 
-        Task<IDictionary<int, BetType>> GetBetTypeList();
+        Task<IDictionary<int, BetType>> GetBetTypeListAsync();
     }
 }

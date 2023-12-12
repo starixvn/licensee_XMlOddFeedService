@@ -7,7 +7,7 @@
     using Fanex.Caching;
     using OddsFeed.Models.Matches;
     using OddsFeed.Models.OddsData;
-    using OddsFeed.Repository;
+    using OddsFeed.Services;
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Criteria;
     using OddsFeed.WebService.Services.Interfaces;
@@ -16,16 +16,16 @@
     {
         private readonly IMatchBuilder matchBuilder;
         private readonly IFeedCachingOperator feedCachingOperator;
-        private readonly IDbAccessRepository dbAccessRepository;
+        private readonly IResultFeedDataService resultFeedDataService;
 
         public ResultFeedService(
             IMatchBuilder matchBuilder,
             IFeedCachingOperator feedCachingOperator,
-            IDbAccessRepository dbAccessRepository)
+            IResultFeedDataService resultFeedDataService)
         {
             this.matchBuilder = matchBuilder;
             this.feedCachingOperator = feedCachingOperator;
-            this.dbAccessRepository = dbAccessRepository;
+            this.resultFeedDataService = resultFeedDataService;
         }
 
         public async Task<string> BuildXmlDocument(OddsFeedsModel model)
@@ -61,7 +61,7 @@
                 EventDate = eventDate
             };
 
-            return await dbAccessRepository.GetMatchResultDetailsAsync(criteria);
+            return await resultFeedDataService.GetMatchResultDetailsAsync(criteria);
         }
 
         private void AppendMatches(
