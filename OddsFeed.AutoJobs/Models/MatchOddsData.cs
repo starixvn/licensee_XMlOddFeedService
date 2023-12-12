@@ -7,8 +7,8 @@
     {
         public int MatchID { get; set; }
         public DateTime? KickOffTime { get; set; }
-        public DateTime? GlobalShowtime { get; set; }
-        public DateTime? Showtime { get; set; }
+        public DateTime GlobalShowtime { get; set; }
+        public string Showtime { get; set; }
 
         public short SportType { get; set; }
         public string SportTypeName { get; set; }

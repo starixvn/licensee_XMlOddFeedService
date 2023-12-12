@@ -6,7 +6,7 @@
 
     public static class JobHelper
     {
-        public static JobSetting? GetJobConfig(IEnumerable<JobSetting> jobConfigs, string jobName)
+        public static JobSetting GetJobConfig(IEnumerable<JobSetting> jobConfigs, string jobName)
             => jobConfigs.FirstOrDefault(job => job.JobName.Equals(jobName));
     }
 }

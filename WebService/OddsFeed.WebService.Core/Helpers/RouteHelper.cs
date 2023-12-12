@@ -12,7 +12,7 @@
         {
             app.UseMvc(routes =>
             {
-                RegisterRoutesBedDaq(routes, feedUrlPath);
+                RegisterRoutesBetDaq(routes, feedUrlPath);
 
                 RegisterRoutesOddsFeed(routes, feedUrlPath);
 
@@ -55,7 +55,7 @@
               new { controller = "OddsFeed", action = "OldHelp" });
         }
 
-        private static void RegisterRoutesBedDaq(IRouteBuilder routes, string feedUrlPath)
+        private static void RegisterRoutesBetDaq(IRouteBuilder routes, string feedUrlPath)
         {
             routes.MapRoute(
                 "CommonOddsFeedService", // Route name

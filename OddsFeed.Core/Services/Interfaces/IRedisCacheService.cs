@@ -9,9 +9,9 @@
 
         Task<T> GetAsync<T>(string key);
 
-        Task SetAsync<T>(string key, T value, CacheItemOptions? options = null);
+        Task SetAsync<T>(string key, T value, CacheItemOptions options = null);
 
-        void Set<T>(string key, T value, CacheItemOptions? options = null);
+        void Set<T>(string key, T value, CacheItemOptions options = null);
 
         void Remove(string key);
 

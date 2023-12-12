@@ -2,15 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.Repository;
-    using Fanex.Data.SqlServer;
     using Fanex.Logging;
-    using Fanex.Logging.Extensions;
-    using Fanex.Logging.Extensions.AspNetCore;
-    using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Sentry;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
@@ -60,23 +55,7 @@
                         })
                 });
 
-            var connections = Configuration.GetSection("ConnectionStrings")
-                .GetChildren()
-                .AsEnumerable()
-                .Where(x => !string.IsNullOrWhiteSpace(x.GetValue<string>("Name")))
-                .ToDictionary(x => x.GetValue<string>("Name"),
-                    y => new ConnectionConfiguration(y.GetValue<string>("Name"), y.GetValue<string>("ConnectionString"), y.GetValue<string>("ProviderName")));
-
-            DbSettingProviderManager
-                .StartNewSession()
-                .Use(connections)
-                .WithSqlServer()
-                .UseDefaultDbSettingProvider("~/App_Data/SpNames.xml")
-                .Run();
-
-            ExceptionHandler
-                .UseConfig(new LoggingConfiguration())
-                .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
+            services.AddFanexData(Configuration);
 
             services.AddSingleton(Configuration);
             services.AddControllersWithViews(x => x.EnableEndpointRouting = false);
@@ -108,7 +87,6 @@
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IHttpContextHelper, HttpContextHelper>();
             services.AddSingleton<IMaintenanceService, MaintenanceService>();
-
 
             #endregion ONEbookUM
 
@@ -168,6 +146,13 @@
             app.UseResponseCaching();
             app.UseForwardedHeaders();
 
+            var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
+            string feedUrlPath = configuration.GetValue<string>("AppSettings:FeedUrlPath");
+            if (!string.IsNullOrWhiteSpace(feedUrlPath))
+            {
+                feedUrlPath = "/";
+            }
+
             app.Use(async (ctx, next) =>
             {
                 ctx.Request.GetTypedHeaders().CacheControl = new CacheControlHeaderValue()
@@ -179,14 +164,10 @@
 
                 if (ctx.Response.StatusCode == 404)
                 {
-                    ctx.Request.Path = "/Errors/PageNotFound";
+                    ctx.Request.Path = feedUrlPath + "Errors/PageNotFound";
                     await next();
                 }
             });
-
-            var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
-            string feedUrlPath = configuration.GetValue<string>("AppSettings:FeedUrlPath");
-            if (!string.IsNullOrWhiteSpace(feedUrlPath)) feedUrlPath = "/";
 
             app.RegisterXMLOddsfeedRoutes(feedUrlPath);
         }

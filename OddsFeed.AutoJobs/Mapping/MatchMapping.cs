@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Reflection;
     using OddsFeed.AutoJobs.Models;
@@ -85,21 +86,18 @@
                 IsLive = isLive
             };
 
-        private static DateTime? GetShowtime(DateTime? globalShowtime, DateTime? showtime)
+        private static DateTime GetShowtime(DateTime globalShowtime, string showtime)
         {
-            if (!globalShowtime.HasValue)
-            {
-                return null;
-            }
+            var canParseShowtime = DateTime.TryParseExact(
+                showtime,
+                "MM/dd hh:mmtt",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out DateTime sTime);
 
-            if (!showtime.HasValue)
-            {
-                return DateTime.MinValue;
-            }
-
-            DateTime sTime = showtime.Value;
-
-            return new DateTimeOffset(globalShowtime.Value.Year, sTime.Month, sTime.Day, sTime.Hour, sTime.Minute, sTime.Second, TimeSpan.Zero).DateTime;
+            return canParseShowtime
+                ? new DateTimeOffset(globalShowtime.Year, sTime.Month, sTime.Day, sTime.Hour, sTime.Minute, sTime.Second, TimeSpan.Zero).DateTime
+                : globalShowtime;
         }
 
         private static MatchOdds GetMatchOdds(IEnumerable<BetTypeSchema> schemas, MatchOddsData row, IEnumerable<OddsFlexGroup> oddsFlexs)

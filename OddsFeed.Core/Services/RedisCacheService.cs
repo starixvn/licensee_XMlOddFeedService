@@ -45,7 +45,7 @@
             await cacheService.RemoveAsync(key);
         }
 
-        public void Set<T>(string key, T value, CacheItemOptions? options = null)
+        public void Set<T>(string key, T value, CacheItemOptions options = null)
         {
             var json = JsonConvert.SerializeObject(value, Formatting.Indented);
             if (options != null)
@@ -58,7 +58,7 @@
             }
         }
 
-        public async Task SetAsync<T>(string key, T value, CacheItemOptions? options = null)
+        public async Task SetAsync<T>(string key, T value, CacheItemOptions options = null)
         {
             var json = JsonConvert.SerializeObject(value, Formatting.Indented);
             if (options != null)
