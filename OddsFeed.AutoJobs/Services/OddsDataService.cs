@@ -3,38 +3,43 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using OddsFeed.AutoJobs.Criteria.OddsData;
-    using OddsFeed.AutoJobs.Helpers;
+    using OddsFeed.AutoJobs.Mapping;
     using OddsFeed.AutoJobs.Models;
     using OddsFeed.Core.Services;
     using OddsFeed.Models;
     using OddsFeed.Models.Matches;
+    using OddsFeed.Models.Oddsfeed;
     using OddsFeed.Models.Outright;
-    using OddsFeed.Repository;
 
     public class OddsDataService : IOddsDataService
     {
-        private readonly IDbAccessRepository dbAccessRepository;
         private readonly IBaseService baseService;
+        private readonly IMatchMapping matchMapping;
+        private readonly IOutrightMapping outrightMapping;
 
         public OddsDataService(
-            IDbAccessRepository dbAccessRepository,
-            IBaseService baseService)
+            IBaseService baseService,
+            IMatchMapping matchMapping,
+            IOutrightMapping outrightMapping)
         {
-            this.dbAccessRepository = dbAccessRepository;
             this.baseService = baseService;
+            this.matchMapping = matchMapping;
+            this.outrightMapping = outrightMapping;
         }
 
         public async Task<IList<Match>> GetDeadballMatchAsync(IList<BetTypeSchema> betTypeSchemas)
         {
-            var (deadballOdds, oddFlexes) = await dbAccessRepository.GetDeadballMatchAsync(new GetDeadballOddsDataCriteria());
-            var matches = MappingHelper.MappingMatches(deadballOdds, betTypeSchemas, oddFlexes, false);
+            var (deadballOdds, oddFlexes) = await baseService.FetchMultipleAsync<MatchOddsData, OddsFlex>(new GetDeadballOddsDataCriteria());
+            var oddsFlexGroups = GetOddsFlexGroups(oddFlexes);
+            var matches = matchMapping.GetMatches(deadballOdds, betTypeSchemas, oddsFlexGroups, false);
             return matches;
         }
 
         public async Task<IList<Match>> GetLiveMatchAsync(IList<BetTypeSchema> betTypeSchemas)
         {
-            var (dataTable, oddFlexes) = await dbAccessRepository.GetLiveMatchAsync(new GetLiveOddDataCriteria());
-            var matches = MappingHelper.MappingMatches(dataTable, betTypeSchemas, oddFlexes, false);
+            var (liveOdds, oddFlexes) = await baseService.FetchMultipleAsync<MatchOddsData, OddsFlex>(new GetLiveOddDataCriteria());
+            var oddsFlexGroups = GetOddsFlexGroups(oddFlexes);
+            var matches = matchMapping.GetMatches(liveOdds, betTypeSchemas, oddsFlexGroups, false);
 
             return matches;
         }
@@ -42,8 +47,32 @@
         public async Task<IList<Outright>> GetOutrightAsync()
         {
             var odds = await baseService.GetDataAsync<OutrightOddsData>(new GetOutrightOddsDataCriteria());
-            var outrights = MappingHelper.MappingOutrights(odds);
+            var outrights = outrightMapping.GetOutrights(odds);
             return outrights;
+        }
+
+        private static IEnumerable<OddsFlexGroup> GetOddsFlexGroups(IEnumerable<OddsFlex> oddFlexes)
+        {
+            var oddsFlexGroups = new List<OddsFlexGroup>();
+
+            foreach (var oddsFlex in oddFlexes)
+            {
+                var oddsFlexGroup = oddsFlexGroups.Find(odds => odds.OddsId == oddsFlex.OddsId);
+                if (oddsFlexGroup == null)
+                {
+                    oddsFlexGroups.Add(new OddsFlexGroup
+                    {
+                        OddsId = oddsFlex.OddsId,
+                        OddsFlexs = new List<OddsFlex> { oddsFlex }
+                    });
+                }
+                else
+                {
+                    oddsFlexGroup.OddsFlexs.Add(oddsFlex);
+                }
+            }
+
+            return oddsFlexGroups;
         }
     }
 }

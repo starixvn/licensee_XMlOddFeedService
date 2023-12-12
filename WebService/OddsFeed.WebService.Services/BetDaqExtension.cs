@@ -23,7 +23,7 @@
             {
                 var param = new[]
                 {
-                    row.matchid.ToString(),
+                    row.MatchID.ToString(),
                     row.KickOffTime,
                     row.LeagueName.Replace(",", SpecialCharacter),
                     row.Home.Replace(",", SpecialCharacter),
@@ -44,39 +44,39 @@
             foreach (BetdaqOdd row in drs)
             {
                 if (
-                    row.bettype == Handicap
-                    || row.bettype == OverUnder
-                    || row.bettype == Handicap1H
-                    || row.bettype == OverUnder1H)
+                    row.Bettype == Handicap
+                    || row.Bettype == OverUnder
+                    || row.Bettype == Handicap1H
+                    || row.Bettype == OverUnder1H)
                 {
                     param = new[]
                     {
-                        row.matchid.ToString(),
-                        row.oddsid.ToString(),
-                        row.bettype.ToString(),
-                        row.hdp1.ToString(),
-                        row.hdp2.ToString(),
-                        row.odds1a.ToString(),
-                        row.odds2a.ToString(),
-                        row.minbet.ToString(),
-                        row.maxbet.ToString() + separateRow
+                        row.MatchID.ToString(),
+                        row.OddsID.ToString(),
+                        row.Bettype.ToString(),
+                        row.Hdp1.ToString(),
+                        row.Hdp2.ToString(),
+                        row.Odds1a.ToString(),
+                        row.Odds2a.ToString(),
+                        row.Minbet.ToString(),
+                        row.Maxbet.ToString() + separateRow
                     };
 
                     sb.Append(string.Join(",", param));
                 }
 
-                if (row.bettype == Outright || row.bettype == TotalCorners)
+                if (row.Bettype == Outright || row.Bettype == TotalCorners)
                 {
                     param = new[]
                     {
-                        row.matchid.ToString(),
-                        row.oddsid.ToString(),
-                        row.bettype.ToString(),
-                        row.com1.ToString(),
-                        row.comx.ToString(),
-                        row.com2.ToString(),
-                        row.minbet.ToString(),
-                        row.maxbet.ToString() + separateRow
+                        row.MatchID.ToString(),
+                        row.OddsID.ToString(),
+                        row.Bettype.ToString(),
+                        row.Com1.ToString(),
+                        row.Comx.ToString(),
+                        row.Com2.ToString(),
+                        row.Minbet.ToString(),
+                        row.Maxbet.ToString() + separateRow
                     };
 
                     sb.Append(string.Join(",", param));
@@ -93,31 +93,31 @@
 
             foreach (BetdaqOdd row in drs)
             {
-                if (row.bettype == CorrectScore)
+                if (row.Bettype == CorrectScore)
                 {
                     param = new[]
                     {
-                        row.matchid.ToString(), row.oddsid.ToString(), row.bettype.ToString(),
-                        row.cs00.ToString(), row.cs11.ToString(), row.cs22.ToString(), row.cs33.ToString(),
-                        row.cs10.ToString(), row.cs20.ToString(), row.cs30.ToString(),
-                        row.cs21.ToString(), row.cs31.ToString(), row.cs32.ToString(),
-                        row.cs01.ToString(), row.cs02.ToString(), row.cs03.ToString(),
-                        row.cs12.ToString(), row.cs13.ToString(), row.cs23.ToString(),
-                        row.minbet.ToString(), row.maxbet.ToString() + separateRow
+                        row.MatchID.ToString(), row.OddsID.ToString(), row.Bettype.ToString(),
+                        row.Cs00.ToString(), row.Cs11.ToString(), row.Cs22.ToString(), row.Cs33.ToString(),
+                        row.Cs10.ToString(), row.Cs20.ToString(), row.Cs30.ToString(),
+                        row.Cs21.ToString(), row.Cs31.ToString(), row.Cs32.ToString(),
+                        row.Cs01.ToString(), row.Cs02.ToString(), row.Cs03.ToString(),
+                        row.Cs12.ToString(), row.Cs13.ToString(), row.Cs23.ToString(),
+                        row.Minbet.ToString(), row.Maxbet.ToString() + separateRow
                     };
 
                     sb.Append(string.Join(",", param));
                 }
 
-                if (row.bettype == HalfTime_FullTime)
+                if (row.Bettype == HalfTime_FullTime)
                 {
                     param = new[]
                     {
-                        row.matchid.ToString(), row.oddsid.ToString(), row.bettype.ToString(),
-                        row.cs11.ToString(), row.cs10.ToString(), row.cs12.ToString(),
-                        row.cs01.ToString(), row.cs00.ToString(), row.cs02.ToString(),
-                        row.cs21.ToString(), row.cs20.ToString(), row.cs22.ToString(),
-                        row.minbet.ToString(), row.maxbet.ToString() + separateRow
+                        row.MatchID.ToString(), row.OddsID.ToString(), row.Bettype.ToString(),
+                        row.Cs11.ToString(), row.Cs10.ToString(), row.Cs12.ToString(),
+                        row.Cs01.ToString(), row.Cs00.ToString(), row.Cs02.ToString(),
+                        row.Cs21.ToString(), row.Cs20.ToString(), row.Cs22.ToString(),
+                        row.Minbet.ToString(), row.Maxbet.ToString() + separateRow
                     };
 
                     sb.Append(string.Join(",", param));

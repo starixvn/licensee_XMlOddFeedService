@@ -3,58 +3,58 @@
     public class BetdaqOdd
     {
         public byte IsBasketball { get; set; }
-        public int matchid { get; set; }
-        public int oddsid { get; set; }
-        public short bettype { get; set; }
+        public int MatchID { get; set; }
+        public int OddsID { get; set; }
+        public short Bettype { get; set; }
         public string KickOffTime { get; set; }
 
         public string LeagueName { get; set; }
         public string Home { get; set; }
         public string Away { get; set; }
 
-        public float? hdp1 { get; set; }
-        public float? hdp2 { get; set; }
-        public float? odds1a { get; set; }
-        public float? odds2a { get; set; }
+        public float? Hdp1 { get; set; }
+        public float? Hdp2 { get; set; }
+        public float? Odds1a { get; set; }
+        public float? Odds2a { get; set; }
 
-        public float com1 { get; set; }
-        public float comx { get; set; }
-        public float com2 { get; set; }
+        public float Com1 { get; set; }
+        public float Comx { get; set; }
+        public float Com2 { get; set; }
 
-        public float cs00 { get; set; }
-        public float cs11 { get; set; }
-        public float cs22 { get; set; }
-        public float cs33 { get; set; }
-        public float cs44 { get; set; }
+        public float Cs00 { get; set; }
+        public float Cs11 { get; set; }
+        public float Cs22 { get; set; }
+        public float Cs33 { get; set; }
+        public float Cs44 { get; set; }
 
-        public float cs10 { get; set; }
-        public float cs20 { get; set; }
-        public float cs30 { get; set; }
-        public float cs40 { get; set; }
-        public float cs50 { get; set; }
+        public float Cs10 { get; set; }
+        public float Cs20 { get; set; }
+        public float Cs30 { get; set; }
+        public float Cs40 { get; set; }
+        public float Cs50 { get; set; }
 
-        public float cs01 { get; set; }
-        public float cs02 { get; set; }
-        public float cs03 { get; set; }
-        public float cs04 { get; set; }
-        public float cs05 { get; set; }
+        public float Cs01 { get; set; }
+        public float Cs02 { get; set; }
+        public float Cs03 { get; set; }
+        public float Cs04 { get; set; }
+        public float Cs05 { get; set; }
 
-        public float cs12 { get; set; }
-        public float cs13 { get; set; }
-        public float cs14 { get; set; }
-        public float cs21 { get; set; }
-        public float cs31 { get; set; }
-        public float cs41 { get; set; }
+        public float Cs12 { get; set; }
+        public float Cs13 { get; set; }
+        public float Cs14 { get; set; }
+        public float Cs21 { get; set; }
+        public float Cs31 { get; set; }
+        public float Cs41 { get; set; }
 
-        public float cs23 { get; set; }
-        public float cs24 { get; set; }
-        public float cs32 { get; set; }
-        public float cs42 { get; set; }
+        public float Cs23 { get; set; }
+        public float Cs24 { get; set; }
+        public float Cs32 { get; set; }
+        public float Cs42 { get; set; }
 
-        public float cs34 { get; set; }
-        public float cs43 { get; set; }
+        public float Cs34 { get; set; }
+        public float Cs43 { get; set; }
 
-        public float minbet { get; set; }
-        public float maxbet { get; set; }
+        public float Minbet { get; set; }
+        public float Maxbet { get; set; }
     }
 }

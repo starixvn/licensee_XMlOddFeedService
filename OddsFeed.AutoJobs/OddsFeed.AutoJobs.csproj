@@ -35,7 +35,6 @@
   <ItemGroup>
     <ProjectReference Include="..\OddsFeed.Core\OddsFeed.Core.csproj" />
     <ProjectReference Include="..\OddsFeed.Models\OddsFeed.Models.csproj" />
-    <ProjectReference Include="..\OddsFeed.Repository\OddsFeed.Repository.csproj" />
     <ProjectReference Include="..\OddsFeed.Services\OddsFeed.Services.csproj" />
   </ItemGroup>
 </Project>

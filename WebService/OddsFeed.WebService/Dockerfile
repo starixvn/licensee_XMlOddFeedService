@@ -6,7 +6,6 @@ COPY ["nuget.config", "."]
 COPY ["OddsFeed.WebService/OddsFeed.WebService.csproj", "OddsFeed.WebService/"]
 COPY ["OddsFeed.Core/OddsFeed.Core.csproj", "OddsFeed.Core/"]
 COPY ["OddsFeed.Models/OddsFeed.Models.csproj", "OddsFeed.Models/"]
-COPY ["OddsFeed.Repository/OddsFeed.Repository.csproj", "OddsFeed.Repository/"]
 COPY ["OddsFeed.Services/OddsFeed.Services.csproj", "OddsFeed.Services/"]
 
 RUN dotnet restore "OddsFeed.WebService/OddsFeed.WebService.csproj"

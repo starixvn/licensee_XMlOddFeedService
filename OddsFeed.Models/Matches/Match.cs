@@ -39,7 +39,7 @@
         public string AwayJapanese { get; set; }
         public string AwayHindi { get; set; }
 
-        public int SportId { get; set; }
+        public short SportId { get; set; }
         public string SportName { get; set; }
 
         public string CountryCode { get; set; }

@@ -4,7 +4,6 @@ WORKDIR /src
 
 COPY ["OddsFeed.Models/OddsFeed.Models.csproj", "OddsFeed.Models/"]
 COPY ["OddsFeed.Core/OddsFeed.Core.csproj", "OddsFeed.Core/"]
-COPY ["OddsFeed.Repository/OddsFeed.Repository.csproj", "OddsFeed.Repository/"]
 COPY ["OddsFeed.Services/OddsFeed.Services.csproj", "OddsFeed.Services/"]
 COPY ["OddsFeed.AutoJobs/OddsFeed.AutoJobs.csproj", "OddsFeed.AutoJobs/"]
 

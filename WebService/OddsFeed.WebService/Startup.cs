@@ -5,6 +5,7 @@
     using System.Linq;
     using Fanex.Caching.Redis;
     using Fanex.Data;
+    using Fanex.Data.Repository;
     using Fanex.Data.SqlServer;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
@@ -21,7 +22,7 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.Net.Http.Headers;
     using OddsFeed.Core;
-    using OddsFeed.Core.Extensions;
+    using OddsFeed.Core.Services;
     using OddsFeed.Services;
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Core.Filters;
@@ -30,6 +31,11 @@
     using OddsFeed.WebService.Models;
     using OddsFeed.WebService.Services;
     using OddsFeed.WebService.Services.Interfaces;
+    using ONEbook.UM.AspNetCore;
+    using ONEbook.UM.Configurations;
+    using ONEbook.UM.Helpers;
+    using ONEbook.UM.Services;
+    using ONEbook.UM.Transport;
     using Sentry;
     using StackExchange.Redis;
 
@@ -82,9 +88,8 @@
             });
             ConfigDataProtection(services, Configuration);
             services.AddSingleton<RateLimitFilterAttribute>();
-            CoreDI.RegistryCoreServices(services, Configuration);
             AddConfiguration(services, Configuration);
-            AddServices(services);
+            AddDI(services);
         }
 
         private static void AddConfiguration(IServiceCollection services, IConfiguration configuration)
@@ -93,8 +98,27 @@
             services.AddSingleton(webSettings);
         }
 
-        private static void AddServices(IServiceCollection services)
+        private void AddDI(IServiceCollection services)
         {
+            #region ONEbookUM
+
+            services.AddSingleton(new UMClientConfiguration().Initialize(Configuration));
+            services.AddSingleton<IUMCacheService, UMCacheService>();
+            services.AddSingleton<IUMRestClient, UMRestClient>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IHttpContextHelper, HttpContextHelper>();
+            services.AddSingleton<IMaintenanceService, MaintenanceService>();
+
+
+            #endregion ONEbookUM
+
+            services.AddSingleton<IDynamicRepository, DynamicRepository>();
+
+            services.AddSingleton<IBaseService, BaseService>();
+            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            services.AddSingleton<IRedisCacheService, RedisCacheService>();
+            services.AddSingleton<ILogger, Logger>();
+
             services.AddSingleton<IMatchBuilder, MatchBuilder>();
             services.AddSingleton<IOutrightBuilder, OutrightBuilder>();
             services.AddSingleton<IEventBuilder, EventBuilder>();

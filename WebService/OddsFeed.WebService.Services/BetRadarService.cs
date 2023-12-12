@@ -58,8 +58,8 @@
                 oddsFeedNode.Append($"<!-- Handicap odds -->");
                 oddsFeedNode.Append($"<OddsData type=\"handicap\"><AC>1</AC>");
                 oddsFeedNode.Append($"<Handicap>{odd.Hdp1_1}:{odd.Hdp2_1}</Handicap>");
-                oddsFeedNode.Append($"<HomeOdds>{FormatOdds(odd.odds1hka_1)}</HomeOdds>");
-                oddsFeedNode.Append($"<AwayOdds>{FormatOdds(odd.odds2hka_1)}</AwayOdds>");
+                oddsFeedNode.Append($"<HomeOdds>{FormatOdds(odd.Odds1hka_1)}</HomeOdds>");
+                oddsFeedNode.Append($"<AwayOdds>{FormatOdds(odd.Odds2hka_1)}</AwayOdds>");
                 oddsFeedNode.Append(EndTagOddsData);
             }
 
@@ -68,8 +68,8 @@
                 oddsFeedNode.Append($"<!-- Total odds(over/under) -->");
                 oddsFeedNode.Append($"<OddsData type=\"total\"><AC>1</AC>");
                 oddsFeedNode.Append($"<Total>{FormatOdds(odd.Hdp1_3)}</Total>");
-                oddsFeedNode.Append($"<UnderOdds>{FormatOdds(odd.odds1hka_3)}</UnderOdds>");
-                oddsFeedNode.Append($"<OverOdds>{FormatOdds(odd.odds2hka_3)}</OverOdds>");
+                oddsFeedNode.Append($"<UnderOdds>{FormatOdds(odd.Odds1hka_3)}</UnderOdds>");
+                oddsFeedNode.Append($"<OverOdds>{FormatOdds(odd.Odds2hka_3)}</OverOdds>");
                 oddsFeedNode.Append(EndTagOddsData);
             }
 
@@ -77,8 +77,8 @@
             {
                 oddsFeedNode.Append($"<!-- Match Winner odds -->");
                 oddsFeedNode.Append($"<OddsData type=\"winner\"><AC>1</AC>");
-                oddsFeedNode.Append($"<HomeOdds>{FormatOdds(odd.odds1hka_501)}</HomeOdds>");
-                oddsFeedNode.Append($"<AwayOdds>{FormatOdds(odd.odds2hka_501)}</AwayOdds>");
+                oddsFeedNode.Append($"<HomeOdds>{FormatOdds(odd.Odds1hka_501)}</HomeOdds>");
+                oddsFeedNode.Append($"<AwayOdds>{FormatOdds(odd.Odds2hka_501)}</AwayOdds>");
                 oddsFeedNode.Append(EndTagOddsData);
             }
 

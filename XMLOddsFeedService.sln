@@ -53,11 +53,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OddsFeed.Core", "OddsFeed.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OddsFeed.Models", "OddsFeed.Models\OddsFeed.Models.csproj", "{9F564377-F90C-40C1-9B10-5E95E3D90F1A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OddsFeed.Repository", "OddsFeed.Repository\OddsFeed.Repository.csproj", "{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OddsFeed.AutoJobs", "OddsFeed.AutoJobs\OddsFeed.AutoJobs.csproj", "{B504BA7F-E330-4388-814F-AF2832AE36D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddsFeed.Services", "OddsFeed.Services\OddsFeed.Services.csproj", "{740FC928-B059-4932-8270-220B36EEB44C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OddsFeed.Services", "OddsFeed.Services\OddsFeed.Services.csproj", "{740FC928-B059-4932-8270-220B36EEB44C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -235,18 +233,6 @@ Global
 		{9F564377-F90C-40C1-9B10-5E95E3D90F1A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9F564377-F90C-40C1-9B10-5E95E3D90F1A}.Release|x86.ActiveCfg = Release|Any CPU
 		{9F564377-F90C-40C1-9B10-5E95E3D90F1A}.Release|x86.Build.0 = Release|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Debug|x86.Build.0 = Debug|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Release|x86.ActiveCfg = Release|Any CPU
-		{D1CA9103-82E6-480F-8838-7CDEFD83E9CB}.Release|x86.Build.0 = Release|Any CPU
 		{B504BA7F-E330-4388-814F-AF2832AE36D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B504BA7F-E330-4388-814F-AF2832AE36D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B504BA7F-E330-4388-814F-AF2832AE36D1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -290,7 +276,7 @@ Global
 		{B504BA7F-E330-4388-814F-AF2832AE36D1} = {8A57E6D6-B226-41F6-828A-181614832825}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Caching.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.0\lib\NET35
 		SolutionGuid = {2729113D-6089-46C8-A527-C77F6C977E43}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Caching.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal
