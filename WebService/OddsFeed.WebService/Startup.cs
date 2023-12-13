@@ -146,29 +146,29 @@
             app.UseResponseCaching();
             app.UseForwardedHeaders();
 
-            var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
-            string feedUrlPath = configuration.GetValue<string>("AppSettings:FeedUrlPath");
-            if (!string.IsNullOrWhiteSpace(feedUrlPath))
-            {
-                feedUrlPath = "/";
-            }
-
             app.Use(async (ctx, next) =>
             {
+                if (ctx.Response.StatusCode == 404)
+                {
+                    ctx.Request.Path = "/Errors/PageNotFound";
+                    await next();
+                }
+
                 ctx.Request.GetTypedHeaders().CacheControl = new CacheControlHeaderValue()
                 {
                     Public = true,
                     MaxAge = TimeSpan.FromSeconds(60)
                 };
                 await next();
-
-                if (ctx.Response.StatusCode == 404)
-                {
-                    ctx.Request.Path = feedUrlPath + "Errors/PageNotFound";
-                    await next();
-                }
             });
 
+            var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
+            string feedUrlPath = configuration.GetValue<string>("AppSettings:FeedUrlPath");
+            if (!string.IsNullOrWhiteSpace(feedUrlPath))
+            {
+                feedUrlPath = "/";
+            }
+            
             app.RegisterXMLOddsfeedRoutes(feedUrlPath);
         }
     }
