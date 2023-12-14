@@ -56,7 +56,7 @@
         {
             bool result = false;
             var throttleInfo = rateLimitService.GetThrottleInfo(ipAdress);
-            var curTime = DateTime.Now;
+            var curTime = DateTimeOffset.Now.DateTime;
 
             if (throttleInfo.ExpiredAt <= curTime)
             {

@@ -148,7 +148,8 @@
 
             app.Use(async (ctx, next) =>
             {
-                if (ctx.Response.StatusCode == 404)
+                const short PageNotFoundStatusCode = 404;
+                if (ctx.Response.StatusCode == PageNotFoundStatusCode)
                 {
                     ctx.Request.Path = "/Errors/PageNotFound";
                     await next();

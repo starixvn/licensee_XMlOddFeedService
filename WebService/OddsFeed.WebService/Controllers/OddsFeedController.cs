@@ -62,7 +62,7 @@
                 }
 
                 var authenticatedPartner = await GetAuthenticatedPartner(username);
-                var timestamp = string.IsNullOrEmpty(HttpContext.Request.GetValueFromRequestByKey("t")) ? "0" : HttpContext.Request.GetValueFromRequestByKey("t").ToString();
+                var timestamp = string.IsNullOrEmpty(HttpContext.Request.GetValueFromRequestByKey("t")) ? "0" : HttpContext.Request.GetValueFromRequestByKey("t");
 
                 return !string.IsNullOrEmpty(authenticatedPartner.Error)
                     ? XmlContent(authenticatedPartner.Error)

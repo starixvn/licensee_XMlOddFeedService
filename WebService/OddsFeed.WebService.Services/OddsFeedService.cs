@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Data;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -128,8 +127,8 @@
 
         private static DateTime GetLastUpdate()
         {
-            const int addHour = 12;
-            return DateTime.Now.AddHours(addHour);
+            const byte AddHour = 12;
+            return DateTimeOffset.Now.AddHours(AddHour).DateTime;
         }
 
         private static void AppendBeginMatches(

@@ -39,18 +39,19 @@
                 }
 
                 const short MinDays = -5;
-                if (date.HasValue && (date.Value.Date < DateTime.Today.AddDays(MinDays) || date.Value.Date > DateTime.Today))
+                var today = DateTimeOffset.Now.Date;
+                if (date.HasValue && (date.Value.Date < today.AddDays(MinDays) || date.Value.Date > today))
                 {
                     return XmlContent($"<Error id=\"10025\" message=\"You can only view historical data up to 5 days from today. You can only view 1 day's data at a time.\" />");
                 }
 
-                if (date.HasValue && date.Value.Date == DateTime.Today)
+                if (date.HasValue && date.Value.Date == today)
                 {
                     date = null;
                 }
 
                 const byte Cricket = 50;
-                var timestamp = string.IsNullOrEmpty(HttpContext.Request.GetValueFromRequestByKey("t")) ? "0" : Request.GetValueFromRequestByKey("t").ToString();
+                var timestamp = string.IsNullOrEmpty(HttpContext.Request.GetValueFromRequestByKey("t")) ? "0" : Request.GetValueFromRequestByKey("t");
                 var authenticatedPartner = await GetAuthenticatedPartner(username);
 
                 return !string.IsNullOrEmpty(authenticatedPartner.Error)

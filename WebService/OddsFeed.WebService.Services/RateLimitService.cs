@@ -44,8 +44,7 @@
         {
             var isBlocked = true;
             var expiredTime = redisCacheService.Get<DateTime>(string.Format(Constants.RedisKeyFormat, webSettings.Bucket.BlockList, UpdateIPText(ipAdress)));
-
-            var curTime = DateTime.Now;
+            var curTime = DateTimeOffset.Now.DateTime;
 
             if (curTime >= expiredTime)
             {

@@ -46,7 +46,7 @@
             }
             var versionKey = currentVersion.ToString();
 
-            var criteria = new GetMatchResultDetailsCriteria { EventDate = DateTime.Today };
+            var criteria = new GetMatchResultDetailsCriteria { EventDate = DateTimeOffset.Now.Date };
             IList<Match> matches = await resultFeedDataService.GetMatchResultDetailsAsync(criteria);
 
             await StoreCache(appSettings.ResultFeed.Bucket, CacheKeys.CurrentKey(appSettings.CachePrefix), currentVersion);

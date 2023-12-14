@@ -59,7 +59,7 @@
                         row.Odds1a.ToString(),
                         row.Odds2a.ToString(),
                         row.Minbet.ToString(),
-                        row.Maxbet.ToString() + separateRow
+                        row.Maxbet + separateRow
                     };
 
                     sb.Append(string.Join(",", param));

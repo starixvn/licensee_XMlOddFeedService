@@ -1,7 +1,6 @@
 ﻿namespace OddsFeed.AutoJobs.Mapping
 {
     using System.Collections.Generic;
-    using System.Data;
     using System.Linq;
     using OddsFeed.AutoJobs.Models;
     using OddsFeed.Models.Outright;

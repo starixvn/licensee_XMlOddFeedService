@@ -8,7 +8,7 @@
         public string DomainName { get; set; }
         public string Ip { get; set; }
         public string SystemName { get; set; }
-        public int ErrCode { get; set; } = 0;
+        public int ErrCode { get; set; }
         public string ErrMsg { get; set; } = string.Empty;
 
         public override string GetSettingKey() => "Odds_PartnerCheckPermission";

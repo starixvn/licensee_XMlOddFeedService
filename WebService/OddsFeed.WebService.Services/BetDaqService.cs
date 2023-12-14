@@ -11,9 +11,9 @@
     public class BetDaqService : IBetDaqService
     {
         private const string SeparateRow = "__";
-        private const string BasketBall0 = "0";
-        private const string BasketBall1 = "1";
-        private const string BasketBall2 = "2";
+        private const byte Basketball0 = 0;
+        private const byte Basketball1 = 1;
+        private const byte Basketball2 = 2;
 
         private readonly IBaseService baseService;
         private readonly WebSettings webSettings;
@@ -31,19 +31,19 @@
                 return await GetBetDaqScheduleAsync();
             }
 
-            if (filter.Equals(BasketBall0) || filter.Equals("s"))
+            if (filter.Equals(Basketball0) || filter.Equals("s"))
             {
-                return await GetBetDaqScheduleBasketBallAsync(0);
+                return await GetBetDaqScheduleBasketBallAsync(Basketball0);
             }
 
-            if (filter.Equals(BasketBall1) || filter.Equals("b"))
+            if (filter.Equals(Basketball1) || filter.Equals("b"))
             {
-                return await GetBetDaqScheduleBasketBallAsync(1);
+                return await GetBetDaqScheduleBasketBallAsync(Basketball1);
             }
 
-            if (filter.Equals(BasketBall2))
+            if (filter.Equals(Basketball2))
             {
-                return await GetBetDaqScheduleBasketBallAsync(2);
+                return await GetBetDaqScheduleBasketBallAsync(Basketball2);
             }
 
             return string.Empty;
@@ -78,22 +78,22 @@
                 result = oddsFeed_1.ToCSV_Odds(SeparateRow);
                 result += oddsFeed_2.ToCSV_Odds_2(SeparateRow);
             }
-            else if (filter.Equals(BasketBall0) || filter.Equals("s"))
+            else if (filter.Equals(Basketball0) || filter.Equals("s"))
             {
-                result = oddsFeed_1.Where(x => x.IsBasketball == 0).ToCSV_Odds(SeparateRow);
-                result += oddsFeed_2.Where(x => x.IsBasketball == 0).ToCSV_Odds_2(SeparateRow);
+                result = oddsFeed_1.Where(x => x.IsBasketball == Basketball0).ToCSV_Odds(SeparateRow);
+                result += oddsFeed_2.Where(x => x.IsBasketball == Basketball0).ToCSV_Odds_2(SeparateRow);
             }
-            else if (filter.Equals(BasketBall1) || filter.Equals("b"))
+            else if (filter.Equals(Basketball1) || filter.Equals("b"))
             {
-                result = oddsFeed_1.Where(x => x.IsBasketball == 1).ToCSV_Odds(SeparateRow);
-                result += oddsFeed_2.Where(x => x.IsBasketball == 1).ToCSV_Odds_2(SeparateRow);
+                result = oddsFeed_1.Where(x => x.IsBasketball == Basketball1).ToCSV_Odds(SeparateRow);
+                result += oddsFeed_2.Where(x => x.IsBasketball == Basketball1).ToCSV_Odds_2(SeparateRow);
             }
             else
             {
-                if (filter.Equals(BasketBall2))
+                if (filter.Equals(Basketball2))
                 {
-                    result = oddsFeed_1.Where(x => x.IsBasketball == 2).ToCSV_Odds(SeparateRow);
-                    result += oddsFeed_1.Where(x => x.IsBasketball == 2).ToCSV_Odds_2(SeparateRow);
+                    result = oddsFeed_1.Where(x => x.IsBasketball == Basketball2).ToCSV_Odds(SeparateRow);
+                    result += oddsFeed_1.Where(x => x.IsBasketball == Basketball2).ToCSV_Odds_2(SeparateRow);
                 }
             }
 

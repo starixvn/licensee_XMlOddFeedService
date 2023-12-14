@@ -69,7 +69,7 @@
             IList<Match> matches,
             OddsFeedsModel model)
         {
-            xmlnode.AppendFormat("<matches date=\"{0}\">", model.Date.HasValue ? model.Date.Value.Date : DateTime.Today);
+            xmlnode.AppendFormat("<matches date=\"{0}\">", model.Date.HasValue ? model.Date.Value.Date : DateTimeOffset.Now.Date);
             matchBuilder.AppendMatchResultNodes(xmlnode, matches, model);
             xmlnode.Append("</matches>");
         }

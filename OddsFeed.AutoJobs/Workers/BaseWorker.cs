@@ -14,7 +14,7 @@
         private readonly ILogServiceProvider logService;
         protected JobSetting jobSetting;
 
-        public BaseWorker(ILogServiceProvider logService, IMaintenanceService maintenanceService)
+        protected BaseWorker(ILogServiceProvider logService, IMaintenanceService maintenanceService)
         {
             this.logService = logService;
             this.maintenanceService = maintenanceService;
