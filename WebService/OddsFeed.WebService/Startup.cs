@@ -61,10 +61,7 @@
             services.AddControllersWithViews(x => x.EnableEndpointRouting = false);
             services.AddSession();
             services.AddResponseCaching();
-            services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-            });
+            
             ConfigDataProtection(services, Configuration);
             services.AddSingleton<RateLimitFilterAttribute>();
             AddConfiguration(services, Configuration);
@@ -144,7 +141,10 @@
             app.UseStaticFiles();
             app.UseSession();
             app.UseResponseCaching();
-            app.UseForwardedHeaders();
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
 
             app.Use(async (ctx, next) =>
             {
@@ -155,7 +155,7 @@
                     await next();
                 }
 
-                ctx.Request.GetTypedHeaders().CacheControl = new CacheControlHeaderValue()
+                ctx.Request.GetTypedHeaders().CacheControl = new CacheControlHeaderValue
                 {
                     Public = true,
                     MaxAge = TimeSpan.FromSeconds(60)

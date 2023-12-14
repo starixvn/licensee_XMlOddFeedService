@@ -44,12 +44,10 @@
 
             if (FilterBetType(model.UserQuery, model.IsSample))
             {
+                outrights = outrights.Where(x => outrightFilter.FilterOutright(x, model.UserProfile, model.UserQuery)).ToList();
                 foreach (var outright in outrights)
                 {
-                    if (outrightFilter.FilterOutright(outright, model.UserProfile, model.UserQuery))
-                    {
-                        AppendEventNode(oddsFeedNode, model.UserProfile, userLanguage, outright);
-                    }
+                    AppendEventNode(oddsFeedNode, model.UserProfile, userLanguage, outright);
                 }
             }
 

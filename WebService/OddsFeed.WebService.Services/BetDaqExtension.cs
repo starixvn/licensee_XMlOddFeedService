@@ -1,6 +1,7 @@
 ﻿namespace OddsFeed.WebService.Services
 {
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Text;
     using OddsFeed.WebService.Models.Betdaq;
 
@@ -19,11 +20,11 @@
         public static string ToCSV(this IEnumerable<BetdaqOdd> drs, string separateRow)
         {
             var sb = new StringBuilder();
-            foreach (BetdaqOdd row in drs)
+            foreach (var row in drs)
             {
                 var param = new[]
                 {
-                    row.MatchID.ToString(),
+                    row.MatchID.ToString(CultureInfo.InvariantCulture),
                     row.KickOffTime,
                     row.LeagueName.Replace(",", SpecialCharacter),
                     row.Home.Replace(",", SpecialCharacter),
@@ -41,7 +42,7 @@
             var sb = new StringBuilder();
             string[] param;
 
-            foreach (BetdaqOdd row in drs)
+            foreach (var row in drs)
             {
                 if (
                     row.Bettype == Handicap
@@ -51,15 +52,15 @@
                 {
                     param = new[]
                     {
-                        row.MatchID.ToString(),
-                        row.OddsID.ToString(),
-                        row.Bettype.ToString(),
-                        row.Hdp1.ToString(),
-                        row.Hdp2.ToString(),
-                        row.Odds1a.ToString(),
-                        row.Odds2a.ToString(),
-                        row.Minbet.ToString(),
-                        row.Maxbet + separateRow
+                        row.MatchID.ToString(CultureInfo.InvariantCulture),
+                        row.OddsID.ToString(CultureInfo.InvariantCulture),
+                        row.Bettype.ToString(CultureInfo.InvariantCulture),
+                        row.Hdp1?.ToString(CultureInfo.InvariantCulture),
+                        row.Hdp2?.ToString(CultureInfo.InvariantCulture),
+                        row.Odds1a?.ToString(CultureInfo.InvariantCulture),
+                        row.Odds2a?.ToString(CultureInfo.InvariantCulture),
+                        row.Minbet.ToString(CultureInfo.InvariantCulture),
+                        row.Maxbet.ToString(CultureInfo.InvariantCulture) + separateRow
                     };
 
                     sb.Append(string.Join(",", param));
@@ -69,14 +70,14 @@
                 {
                     param = new[]
                     {
-                        row.MatchID.ToString(),
-                        row.OddsID.ToString(),
-                        row.Bettype.ToString(),
-                        row.Com1.ToString(),
-                        row.Comx.ToString(),
-                        row.Com2.ToString(),
-                        row.Minbet.ToString(),
-                        row.Maxbet.ToString() + separateRow
+                        row.MatchID.ToString(CultureInfo.InvariantCulture),
+                        row.OddsID.ToString(CultureInfo.InvariantCulture),
+                        row.Bettype.ToString(CultureInfo.InvariantCulture),
+                        row.Com1.ToString(CultureInfo.InvariantCulture),
+                        row.Comx.ToString(CultureInfo.InvariantCulture),
+                        row.Com2.ToString(CultureInfo.InvariantCulture),
+                        row.Minbet.ToString(CultureInfo.InvariantCulture),
+                        row.Maxbet.ToString(CultureInfo.InvariantCulture) + separateRow
                     };
 
                     sb.Append(string.Join(",", param));
@@ -91,19 +92,33 @@
             var sb = new StringBuilder();
             string[] param;
 
-            foreach (BetdaqOdd row in drs)
+            foreach (var row in drs)
             {
                 if (row.Bettype == CorrectScore)
                 {
                     param = new[]
                     {
-                        row.MatchID.ToString(), row.OddsID.ToString(), row.Bettype.ToString(),
-                        row.Cs00.ToString(), row.Cs11.ToString(), row.Cs22.ToString(), row.Cs33.ToString(),
-                        row.Cs10.ToString(), row.Cs20.ToString(), row.Cs30.ToString(),
-                        row.Cs21.ToString(), row.Cs31.ToString(), row.Cs32.ToString(),
-                        row.Cs01.ToString(), row.Cs02.ToString(), row.Cs03.ToString(),
-                        row.Cs12.ToString(), row.Cs13.ToString(), row.Cs23.ToString(),
-                        row.Minbet.ToString(), row.Maxbet.ToString() + separateRow
+                        row.MatchID.ToString(CultureInfo.InvariantCulture),
+                        row.OddsID.ToString(CultureInfo.InvariantCulture),
+                        row.Bettype.ToString(CultureInfo.InvariantCulture),
+                        row.Cs00.ToString(CultureInfo.InvariantCulture),
+                        row.Cs11.ToString(CultureInfo.InvariantCulture),
+                        row.Cs22.ToString(CultureInfo.InvariantCulture),
+                        row.Cs33.ToString(CultureInfo.InvariantCulture),
+                        row.Cs10.ToString(CultureInfo.InvariantCulture),
+                        row.Cs20.ToString(CultureInfo.InvariantCulture),
+                        row.Cs30.ToString(CultureInfo.InvariantCulture),
+                        row.Cs21.ToString(CultureInfo.InvariantCulture),
+                        row.Cs31.ToString(CultureInfo.InvariantCulture),
+                        row.Cs32.ToString(CultureInfo.InvariantCulture),
+                        row.Cs01.ToString(CultureInfo.InvariantCulture),
+                        row.Cs02.ToString(CultureInfo.InvariantCulture),
+                        row.Cs03.ToString(CultureInfo.InvariantCulture),
+                        row.Cs12.ToString(CultureInfo.InvariantCulture),
+                        row.Cs13.ToString(CultureInfo.InvariantCulture),
+                        row.Cs23.ToString(CultureInfo.InvariantCulture),
+                        row.Minbet.ToString(CultureInfo.InvariantCulture),
+                        row.Maxbet.ToString(CultureInfo.InvariantCulture) + separateRow
                     };
 
                     sb.Append(string.Join(",", param));
@@ -113,11 +128,20 @@
                 {
                     param = new[]
                     {
-                        row.MatchID.ToString(), row.OddsID.ToString(), row.Bettype.ToString(),
-                        row.Cs11.ToString(), row.Cs10.ToString(), row.Cs12.ToString(),
-                        row.Cs01.ToString(), row.Cs00.ToString(), row.Cs02.ToString(),
-                        row.Cs21.ToString(), row.Cs20.ToString(), row.Cs22.ToString(),
-                        row.Minbet.ToString(), row.Maxbet.ToString() + separateRow
+                        row.MatchID.ToString(CultureInfo.InvariantCulture),
+                        row.OddsID.ToString(CultureInfo.InvariantCulture),
+                        row.Bettype.ToString(CultureInfo.InvariantCulture),
+                        row.Cs11.ToString(CultureInfo.InvariantCulture),
+                        row.Cs10.ToString(CultureInfo.InvariantCulture),
+                        row.Cs12.ToString(CultureInfo.InvariantCulture),
+                        row.Cs01.ToString(CultureInfo.InvariantCulture),
+                        row.Cs00.ToString(CultureInfo.InvariantCulture),
+                        row.Cs02.ToString(CultureInfo.InvariantCulture),
+                        row.Cs21.ToString(CultureInfo.InvariantCulture),
+                        row.Cs20.ToString(CultureInfo.InvariantCulture),
+                        row.Cs22.ToString(CultureInfo.InvariantCulture),
+                        row.Minbet.ToString(CultureInfo.InvariantCulture),
+                        row.Maxbet.ToString(CultureInfo.InvariantCulture) + separateRow
                     };
 
                     sb.Append(string.Join(",", param));
