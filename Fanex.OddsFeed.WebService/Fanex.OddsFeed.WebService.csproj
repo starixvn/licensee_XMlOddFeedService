@@ -279,6 +279,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\SpNames.MNL.xml" />
+    <Content Include="App_Data\SpNames.KLDR.xml" />
     <Content Include="App_Data\SpNames.PROD.xml" />
     <Content Include="App_Data\SpNames.SIT.xml" />
     <Content Include="App_Data\SpNames.xml">
@@ -449,6 +450,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.AWS.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.KLDR.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.SIT.config">
