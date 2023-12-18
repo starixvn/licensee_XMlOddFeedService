@@ -452,9 +452,9 @@
     <None Include="Web.AWS.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web.KLDR.config">
+    <Content Include="Web.KLDR.config">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
     <None Include="Web.SIT.config">
       <SubType>Designer</SubType>
     </None>
