@@ -1,8 +1,8 @@
-﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.Mapping
+﻿namespace Fanex.OddsFeed.Common.Mapping
 {
-    using Common.DTO;
     using System.Collections.Generic;
     using System.Data;
+    using Fanex.OddsFeed.Common.DTO;
 
     public interface IOutrightMapping
     {

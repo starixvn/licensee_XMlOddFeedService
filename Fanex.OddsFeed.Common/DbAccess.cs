@@ -6,14 +6,14 @@
     using System.Data;
     using System.Linq;
     using Data;
+    using Fanex.Data.Repository;
     using Fanex.OddsFeed.Common.Criteria;
     using Fanex.OddsFeed.Common.DTO;
 
     public static class DbAccess
     {
-        public static DataSet GetLiveOddsData()
+        public static DataSet GetLiveOddsData(ICriteria criteria)
         {
-            var criteria = new GetLiveOddsDataCriteria();
             using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
                 return db.ExecuteDataSet();

@@ -2,16 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Data;
-    using System.Linq;
-    using Common;
-    using Common.Configurations;
-    using Common.DTO;
-    using Common.Helpers;
-    using Common.Repository;
-    using Common.Schemas;
     using Fanex.Logging;
-    using Mapping;
+    using Fanex.OddsFeed.Common;
+    using Fanex.OddsFeed.Common.Configurations;
+    using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.Common.Helpers;
+    using Fanex.OddsFeed.Common.Repository;
+    using Fanex.OddsFeed.Common.Schemas;
 
     public class WindowsOddsFeedService : IWindowsOddsFeedService
     {
@@ -22,6 +19,13 @@
         private static readonly string outRightBucket = AppSettings.BucketOutrights;
         private static readonly string currentVersionKey = CacheKeys.CurrentKey(AppSettings.CachePrefix);
         private static readonly int totalVersion = AppSettings.TotalVersion;
+
+        private readonly IOddsDataService oddsDataService;
+
+        public WindowsOddsFeedService()
+        {
+            oddsDataService = new OddsDataService();
+        }
 
         public void Reset()
         {
@@ -34,8 +38,8 @@
         {
             bool result;
             var betTypeSchemas = GetBetTypeSchemas();
-            var liveMatches = GetLiveMatches(betTypeSchemas);
-            var deadBallMatches = GetDeadballMatches(betTypeSchemas);
+            var liveMatches = oddsDataService.GetLiveMatches(betTypeSchemas);
+            var deadBallMatches = oddsDataService.GetDeadballMatches(betTypeSchemas);
 
             var deadBallLength = deadBallMatches.Count;
             var splitIndex = deadBallLength / 2;
@@ -52,7 +56,7 @@
                 deadBalls2.Add(deadBallMatches[j]);
             }
 
-            var outrights = GetOutrights();
+            var outrights = oddsDataService.GetOutrights();
 
             var currentVersion = GetCurrentVersion() + 1;
             if (currentVersion == totalVersion)
@@ -88,75 +92,6 @@
             };
 
             return string.Join(Environment.NewLine, messages);
-        }
-
-        private IList<Match> GetLiveMatches(IList<BetTypeSchema> betTypeSchemas)
-        {
-            using (var liveOdds = DbAccess.GetLiveOddsData())
-            {
-                var matchMapping = new MatchMapping();
-                var liveTables = liveOdds.Tables[0].Copy();
-                var oddsFlex = GetOddsFlexGroups(liveOdds.Tables[1]);
-                var matches = matchMapping.GetMatches(liveTables, betTypeSchemas, oddsFlex, false).OrderBy(t => t.MatchId).ToList();
-                return matches;
-            }
-        }
-
-        private IList<Match> GetDeadballMatches(IList<BetTypeSchema> betTypeSchemas)
-        {
-            using (var deadballOdds = DbAccess.GetDeadballOddsData())
-            {
-                var matchMapping = new MatchMapping();
-                var deadballTables = deadballOdds.Tables[0].Copy();
-                var oddsFlexTables = deadballOdds.Tables[1].Copy();
-                var oddsFlex = GetOddsFlexGroups(oddsFlexTables);
-
-                var matches = matchMapping.GetMatches(deadballTables, betTypeSchemas, oddsFlex, false).OrderBy(t => t.MatchId).ToList();
-                return matches;
-            }
-        }
-
-        private static IList<Outright> GetOutrights()
-        {
-            using (var outrightOdds = DbAccess.GetOutrightOddsData())
-            {
-                var outrightMapping = new OutrightMapping();
-                return outrightMapping.GetOutrights(outrightOdds);
-            }
-        }
-
-        private IEnumerable<OddsFlexGroup> GetOddsFlexGroups(DataTable table)
-        {
-            var oddsFlexGroups = new List<OddsFlexGroup>();
-
-            foreach (DataRow row in table.Rows)
-            {
-                var oddsId = Convert.ToInt32(row["oddsid"]);
-                var oddsFlex = new OddsFlex
-                {
-                    BetChoice = row["betChoice"].ToString(),
-                    BetType = Convert.ToInt32(row["bettype"]),
-                    OddId = oddsId,
-                    Odds = Convert.ToDecimal(row["odds"]),
-                    OddsInfo = row["OddsInfo"].ToString()
-                };
-                var oddsFlexGroup = oddsFlexGroups.FirstOrDefault(odds => odds.OddsId == oddsId);
-
-                if (oddsFlexGroup == null)
-                {
-                    oddsFlexGroups.Add(new OddsFlexGroup
-                    {
-                        OddsId = oddsId,
-                        OddsFlexs = new List<OddsFlex> { oddsFlex }
-                    });
-                }
-                else
-                {
-                    oddsFlexGroup.OddsFlexs.Add(oddsFlex);
-                }
-            }
-
-            return oddsFlexGroups;
         }
 
         private static IList<BetTypeSchema> GetBetTypeSchemas()

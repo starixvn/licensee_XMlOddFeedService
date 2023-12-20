@@ -141,6 +141,7 @@
     <Compile Include="Criteria\GetBetRadarOddsCriteria.cs" />
     <Compile Include="Criteria\GetCountryListCriteria.cs" />
     <Compile Include="Criteria\GetDeadballOddsDataCriteria.cs" />
+    <Compile Include="Criteria\GetLiveOddsForBetRadarCriteria.cs" />
     <Compile Include="Criteria\GetLiveOddsDataCriteria.cs" />
     <Compile Include="Criteria\GetMatchResultDetailCriteria.cs" />
     <Compile Include="Criteria\GetOutrightOddsDataCriteria.cs" />
@@ -175,6 +176,11 @@
     <Compile Include="Helpers\MyRedisConnectorHelper.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Helpers\SchemaHelper.cs" />
+    <Compile Include="Mapping\IMatchMapping.cs" />
+    <Compile Include="Mapping\IOutrightMapping.cs" />
+    <Compile Include="Mapping\MatchMapping.cs" />
+    <Compile Include="Mapping\OutrightMapping.cs" />
+    <Compile Include="OddsDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RedisRepository.cs" />
     <Compile Include="Schemas\BetChoiceDescription.cs" />

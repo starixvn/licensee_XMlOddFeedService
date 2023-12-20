@@ -5,6 +5,7 @@
     using System.Data;
     using System.Linq;
     using System.Text;
+    using Fanex.OddsFeed.Common;
     using Fanex.OddsFeed.Common.DTO;
     using Fanex.OddsFeed.WebServiceLibrary.Builders;
     using Fanex.OddsFeed.WebServiceLibrary.Caching;
@@ -21,6 +22,7 @@
         private readonly IOutrightBuilder outrightBuilder;
         private readonly IFeedCachingOperator feedCachingOperator;
         private readonly IMatchFilter matchFilter;
+        private readonly IOddsDataService oddsDataService;
 
         public OddsFeedService()
         {
@@ -28,6 +30,7 @@
             outrightBuilder = new OutrightBuilder();
             feedCachingOperator = new FeedCachingOperator();
             matchFilter = new MatchFilter();
+            oddsDataService = new OddsDataService();
         }
 
         public string BuildXmlDocument(OddsFeedsModel model)
@@ -35,8 +38,23 @@
             var isShownOutright = IsShownOutright(model);
             var isShownLiveMatch = IsShownLiveMatch(model.UserProfile);
             var isShownDeadMatch = IsShownDeadBallMatch(model.UserProfile);
+            OddsData oddsData;
 
-            var oddsData = feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
+            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var betTypeSchemas = feedCachingOperator.GetBetTypes();
+                oddsData = new OddsData
+                {
+                    LiveMatches = isShownLiveMatch ? oddsDataService.GetLiveMatchesForBetRadar(betTypeSchemas) : new List<Match>(),
+                    DeadballMatches = isShownDeadMatch ? oddsDataService.GetDeadballMatches(betTypeSchemas) : new List<Match>(),
+                    Outrights = isShownOutright ? oddsDataService.GetOutrights() : new List<Outright>()
+                };
+            }
+            else
+            {
+                oddsData = feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
+            }
+
             var oddsFeedNode = new StringBuilder("<oddsfeed>");
 
             if (isShownOutright)

@@ -148,10 +148,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mapping\IMatchMapping.cs" />
-    <Compile Include="Mapping\IOutrightMapping.cs" />
-    <Compile Include="Mapping\MatchMapping.cs" />
-    <Compile Include="Mapping\OutrightMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IResultFeedService.cs" />
     <Compile Include="Services\IWindowsOddsFeedService.cs" />

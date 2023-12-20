@@ -1,9 +1,9 @@
-﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.Mapping
+﻿namespace Fanex.OddsFeed.Common.Mapping
 {
     using System.Collections.Generic;
     using System.Data;
-    using Common.DTO;
-    using Common.Schemas;
+    using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.Common.Schemas;
 
     public interface IMatchMapping
     {
