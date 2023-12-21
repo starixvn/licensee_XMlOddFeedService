@@ -3,20 +3,26 @@
     {
         "outputFileName": "wwwroot/minify/css/help.min.css",
         "inputFiles": [
-            "www/css/shCore.css",
-            "www/css/shThemeDefault.css",
-            "www/css/Help/menu.css",
-            "www/css/Help/content.css"
+            "wwwroot/css/shCore.css",
+            "wwwroot/css/shThemeDefault.css",
+            "wwwroot/css/Help/menu.css",
+            "wwwroot/css/Help/content.css"
+        ]
+    },
+    {
+        "outputFileName": "wwwroot/minify/css/404.min.css",
+        "inputFiles": [
+            "wwwroot/css/404.css"
         ]
     },
     // ----------------------- Javascript ------------------------------
     {
         "outputFileName": "wwwroot/minify/js/help.min.js",
         "inputFiles": [
-            "www/js/jquery-latest.js",
-            "www/js/shCore.js",
-            "www/js/shBrushXml.js",
-            "www/js/Help/menu.js"
+            "wwwroot/js/jquery-latest.js",
+            "wwwroot/js/shCore.js",
+            "wwwroot/js/shBrushXml.js",
+            "wwwroot/js/Help/menu.js"
         ],
         "minify": {
             "enabled": true,

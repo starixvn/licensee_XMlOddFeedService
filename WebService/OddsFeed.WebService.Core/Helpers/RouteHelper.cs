@@ -32,9 +32,9 @@
         private static void RegisterRoutesEvent(IRouteBuilder routes, string feedUrlPath)
         {
             routes.MapRoute(
-               "EventService",
-               feedUrlPath + "{username}/event.xml",
-               new { controller = "Event", action = index });
+                "EventService",
+                feedUrlPath + "{username}/event.xml",
+                new { controller = "Event", action = index });
         }
 
         private static void RegisterRoutesOddsFeed(IRouteBuilder routes, string feedUrlPath)
@@ -50,9 +50,9 @@
                 new { controller = "OddsFeed", action = "Help" });
 
             routes.MapRoute(
-              "OddsFeedOldHelp",
-              feedUrlPath + "{username}/oldhelp.htm",
-              new { controller = "OddsFeed", action = "OldHelp" });
+                "OddsFeedOldHelp",
+                feedUrlPath + "{username}/oldhelp.htm",
+                new { controller = "OddsFeed", action = "OldHelp" });
         }
 
         private static void RegisterRoutesBetDaq(IRouteBuilder routes, string feedUrlPath)
@@ -60,12 +60,12 @@
             routes.MapRoute(
                 "CommonOddsFeedService", // Route name
                 feedUrlPath + "{username}/odds.txt", // URL with parameters
-               new { controller = betDaq, action = "GetOdds" }); // Parameter defaults
+                new { controller = betDaq, action = "GetOdds" }); // Parameter defaults
 
             routes.MapRoute(
                 "CommonScheduleService", // Route name
                 feedUrlPath + "{username}/sch.txt", // URL with parameters
-               new { controller = betDaq, action = "GetSchedule" }); // Parameter defaults
+                new { controller = betDaq, action = "GetSchedule" }); // Parameter defaults
 
             routes.MapRoute(
                 "CommonInsertBetdaqService",
@@ -75,12 +75,12 @@
             routes.MapRoute(
                 "BetDaqOddsFeedService", // Route name
                 feedUrlPath + "{username}/en-lang/odds.txt", // URL with parameters
-               new { controller = betDaq, action = "GetOdds" }); // Parameter defaults
+                new { controller = betDaq, action = "GetOdds" }); // Parameter defaults
 
             routes.MapRoute(
                 "BetDaqScheduleService", // Route name
                 feedUrlPath + "{username}/en-lang/sch.txt", // URL with parameters
-               new { controller = betDaq, action = "GetSchedule" }); // Parameter defaults
+                new { controller = betDaq, action = "GetSchedule" }); // Parameter defaults
 
             routes.MapRoute(
                 "BetDaqInsertBetdaqService",

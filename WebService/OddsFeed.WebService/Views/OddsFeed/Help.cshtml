@@ -13,20 +13,12 @@
     string baseUrl = string.Format("{0}/{1}{2}", Model.Domain, ViewBag.VirtualPath, ViewBag.UserName);
 }
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odds feed user manual</title>
-    @section Styles {
-        <environment include="Development">
-            <link rel="stylesheet" href="~/css/shCore.css" asp-append-version="true">
-            <link rel="stylesheet" href="~/css/shThemeDefault.css" asp-append-version="true">
-            <link rel="stylesheet" href="~/css/Help/menu.css" asp-append-version="true">
-            <link rel="stylesheet" href="~/css/Help/content.css" asp-append-version="true">
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="~/minify/css/help.min.css" asp-append-version="true">
-        </environment>
-    }
+    <link rel="stylesheet" href="~/minify/css/help.min.css" asp-append-version="true" />
 </head>
 <body>
     <div class="container">
@@ -303,11 +295,11 @@
                         <div class="div_appendix_sports">
                             We also export the supported sport list into XML format, so that your development team can get and implement it dynamically. Please refer to the below information:
                             <pre class="brush: xml">
-                            <sports>
-                            <sport id="1" se="Soccer" st="足球" ss="足球"></sport>
-                            <sport id="8" se="Basketball" st="籃球" ss="篮球"></sport>
-                            <sport id="4" se="Ice Hockey" st="冰上曲棍球" ss="冰上曲棍球"></sport>
-                            <sport id="5" se="Tennis" st="網球" ss="网球"></sport>
+                                <sports>
+                                    <sport id="1" se="Soccer" st="足球" ss="足球"></sport>
+                                    <sport id="8" se="Basketball" st="籃球" ss="篮球"></sport>
+                                    <sport id="4" se="Ice Hockey" st="冰上曲棍球" ss="冰上曲棍球"></sport>
+                                    <sport id="5" se="Tennis" st="網球" ss="网球"></sport>
                                 </sports>
                             </pre>
                         </div>
@@ -408,10 +400,10 @@
                         <div class="div_appendix_bettypes">
                             We also export the supported bet type list into XML format, so that your development team can get and implement it dynamically. Please refer to the below information:
                             <pre class="brush: xml">
-                            <bettypes>
-                            <type id="1" t="ah" te="讓球" tt="" ts="让球"></type>
-                            <type id="3" t="ou" te="大小盤" tt="" ts="大小盘"></type>
-                            <type id="2" t="oe" te="單雙盤" tt="" ts="单双盘"></type>
+                                <bettypes>
+                                    <type id="1" t="ah" te="讓球" tt="" ts="让球"></type>
+                                    <type id="3" t="ou" te="大小盤" tt="" ts="大小盘"></type>
+                                    <type id="2" t="oe" te="單雙盤" tt="" ts="单双盘"></type>
                                 </bettypes>
                             </pre>
                         </div>
@@ -454,23 +446,11 @@
         </div>
     </div>
 
-    @section Scripts {
-        <environment include="Development">
-            <script src="~/js/jquery-latest.js" asp-append-version="true"></script>
-            <script src="~/js/shCore.js" asp-append-version="true"></script>
-            <script src="~/js/shBrushXml.js" asp-append-version="true"></script>
-            <script src="~/js/Help/menu.js" asp-append-version="true"></script>
-        </environment>
-        <environment exclude="Development">
-            <script src="~/minify/js/help.min.js" asp-append-version="true"></script>
-        </environment>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                SyntaxHighlighter.all();
-            });
-        </script>
-    }
-
+    <script src="~/minify/js/help.min.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
 </body>
 </html>

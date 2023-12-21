@@ -35,33 +35,12 @@
             return clientIp;
         }
 
-        public static string DomainName(HttpContext httpContext)
+        public static string DomainName(HttpContext httpContext) => $"{httpContext.Request.Scheme}://{httpContext.Request.Host.Value}";
+
+        public static string FullDomainName(HttpContext httpContext)
         {
-            var domain = httpContext.Request.Host.Value;
-            var port = httpContext.Request.Host.Port;
-            var fullDomainName = $"{httpContext.Request.Scheme}://{domain}";
-
-            if (port is not null)
-            {
-                fullDomainName = fullDomainName + ":" + port;
-            }
-
-            return fullDomainName;
-        }
-
-        public static string FullDomainName(HttpContext httpContext, bool isDevelopment = true)
-        {
-            var domain = httpContext.GetServerVariable("SERVER_NAME");
-            var port = httpContext.GetServerVariable("SERVER_PORT");
-            var protocol = httpContext.Request.IsHttps ? "https://" : "http://";
-            var fulldomain = protocol + domain;
-
-            if (isDevelopment)
-            {
-                fulldomain = fulldomain + ":" + port;
-            }
-
-            fulldomain += (httpContext.Request.PathBase.Value == "/" ? string.Empty : httpContext.Request.PathBase.Value);
+            var fulldomain = $"{httpContext.Request.Scheme}://{httpContext.Request.Host.Value}";
+            fulldomain += httpContext.Request.PathBase.Value == "/" ? string.Empty : httpContext.Request.PathBase.Value;
             return fulldomain;
         }
     }

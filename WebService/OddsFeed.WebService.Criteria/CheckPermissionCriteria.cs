@@ -15,7 +15,6 @@
 
         public override bool IsValid() => !string.IsNullOrWhiteSpace(UserName)
             && !string.IsNullOrWhiteSpace(DomainName)
-            && !string.IsNullOrWhiteSpace(Ip)
-            && !string.IsNullOrWhiteSpace(SystemName);
+            && !string.IsNullOrWhiteSpace(Ip);
     }
 }

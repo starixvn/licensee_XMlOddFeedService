@@ -5,7 +5,7 @@ ul.topnav {
 	width: 960px;
 	background: #222;
 	font-size: 1.2em;
-	background: url(../../App_Themes/Help/dropdown-menu_files/topnav_bg.gif) repeat-x;
+	background: url(../images/dropdown-menu_files/topnav_bg.gif) repeat-x;
 	padding-left: 0;
 }
 ul.topnav li {
@@ -21,7 +21,7 @@ ul.topnav li .hasChild:hover, ul.topnav li a.hasChild.hoverItem{
 	display: block;
 	text-decoration: none;
 	float: left;
-	background: url(../../App_Themes/Help/dropdown-menu_files/dropdown_arrowbg.png) no-repeat center 26px !important;
+	background: url(../images/dropdown-menu_files/dropdown_arrowbg.png) no-repeat center 26px !important;
 }
 
 ul.topnav li a.actived{
@@ -30,7 +30,7 @@ ul.topnav li a.actived{
 	display: block;
 	text-decoration: none;
 	float: left;
-	background: url(../../App_Themes/Help/dropdown-menu_files/arrow-filter.png) no-repeat center 26px;
+	background: url(../images/dropdown-menu_files/arrow-filter.png) no-repeat center 26px;
 }
 
 ul.topnav li .hasChild, ul.topnav li .noneChild{
@@ -97,10 +97,10 @@ ul.topnav li ul.subNav1 li a {
 	text-decoration: none;	
 }
 ul.topnav li ul.subNav1 li a.haveSubMenu {
-	background: #e84c3d url(../../App_Themes/Help/dropdown-menu_files/dropdown_linkbg.gif) no-repeat 175px center;
+	background: #e84c3d url(../images/dropdown-menu_files/dropdown_linkbg.gif) no-repeat 175px center;
 }
 ul.topnav li ul.subNav1 li a.haveSubMenu:hover {
-	background: #cd3527 url(../../App_Themes/Help/dropdown-menu_files/dropdown_linkbg.gif) no-repeat 175px center;
+	background: #cd3527 url(../images/dropdown-menu_files/dropdown_linkbg.gif) no-repeat 175px center;
 }
  ul.topnav li ul.subNav1 li a:hover {
 	background: #cd3527;
