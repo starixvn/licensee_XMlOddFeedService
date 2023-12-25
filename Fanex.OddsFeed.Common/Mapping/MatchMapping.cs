@@ -104,8 +104,8 @@
         private static MatchOdds GetMatchOdds(IEnumerable<BetTypeSchema> schemas, DataRow row, IEnumerable<OddsFlexGroup> oddsFlexs)
         {
             if (row.Table.Columns.Contains("IsClosedOddStatus")
-                && bool.TryParse(row["IsClosedOddStatus"].ToString(), out bool isClosedOddStatus)
-                && isClosedOddStatus)
+                && byte.TryParse(row["IsClosedOddStatus"].ToString(), out byte isClosedOddStatus)
+                && isClosedOddStatus == 1)
             {
                 return null;
             }
