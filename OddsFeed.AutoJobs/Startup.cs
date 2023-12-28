@@ -2,9 +2,12 @@
 {
     using System.Collections.Generic;
     using Fanex.Caching.Redis;
-    using Fanex.Data;
     using Fanex.Data.Repository;
+    using Fanex.Data.SqlServer;
     using Fanex.Logging;
+    using Fanex.Logging.Extensions;
+    using Fanex.Logging.Extensions.AspNetCore;
+    using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Sentry;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
@@ -44,13 +47,17 @@
                 .SetDefaultLogCategory(Configuration.GetSection("Fanex.Logging:LogCategory").Value)
                 .Use(new List<ILogEngine>
                 {
-                new SentryLogging(new SentryEngineOptions
-                {
-                    Dsn = new Dsn(Configuration.GetSection("Fanex.Logging:SentryEngineOptions:Dsn").Value)
-                })
+                    new SentryLogging(new SentryEngineOptions
+                    {
+                        Dsn = new Dsn(Configuration.GetSection("Fanex.Logging:SentryEngineOptions:Dsn").Value)
+                    })
                 });
 
-            services.AddFanexData(Configuration);
+            services.AddFanexSql(Configuration);
+            
+            ExceptionHandler
+                .UseConfig(new LoggingConfiguration())
+                .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
 
             services.AddSingleton(Configuration);
             services.AddControllers();
