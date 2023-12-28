@@ -13,7 +13,7 @@
     {
         IList<Match> GetLiveMatches(IList<BetTypeSchema> betTypeSchemas);
 
-        IList<Match> GetLiveMatchesForBetRadar(IList<BetTypeSchema> betTypeSchemas);
+        IList<Match> GetLiveMatchesForBetRadar();
 
         IList<Match> GetDeadballMatches(IList<BetTypeSchema> betTypeSchemas);
 
@@ -43,14 +43,24 @@
             }
         }
 
-        public IList<Match> GetLiveMatchesForBetRadar(IList<BetTypeSchema> betTypeSchemas)
+        public IList<Match> GetLiveMatchesForBetRadar()
         {
             var criteria = new GetLiveOddsForBetRadarCriteria();
             using (var liveOdds = DbAccess.GetLiveOddsData(criteria))
             {
                 var liveTables = liveOdds.Tables[0].Copy();
-                var oddsFlex = GetOddsFlexGroups(liveOdds.Tables[1]);
-                var matches = matchMapping.GetMatches(liveTables, betTypeSchemas, oddsFlex, false).OrderBy(t => t.MatchId).ToList();
+
+                var matches = new List<Match>();
+                foreach (DataRow row in liveTables.Rows)
+                {
+                    var match = matchMapping.CreateMatch(row, false);
+                    if (!matches.Exists(x => x.MatchId == match.MatchId))
+                    {
+                        match.MatchOddsList = new List<MatchOdds>();
+                        matches.Add(match);
+                    }
+                }
+
                 return matches;
             }
         }

@@ -38,21 +38,20 @@
             var isShownOutright = IsShownOutright(model);
             var isShownLiveMatch = IsShownLiveMatch(model.UserProfile);
             var isShownDeadMatch = IsShownDeadBallMatch(model.UserProfile);
-            OddsData oddsData;
+            OddsData oddsData = feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
 
-            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase))
+            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase) && isShownLiveMatch)
             {
-                var betTypeSchemas = feedCachingOperator.GetBetTypes();
-                oddsData = new OddsData
+                var matches = oddsDataService.GetLiveMatchesForBetRadar();
+                foreach(var match in matches)
                 {
-                    LiveMatches = isShownLiveMatch ? oddsDataService.GetLiveMatchesForBetRadar(betTypeSchemas) : new List<Match>(),
-                    DeadballMatches = isShownDeadMatch ? oddsDataService.GetDeadballMatches(betTypeSchemas) : new List<Match>(),
-                    Outrights = isShownOutright ? oddsDataService.GetOutrights() : new List<Outright>()
-                };
-            }
-            else
-            {
-                oddsData = feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
+                    if(!oddsData.LiveMatches.Any(x => x.MatchId == match.MatchId))
+                    {
+                        oddsData.LiveMatches.Add(match);
+                    }
+
+                    oddsData.LiveMatches = oddsData.LiveMatches.OrderBy(x => x.MatchId).ToList();
+                }
             }
 
             var oddsFeedNode = new StringBuilder("<oddsfeed>");

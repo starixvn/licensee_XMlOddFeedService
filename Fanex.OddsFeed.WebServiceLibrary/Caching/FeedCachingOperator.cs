@@ -16,8 +16,8 @@
             var cacheVersion = versionCaching.GetRightVersionOddsFeed(model.UserProfile);
 
             var outrights = isGetOutright
-                ? Get<Outright>(AppSettings.BucketOutrights, cacheVersion.CurrentVersionOutright.ToString()) :
-                new List<Outright>();
+                ? Get<Outright>(AppSettings.BucketOutrights, cacheVersion.CurrentVersionOutright.ToString())
+                : new List<Outright>();
 
             var liveMatches = isGetLiveMatch
                 ? Get<Match>(AppSettings.BucketLiveMatches, cacheVersion.CurrentVersionLiveMatch.ToString())

@@ -12,5 +12,7 @@
             IEnumerable<BetTypeSchema> schemas,
             IEnumerable<OddsFlexGroup> oddsFlexs,
             bool isLive);
+
+        Match CreateMatch(DataRow row, bool isLive);
     }
 }

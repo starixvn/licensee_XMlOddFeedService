@@ -23,27 +23,24 @@
             foreach (DataRow row in dataTable.Rows)
             {
                 var match = CreateMatch(row, isLive);
-                if (match != null)
+                if (tempMatch.MatchId != match.MatchId)
                 {
-                    if (tempMatch.MatchId != match.MatchId)
-                    {
-                        tempMatch = match;
-                        match.MatchOddsList = new List<MatchOdds>();
-                        matchList.Add(match);
-                    }
+                    tempMatch = match;
+                    match.MatchOddsList = new List<MatchOdds>();
+                    matchList.Add(match);
+                }
 
-                    var matchOdds = GetMatchOdds(schemas, row, oddsFlexs);
-                    if (matchOdds != null)
-                    {
-                        tempMatch.MatchOddsList.Add(matchOdds);
-                    }
+                var matchOdds = GetMatchOdds(schemas, row, oddsFlexs);
+                if (matchOdds != null)
+                {
+                    tempMatch.MatchOddsList.Add(matchOdds);
                 }
             }
 
             return matchList;
         }
 
-        private static Match CreateMatch(DataRow row, bool isLive)
+        public Match CreateMatch(DataRow row, bool isLive)
         {
             return new Match
             {
@@ -88,7 +85,7 @@
 
         private static DateTime GetShowtime(string globalShowtime, string showtime)
         {
-            DateTime gsTime = Convert.ToDateTime(globalShowtime);
+            var gsTime = Convert.ToDateTime(globalShowtime);
             var canParseShowtime = DateTime.TryParseExact(
                 showtime,
                 "MM/dd hh:mmtt",
@@ -103,13 +100,6 @@
 
         private static MatchOdds GetMatchOdds(IEnumerable<BetTypeSchema> schemas, DataRow row, IEnumerable<OddsFlexGroup> oddsFlexs)
         {
-            if (row.Table.Columns.Contains("IsClosedOddStatus")
-                && byte.TryParse(row["IsClosedOddStatus"].ToString(), out byte isClosedOddStatus)
-                && isClosedOddStatus == 1)
-            {
-                return null;
-            }
-
             var schema = FindBetTypeSchema(Convert.ToInt32(row["BetType"]), schemas);
             if (schema == null)
             {
@@ -124,8 +114,8 @@
                 Timestamp = Convert.ToInt32(row["Timestamp"]),
                 BetTypeId = Convert.ToInt32(row["BetType"]),
                 BetChoices = schema.IsOddsFlex
-                                          ? GetOddsFlexBetChoices(schema, row, oddsFlexs)
-                                          : GetNormalBetChoices(schema, row)
+                    ? GetOddsFlexBetChoices(schema, row, oddsFlexs)
+                    : GetNormalBetChoices(schema, row)
             };
         }
 
