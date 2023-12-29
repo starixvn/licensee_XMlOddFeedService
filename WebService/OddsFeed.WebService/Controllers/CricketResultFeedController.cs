@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Threading.Tasks;
     using System.Web;
     using Fanex.Logging;
@@ -34,7 +35,7 @@
                 DateTime? date = null;
                 if (!string.IsNullOrEmpty(HttpContext.Request.GetValueFromRequestByKey("date")))
                 {
-                    DateTime.TryParse(HttpContext.Request.GetValueFromRequestByKey("date"), out DateTime requestDate);
+                    DateTime.TryParse(HttpContext.Request.GetValueFromRequestByKey("date"), CultureInfo.InvariantCulture, out DateTime requestDate);
                     date = requestDate;
                 }
 

@@ -8,12 +8,10 @@
     {
         public static string GetClientIpAddress(HttpContext httpContext)
         {
-            var clientIp = httpContext.Request?.Headers["X_FORWARDED_FOR"].ToString();
-
+            var clientIp = httpContext.Request.Headers["X_FORWARDED_FOR"].ToString();
             if (string.IsNullOrEmpty(clientIp))
             {
-                var feature = httpContext.Features.Get<IHttpConnectionFeature>();
-                clientIp = feature?.RemoteIpAddress?.ToString();
+                clientIp = httpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
             }
             else
             {

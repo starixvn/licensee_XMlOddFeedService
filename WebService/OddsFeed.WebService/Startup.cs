@@ -66,6 +66,12 @@
 
             services.AddSingleton(Configuration);
             services.AddControllersWithViews(x => x.EnableEndpointRouting = false);
+            
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
+
             services.AddSession();
             services.AddResponseCaching();
             
@@ -138,20 +144,18 @@
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseForwardedHeaders();
             }
             else
             {
                 app.UseMiddleware<ErrorHandler>();
+                app.UseForwardedHeaders();
+                app.UseHsts();
             }
-
-            app.UseHsts();
+            
             app.UseStaticFiles();
             app.UseSession();
             app.UseResponseCaching();
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
 
             app.Use(async (ctx, next) =>
             {

@@ -44,11 +44,7 @@
 
             foreach (var row in drs)
             {
-                if (
-                    row.Bettype == Handicap
-                    || row.Bettype == OverUnder
-                    || row.Bettype == Handicap1H
-                    || row.Bettype == OverUnder1H)
+                if (ExistsMainBettype(row.Bettype))
                 {
                     param = new[]
                     {
@@ -85,6 +81,14 @@
             }
 
             return sb.ToString();
+        }
+
+        private static bool ExistsMainBettype(short bettype)
+        {
+            return bettype == Handicap
+                || bettype == OverUnder
+                || bettype == Handicap1H
+                || bettype == OverUnder1H;
         }
 
         public static string ToCSV_Odds_2(this IEnumerable<BetdaqOdd> drs, string separateRow)
