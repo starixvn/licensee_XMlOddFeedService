@@ -22,6 +22,7 @@
     using OddsFeed.Core;
     using OddsFeed.Core.Services;
     using OddsFeed.Services;
+    using OddsFeed.Services.Mapping;
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Core.Filters;
     using OddsFeed.WebService.Extensions;
@@ -114,6 +115,8 @@
             services.AddSingleton<IMatchFilter, MatchFilter>();
             services.AddSingleton<IOutrightFilter, OutrightFilter>();
 
+            services.AddSingleton<IMatchMapping, MatchMapping>();
+
             services.AddSingleton<IBetDaqService, BetDaqService>();
             services.AddSingleton<IBetRadarService, BetRadarService>();
             services.AddSingleton<IBetTypeService, BetTypeService>();
@@ -152,20 +155,14 @@
                 app.UseForwardedHeaders();
                 app.UseHsts();
             }
-            
+
+            app.UseStatusCodePagesWithReExecute("/Errors/{0}");
             app.UseStaticFiles();
             app.UseSession();
             app.UseResponseCaching();
 
             app.Use(async (ctx, next) =>
             {
-                const short PageNotFoundStatusCode = 404;
-                if (ctx.Response.StatusCode == PageNotFoundStatusCode)
-                {
-                    ctx.Request.Path = "/Errors/PageNotFound";
-                    await next();
-                }
-
                 ctx.Request.GetTypedHeaders().CacheControl = new CacheControlHeaderValue
                 {
                     Public = true,
@@ -180,7 +177,7 @@
             {
                 feedUrlPath = "/";
             }
-            
+
             app.RegisterXMLOddsfeedRoutes(feedUrlPath);
         }
     }

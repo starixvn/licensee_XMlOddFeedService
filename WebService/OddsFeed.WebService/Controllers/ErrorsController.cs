@@ -19,6 +19,8 @@
             return Content("General failure", "text/plain");
         }
 
+        [Route("Errors/404")]
+        [Route("Errors/PageNotFound")]
         public IActionResult PageNotFound()
         {
             return View();
