@@ -16,7 +16,6 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using OddsFeed.AutoJobs.Mapping;
     using OddsFeed.AutoJobs.Models;
     using OddsFeed.AutoJobs.Services;
     using OddsFeed.AutoJobs.Workers;
@@ -24,6 +23,7 @@
     using OddsFeed.Core.Configurations;
     using OddsFeed.Core.Services;
     using OddsFeed.Services;
+    using OddsFeed.Services.Mapping;
     using ONEbook.UM.AspNetCore;
     using ONEbook.UM.Configurations;
     using ONEbook.UM.Helpers;

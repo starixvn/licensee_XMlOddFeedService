@@ -2,6 +2,7 @@
 <Functions>
     <Function Name="XmlWebService">
         <Setting Key="Is_Odds_GetLiveOddsData" SpName="Is_Odds_GetLiveOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
+        <Setting Key="Is_Odds_GetLiveOddsData_Betradar" SpName="Is_Odds_GetLiveOddsData_Betradar" DbName="DBACC.bodb02.bodbAdminNet" />
         <Setting Key="Is_Odds_GetDeadballOddsData" SpName="Is_Odds_GetDeadballOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
         <Setting Key="Is_Odds_GetOutrightOddsData" SpName="Is_Odds_GetOutrightOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
         <Setting Key="Odds_PartnerCheckPermission" SpName="Odds_PartnerCheckPermission" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />

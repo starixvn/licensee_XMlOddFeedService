@@ -38,12 +38,8 @@
                 var tempMatches = matches.Where(m => matchFilter.FilterMatch(m, model)).ToList();
                 foreach (var match in tempMatches)
                 {
-                    var matchOddsList = match.MatchOddsList.Where(odds => matchFilter.FilterBetType(odds, model));
-
-                    if (matchOddsList.Any())
-                    {
-                        AppendMatchNode(oddsFeedNode, match, matchOddsList, userLanguage, model);
-                    }
+                    var matchOdds = match.MatchOddsList.Where(odds => matchFilter.FilterBetType(odds, model));
+                    AppendMatchNode(oddsFeedNode, match, matchOdds, userLanguage, model);
                 }
             }
         }
@@ -92,13 +88,24 @@
         private static void AppendMatchNode(
             StringBuilder oddsFeedNode,
             Match match,
-            IEnumerable<MatchOdds> matchOddsList,
+            IEnumerable<MatchOdds> matchOdds,
             UserLanguage userLanguage,
             OddsFeedsModel model)
         {
-            AppendBeginMatch(oddsFeedNode, match, userLanguage, model);
-            AppendBookieNode(oddsFeedNode, matchOddsList, model);
-            oddsFeedNode.Append("</match>");
+            if (!matchOdds.Any())
+            {
+                if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    AppendBeginMatch(oddsFeedNode, match, userLanguage, model);
+                    oddsFeedNode.Append("</match>");
+                }
+            }
+            else
+            {
+                AppendBeginMatch(oddsFeedNode, match, userLanguage, model);
+                AppendBookieNode(oddsFeedNode, matchOdds, model);
+                oddsFeedNode.Append("</match>");
+            }
         }
 
         private static void AppendMatchResultNode(

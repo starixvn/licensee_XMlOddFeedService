@@ -9,6 +9,7 @@
     using OddsFeed.Models.DTO;
     using OddsFeed.Models.Matches;
     using OddsFeed.Models.OddsData;
+    using OddsFeed.Services.Mapping;
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Core.Filters;
     using OddsFeed.WebService.Criteria;
@@ -20,6 +21,7 @@
         private const int OddsTypeLiveMatch = 4;
         private const int OddsTypeDeadBallMatch = 2;
 
+        private readonly IMatchMapping matchMapping;
         private readonly IMatchBuilder matchBuilder;
         private readonly IOutrightBuilder outrightBuilder;
         private readonly IMatchFilter matchFilter;
@@ -27,12 +29,14 @@
         private readonly IBaseService baseService;
 
         public OddsFeedService(
+            IMatchMapping matchMapping,
             IMatchBuilder matchBuilder,
             IOutrightBuilder outrightBuilder,
             IMatchFilter matchFilter,
             IFeedCachingOperator feedCachingOperator,
             IBaseService baseService)
         {
+            this.matchMapping = matchMapping;
             this.matchBuilder = matchBuilder;
             this.outrightBuilder = outrightBuilder;
             this.matchFilter = matchFilter;
@@ -47,6 +51,11 @@
             var isShownDeadMatch = IsShownDeadBallMatch(model.UserProfile);
 
             var oddsData = await feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
+            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase) && isShownLiveMatch)
+            {
+                oddsData.LiveMatches = await GetLiveMatchesForBetRadarAsync(oddsData.LiveMatches);
+            }
+
             var oddsFeedNode = new StringBuilder("<oddsfeed>");
 
             if (isShownOutright)
@@ -63,6 +72,23 @@
 
         public async Task<IEnumerable<Country>> GetCountryListAsync()
             => await baseService.GetDataAsync<Country>(new GetCountryListCriteria());
+        
+        private async Task<IList<Match>> GetLiveMatchesForBetRadarAsync(IList<Match> liveMatches)
+        {
+            var criteria = new GetLiveOddsForBetRadarCriteria();
+            var matchOdds = await baseService.GetDataAsync<MatchOddsData>(criteria);
+            foreach(var matchOdd in matchOdds)
+            {
+                if (!liveMatches.Any(x => x.MatchId == matchOdd.MatchID))
+                {
+                    var match = matchMapping.CreateMatch(matchOdd, false);
+                    match.MatchOddsList = new List<MatchOdds>();
+                    liveMatches.Add(match);
+                }
+            }
+
+            return liveMatches.OrderBy(x => x.MatchId).ToList();
+        }
 
         private void AppendMatches(
             StringBuilder oddsFeedNode,

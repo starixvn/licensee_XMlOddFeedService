@@ -1,8 +1,8 @@
-﻿namespace OddsFeed.AutoJobs.Mapping
+namespace OddsFeed.Services.Mapping
 {
     using System.Collections.Generic;
     using System.Linq;
-    using OddsFeed.AutoJobs.Models;
+    using OddsFeed.Models.OddsData;
     using OddsFeed.Models.Outright;
 
     public class OutrightMapping : IOutrightMapping

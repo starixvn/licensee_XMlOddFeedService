@@ -1,14 +1,14 @@
-﻿namespace OddsFeed.AutoJobs.Mapping
+namespace OddsFeed.Services.Mapping
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Reflection;
-    using OddsFeed.AutoJobs.Models;
     using OddsFeed.Core.Extensions;
     using OddsFeed.Models;
     using OddsFeed.Models.Matches;
+    using OddsFeed.Models.OddsData;
     using OddsFeed.Models.Oddsfeed;
 
     public class MatchMapping : IMatchMapping
@@ -45,7 +45,7 @@
             return matchList;
         }
 
-        private static Match CreateMatch(MatchOddsData row, bool isLive)
+        public Match CreateMatch(MatchOddsData row, bool isLive)
             => new Match
             {
                 MatchId = row.MatchID,

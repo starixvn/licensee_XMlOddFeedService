@@ -1,4 +1,4 @@
-﻿namespace OddsFeed.AutoJobs.Models
+namespace OddsFeed.Models.OddsData
 {
     using System;
 
