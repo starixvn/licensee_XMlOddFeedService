@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/OddsFeed.AutoJobs/bin/Debug/net7.0/OddsFeed.AutoJobs.dll",
+            "program": "${workspaceFolder}/OddsFeed.AutoJobs/bin/Debug/net8.0/OddsFeed.AutoJobs.dll",
             "args": [],
             "cwd": "${workspaceFolder}/OddsFeed.AutoJobs",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
@@ -26,7 +26,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/WebService/OddsFeed.WebService/bin/Debug/net7.0/OddsFeed.WebService.dll",
+            "program": "${workspaceFolder}/WebService/OddsFeed.WebService/bin/Debug/net8.0/OddsFeed.WebService.dll",
             "args": [],
             "cwd": "${workspaceFolder}/WebService/OddsFeed.WebService",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console

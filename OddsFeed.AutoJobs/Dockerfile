@@ -1,4 +1,4 @@
-FROM hub.nexdev.net/base/dotnet/core/sdk:7.0-alpine AS builder
+FROM hub.nexdev.net/base/dotnet/core/sdk:8.0-alpine AS builder
 
 WORKDIR /src
 
@@ -21,7 +21,7 @@ WORKDIR /src/OddsFeed.AutoJobs
 RUN --mount=type=cache,target=/root/.nuget/packages \
     dotnet publish -r linux-x64 --self-contained false -o /app
 
-FROM hub.nexdev.net/base/dotnet/core/aspnet:7.0-alpine AS base
+FROM hub.nexdev.net/base/dotnet/core/aspnet:8.0-alpine AS base
 
 # Don’t run as root
 RUN adduser --disabled-password \

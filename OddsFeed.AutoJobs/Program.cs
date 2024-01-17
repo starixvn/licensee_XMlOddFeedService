@@ -3,13 +3,14 @@
     using System;
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
+    using NLog;
     using NLog.Web;
 
     public static class Program
     {
         public static void Main(string[] args)
         {
-            var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
             try
             {
                 logger.Info("Application start.");
@@ -22,7 +23,7 @@
             }
             finally
             {
-                NLog.LogManager.Shutdown();
+                LogManager.Shutdown();
             }
         }
 
