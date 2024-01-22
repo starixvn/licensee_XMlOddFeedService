@@ -40,20 +40,17 @@
             var isShownDeadMatch = IsShownDeadBallMatch(model.UserProfile);
             OddsData oddsData = feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
 
-            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase) && isShownLiveMatch)
+            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase))
             {
-                var matches = oddsDataService.GetLiveMatchesForBetRadar();
-                foreach(var match in matches)
+                if (isShownLiveMatch)
                 {
-                    if(!oddsData.LiveMatches.Any(x => x.MatchId == match.MatchId))
-                    {
-                        oddsData.LiveMatches.Add(match);
-                    }
-
-                    oddsData.LiveMatches = oddsData.LiveMatches.OrderBy(x => x.MatchId).ToList();
+                    oddsData.LiveMatches = GetLiveMatchesForBetRadar(oddsData.LiveMatches);
                 }
 
-                oddsData.LiveMatches = oddsData.LiveMatches.Where(x => !x.LeagueEn.ToLowerInvariant().Contains("fantasy")).ToList();
+                if (isShownDeadMatch)
+                {
+                    oddsData.DeadballMatches = oddsData.DeadballMatches.Where(x => !x.LeagueEn.ToLowerInvariant().Contains("fantasy")).ToList();
+                }
             }
 
             var oddsFeedNode = new StringBuilder("<oddsfeed>");
@@ -68,6 +65,22 @@
             oddsFeedNode.Append("</oddsfeed>");
 
             return oddsFeedNode.ToString();
+        }
+
+        private IList<Match> GetLiveMatchesForBetRadar(IList<Match> liveMatches)
+        {
+            var matches = oddsDataService.GetLiveMatchesForBetRadar();
+            foreach (var match in matches)
+            {
+                if (!liveMatches.Any(x => x.MatchId == match.MatchId))
+                {
+                    liveMatches.Add(match);
+                }
+            }
+
+            liveMatches = liveMatches.Where(x => !x.LeagueEn.ToLowerInvariant().Contains("fantasy")).ToList();
+
+            return liveMatches.OrderBy(x => x.MatchId).ToList();
         }
 
         private void AppendMatches(
