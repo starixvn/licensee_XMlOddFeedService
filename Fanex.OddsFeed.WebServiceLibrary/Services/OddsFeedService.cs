@@ -52,6 +52,8 @@
 
                     oddsData.LiveMatches = oddsData.LiveMatches.OrderBy(x => x.MatchId).ToList();
                 }
+
+                oddsData.LiveMatches = oddsData.LiveMatches.Where(x => !x.LeagueEn.ToLowerInvariant().Contains("fantasy")).ToList();
             }
 
             var oddsFeedNode = new StringBuilder("<oddsfeed>");
