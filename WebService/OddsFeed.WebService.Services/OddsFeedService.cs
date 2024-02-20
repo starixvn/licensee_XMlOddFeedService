@@ -51,9 +51,17 @@
             var isShownDeadMatch = IsShownDeadBallMatch(model.UserProfile);
 
             var oddsData = await feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
-            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase) && isShownLiveMatch)
+            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.InvariantCultureIgnoreCase))
             {
-                oddsData.LiveMatches = await GetLiveMatchesForBetRadarAsync(oddsData.LiveMatches);
+                if(isShownLiveMatch)
+                {
+                    oddsData.LiveMatches = await GetLiveMatchesForBetRadarAsync(oddsData.LiveMatches);
+                }
+
+                if (isShownDeadMatch)
+                {
+                    oddsData.DeadballMatches = ExcludeFantasyLeague(oddsData.DeadballMatches).ToList();
+                }
             }
 
             var oddsFeedNode = new StringBuilder("<oddsfeed>");
@@ -87,8 +95,11 @@
                 }
             }
 
-            return liveMatches.OrderBy(x => x.MatchId).ToList();
+            return ExcludeFantasyLeague(liveMatches).OrderBy(x => x.MatchId).ToList();
         }
+
+        private static IList<Match> ExcludeFantasyLeague(IList<Match> matches)
+            => matches.Where(x => !x.LeagueEn.Contains("fantasy", StringComparison.InvariantCultureIgnoreCase)).ToList();
 
         private void AppendMatches(
             StringBuilder oddsFeedNode,
