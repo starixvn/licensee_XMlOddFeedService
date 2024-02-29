@@ -7,7 +7,7 @@
     {
         public static string GetClientIpAddress(HttpContext httpContext)
         {
-            var clientIp = httpContext.Request.Headers["X_FORWARDED_FOR"].ToString();
+            var clientIp = httpContext.Request.Headers["x-forwarded-for"].ToString();
             if (string.IsNullOrEmpty(clientIp))
             {
                 clientIp = httpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
@@ -16,7 +16,7 @@
             {
                 var forwardedIps = clientIp.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-                clientIp = forwardedIps[forwardedIps.Length - 1];
+                clientIp = forwardedIps[0];
             }
 
             if (string.Equals(clientIp, "::1"))

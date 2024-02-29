@@ -144,15 +144,15 @@
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseForwardedHeaders();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseForwardedHeaders();
             }
             else
             {
                 app.UseMiddleware<ErrorHandler>();
-                app.UseForwardedHeaders();
                 app.UseHsts();
             }
 
