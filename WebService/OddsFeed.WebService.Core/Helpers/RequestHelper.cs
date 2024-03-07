@@ -32,11 +32,15 @@
             return clientIp;
         }
 
-        public static string DomainName(HttpContext httpContext) => $"{httpContext.Request.Scheme}://{httpContext.Request.Host.Value}";
+        public static string DomainName(HttpContext httpContext)
+        {
+            var protocol = httpContext.Request.Headers["x-forwarded-proto"].ToString();
+            return string.Format("{0}://{1}", !string.IsNullOrWhiteSpace(protocol) ? protocol : httpContext.Request.Scheme, httpContext.Request.Host.Value);
+        }
 
         public static string FullDomainName(HttpContext httpContext)
         {
-            var fulldomain = $"{httpContext.Request.Scheme}://{httpContext.Request.Host.Value}";
+            var fulldomain = DomainName(httpContext);
             fulldomain += httpContext.Request.PathBase.Value == "/" ? string.Empty : httpContext.Request.PathBase.Value;
             return fulldomain;
         }
