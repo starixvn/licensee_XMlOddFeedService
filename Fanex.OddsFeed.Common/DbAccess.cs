@@ -20,6 +20,14 @@
             }
         }
 
+        public static DataSet GetLiveOddsDataForBetRadar(GetLiveOddsForBetRadarCriteria criteria)
+        {
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            {
+                return db.ExecuteDataSet(criteria.GetSpParams());
+            }
+        }
+
         public static DataSet GetDeadballOddsData()
         {
             var criteria = new GetDeadballOddsDataCriteria();

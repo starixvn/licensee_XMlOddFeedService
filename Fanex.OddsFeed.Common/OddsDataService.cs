@@ -49,7 +49,7 @@
             {
                 SportIDList = sportIds
             };
-            using (var liveOdds = DbAccess.GetLiveOddsData(criteria))
+            using (var liveOdds = DbAccess.GetLiveOddsDataForBetRadar(criteria))
             {
                 var liveTables = liveOdds.Tables[0].Copy();
 
