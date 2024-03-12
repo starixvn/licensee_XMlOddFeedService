@@ -11,6 +11,7 @@
     using Fanex.OddsFeed.WebServiceLibrary.Caching;
     using Fanex.OddsFeed.WebServiceLibrary.Filters;
     using Fanex.OddsFeed.WebServiceLibrary.Models;
+    using Fanex.OddsFeed.WebServiceLibrary.Repositories;
 
     public class OddsFeedService : IOddsFeedService
     {
@@ -23,6 +24,7 @@
         private readonly IFeedCachingOperator feedCachingOperator;
         private readonly IMatchFilter matchFilter;
         private readonly IOddsDataService oddsDataService;
+        private readonly IUserRepository userRepository;
 
         public OddsFeedService()
         {
@@ -31,6 +33,7 @@
             feedCachingOperator = new FeedCachingOperator();
             matchFilter = new MatchFilter();
             oddsDataService = new OddsDataService();
+            userRepository = new UserRepository();
         }
 
         public string BuildXmlDocument(OddsFeedsModel model)
@@ -69,7 +72,9 @@
 
         private IList<Match> GetLiveMatchesForBetRadar(IList<Match> liveMatches)
         {
-            var matches = oddsDataService.GetLiveMatchesForBetRadar();
+            var sports = userRepository.GetSports("betradar");
+            var sportIds = string.Join(",", sports.Select(x => x.SportId));
+            var matches = oddsDataService.GetLiveMatchesForBetRadar(sportIds);
             foreach (var match in matches)
             {
                 if (!liveMatches.Any(x => x.MatchId == match.MatchId))

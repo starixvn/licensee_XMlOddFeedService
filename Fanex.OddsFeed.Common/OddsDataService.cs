@@ -13,7 +13,7 @@
     {
         IList<Match> GetLiveMatches(IList<BetTypeSchema> betTypeSchemas);
 
-        IList<Match> GetLiveMatchesForBetRadar();
+        IList<Match> GetLiveMatchesForBetRadar(string sportIds = null);
 
         IList<Match> GetDeadballMatches(IList<BetTypeSchema> betTypeSchemas);
 
@@ -43,9 +43,12 @@
             }
         }
 
-        public IList<Match> GetLiveMatchesForBetRadar()
+        public IList<Match> GetLiveMatchesForBetRadar(string sportIds = null)
         {
-            var criteria = new GetLiveOddsForBetRadarCriteria();
+            var criteria = new GetLiveOddsForBetRadarCriteria
+            {
+                SportIDList = sportIds
+            };
             using (var liveOdds = DbAccess.GetLiveOddsData(criteria))
             {
                 var liveTables = liveOdds.Tables[0].Copy();
