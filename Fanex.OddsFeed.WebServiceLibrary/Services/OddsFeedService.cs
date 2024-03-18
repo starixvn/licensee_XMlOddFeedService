@@ -228,7 +228,8 @@
 
         private void WriteLogRequestOdds(OddsFeedsModel model, OddsData oddsData, DateTime startTime)
         {
-            var matchIds = string.Join(",", oddsData.LiveMatches.Select(x => x.MatchId));
+            var tempMatches = oddsData.LiveMatches.Where(m => matchFilter.FilterMatch(m, model)).ToList();
+            var matchIds = string.Join(",", tempMatches.Select(x => x.MatchId));
             var endTime = DateTimeOffset.Now.DateTime;
             var duration = (endTime - startTime).TotalSeconds;
             var criteria = new WriteLogRequestOddsCriteria
