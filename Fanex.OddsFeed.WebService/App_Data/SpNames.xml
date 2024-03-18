@@ -97,4 +97,7 @@
             <Mapping DataField="SportName" ObjectProperty="SportName" />
         </Setting>
     </Function>
+    <Function Name="Log">
+        <Setting Key="Odds_WriteLog_UserLog_RunSP" SpName="Odds_WriteLog_UserLog_RunSP_xpre" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+    </Function>
 </Functions>

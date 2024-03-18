@@ -20,5 +20,7 @@
         public string Username { get; set; }
 
         public DateTime? Date { get; set; }
+
+        public string IP { get; set; }
     }
 }

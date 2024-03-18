@@ -15,5 +15,7 @@
         IEnumerable<PartnerLeague> GetPartnerLeagues(GetPartnerLeagueCriteria criteria);
 
         IEnumerable<PartnerSport> GetPartnerSports(GetPartnerSportTypeCriteria criteria);
+
+        void WriteLogRequestOdds(WriteLogRequestOddsCriteria criteria);
     }
 }

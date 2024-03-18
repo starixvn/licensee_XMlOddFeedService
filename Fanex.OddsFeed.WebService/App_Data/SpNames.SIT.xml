@@ -96,4 +96,7 @@
             <Mapping DataField="leaguenameHi" ObjectProperty="NameHindi" />
         </Setting>
     </Function>
+    <Function Name="Log">
+        <Setting Key="Odds_WriteLog_UserLog_RunSP" SpName="Odds_WriteLog_UserLog_RunSP" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+    </Function>
 </Functions>

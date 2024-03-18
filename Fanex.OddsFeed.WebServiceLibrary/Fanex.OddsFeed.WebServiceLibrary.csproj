@@ -160,6 +160,7 @@
     <Compile Include="Caching\FeedCachingOperator.cs" />
     <Compile Include="Caching\RateLimitService.cs" />
     <Compile Include="Caching\VersionCaching.cs" />
+    <Compile Include="Criteria\WriteLogRequestOddsCriteria.cs" />
     <Compile Include="Criteria\WriteLogRequestAccessCriteria.cs" />
     <Compile Include="Criteria\CheckPermissionCriteria.cs" />
     <Compile Include="Criteria\GetBetTypeByUserNameCriteria.cs" />

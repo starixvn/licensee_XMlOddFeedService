@@ -1,10 +1,10 @@
 ﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.UnitTests.Mapping
 {
-    using NUnit.Framework;
     using System;
     using System.Data;
     using System.Linq;
-    using WindowsServiceLibrary.Mapping;
+    using Fanex.OddsFeed.Common.Mapping;
+    using NUnit.Framework;
 
     [TestFixture]
     public class OutrightMappingTest

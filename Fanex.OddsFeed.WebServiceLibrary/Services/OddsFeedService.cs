@@ -5,10 +5,14 @@
     using System.Data;
     using System.Linq;
     using System.Text;
+    using System.Threading;
+    using Fanex.Logging;
     using Fanex.OddsFeed.Common;
     using Fanex.OddsFeed.Common.DTO;
+    using Fanex.OddsFeed.Common.Helpers;
     using Fanex.OddsFeed.WebServiceLibrary.Builders;
     using Fanex.OddsFeed.WebServiceLibrary.Caching;
+    using Fanex.OddsFeed.WebServiceLibrary.Criteria;
     using Fanex.OddsFeed.WebServiceLibrary.Filters;
     using Fanex.OddsFeed.WebServiceLibrary.Models;
     using Fanex.OddsFeed.WebServiceLibrary.Repositories;
@@ -25,6 +29,7 @@
         private readonly IMatchFilter matchFilter;
         private readonly IOddsDataService oddsDataService;
         private readonly IUserRepository userRepository;
+        private readonly IPartnerRepository partnerRepository;
 
         public OddsFeedService()
         {
@@ -34,16 +39,18 @@
             matchFilter = new MatchFilter();
             oddsDataService = new OddsDataService();
             userRepository = new UserRepository();
+            partnerRepository = new PartnerRepository();
         }
 
         public string BuildXmlDocument(OddsFeedsModel model)
         {
+            var startTime = DateTimeOffset.Now.DateTime;
             var isShownOutright = IsShownOutright(model);
             var isShownLiveMatch = IsShownLiveMatch(model.UserProfile);
             var isShownDeadMatch = IsShownDeadBallMatch(model.UserProfile);
             OddsData oddsData = feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
 
-            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase))
+            if (StringHelper.Equals(model.Username, Constants.BetRadarUsername))
             {
                 if (isShownLiveMatch)
                 {
@@ -67,12 +74,17 @@
 
             oddsFeedNode.Append("</oddsfeed>");
 
+            if (StringHelper.Equals(model.Username, Constants.BetRadarUsername))
+            {
+                WriteLogRequestOdds(model, oddsData, startTime);
+            }
+
             return oddsFeedNode.ToString();
         }
 
         private IList<Match> GetLiveMatchesForBetRadar(IList<Match> liveMatches)
         {
-            var sports = userRepository.GetSports("betradar");
+            var sports = userRepository.GetSports(Constants.BetRadarUsername);
             var sportIds = string.Join(",", sports.Select(x => x.SportId));
             var matches = oddsDataService.GetLiveMatchesForBetRadar(sportIds);
             foreach (var match in matches)
@@ -212,6 +224,35 @@
             }
 
             return oddsTypeName;
+        }
+
+        private void WriteLogRequestOdds(OddsFeedsModel model, OddsData oddsData, DateTime startTime)
+        {
+            var matchIds = string.Join(",", oddsData.LiveMatches.Select(x => x.MatchId));
+            var endTime = DateTimeOffset.Now.DateTime;
+            var duration = (endTime - startTime).TotalSeconds;
+            var criteria = new WriteLogRequestOddsCriteria
+            {
+                Username = model.Username,
+                MatchIds = matchIds,
+                IP = model.IP,
+                Duration = (int)duration,
+                ExecutionTime = startTime
+            };
+            var thread = new Thread(() => WriteLogRequestOdds(criteria));
+            thread.Start();
+        }
+
+        private void WriteLogRequestOdds(WriteLogRequestOddsCriteria criteria)
+        {
+            try
+            {
+                partnerRepository.WriteLogRequestOdds(criteria);
+            }
+            catch (Exception ex)
+            {
+                LogService.Error(ex.Message, ex);
+            }
         }
     }
 }

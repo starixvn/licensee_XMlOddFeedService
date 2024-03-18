@@ -1,14 +1,14 @@
 ﻿namespace Fanex.OddsFeed.WindowsServiceLibrary.UnitTests.Mapping
 {
-    using Common.Converters;
-    using Common.DTO;
-    using Common.Schemas;
-    using NUnit.Framework;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
-    using WindowsServiceLibrary.Mapping;
+    using Common.Converters;
+    using Common.DTO;
+    using Common.Schemas;
+    using Fanex.OddsFeed.Common.Mapping;
+    using NUnit.Framework;
 
     [TestFixture]
     public class MatchMappingTest

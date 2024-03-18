@@ -9,6 +9,7 @@
     using Common.Converters;
     using Common.DTO;
     using Common.Helpers;
+    using Fanex.OddsFeed.Common;
     using Fanex.OddsFeed.Common.Configurations;
     using Filters;
     using Models;
@@ -112,7 +113,7 @@
             OddsFeedsModel model,
             bool isLiveMatch = false)
         {
-            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase) && isLiveMatch)
+            if (StringHelper.Equals(model.Username, Constants.BetRadarUsername) && isLiveMatch)
             {
                 AppendBeginMatch(oddsFeedNode, match, userLanguage, model);
                 oddsFeedNode.Append("</match>");

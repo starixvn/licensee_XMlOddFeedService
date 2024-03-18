@@ -60,7 +60,8 @@
                         UserProfile = authenticatedPartner.UserProfile,
                         UserQuery = userQuery,
                         Timestamp = Convert.ToInt32(timestamp),
-                        Username = username
+                        Username = username,
+                        IP = ipAddress
                     }));
             }
             catch (Exception ex)

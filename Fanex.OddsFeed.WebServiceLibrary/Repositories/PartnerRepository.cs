@@ -63,6 +63,14 @@
             return GetListOf<PartnerSport>(criteria);
         }
 
+        public void WriteLogRequestOdds(WriteLogRequestOddsCriteria criteria)
+        {
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            {
+                _ = db.ExecuteNonQuery(criteria.GetSpParams());
+            }
+        }
+
         private static Hashtable GetInputParams(ICriteria criteria)
         {
             var inputParams = criteria.GetSpParams();

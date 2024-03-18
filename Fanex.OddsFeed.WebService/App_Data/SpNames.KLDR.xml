@@ -2,6 +2,7 @@
 <Functions>
     <Function Name="XmlWebService">
         <Setting Key="Is_Odds_GetLiveOddsData" SpName="Is_Odds_GetLiveOddsData" DbName="DBACC.bodb02.wsv_nap" />
+        <Setting Key="Is_Odds_GetLiveOddsData_Betradar" SpName="Is_Odds_GetLiveOddsData_Betradar" DbName="DBACC.bodb02.wsv_nap" />
         <Setting Key="Is_Odds_GetDeadballOddsData" SpName="Is_Odds_GetDeadballOddsData" DbName="DBACC.bodb02.wsv_nap" />
         <Setting Key="Is_Odds_GetOutrightOddsData" SpName="Is_Odds_GetOutrightOddsData" DbName="DBACC.bodb02.wsv_nap" />
         <Setting Key="Odds_PartnerCheckPermission" SpName="Odds_PartnerCheckPermission" DbName="DBODDSFEED.bodb_OddsFeed.wsv_nap" />
@@ -12,14 +13,8 @@
         <Setting Key="Odds_ContactEmailSelByUserName" SpName="Odds_ContactEmailSelByUserName" DbName="DBODDSFEED.bodb_OddsFeed.wsv_nap" />
         <Setting Key="Odds_GetCountryList" SpName="Odds_GetCountryList" DbName="DBODDSFEED.bodb_OddsFeed.wsv_nap" />
 
-        <!-- Betdaq schedule text feed -->
-        <Setting Key="Portal_BetDaq_Schedule" SpName="dbo.Portal_BetDaq_Schedule" DbName="DBPRO.bodb02.portal" />
-        <!--Insert betdaq for testing account (member10)-->
-        <!--<add key="SP.InsertBetDaq" value="Portal_BetDaq_InsertBet_V2"/>-->
-        <!--
-      Portal_BetDaq_InsertBet:    Insert betdaq for real account
-      Portal_BetDaq_InsertBet_V2: Insert betdaq for testing account (member10)
-    -->
+        <!-- Betdaq feed -->
+        <Setting Key="Portal_BetDaq_Schedule" SpName="Portal_BetDaq_Schedule" DbName="DBPRO.bodb02.portal" />
         <Setting Key="SP.InsertBetDaq" SpName="Portal_BetDaq_InsertBet" DbName="DBPRO.bodb02.portal" />
         <Setting Key="SP.GetOddsFeed" SpName="Portal_BetDaq_Odds_V2" DbName="DBPRO.bodb02.portal" />
         <Setting Key="SP.GetOddsFeed_2" SpName="Portal_BetDaq_Odds_2_V2" DbName="DBPRO.bodb02.portal" />
@@ -101,5 +96,8 @@
             <Mapping DataField="leaguenameJp" ObjectProperty="NameJapanese" />
             <Mapping DataField="leaguenameHi" ObjectProperty="NameHindi" />
         </Setting>
+    </Function>
+    <Function Name="Log">
+        <Setting Key="Odds_WriteLog_UserLog_RunSP" SpName="Odds_WriteLog_UserLog_RunSP" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
     </Function>
 </Functions>
