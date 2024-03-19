@@ -97,6 +97,6 @@
         </Setting>
     </Function>
     <Function Name="Log">
-        <Setting Key="Odds_WriteLog_UserLog_RunSP" SpName="Odds_WriteLog_UserLog_RunSP" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" />
+        <Setting Key="Odds_WriteLog_UserLog_RunSP" SpName="Odds_WriteLog_UserLog_RunSP" DbName="DBODDSFEED.bodb_OddsFeed.wsv_nap" />
     </Function>
 </Functions>
