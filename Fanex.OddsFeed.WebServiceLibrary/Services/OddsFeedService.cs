@@ -19,10 +19,6 @@
 
     public class OddsFeedService : IOddsFeedService
     {
-        private const int OddsTypeOutRight = 8;
-        private const int OddsTypeLiveMatch = 4;
-        private const int OddsTypeDeadBallMatch = 2;
-
         private readonly IMatchBuilder matchBuilder;
         private readonly IOutrightBuilder outrightBuilder;
         private readonly IFeedCachingOperator feedCachingOperator;
@@ -45,19 +41,16 @@
         public string BuildXmlDocument(OddsFeedsModel model)
         {
             var startTime = DateTimeOffset.Now.DateTime;
-            var isShownOutright = IsShownOutright(model);
-            var isShownLiveMatch = IsShownLiveMatch(model.UserProfile);
-            var isShownDeadMatch = IsShownDeadBallMatch(model.UserProfile);
-            OddsData oddsData = feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
+            OddsData oddsData = feedCachingOperator.GetOddsData(model, model.IsShownOutright, model.IsShownLiveMatch, model.IsShownDeadMatch);
 
             if (StringHelper.Equals(model.Username, Constants.BetRadarUsername))
             {
-                if (isShownLiveMatch)
+                if (model.IsShownLiveMatch)
                 {
                     oddsData.LiveMatches = GetLiveMatchesForBetRadar(oddsData.LiveMatches);
                 }
 
-                if (isShownDeadMatch)
+                if (model.IsShownDeadMatch)
                 {
                     oddsData.DeadballMatches = oddsData.DeadballMatches.Where(x => !x.LeagueEn.ToLowerInvariant().Contains("fantasy")).ToList();
                 }
@@ -65,7 +58,7 @@
 
             var oddsFeedNode = new StringBuilder("<oddsfeed>");
 
-            if (isShownOutright)
+            if (model.IsShownOutright)
             {
                 outrightBuilder.AppendOutrightsNode(oddsFeedNode, oddsData.Outrights, model);
             }
@@ -146,21 +139,6 @@
             return matchOddsFilter.Any() ? matchOddsFilter.Max(o => o.Timestamp) : 0;
         }
 
-        private static bool IsShownOutright(OddsFeedsModel model)
-        {
-            return model.UserProfile.OddsType.Contains(OddsTypeOutRight) && (!model.IsSample || model.IsOutright);
-        }
-
-        private static bool IsShownLiveMatch(UserProfile userProfile)
-        {
-            return userProfile.OddsType != null && userProfile.OddsType.Contains(OddsTypeLiveMatch);
-        }
-
-        private static bool IsShownDeadBallMatch(UserProfile userProfile)
-        {
-            return userProfile.OddsType != null && userProfile.OddsType.Contains(OddsTypeDeadBallMatch);
-        }
-
         private static DateTime GetLastUpdate()
         {
             const int addHour = 12;
@@ -228,14 +206,27 @@
 
         private void WriteLogRequestOdds(OddsFeedsModel model, OddsData oddsData, DateTime startTime)
         {
-            var tempMatches = oddsData.LiveMatches.Where(m => matchFilter.FilterMatch(m, model)).ToList();
-            var matchIds = string.Join(",", tempMatches.Select(x => x.MatchId));
+            var matchIds = new List<int>();
+
+            if (model.IsShownLiveMatch)
+            {
+                var liveMatches = oddsData.LiveMatches.Where(m => matchFilter.FilterMatch(m, model)).Select(m => m.MatchId).ToList();
+                matchIds.AddRange(liveMatches);
+            }
+
+            if (model.IsShownDeadMatch)
+            {
+                var deadballMatches = oddsData.DeadballMatches.Where(m => matchFilter.FilterMatch(m, model)
+                    && m.MatchOddsList.Any(odds => matchFilter.FilterBetType(odds, model))).Select(m => m.MatchId).ToList();
+                matchIds.AddRange(deadballMatches);
+            }
+
             var endTime = DateTimeOffset.Now.DateTime;
             var duration = (endTime - startTime).TotalSeconds;
             var criteria = new WriteLogRequestOddsCriteria
             {
                 Username = model.Username,
-                MatchIds = matchIds,
+                MatchIds = string.Join(",", matchIds),
                 IP = model.IP,
                 Duration = (int)duration,
                 ExecutionTime = startTime

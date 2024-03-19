@@ -1,6 +1,7 @@
 ﻿namespace Fanex.OddsFeed.WebServiceLibrary.Models
 {
     using System;
+    using Fanex.OddsFeed.Common;
     using Fanex.OddsFeed.Common.DTO;
 
     public class OddsFeedsModel
@@ -22,5 +23,14 @@
         public DateTime? Date { get; set; }
 
         public string IP { get; set; }
+
+        public bool IsShownOutright
+            => UserProfile != null && UserProfile.OddsType.Contains(Constants.OddsTypeOutRight) && (!IsSample || IsOutright);
+
+        public bool IsShownLiveMatch
+            => UserProfile != null && UserProfile.OddsType.Contains(Constants.OddsTypeLiveMatch);
+
+        public bool IsShownDeadMatch
+            => UserProfile != null && UserProfile.OddsType.Contains(Constants.OddsTypeDeadBallMatch);
     }
 }
