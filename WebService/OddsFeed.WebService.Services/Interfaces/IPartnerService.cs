@@ -1,4 +1,4 @@
-﻿namespace OddsFeed.WebService.Services.Interfaces
+﻿namespace OddsFeed.WebService.Services
 {
     using System.Threading.Tasks;
     using OddsFeed.Models.DTO;
@@ -6,11 +6,11 @@
 
     public interface IPartnerService
     {
-        Task<string> GetBetTypesXmlContent(string username, UserProfile userProfile);
+        Task<string> GetBetTypesXmlContentAsync(string username, UserProfile userProfile);
 
-        Task<string> GetLeaguesXmlContent(string username, UserProfile userProfile);
+        Task<string> GetLeaguesXmlContentAsync(string username, UserProfile userProfile);
 
-        Task<string> GetSportsXmlContent(string username, UserProfile userProfile);
+        Task<string> GetSportsXmlContentAsync(string username, UserProfile userProfile);
 
         Task<AuthenticatedPartner> GetAuthenticatedPartnerAsync(CheckPermissionCriteria criteria);
     }

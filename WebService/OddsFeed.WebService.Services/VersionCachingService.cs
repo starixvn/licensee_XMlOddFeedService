@@ -6,7 +6,6 @@
     using OddsFeed.Models.DTO;
     using OddsFeed.WebService.Models;
     using OddsFeed.WebService.Models.Cache;
-    using OddsFeed.WebService.Services.Interfaces;
 
     public class VersionCachingService : IVersionCachingService
     {

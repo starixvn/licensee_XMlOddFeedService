@@ -10,7 +10,6 @@
     using OddsFeed.Services;
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Criteria;
-    using OddsFeed.WebService.Services.Interfaces;
 
     public class ResultFeedService : IResultFeedService
     {
@@ -28,7 +27,7 @@
             this.resultFeedDataService = resultFeedDataService;
         }
 
-        public async Task<string> BuildXmlDocument(OddsFeedsModel model)
+        public async Task<string> BuildXmlDocumentAsync(OddsFeedsModel model)
         {
             IList<Match> matches;
             if (model.Date.HasValue)
@@ -44,7 +43,7 @@
             }
             else
             {
-                matches = await feedCachingOperator.GetMatchResultDetails(model.UserProfile.ResultDelayTimes);
+                matches = await feedCachingOperator.GetMatchResultDetailAsync(model.UserProfile.ResultDelayTimes);
             }
 
             var xmlnode = new StringBuilder("<resultsfeed>");

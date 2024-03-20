@@ -6,7 +6,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using OddsFeed.Core.Services;
     using OddsFeed.Models.DTO;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Services;
 
     public class LeagueController : BaseController
     {
@@ -39,7 +39,7 @@
 
         private async Task<string> GetLeagues(string userName, UserProfile userProfile)
         {
-            var leagues = await partnerService.GetLeaguesXmlContent(userName, userProfile);
+            var leagues = await partnerService.GetLeaguesXmlContentAsync(userName, userProfile);
             return leagues;
         }
     }

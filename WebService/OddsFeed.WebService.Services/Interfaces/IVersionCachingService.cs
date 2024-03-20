@@ -1,4 +1,4 @@
-﻿namespace OddsFeed.WebService.Services.Interfaces
+﻿namespace OddsFeed.WebService.Services
 {
     using OddsFeed.Models.DTO;
     using OddsFeed.WebService.Models.Cache;

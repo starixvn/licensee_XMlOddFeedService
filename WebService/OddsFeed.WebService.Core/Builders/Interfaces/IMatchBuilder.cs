@@ -11,7 +11,8 @@
         void AppendMatchNodes(
             StringBuilder oddsFeedNode,
             IList<Match> matches,
-            OddsFeedsModel model);
+            OddsFeedsModel model,
+            bool isLiveMatch = false);
 
         void AppendMatchResultNodes(
             StringBuilder xmlnode,

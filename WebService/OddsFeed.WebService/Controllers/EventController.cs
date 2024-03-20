@@ -6,7 +6,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using OddsFeed.WebService.Builders;
     using OddsFeed.WebService.Extensions;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Services;
 
     public class EventController : BaseController
     {
@@ -38,7 +38,7 @@
 
             if (string.IsNullOrEmpty(authenticatedPartner.Error) || isSample)
             {
-                return await eventFeedService.BuildXmlEvent(authenticatedPartner.UserProfile, isSample, outrights);
+                return await eventFeedService.BuildXmlEventAsync(authenticatedPartner.UserProfile, isSample, outrights);
             }
 
             return authenticatedPartner.Error;

@@ -9,7 +9,6 @@
     using OddsFeed.Models.OddsData;
     using OddsFeed.Models.Outright;
     using OddsFeed.WebService.Models;
-    using OddsFeed.WebService.Services.Interfaces;
 
     public class FeedCachingOperator : IFeedCachingOperator
     {
@@ -24,7 +23,7 @@
             this.redisCacheService = redisCacheService;
         }
 
-        public async Task<OddsData> GetOddsData(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch)
+        public async Task<OddsData> GetOddsDataAsync(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch)
         {
             var cacheVersion = versionCachingService.GetRightVersionOddsFeed(model.UserProfile);
 
@@ -55,10 +54,10 @@
             };
         }
 
-        public async Task<IList<BetTypeSchema>> GetBetTypes()
+        public async Task<IList<BetTypeSchema>> GetBetTypeAsync()
             => await Get<BetTypeSchema>(webSettings.Bucket.OddsFeed, webSettings.BetTypeSchemaKey);
 
-        public async Task<IList<Match>> GetMatchResultDetails(int delayTimes)
+        public async Task<IList<Match>> GetMatchResultDetailAsync(int delayTimes)
         {
             var cacheVersion = versionCachingService.GetRightVersionResultFeed(delayTimes);
             return await Get<Match>(webSettings.ResultFeed.BucketData, cacheVersion.ToString());

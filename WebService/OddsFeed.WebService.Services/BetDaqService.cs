@@ -6,7 +6,6 @@
     using OddsFeed.WebService.Criteria.BetDaq;
     using OddsFeed.WebService.Models;
     using OddsFeed.WebService.Models.Betdaq;
-    using OddsFeed.WebService.Services.Interfaces;
 
     public class BetDaqService : IBetDaqService
     {

@@ -12,7 +12,7 @@
     using OddsFeed.WebService.Criteria;
     using OddsFeed.WebService.Extensions;
     using OddsFeed.WebService.Filters;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Services;
     using ONEbook.UM.Models;
     using ONEbook.UM.Services;
 

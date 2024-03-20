@@ -1,10 +1,10 @@
-﻿namespace OddsFeed.WebService.Services.Interfaces
+﻿namespace OddsFeed.WebService.Services
 {
     using System.Threading.Tasks;
     using OddsFeed.Models.DTO;
 
     public interface IEventFeedService
     {
-        Task<string> BuildXmlEvent(UserProfile userProfile, bool isSample = false, bool isOutright = true);
+        Task<string> BuildXmlEventAsync(UserProfile userProfile, bool isSample = false, bool isOutright = true);
     }
 }

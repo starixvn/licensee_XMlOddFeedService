@@ -1,6 +1,7 @@
 ﻿namespace OddsFeed.Models.OddsData
 {
     using System;
+    using OddsFeed.Core;
     using OddsFeed.Models.DTO;
 
     public class OddsFeedsModel
@@ -20,5 +21,15 @@
         public string Username { get; set; }
 
         public DateTime? Date { get; set; }
+        public string IP { get; set; }
+
+        public bool IsShownOutright
+            => UserProfile != null && UserProfile.OddsType.Contains(Constants.OddsTypeOutRight) && (!IsSample || IsOutright);
+
+        public bool IsShownLiveMatch
+            => UserProfile != null && UserProfile.OddsType.Contains(Constants.OddsTypeLiveMatch);
+
+        public bool IsShownDeadMatch
+            => UserProfile != null && UserProfile.OddsType.Contains(Constants.OddsTypeDeadBallMatch);
     }
 }

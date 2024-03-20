@@ -5,7 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
     using OddsFeed.Models.DTO;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Services;
 
     public class SportController : BaseController
     {
@@ -38,7 +38,7 @@
 
         protected async Task<string> GetSports(string userName, UserProfile userProfile)
         {
-            var sports = await partnerService.GetSportsXmlContent(userName, userProfile);
+            var sports = await partnerService.GetSportsXmlContentAsync(userName, userProfile);
             return sports;
         }
     }

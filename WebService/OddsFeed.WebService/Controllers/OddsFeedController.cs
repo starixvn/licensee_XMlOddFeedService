@@ -19,7 +19,7 @@
     using OddsFeed.WebService.Builders;
     using OddsFeed.WebService.Extensions;
     using OddsFeed.WebService.Models;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Services;
 
     public class OddsFeedController : BaseController
     {
@@ -72,7 +72,8 @@
                         UserProfile = authenticatedPartner.UserProfile,
                         UserQuery = userQuery,
                         Timestamp = Convert.ToInt32(timestamp),
-                        Username = username
+                        Username = username,
+                        IP = ipAddress
                     }));
             }
             catch (Exception ex)
@@ -100,7 +101,7 @@
         }
 
         private async Task<string> GetOddsFeed(OddsFeedsModel model)
-            => await oddsFeedService.BuildXmlDocument(model);
+            => await oddsFeedService.BuildXmlDocumentAsync(model);
 
         private async Task<UserQuery> GetFilter(HttpRequest request)
         {
@@ -159,7 +160,7 @@
             ViewBag.UserName = username;
             ViewBag.FullDomainName = RequestHelper.FullDomainName(HttpContext);
             ViewBag.VirtualPath = GetVirtualPath();
-            ViewBag.ContactEmail = await userService.GetContactEmail(username);
+            ViewBag.ContactEmail = await userService.GetContactEmailAsync(username);
 
             await GenerateAppendixData(username);
 
@@ -168,17 +169,17 @@
 
         private async Task GenerateAppendixData(string username)
         {
-            var sports = await userService.GetSports(username);
+            var sports = await userService.GetSportAsync(username);
             ViewBag.SportsCol1 = sports.ColumnOne;
             ViewBag.SportsCol2 = sports.ColumnTwo;
             ViewBag.SportsCol3 = sports.ColumnThree;
 
-            var bettypes = await userService.GetBetTypes(username);
+            var bettypes = await userService.GetBetTypeAsync(username);
             ViewBag.BetTypesCol1 = bettypes.ColumnOne;
             ViewBag.BetTypesCol2 = bettypes.ColumnTwo;
             ViewBag.BetTypesCol3 = bettypes.ColumnThree;
 
-            var countries = await userService.GetCountries(username);
+            var countries = await userService.GetCountryAsync(username);
             ViewBag.CountriesCol1 = countries.ColumnOne;
             ViewBag.CountriesCol2 = countries.ColumnTwo;
             ViewBag.CountriesCol3 = countries.ColumnThree;

@@ -6,7 +6,7 @@
     using Fanex.Caching;
     using OddsFeed.AutoJobs.Criteria.FeedResult;
     using OddsFeed.Core.Configurations;
-    using OddsFeed.Core.Constants;
+    using OddsFeed.Core;
     using OddsFeed.Core.Extensions;
     using OddsFeed.Core.Services;
     using OddsFeed.Models.Matches;

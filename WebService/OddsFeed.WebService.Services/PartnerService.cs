@@ -10,7 +10,6 @@
     using OddsFeed.WebService.Builders;
     using OddsFeed.WebService.Criteria;
     using OddsFeed.WebService.Extensions;
-    using OddsFeed.WebService.Services.Interfaces;
 
     public class PartnerService : IPartnerService
     {
@@ -32,7 +31,7 @@
             this.betTypeService = betTypeService;
         }
 
-        public async Task<string> GetBetTypesXmlContent(string username, UserProfile userProfile)
+        public async Task<string> GetBetTypesXmlContentAsync(string username, UserProfile userProfile)
         {
             var bettypes = await baseService.GetDataAsync<PartnerBetType>(new GetPartnerBetTypeCriteria { Username = username });
             var content = new StringBuilder("<bettypes>");
@@ -95,7 +94,7 @@
             return content.ToString();
         }
 
-        public async Task<string> GetLeaguesXmlContent(string username, UserProfile userProfile)
+        public async Task<string> GetLeaguesXmlContentAsync(string username, UserProfile userProfile)
         {
             var leagues = await baseService.GetDataAsync<PartnerLeague>(new GetPartnerLeagueCriteria { Username = username });
             var content = new StringBuilder("<leagues>");
@@ -157,7 +156,7 @@
             return content.ToString();
         }
 
-        public async Task<string> GetSportsXmlContent(string username, UserProfile userProfile)
+        public async Task<string> GetSportsXmlContentAsync(string username, UserProfile userProfile)
         {
             var sports = await baseService.GetDataAsync<PartnerSport>(new GetPartnerSportTypeCriteria { Username = username });
             var content = new StringBuilder("<sports>");

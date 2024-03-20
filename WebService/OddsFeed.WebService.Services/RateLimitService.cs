@@ -2,11 +2,10 @@
 {
     using System;
     using Fanex.Caching;
-    using OddsFeed.Core.Constants;
+    using OddsFeed.Core;
     using OddsFeed.Core.Services;
     using OddsFeed.WebService.Models;
     using OddsFeed.WebService.Models.FilterAttribute;
-    using OddsFeed.WebService.Services.Interfaces;
 
     public class RateLimitService : IRateLimitService
     {

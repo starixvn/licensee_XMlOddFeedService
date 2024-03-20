@@ -6,11 +6,11 @@
     using System.Linq;
     using System.Security;
     using System.Text;
+    using OddsFeed.Core;
     using OddsFeed.Core.Extensions;
     using OddsFeed.Models.DTO;
     using OddsFeed.Models.Matches;
     using OddsFeed.Models.OddsData;
-    using OddsFeed.WebService.Constants;
     using OddsFeed.WebService.Core.Filters;
     using OddsFeed.WebService.Extensions;
 
@@ -26,7 +26,8 @@
         public void AppendMatchNodes(
             StringBuilder oddsFeedNode,
             IList<Match> matches,
-            OddsFeedsModel model)
+            OddsFeedsModel model,
+            bool isLiveMatch = false)
         {
             var userLanguage = GetUserLanguage(model.UserProfile);
             if (model.IsSample)
@@ -39,7 +40,7 @@
                 foreach (var match in tempMatches)
                 {
                     var matchOdds = match.MatchOddsList.Where(odds => matchFilter.FilterBetType(odds, model));
-                    AppendMatchNode(oddsFeedNode, match, matchOdds, userLanguage, model);
+                    AppendMatchNode(oddsFeedNode, match, matchOdds, userLanguage, model, isLiveMatch);
                 }
             }
         }
@@ -90,20 +91,31 @@
             Match match,
             IEnumerable<MatchOdds> matchOdds,
             UserLanguage userLanguage,
-            OddsFeedsModel model)
+            OddsFeedsModel model,
+            bool isLiveMatch = false)
         {
             if (!matchOdds.Any())
             {
-                if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.CurrentCultureIgnoreCase))
-                {
-                    AppendBeginMatch(oddsFeedNode, match, userLanguage, model);
-                    oddsFeedNode.Append("</match>");
-                }
+                AppendMatchNodeForBetRadar(oddsFeedNode, match, userLanguage, model, isLiveMatch);
             }
             else
             {
                 AppendBeginMatch(oddsFeedNode, match, userLanguage, model);
                 AppendBookieNode(oddsFeedNode, matchOdds, model);
+                oddsFeedNode.Append("</match>");
+            }
+        }
+
+        private static void AppendMatchNodeForBetRadar(
+            StringBuilder oddsFeedNode,
+            Match match,
+            UserLanguage userLanguage,
+            OddsFeedsModel model,
+            bool isLiveMatch = false)
+        {
+            if (StringHelper.Equals(model.Username, Constants.BetRadarUsername) && isLiveMatch)
+            {
+                AppendBeginMatch(oddsFeedNode, match, userLanguage, model);
                 oddsFeedNode.Append("</match>");
             }
         }

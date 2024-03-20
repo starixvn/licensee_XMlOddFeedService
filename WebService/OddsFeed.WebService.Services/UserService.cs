@@ -7,7 +7,6 @@
     using OddsFeed.Models.Data;
     using OddsFeed.Models.DTO;
     using OddsFeed.WebService.Criteria;
-    using OddsFeed.WebService.Services.Interfaces;
 
     public class UserService : IUserService
     {
@@ -18,7 +17,7 @@
             this.baseService = baseService;
         }
 
-        public async Task<ColumnModel<BetType>> GetBetTypes(string username)
+        public async Task<ColumnModel<BetType>> GetBetTypeAsync(string username)
         {
             var criteria = new GetBetTypeByUserNameCriteria
             {
@@ -28,14 +27,14 @@
             return GenerateData(betTypes);
         }
 
-        public async Task<string> GetContactEmail(string username)
+        public async Task<string> GetContactEmailAsync(string username)
             => await baseService.GetDataEntityAsync<string>(
                 new GetContactEmailByUserNameCriteria
                 {
                     Username = username
                 });
 
-        public async Task<ColumnModel<Country>> GetCountries(string username)
+        public async Task<ColumnModel<Country>> GetCountryAsync(string username)
         {
             var criteria = new GetCountryByUserNameCriteria
             {
@@ -45,15 +44,14 @@
             return GenerateData(countries);
         }
 
-        public async Task<ColumnModel<Sport>> GetSports(string username)
+        public async Task<ColumnModel<Sport>> GetSportAsync(string username)
         {
-            const int ignoreSportId = 50;
             var criteria = new GetSportByUserNameCriteria
             {
                 Username = username
             };
-            var betTypes = await baseService.GetDataAsync<Sport>(criteria);
-            return GenerateData(betTypes.Where(s => s.SportId != ignoreSportId));
+            var sports = await baseService.GetDataAsync<Sport>(criteria);
+            return GenerateData(sports.Where(s => s.SportId != OddsFeed.Core.Constants.CricketSportTypeId));
         }
 
         private static ColumnModel<T> GenerateData<T>(IEnumerable<T> list)

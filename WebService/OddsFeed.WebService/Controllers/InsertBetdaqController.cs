@@ -7,7 +7,7 @@
     using OddsFeed.WebService.Extensions;
     using OddsFeed.WebService.Models;
     using OddsFeed.WebService.Models.Betdaq;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Services;
 
     public class InsertBetdaqController : BaseController
     {

@@ -1,4 +1,4 @@
-﻿namespace OddsFeed.WebService.Services.Interfaces
+﻿namespace OddsFeed.WebService.Services
 {
     using System.Threading.Tasks;
     using OddsFeed.WebService.Models.Betdaq;

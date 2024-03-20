@@ -5,21 +5,23 @@
     using System.Globalization;
     using System.Threading.Tasks;
     using System.Web;
-    using Fanex.Logging;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
+    using OddsFeed.Core.Services;
     using OddsFeed.Models.OddsData;
     using OddsFeed.WebService.Extensions;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Services;
 
     public class CricketResultFeedController : BaseController
     {
         private const int TimeExpireCacheForOdds = 5;
         private readonly IResultFeedService resultFeedService;
+        private readonly ILogServiceProvider logServiceProvider;
 
         public CricketResultFeedController(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             resultFeedService = serviceProvider.GetRequiredService<IResultFeedService>();
+            logServiceProvider = serviceProvider.GetRequiredService<ILogServiceProvider>();
         }
 
         [ResponseCache(Duration = TimeExpireCacheForOdds, VaryByQueryKeys = new[] { "username", "date", "clientIpAddress" })]
@@ -57,7 +59,7 @@
 
                 return !string.IsNullOrEmpty(authenticatedPartner.Error)
                     ? XmlContent(authenticatedPartner.Error)
-                    : XmlContent(await resultFeedService.BuildXmlDocument(
+                    : XmlContent(await resultFeedService.BuildXmlDocumentAsync(
                         new OddsFeedsModel
                         {
                             BookieName = authenticatedPartner.SystemName,
@@ -76,7 +78,7 @@
                     "username: " +  HttpUtility.HtmlEncode(username),
                     "timestamp: " + HttpUtility.HtmlEncode(HttpContext.Request.GetValueFromRequestByKey("t"))
                 };
-                LogService.Error("CricketResultFeedController:Index: " + string.Join(Environment.NewLine, messages), ex);
+                await logServiceProvider.LogSentryAsync("CricketResultFeedController:Index: " + string.Join(Environment.NewLine, messages), ex);
                 var exception = new Exception("CricketResultFeedController Error", ex);
                 throw exception;
             }

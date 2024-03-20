@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
     using OddsFeed.WebService.Extensions;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Services;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
 

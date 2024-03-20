@@ -1,4 +1,4 @@
-﻿namespace OddsFeed.WebService.Constants
+namespace OddsFeed.Core
 {
     public static class SettlementStatus
     {

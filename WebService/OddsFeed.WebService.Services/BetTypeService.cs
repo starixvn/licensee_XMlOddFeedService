@@ -4,7 +4,6 @@
     using System.Linq;
     using System.Threading.Tasks;
     using OddsFeed.Models.DTO;
-    using OddsFeed.WebService.Services.Interfaces;
 
     public class BetTypeService : IBetTypeService
     {
@@ -16,7 +15,7 @@
         }
 
         public async Task<IDictionary<int, BetType>> GetBetTypeListAsync()
-            => (await feedCachingOperator.GetBetTypes()).ToDictionary(
+            => (await feedCachingOperator.GetBetTypeAsync()).ToDictionary(
                     schema => schema.BetTypeId,
                     schema => new BetType
                     {

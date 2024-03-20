@@ -7,7 +7,7 @@
     using Fanex.Caching;
     using Microsoft.AspNetCore.Hosting;
     using OddsFeed.Core.Configurations;
-    using OddsFeed.Core.Constants;
+    using OddsFeed.Core;
     using OddsFeed.Core.Extensions;
     using OddsFeed.Core.Services;
     using OddsFeed.Models;
@@ -89,9 +89,8 @@
 
         private async Task<IList<BetTypeSchema>> GetBetTypeSchemas()
         {
-            var document = await redisCacheService.GetAsync<IList<BetTypeSchema>>(string.Format(Constants.RedisKeyFormat,
-                appSettings.Bucket.OddsFeed,
-                appSettings.BetTypeSchemaKey));
+            var rediskey = string.Format(Constants.RedisKeyFormat, appSettings.Bucket.OddsFeed, appSettings.BetTypeSchemaKey);
+            var document = await redisCacheService.GetAsync<IList<BetTypeSchema>>(rediskey);
 
             if (document == null || document.Count == 0)
             {
@@ -99,7 +98,8 @@
 
                 if (newValue != null)
                 {
-                    await redisCacheService.SetAsync(string.Format(Constants.RedisKeyFormat, appSettings.Bucket.OddsFeed, appSettings.BetTypeSchemaKey), newValue, cacheOptions);
+                    rediskey = string.Format(Constants.RedisKeyFormat, appSettings.Bucket.OddsFeed, appSettings.BetTypeSchemaKey);
+                    await redisCacheService.SetAsync(rediskey, newValue, cacheOptions);
                     return newValue;
                 }
 

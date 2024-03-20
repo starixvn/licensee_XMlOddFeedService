@@ -4,7 +4,11 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Threading;
     using System.Threading.Tasks;
+    using Fanex.Data.Repository;
+    using Microsoft.Extensions.DependencyInjection;
+    using OddsFeed.Core;
     using OddsFeed.Core.Services;
     using OddsFeed.Models.DTO;
     using OddsFeed.Models.Matches;
@@ -13,52 +17,44 @@
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Core.Filters;
     using OddsFeed.WebService.Criteria;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Extensions;
 
     public class OddsFeedService : IOddsFeedService
     {
-        private const int OddsTypeOutRight = 8;
-        private const int OddsTypeLiveMatch = 4;
-        private const int OddsTypeDeadBallMatch = 2;
-
+        private readonly IDynamicRepository dynamicRepository;
         private readonly IMatchMapping matchMapping;
         private readonly IMatchBuilder matchBuilder;
         private readonly IOutrightBuilder outrightBuilder;
         private readonly IMatchFilter matchFilter;
         private readonly IFeedCachingOperator feedCachingOperator;
         private readonly IBaseService baseService;
+        private readonly ILogServiceProvider logServiceProvider;
 
-        public OddsFeedService(
-            IMatchMapping matchMapping,
-            IMatchBuilder matchBuilder,
-            IOutrightBuilder outrightBuilder,
-            IMatchFilter matchFilter,
-            IFeedCachingOperator feedCachingOperator,
-            IBaseService baseService)
+        public OddsFeedService(IServiceProvider serviceProvider)
         {
-            this.matchMapping = matchMapping;
-            this.matchBuilder = matchBuilder;
-            this.outrightBuilder = outrightBuilder;
-            this.matchFilter = matchFilter;
-            this.feedCachingOperator = feedCachingOperator;
-            this.baseService = baseService;
+            dynamicRepository = serviceProvider.GetRequiredService<IDynamicRepository>();
+            matchMapping = serviceProvider.GetRequiredService<IMatchMapping>();
+            matchBuilder = serviceProvider.GetRequiredService<IMatchBuilder>();
+            outrightBuilder = serviceProvider.GetRequiredService<IOutrightBuilder>();
+            matchFilter = serviceProvider.GetRequiredService<IMatchFilter>();
+            feedCachingOperator = serviceProvider.GetRequiredService<IFeedCachingOperator>();
+            baseService = serviceProvider.GetRequiredService<IBaseService>();
+            logServiceProvider = serviceProvider.GetRequiredService<ILogServiceProvider>();
         }
 
-        public async Task<string> BuildXmlDocument(OddsFeedsModel model)
+        public async Task<string> BuildXmlDocumentAsync(OddsFeedsModel model)
         {
-            var isShownOutright = IsShownOutright(model);
-            var isShownLiveMatch = IsShownLiveMatch(model.UserProfile);
-            var isShownDeadMatch = IsShownDeadBallMatch(model.UserProfile);
+            var startTime = DateTimeOffset.Now.DateTime;
 
-            var oddsData = await feedCachingOperator.GetOddsData(model, isShownOutright, isShownLiveMatch, isShownDeadMatch);
-            if (!string.IsNullOrWhiteSpace(model.Username) && model.Username.Equals("betradar", StringComparison.InvariantCultureIgnoreCase))
+            var oddsData = await feedCachingOperator.GetOddsDataAsync(model, model.IsShownOutright, model.IsShownLiveMatch, model.IsShownDeadMatch);
+            if (StringHelper.Equals(model.Username, Constants.BetRadarUsername))
             {
-                if(isShownLiveMatch)
+                if(model.IsShownLiveMatch)
                 {
                     oddsData.LiveMatches = await GetLiveMatchesForBetRadarAsync(oddsData.LiveMatches);
                 }
 
-                if (isShownDeadMatch)
+                if (model.IsShownDeadMatch)
                 {
                     oddsData.DeadballMatches = ExcludeFantasyLeague(oddsData.DeadballMatches).ToList();
                 }
@@ -66,7 +62,7 @@
 
             var oddsFeedNode = new StringBuilder("<oddsfeed>");
 
-            if (isShownOutright)
+            if (model.IsShownOutright)
             {
                 outrightBuilder.AppendOutrightsNode(oddsFeedNode, oddsData.Outrights, model);
             }
@@ -74,6 +70,11 @@
             AppendMatches(oddsFeedNode, oddsData.LiveMatches, oddsData.DeadballMatches, model);
 
             oddsFeedNode.Append("</oddsfeed>");
+
+            if (StringHelper.Equals(model.Username, Constants.BetRadarUsername))
+            {
+                WriteLogRequestOdds(model, oddsData, startTime);
+            }
 
             return oddsFeedNode.ToString();
         }
@@ -83,7 +84,12 @@
         
         private async Task<IList<Match>> GetLiveMatchesForBetRadarAsync(IList<Match> liveMatches)
         {
-            var criteria = new GetLiveOddsForBetRadarCriteria();
+            var sports = await GetSportAsync(Constants.BetRadarUsername);
+            var sportIds = string.Join(",", sports.Select(x => x.SportId));
+            var criteria = new GetLiveOddsForBetRadarCriteria
+            {
+                SportIDList = sportIds
+            };
             var matchOdds = await baseService.GetDataAsync<MatchOddsData>(criteria);
             foreach(var matchOdd in matchOdds)
             {
@@ -96,6 +102,16 @@
             }
 
             return ExcludeFantasyLeague(liveMatches).OrderBy(x => x.MatchId).ToList();
+        }
+
+        private async Task<IEnumerable<Sport>> GetSportAsync(string username)
+        {
+            var criteria = new GetSportByUserNameCriteria
+            {
+                Username = username
+            };
+            var sports = await baseService.GetDataAsync<Sport>(criteria);
+            return sports.Where(s => s.SportId != Constants.CricketSportTypeId);
         }
 
         private static IList<Match> ExcludeFantasyLeague(IList<Match> matches)
@@ -145,21 +161,6 @@
             var matchOddsFilter = matchOddsList.Where(o => matchFilter.FilterBetType(o, model));
 
             return matchOddsFilter.Any() ? matchOddsFilter.Max(o => o.Timestamp) : 0;
-        }
-
-        private static bool IsShownOutright(OddsFeedsModel model)
-        {
-            return model.UserProfile.OddsType.Contains(OddsTypeOutRight) && (!model.IsSample || model.IsOutright);
-        }
-
-        private static bool IsShownLiveMatch(UserProfile userProfile)
-        {
-            return userProfile.OddsType != null && userProfile.OddsType.Contains(OddsTypeLiveMatch);
-        }
-
-        private static bool IsShownDeadBallMatch(UserProfile userProfile)
-        {
-            return userProfile.OddsType != null && userProfile.OddsType.Contains(OddsTypeDeadBallMatch);
         }
 
         private static DateTime GetLastUpdate()
@@ -225,6 +226,49 @@
             }
 
             return oddsTypeName;
+        }
+
+        private void WriteLogRequestOdds(OddsFeedsModel model, OddsData oddsData, DateTime startTime)
+        {
+            var matchIds = new List<int>();
+
+            if (model.IsShownLiveMatch)
+            {
+                var liveMatches = oddsData.LiveMatches.Where(m => matchFilter.FilterMatch(m, model)).Select(m => m.MatchId).ToList();
+                matchIds.AddRange(liveMatches);
+            }
+
+            if (model.IsShownDeadMatch)
+            {
+                var deadballMatches = oddsData.DeadballMatches.Where(m => matchFilter.FilterMatch(m, model)
+                    && m.MatchOddsList.Any(odds => matchFilter.FilterBetType(odds, model))).Select(m => m.MatchId).ToList();
+                matchIds.AddRange(deadballMatches);
+            }
+
+            var endTime = DateTimeOffset.Now.DateTime;
+            var duration = (endTime - startTime).TotalSeconds;
+            var criteria = new WriteLogRequestOddsCriteria
+            {
+                Username = model.Username,
+                MatchIds = string.Join(",", matchIds),
+                IP = model.IP,
+                Duration = (int)duration,
+                ExecutionTime = startTime
+            };
+            var thread = new Thread(async () => await WriteLogRequestOddsAsync(criteria));
+            thread.Start();
+        }
+
+        private async Task WriteLogRequestOddsAsync(WriteLogRequestOddsCriteria criteria)
+        {
+            try
+            {
+                await dynamicRepository.ExecuteAsync(criteria);
+            }
+            catch (Exception ex)
+            {
+                await logServiceProvider.LogSentryAsync(ex.Message, ex);
+            }
         }
     }
 }

@@ -7,7 +7,7 @@
     using Microsoft.AspNetCore.Mvc.Filters;
     using OddsFeed.Core.Services;
     using OddsFeed.WebService.Models;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Services;
 
     [AttributeUsage(AttributeTargets.Class)]
     public class RateLimitFilterAttribute : ActionFilterAttribute

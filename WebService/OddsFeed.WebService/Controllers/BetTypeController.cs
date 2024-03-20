@@ -6,7 +6,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using OddsFeed.Core.Services;
     using OddsFeed.Models.DTO;
-    using OddsFeed.WebService.Services.Interfaces;
+    using OddsFeed.WebService.Services;
 
     public class BetTypeController : BaseController
     {
@@ -40,7 +40,7 @@
 
         private async Task<string> GetBetTypes(string userName, UserProfile userProfile)
         {
-            var betTypes = await partnerService.GetBetTypesXmlContent(userName, userProfile);
+            var betTypes = await partnerService.GetBetTypesXmlContentAsync(userName, userProfile);
             return betTypes;
         }
     }

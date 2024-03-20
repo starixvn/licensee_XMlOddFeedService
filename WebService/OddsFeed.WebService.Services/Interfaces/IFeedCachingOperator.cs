@@ -1,4 +1,4 @@
-﻿namespace OddsFeed.WebService.Services.Interfaces
+﻿namespace OddsFeed.WebService.Services
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -8,10 +8,10 @@
 
     public interface IFeedCachingOperator
     {
-        Task<OddsData> GetOddsData(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch);
+        Task<OddsData> GetOddsDataAsync(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch);
 
-        Task<IList<BetTypeSchema>> GetBetTypes();
+        Task<IList<BetTypeSchema>> GetBetTypeAsync();
 
-        Task<IList<Match>> GetMatchResultDetails(int delayTimes);
+        Task<IList<Match>> GetMatchResultDetailAsync(int delayTimes);
     }
 }

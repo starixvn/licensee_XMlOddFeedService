@@ -1,4 +1,4 @@
-﻿namespace OddsFeed.WebService.Services.Interfaces
+﻿namespace OddsFeed.WebService.Services
 {
     using System.Threading.Tasks;
     using OddsFeed.Models.Data;
@@ -6,12 +6,12 @@
 
     public interface IUserService
     {
-        Task<ColumnModel<BetType>> GetBetTypes(string username);
+        Task<ColumnModel<BetType>> GetBetTypeAsync(string username);
 
-        Task<ColumnModel<Sport>> GetSports(string username);
+        Task<ColumnModel<Sport>> GetSportAsync(string username);
 
-        Task<ColumnModel<Country>> GetCountries(string username);
+        Task<ColumnModel<Country>> GetCountryAsync(string username);
 
-        Task<string> GetContactEmail(string username);
+        Task<string> GetContactEmailAsync(string username);
     }
 }

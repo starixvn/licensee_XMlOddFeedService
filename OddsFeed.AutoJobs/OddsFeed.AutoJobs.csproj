@@ -16,6 +16,10 @@
     <Content Update="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Data\SpNames.KLDR.xml" />
+    <Content Include="App_Data\SpNames.LOCAL.xml" />
+    <Content Include="App_Data\SpNames.PROD.xml" />
+    <Content Include="App_Data\SpNames.UAT.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="logs\" />

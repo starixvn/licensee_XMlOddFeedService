@@ -14,5 +14,8 @@
 
         public static string SelectName(string nameInOtherLanguage, string nameInEnglish)
             => string.IsNullOrEmpty(nameInOtherLanguage) ? nameInEnglish : nameInOtherLanguage;
+
+        public static bool Equals(string value1, string value2)
+            => !string.IsNullOrWhiteSpace(value1) && value1.Equals(value2, StringComparison.CurrentCultureIgnoreCase);
     }
 }

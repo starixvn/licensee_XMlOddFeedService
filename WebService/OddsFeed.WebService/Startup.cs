@@ -29,7 +29,6 @@
     using OddsFeed.WebService.Filters;
     using OddsFeed.WebService.Models;
     using OddsFeed.WebService.Services;
-    using OddsFeed.WebService.Services.Interfaces;
     using ONEbook.UM.AspNetCore;
     using ONEbook.UM.Configurations;
     using ONEbook.UM.Helpers;

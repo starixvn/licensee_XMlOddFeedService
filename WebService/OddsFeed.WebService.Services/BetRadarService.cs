@@ -6,7 +6,6 @@
     using OddsFeed.Core.Services;
     using OddsFeed.WebService.Criteria;
     using OddsFeed.WebService.Models;
-    using OddsFeed.WebService.Services.Interfaces;
 
     public class BetRadarService : IBetRadarService
     {
