@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
     <Function Name="XmlAutoJob">
-        <Setting Key="Is_Odds_GetLiveOddsData" SpName="Is_Odds_GetLiveOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
-        <Setting Key="Is_Odds_GetDeadballOddsData" SpName="Is_Odds_GetDeadballOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
-        <Setting Key="Is_Odds_GetOutrightOddsData" SpName="Is_Odds_GetOutrightOddsData" DbName="DBACC.bodb02.bodbAdminNet" />
-        <Setting Key="Odds_CricketResult_Sel" SpName="Odds_CricketResult_Sel" DbName="DBACC.bodb02.bodbAdminNet">
+        <Setting Key="Is_Odds_GetLiveOddsData" SpName="Is_Odds_GetLiveOddsData" DbName="DBACC.bodb02.wsv_nap" />
+        <Setting Key="Is_Odds_GetDeadballOddsData" SpName="Is_Odds_GetDeadballOddsData" DbName="DBACC.bodb02.wsv_nap" />
+        <Setting Key="Is_Odds_GetOutrightOddsData" SpName="Is_Odds_GetOutrightOddsData" DbName="DBACC.bodb02.wsv_nap" />
+        <Setting Key="Odds_CricketResult_Sel" SpName="Odds_CricketResult_Sel" DbName="DBACC.bodb02.wsv_nap">
             <Mapping DataField="SportType" ObjectProperty="SportId" />
             <Mapping DataField="SportTypeName" ObjectProperty="SportName" />
 
