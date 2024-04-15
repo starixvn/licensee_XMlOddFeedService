@@ -170,6 +170,15 @@
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
+            var feedUrlPath = configuration.GetValue<string>("AppSettings:FeedUrlPath");
+            var virtualPath = configuration.GetValue<string>("AppSettings:VirtualPathWebService");
+
+            if (!string.IsNullOrWhiteSpace(virtualPath))
+            {
+                app.UsePathBase("/" + virtualPath);
+            }
+
             app.UseForwardedHeaders();
 
             if (env.IsDevelopment())
@@ -199,8 +208,6 @@
                 await next();
             });
 
-            var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
-            string feedUrlPath = configuration.GetValue<string>("AppSettings:FeedUrlPath");
             if (!string.IsNullOrWhiteSpace(feedUrlPath))
             {
                 feedUrlPath += "/";
