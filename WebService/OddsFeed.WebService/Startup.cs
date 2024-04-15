@@ -84,22 +84,22 @@
 
             services.AddWebOptimizer(pipeline => {
                 var cssSetting = new CssSettings { OutputMode = NUglify.OutputMode.MultipleLines, CommentMode = CssComment.None };
-                var scriptSetting = new CodeSettings { MinifyCode = false };
+                var scriptSetting = new CodeSettings { MinifyCode = true };
 
                 pipeline.AddCssBundle(
-                    "minify/css/help.min.css",
+                    "/minify/css/help.min.css",
                     cssSetting,
                     "css/shCore.css",
                     "css/shThemeDefault.css",
                     "css/Help/menu.css",
                     "css/Help/content.css");
                 pipeline.AddCssBundle(
-                    "minify/css/404.min.css",
+                    "/minify/css/404.min.css",
                     cssSetting,
                     "css/404.css");
 
                 pipeline.AddJavaScriptBundle(
-                    "minify/js/help.min.js",
+                    "/minify/js/help.min.js",
                     scriptSetting,
                     "js/jquery-latest.js",
                     "js/shCore.js",
