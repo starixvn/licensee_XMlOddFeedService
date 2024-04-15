@@ -19,7 +19,7 @@
     <Content Include="App_Data\SpNames.UAT.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="LigerShark.WebOptimizer.Core" Version="3.0.405" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OddsFeed.WebService.Criteria\OddsFeed.WebService.Criteria.csproj" />

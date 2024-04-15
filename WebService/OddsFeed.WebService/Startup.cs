@@ -19,6 +19,8 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Net.Http.Headers;
+    using NUglify.Css;
+    using NUglify.JavaScript;
     using OddsFeed.Core;
     using OddsFeed.Core.Services;
     using OddsFeed.Services;
@@ -79,6 +81,31 @@
             services.AddSingleton<RateLimitFilterAttribute>();
             AddConfiguration(services, Configuration);
             AddDI(services);
+
+            services.AddWebOptimizer(pipeline => {
+                var cssSetting = new CssSettings { OutputMode = NUglify.OutputMode.MultipleLines, CommentMode = CssComment.None };
+                var scriptSetting = new CodeSettings { MinifyCode = false };
+
+                pipeline.AddCssBundle(
+                    "minify/css/help.min.css",
+                    cssSetting,
+                    "css/shCore.css",
+                    "css/shThemeDefault.css",
+                    "css/Help/menu.css",
+                    "css/Help/content.css");
+                pipeline.AddCssBundle(
+                    "minify/css/404.min.css",
+                    cssSetting,
+                    "css/404.css");
+
+                pipeline.AddJavaScriptBundle(
+                    "minify/js/help.min.js",
+                    scriptSetting,
+                    "js/jquery-latest.js",
+                    "js/shCore.js",
+                    "js/shBrushXml.js",
+                    "js/Help/menu.js");
+            });
         }
 
         private static void AddConfiguration(IServiceCollection services, IConfiguration configuration)
@@ -157,6 +184,7 @@
 
             app.UseStatusCodePagesWithReExecute("/Errors/{0}");
             app.UseHttpsRedirection();
+            app.UseWebOptimizer();
             app.UseStaticFiles();
             app.UseSession();
             app.UseResponseCaching();

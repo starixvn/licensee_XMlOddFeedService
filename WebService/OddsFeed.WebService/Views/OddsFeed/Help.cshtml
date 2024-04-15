@@ -18,7 +18,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odds feed user manual</title>
-    <link rel="stylesheet" href="@Url.Content("~/minify/css/help.min.css")" asp-append-version="true" />
+    <link rel="stylesheet" href="/minify/css/help.min.css" asp-append-version="true" />
 </head>
 <body>
     <div class="container">
@@ -445,9 +445,9 @@
             </section>
         </div>
     </div>
-    <script src="@Url.Content("~/minify/js/help.min.js")" asp-append-version="true"></script>
+    <script src="/minify/js/help.min.js" asp-append-version="true"></script>
     <script type="text/javascript">
-        var currentDomainURL = '@Url.Content("~/")';
+        window.rootUrl = '@Url.Content("~/")';
         $(document).ready(function () {
             SyntaxHighlighter.all();
         });
