@@ -156,6 +156,7 @@
             }
 
             app.UseStatusCodePagesWithReExecute("/Errors/{0}");
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
             app.UseResponseCaching();
@@ -174,7 +175,7 @@
             string feedUrlPath = configuration.GetValue<string>("AppSettings:FeedUrlPath");
             if (!string.IsNullOrWhiteSpace(feedUrlPath))
             {
-                feedUrlPath = "/";
+                feedUrlPath += "/";
             }
 
             app.RegisterXMLOddsfeedRoutes(feedUrlPath);
