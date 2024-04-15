@@ -172,11 +172,11 @@
         {
             var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
             var feedUrlPath = configuration.GetValue<string>("AppSettings:FeedUrlPath");
-            var virtualPath = configuration.GetValue<string>("AppSettings:VirtualPathWebService");
+            var subPath = configuration.GetValue<string>("AppSettings:VirtualPathWebService");
 
-            if (!string.IsNullOrWhiteSpace(virtualPath))
+            if (!string.IsNullOrWhiteSpace(subPath))
             {
-                app.UsePathBase("/" + virtualPath);
+                app.UsePathBase(subPath);
             }
 
             app.UseForwardedHeaders();
@@ -200,6 +200,11 @@
 
             app.Use(async (ctx, next) =>
             {
+                if (!string.IsNullOrWhiteSpace(subPath))
+                {
+                    ctx.Request.PathBase = subPath;
+                }
+
                 ctx.Request.GetTypedHeaders().CacheControl = new CacheControlHeaderValue
                 {
                     Public = true,
