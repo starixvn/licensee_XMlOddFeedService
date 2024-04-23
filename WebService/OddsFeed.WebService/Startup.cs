@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading;
     using Fanex.Caching.Redis;
     using Fanex.Data.Repository;
     using Fanex.Data.SqlServer;
@@ -166,6 +167,10 @@
             services.AddDataProtection()
                 .SetApplicationName(appName)
                 .PersistKeysToStackExchangeRedis(redis, $"{appName}:DataProtectionKeys");
+
+            const short WorkerThreads = 100;
+            const short CompletionPortThreads = 100;
+            _ = ThreadPool.SetMinThreads(WorkerThreads, CompletionPortThreads);
         }
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
