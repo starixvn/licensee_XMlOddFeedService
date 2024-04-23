@@ -49,7 +49,8 @@
             try
             {
                 var ipAddress = GetClientIpAddress();
-                logServiceProvider.LogInfoToFile(string.Format("Odds-{0}-{1}", username, ipAddress));
+                var domainName = RequestHelper.DomainName(HttpContext);
+                logServiceProvider.LogInfoToFile(string.Format("Odds-{0}-{1}-{2}", username, domainName, ipAddress));
                 if (await IsDownTimeAsync())
                 {
                     return XmlContent(await GetDowntimeContent());
