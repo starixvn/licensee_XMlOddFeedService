@@ -49,7 +49,8 @@
             try
             {
                 var ipAddress = GetClientIpAddress();
-                var domainName = RequestHelper.DomainName(HttpContext);
+                var protocol = HttpContext.Request.Headers["x-forwarded-proto"].ToString();
+                var domainName = string.Format("{0}://{1}", !string.IsNullOrWhiteSpace(protocol) ? protocol : HttpContext.Request.Scheme, HttpContext.Request.Host.Value);
                 logServiceProvider.LogInfoToFile(string.Format("Odds-{0}-{1}-{2}", username, domainName, ipAddress));
                 if (await IsDownTimeAsync())
                 {
