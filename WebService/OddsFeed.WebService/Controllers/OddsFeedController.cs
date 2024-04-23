@@ -160,7 +160,6 @@
             }
 
             ViewBag.UserName = username;
-            ViewBag.FullDomainName = RequestHelper.FullDomainName(HttpContext);
             ViewBag.VirtualPath = GetVirtualPath();
             ViewBag.ContactEmail = await userService.GetContactEmailAsync(username);
 
@@ -229,14 +228,14 @@
         {
             var virtualPath = new StringBuilder(webSettings.FeedUrlPath);
 
-            if (!string.IsNullOrEmpty(webSettings.FeedUrlPath))
+            if (!string.IsNullOrWhiteSpace(webSettings.FeedUrlPath))
             {
                 virtualPath.Append('/');
             }
 
             virtualPath.Append(webSettings.VirtualPathWebService);
 
-            if (!string.IsNullOrEmpty(webSettings.VirtualPathWebService))
+            if (!string.IsNullOrWhiteSpace(webSettings.VirtualPathWebService))
             {
                 virtualPath.Append('/');
             }

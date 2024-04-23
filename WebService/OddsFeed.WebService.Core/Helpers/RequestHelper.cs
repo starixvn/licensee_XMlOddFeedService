@@ -19,7 +19,7 @@
                 clientIp = forwardedIps[0];
             }
 
-            if (string.Equals(clientIp, "::1"))
+            if (string.Equals(clientIp, "0.0.0.1"))
             {
                 clientIp = "127.0.0.1";
             }
@@ -36,12 +36,6 @@
         {
             var protocol = httpContext.Request.Headers["x-forwarded-proto"].ToString();
             return string.Format("{0}://{1}", !string.IsNullOrWhiteSpace(protocol) ? protocol : httpContext.Request.Scheme, httpContext.Request.Host.Value);
-        }
-
-        public static string FullDomainName(HttpContext httpContext)
-        {
-            var fulldomain = DomainName(httpContext);
-            return fulldomain + (httpContext.Request.PathBase.Value == "/" ? string.Empty : httpContext.Request.PathBase.Value);
         }
     }
 }

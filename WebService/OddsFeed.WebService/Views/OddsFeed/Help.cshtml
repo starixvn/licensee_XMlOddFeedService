@@ -10,7 +10,15 @@
     var highlightBetType = (string[])ViewBag.HighlightBetType;
     var betTypeList = (IDictionary<int, BetType>)ViewBag.BetTypeList;
     var betTypeDescriptions = (IList<BetTypeDescription>)ViewBag.BetTypeDescriptions;
-    string baseUrl = string.Format("{0}/{1}{2}", Model.Domain, ViewBag.VirtualPath, ViewBag.UserName);
+    var baseUrl = string.Empty;
+    if(!string.IsNullOrWhiteSpace(ViewBag.VirtualPath))
+    {
+        baseUrl = string.Format("{0}{1}{2}", Model.Domain, ViewBag.VirtualPath, ViewBag.UserName);
+    }
+    else
+    {
+        baseUrl = string.Format("{0}/{1}{2}", Model.Domain, ViewBag.VirtualPath, ViewBag.UserName);
+    }
 }
 <!DOCTYPE html>
 <html lang="en">
