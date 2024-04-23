@@ -41,8 +41,7 @@
         public static string FullDomainName(HttpContext httpContext)
         {
             var fulldomain = DomainName(httpContext);
-            fulldomain += httpContext.Request.PathBase.Value == "/" ? string.Empty : httpContext.Request.PathBase.Value;
-            return fulldomain;
+            return fulldomain + (httpContext.Request.PathBase.Value == "/" ? string.Empty : httpContext.Request.PathBase.Value);
         }
     }
 }
