@@ -4,7 +4,6 @@ WORKDIR /src
 
 COPY ["OddsFeed.Core/OddsFeed.Core.csproj", "OddsFeed.Core/"]
 COPY ["OddsFeed.Models/OddsFeed.Models.csproj", "OddsFeed.Models/"]
-COPY ["OddsFeed.Services/OddsFeed.Services.csproj", "OddsFeed.Services/"]
 COPY ["OddsFeed.AutoJobs/OddsFeed.AutoJobs.csproj", "OddsFeed.AutoJobs/"]
 
 RUN dotnet nuget add source https://nuget.nexdev.net/api/v2
