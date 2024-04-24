@@ -34,8 +34,8 @@
 
         public static string DomainName(HttpContext httpContext)
         {
-            var protocol = httpContext.Request.Headers["x-forwarded-proto"].ToString();
-            return string.Format("{0}://{1}", !string.IsNullOrWhiteSpace(protocol) ? protocol : httpContext.Request.Scheme, httpContext.Request.Host.Value);
+            ////var protocol = httpContext.Request.Headers["x-forwarded-proto"].ToString();
+            return string.Format("https://{0}", httpContext.Request.Host.Value);
         }
     }
 }
