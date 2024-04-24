@@ -4,12 +4,9 @@
     using System.Collections.Generic;
     using System.Threading;
     using Fanex.Caching.Redis;
+    using Fanex.Data;
     using Fanex.Data.Repository;
-    using Fanex.Data.SqlServer;
     using Fanex.Logging;
-    using Fanex.Logging.Extensions;
-    using Fanex.Logging.Extensions.AspNetCore;
-    using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Sentry;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
@@ -60,11 +57,7 @@
                     })
                 });
 
-            services.AddFanexSql(Configuration);
-            
-            ExceptionHandler
-                .UseConfig(new LoggingConfiguration())
-                .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
+            services.AddFanexData(Configuration);
 
             services.AddSingleton(Configuration);
             services.AddControllersWithViews(x => x.EnableEndpointRouting = false);
