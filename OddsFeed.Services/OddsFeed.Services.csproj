@@ -1,9 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OddsFeed.Core\OddsFeed.Core.csproj" />
-    <ProjectReference Include="..\OddsFeed.Models\OddsFeed.Models.csproj" />
-  </ItemGroup>
-</Project>

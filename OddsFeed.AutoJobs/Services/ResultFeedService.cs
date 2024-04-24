@@ -10,7 +10,6 @@
     using OddsFeed.Core.Extensions;
     using OddsFeed.Core.Services;
     using OddsFeed.Models.Matches;
-    using OddsFeed.Services;
 
     public class ResultFeedService : IResultFeedService
     {

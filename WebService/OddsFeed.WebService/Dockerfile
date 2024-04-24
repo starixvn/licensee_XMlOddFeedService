@@ -4,7 +4,6 @@ WORKDIR /src
 
 COPY ["OddsFeed.Core/OddsFeed.Core.csproj", "OddsFeed.Core/"]
 COPY ["OddsFeed.Models/OddsFeed.Models.csproj", "OddsFeed.Models/"]
-COPY ["OddsFeed.Services/OddsFeed.Services.csproj", "OddsFeed.Services/"]
 COPY ["WebService/OddsFeed.WebService.Core/OddsFeed.WebService.Core.csproj", "WebService/OddsFeed.WebService.Core/"]
 COPY ["WebService/OddsFeed.WebService.Models/OddsFeed.WebService.Models.csproj", "WebService/OddsFeed.WebService.Models/"]
 COPY ["WebService/OddsFeed.WebService.Criteria/OddsFeed.WebService.Criteria.csproj", "WebService/OddsFeed.WebService.Criteria/"]
@@ -17,7 +16,6 @@ RUN --mount=type=cache,target=/root/.nuget/packages \
 
 COPY ["OddsFeed.Core/", "OddsFeed.Core/"]
 COPY ["OddsFeed.Models/", "OddsFeed.Models/"]
-COPY ["OddsFeed.Services/", "OddsFeed.Services/"]
 COPY ["WebService/OddsFeed.WebService.Core/", "WebService/OddsFeed.WebService.Core/"]
 COPY ["WebService/OddsFeed.WebService.Models/", "WebService/OddsFeed.WebService.Models/"]
 COPY ["WebService/OddsFeed.WebService.Criteria/", "WebService/OddsFeed.WebService.Criteria/"]

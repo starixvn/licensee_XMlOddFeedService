@@ -9,11 +9,11 @@
     using Fanex.Data.Repository;
     using Microsoft.Extensions.DependencyInjection;
     using OddsFeed.Core;
+    using OddsFeed.Core.Mapping;
     using OddsFeed.Core.Services;
     using OddsFeed.Models.DTO;
     using OddsFeed.Models.Matches;
     using OddsFeed.Models.OddsData;
-    using OddsFeed.Services.Mapping;
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Core.Filters;
     using OddsFeed.WebService.Criteria;

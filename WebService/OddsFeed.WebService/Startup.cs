@@ -23,9 +23,8 @@
     using NUglify.Css;
     using NUglify.JavaScript;
     using OddsFeed.Core;
+    using OddsFeed.Core.Mapping;
     using OddsFeed.Core.Services;
-    using OddsFeed.Services;
-    using OddsFeed.Services.Mapping;
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Core.Filters;
     using OddsFeed.WebService.Extensions;

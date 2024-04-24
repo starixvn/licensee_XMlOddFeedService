@@ -22,9 +22,8 @@
     using OddsFeed.AutoJobs.Workers;
     using OddsFeed.Core;
     using OddsFeed.Core.Configurations;
+    using OddsFeed.Core.Mapping;
     using OddsFeed.Core.Services;
-    using OddsFeed.Services;
-    using OddsFeed.Services.Mapping;
     using ONEbook.UM.AspNetCore;
     using ONEbook.UM.Configurations;
     using ONEbook.UM.Helpers;

@@ -27,6 +27,11 @@
   <ItemGroup>
     <ProjectReference Include="..\OddsFeed.Core\OddsFeed.Core.csproj" />
     <ProjectReference Include="..\OddsFeed.Models\OddsFeed.Models.csproj" />
-    <ProjectReference Include="..\OddsFeed.Services\OddsFeed.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fanex.Data" Version="4.2.3" />
+    <PackageReference Include="Fanex.Data.Repository" Version="4.2.3" />
+    <PackageReference Include="Fanex.Data.SqlServer" Version="4.2.3" />
+    <PackageReference Include="Fanex.Logging.Extensions.Database" Version="1.0.8" />
   </ItemGroup>
 </Project>

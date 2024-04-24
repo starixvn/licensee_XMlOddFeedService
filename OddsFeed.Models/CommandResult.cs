@@ -1,4 +1,4 @@
-﻿namespace OddsFeed.Core.Models
+namespace OddsFeed.Models
 {
     public class CommandResult
     {

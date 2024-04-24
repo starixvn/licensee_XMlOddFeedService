@@ -1,4 +1,4 @@
-﻿namespace OddsFeed.Services
+namespace OddsFeed.WebService.Services
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

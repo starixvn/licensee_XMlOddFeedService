@@ -1,10 +1,11 @@
-﻿namespace OddsFeed.Core.Services
+namespace OddsFeed.WebService.Services
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Fanex.Data.Repository;
-    using OddsFeed.Core.Models;
+    using OddsFeed.Models;
+    using OddsFeed.WebService.Models;
 
     public interface IBaseService
     {

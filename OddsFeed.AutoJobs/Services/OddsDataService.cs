@@ -3,13 +3,13 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using OddsFeed.AutoJobs.Criteria.OddsData;
+    using OddsFeed.Core.Mapping;
     using OddsFeed.Core.Services;
     using OddsFeed.Models;
     using OddsFeed.Models.Matches;
     using OddsFeed.Models.OddsData;
     using OddsFeed.Models.Oddsfeed;
     using OddsFeed.Models.Outright;
-    using OddsFeed.Services.Mapping;
 
     public class OddsDataService : IOddsDataService
     {

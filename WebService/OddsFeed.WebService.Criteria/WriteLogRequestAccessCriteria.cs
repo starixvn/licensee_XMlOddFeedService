@@ -1,6 +1,6 @@
 ﻿namespace OddsFeed.WebService.Criteria
 {
-    using OddsFeed.Core.Models;
+    using OddsFeed.WebService.Models;
 
     public class WriteLogRequestAccessCriteria : BaseNonQueryCommand
     {

@@ -13,7 +13,6 @@ RUN --mount=type=cache,target=/root/.nuget/packages \
 
 COPY ["OddsFeed.Core/", "OddsFeed.Core/"]
 COPY ["OddsFeed.Models/", "OddsFeed.Models/"]
-COPY ["OddsFeed.Services/", "OddsFeed.Services/"]
 COPY ["OddsFeed.AutoJobs/", "OddsFeed.AutoJobs/"]
 
 WORKDIR /src/OddsFeed.AutoJobs

@@ -1,4 +1,4 @@
-namespace OddsFeed.Services.Mapping
+namespace OddsFeed.Core.Mapping
 {
     using System;
     using System.Collections.Generic;

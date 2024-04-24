@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\OddsFeed.WebService.Core\OddsFeed.WebService.Core.csproj" />
+    <ProjectReference Include="..\OddsFeed.WebService.Models\OddsFeed.WebService.Models.csproj" />
+  </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\OddsFeed.Core\OddsFeed.Core.csproj" />
-  </ItemGroup>
 </Project>

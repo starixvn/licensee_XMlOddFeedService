@@ -1,4 +1,4 @@
-﻿namespace OddsFeed.Core.Models
+namespace OddsFeed.AutoJobs.Models
 {
     using Fanex.Data.Repository;
 

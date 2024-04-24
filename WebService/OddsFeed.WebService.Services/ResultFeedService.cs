@@ -7,7 +7,6 @@
     using Fanex.Caching;
     using OddsFeed.Models.Matches;
     using OddsFeed.Models.OddsData;
-    using OddsFeed.Services;
     using OddsFeed.WebService.Core.Builders;
     using OddsFeed.WebService.Criteria;
 

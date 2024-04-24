@@ -1,10 +1,11 @@
-﻿namespace OddsFeed.Core.Services
+namespace OddsFeed.AutoJobs.Services
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Fanex.Data.Repository;
-    using OddsFeed.Core.Models;
+    using OddsFeed.AutoJobs.Models;
+    using OddsFeed.Models;
 
     public class BaseService : IBaseService
     {
