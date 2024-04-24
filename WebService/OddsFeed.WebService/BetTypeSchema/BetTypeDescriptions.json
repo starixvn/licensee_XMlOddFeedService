@@ -1,4 +1,4 @@
-﻿[
+﻿﻿[
     {
         "BetTypeId": 467,
         "BetTypeName": "Half Time/Full Time Exact Total Goals",
@@ -2981,6 +2981,314 @@
             {
                 "Attribute": "x",
                 "Description": "Map number"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9401,
+        "BetTypeName": "Toss Winner bet type",
+        "Tag": "ck_9401",
+        "BetChoices": [
+            {
+                "Attribute": "h",
+                "Description": "Price for Home"
+            },
+            {
+                "Attribute": "a",
+                "Description": "Price for Away"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9404,
+        "BetTypeName": "Home Inns Runs bet type",
+        "Tag": "ck_9404",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9405,
+        "BetTypeName": "Away Inns Runs bet type",
+        "Tag": "ck_9405",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9406,
+        "BetTypeName": "Home 1st Inns Runs bet type",
+        "Tag": "ck_9406",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9407,
+        "BetTypeName": "Away 1st Inns Runs bet type",
+        "Tag": "ck_9407",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9408,
+        "BetTypeName": "Home 2nd Inns Runs bet type",
+        "Tag": "ck_9408",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9409,
+        "BetTypeName": "Away 2nd Inns Runs bet type",
+        "Tag": "ck_9409",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9410,
+        "BetTypeName": "Home Group 1-X Runs bet type",
+        "Tag": "ck_9410",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9411,
+        "BetTypeName": "Away Group 1-X Runs bet type",
+        "Tag": "ck_9411",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9412,
+        "BetTypeName": "Home 1st Inns Group 1-X Runs bet type",
+        "Tag": "ck_9412",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9413,
+        "BetTypeName": "Away 1st Inns Group 1-X Runs bet type",
+        "Tag": "ck_9413",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9414,
+        "BetTypeName": "Home 2nd Inns Group 1-X Runs bet type",
+        "Tag": "ck_9414",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9415,
+        "BetTypeName": "Away 2nd Inns Group 1-X Runs bet type",
+        "Tag": "ck_9415",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9539,
+        "BetTypeName": "Match Winner (Back & Lay) bet type",
+        "Tag": "ck_9539",
+        "BetChoices": [
+            {
+                "Attribute": "hb",
+                "Description": "Betting on Home will win the match"
+            },
+            {
+                "Attribute": "hl",
+                "Description": "Betting on Home will NOT win the match"
+            },
+            {
+                "Attribute": "ab",
+                "Description": "Betting on Away will win the match"
+            },
+            {
+                "Attribute": "al",
+                "Description": "Betting on Away will NOT win the match"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9607,
+        "BetTypeName": "Home Over X Runs bet type",
+        "Tag": "ck_9607",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9608,
+        "BetTypeName": "Away Over X Runs bet type",
+        "Tag": "ck_9608",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9609,
+        "BetTypeName": "Home 1st Inns Over X Runs bet type",
+        "Tag": "ck_9609",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9610,
+        "BetTypeName": "Away 1st Inns Over X Runs bet type",
+        "Tag": "ck_9610",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9611,
+        "BetTypeName": "Home 2nd Inns Over X Runs bet type",
+        "Tag": "ck_9611",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
+            }
+        ]
+    },
+    {
+        "BetTypeId": 9612,
+        "BetTypeName": "Away 2nd Inns Over X Runs bet type",
+        "Tag": "ck_9612",
+        "BetChoices": [
+            {
+                "Attribute": "o",
+                "Description": "Price for Over"
+            },
+            {
+                "Attribute": "u",
+                "Description": "Price for Under"
             }
         ]
     }

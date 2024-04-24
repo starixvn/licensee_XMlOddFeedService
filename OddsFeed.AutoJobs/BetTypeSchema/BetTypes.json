@@ -1,4 +1,4 @@
-﻿[
+﻿﻿[
     {
         "BetTypeId": 1,
         "Tag": "ah",
@@ -8473,6 +8473,294 @@
                 "MatchAttribute": "x",
                 "DataAttribute": "resourceID",
                 "IsResource": true
+            }
+        ]
+    },
+    {
+        "BettypeId": 9401,
+        "Tag": "ck_9401",
+        "BetChoices": [
+            {
+                "MatchAttribute": "h",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "a",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9404,
+        "Tag": "ck_9404",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9405,
+        "Tag": "ck_9405",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9406,
+        "Tag": "ck_9406",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9407,
+        "Tag": "ck_9407",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9408,
+        "Tag": "ck_9408",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9409,
+        "Tag": "ck_9409",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9410,
+        "Tag": "ck_9410",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9411,
+        "Tag": "ck_9411",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9412,
+        "Tag": "ck_9412",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9413,
+        "Tag": "ck_9413",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9414,
+        "Tag": "ck_9414",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9415,
+        "Tag": "ck_9415",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9539,
+        "Tag": "ck_9539",
+        "BetChoices": [
+            {
+                "MatchAttribute": "hb",
+                "DataAttribute": "cs01"
+            },
+            {
+                "MatchAttribute": "hl",
+                "DataAttribute": "cs02"
+            },
+            {
+                "MatchAttribute": "ab",
+                "DataAttribute": "cs03"
+            },
+            {
+                "MatchAttribute": "al",
+                "DataAttribute": "cs04"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9607,
+        "Tag": "ck_9607",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9608,
+        "Tag": "ck_9608",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9609,
+        "Tag": "ck_9609",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9610,
+        "Tag": "ck_9610",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9611,
+        "Tag": "ck_9611",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
+            }
+        ]
+    },
+    {
+        "BettypeId": 9612,
+        "Tag": "ck_9612",
+        "BetChoices": [
+            {
+                "MatchAttribute": "o",
+                "DataAttribute": "odds1a"
+            },
+            {
+                "MatchAttribute": "u",
+                "DataAttribute": "odds2a"
             }
         ]
     }
