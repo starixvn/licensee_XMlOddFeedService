@@ -125,7 +125,7 @@
         {
             AppendBeginMatches(oddsFeedNode, model, GetMatchTimestamp(model, liveMatches, deadMatches), GetLastUpdate());
 
-            matchBuilder.AppendMatchNodes(oddsFeedNode, liveMatches, model);
+            matchBuilder.AppendMatchNodes(oddsFeedNode, liveMatches, model, true);
             matchBuilder.AppendMatchNodes(oddsFeedNode, deadMatches, model);
 
             oddsFeedNode.Append("</matches>");
