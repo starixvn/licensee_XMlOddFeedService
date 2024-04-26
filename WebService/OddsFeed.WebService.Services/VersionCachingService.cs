@@ -1,24 +1,19 @@
 ﻿namespace OddsFeed.WebService.Services
 {
     using System;
+    using System.Threading.Tasks;
     using OddsFeed.Core.Extensions;
     using OddsFeed.Core.Services;
     using OddsFeed.Models.DTO;
     using OddsFeed.WebService.Models;
     using OddsFeed.WebService.Models.Cache;
 
-    public class VersionCachingService : IVersionCachingService
+    public class VersionCachingService(
+        WebSettings appSettings,
+        IRedisCacheService redisCacheService,
+        ILogServiceProvider logServiceProvider) : IVersionCachingService
     {
-        private readonly WebSettings appSettings;
-        private readonly IRedisCacheService redisCacheService;
-
-        public VersionCachingService(WebSettings appSettings, IRedisCacheService redisCacheService)
-        {
-            this.appSettings = appSettings;
-            this.redisCacheService = redisCacheService;
-        }
-
-        public CacheVersion GetRightVersionOddsFeed(UserProfile profile)
+        public async Task<CacheVersion> GetRightVersionOddsFeed(UserProfile profile)
         {
             const int maxDelayTimes = 3;
             var currentVersion = GetCurrentVersion(appSettings.Bucket.OddsFeed);
@@ -36,9 +31,9 @@
 
             return new CacheVersion
             {
-                CurrentVersionOutright = GetRightVersionOddsFeed(delayTimeOutright, currentVersion, isFullChain),
-                CurrentVersionLiveMatch = GetRightVersionOddsFeed(delayTimeLive, currentVersion, isFullChain),
-                CurrentVersionDeadballMatch = GetRightVersionOddsFeed(delayTimeDeadball, currentVersion, isFullChain)
+                CurrentVersionOutright = await GetRightVersionOddsFeed(delayTimeOutright, currentVersion, isFullChain),
+                CurrentVersionLiveMatch = await GetRightVersionOddsFeed(delayTimeLive, currentVersion, isFullChain),
+                CurrentVersionDeadballMatch = await GetRightVersionOddsFeed(delayTimeDeadball, currentVersion, isFullChain)
             };
         }
 
@@ -55,7 +50,7 @@
             return rightVersion > -1 ? rightVersion : -1;
         }
 
-        private int GetRightVersionOddsFeed(int delayTime, int currentVersion, bool isFullChain)
+        private async Task<int> GetRightVersionOddsFeed(int delayTime, int currentVersion, bool isFullChain)
         {
             var rightVersion = currentVersion - (delayTime / appSettings.Bucket.Interval);
             if (isFullChain)
@@ -63,7 +58,13 @@
                 return rightVersion > -1 ? rightVersion : appSettings.Bucket.TotalVersion - Math.Abs(rightVersion);
             }
 
-            return rightVersion > -1 ? rightVersion : -1;
+            rightVersion = rightVersion > -1 ? rightVersion : -1;
+            if (rightVersion < 0)
+            {
+                await logServiceProvider.LogInfoSentryAsync($"CurrentVersion {currentVersion} - RightVersion: {rightVersion}");
+            }
+
+            return rightVersion;
         }
 
         private int GetCurrentVersion(string bucket)

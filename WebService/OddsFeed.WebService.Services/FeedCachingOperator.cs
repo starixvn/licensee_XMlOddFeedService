@@ -25,7 +25,7 @@
 
         public async Task<OddsData> GetOddsDataAsync(OddsFeedsModel model, bool isGetOutright, bool isGetLiveMatch, bool isGetDeadballMatch)
         {
-            var cacheVersion = versionCachingService.GetRightVersionOddsFeed(model.UserProfile);
+            var cacheVersion = await versionCachingService.GetRightVersionOddsFeed(model.UserProfile);
 
             var outrights = isGetOutright
                 ? await Get<Outright>(webSettings.Bucket.Outrights, cacheVersion.CurrentVersionOutright.ToString())

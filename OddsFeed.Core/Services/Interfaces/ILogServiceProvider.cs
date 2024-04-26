@@ -5,6 +5,8 @@
 
     public interface ILogServiceProvider
     {
+        Task LogInfoSentryAsync(string message);
+
         Task LogSentryAsync(string message);
 
         Task LogSentryAsync(Exception exception);

@@ -5,17 +5,13 @@
     using Fanex.Logging.Extensions;
     using Microsoft.Extensions.Logging;
 
-    public class LogServiceProvider : ILogServiceProvider
+    public class LogServiceProvider(
+        Fanex.Logging.ILogger logger,
+        ILogger<LogServiceProvider> logfile) : ILogServiceProvider
     {
-        private readonly Fanex.Logging.ILogger logger;
-        private readonly ILogger logfile;
-
-        public LogServiceProvider(
-            Fanex.Logging.ILogger logger,
-            ILogger<LogServiceProvider> logfile)
+        public async Task LogInfoSentryAsync(string message)
         {
-            this.logger = logger;
-            this.logfile = logfile;
+            await logger.InfoAsync(message);
         }
 
         public async Task LogSentryAsync(string message, Exception exception)
