@@ -68,14 +68,14 @@
 
         private int GetCurrentVersion(string bucket)
         {
-            string currentVersionKey = CacheKeys.CurrentKey(appSettings.CachePrefix);
+            var currentVersionKey = CacheKeys.CurrentKey(appSettings.CachePrefix);
             var currentVersion = redisCacheService.Get<int>(string.Format("{0}:{1}", bucket, currentVersionKey));
             return currentVersion < 0 ? 0 : currentVersion;
         }
 
         private bool IsFullChain(string bucket)
         {
-            string isFullChainKey = CacheKeys.CurrentKey(appSettings.CachePrefix);
+            var isFullChainKey = CacheKeys.FullChainKey(appSettings.CachePrefix);
             return redisCacheService.Get<bool>(string.Format("{0}:{1}", bucket, isFullChainKey));
         }
     }
