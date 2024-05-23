@@ -41,7 +41,7 @@
             logService.LogInfoToFile($"{jobSetting.JobName}: StartAsync");
             if (jobSetting.HasStartFunction)
             {
-                logService.LogInfoToFile($"{jobSetting.JobName}: Start Function Run");
+                logService.LogInfoToFile($"{jobSetting.JobName}: run on start");
                 StartJobAsync();
             }
 
@@ -52,7 +52,8 @@
         {
             try
             {
-                if (jobSetting.IsEnabled && (!jobSetting.HasCheckUM || !IsUM()) && !IsDisableAtWeekend())
+                var isUM = await IsUM();
+                if (jobSetting.IsEnabled && (!jobSetting.HasCheckUM || !isUM) && !IsDisableAtWeekend())
                 {
                     await ExecuteJobAsync();
                 }
@@ -80,9 +81,9 @@
             base.Dispose();
         }
 
-        private bool IsUM()
+        private async Task<bool> IsUM()
         {
-            var maintanceTime = maintenanceService.GetUnderMaintenanceTime();
+            var maintanceTime = await maintenanceService.GetUnderMaintenanceTimeAsync();
             return maintanceTime.IsUnderMaintenanceTime;
         }
 
