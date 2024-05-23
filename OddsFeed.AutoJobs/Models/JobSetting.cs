@@ -7,5 +7,6 @@
         public bool HasCheckUM { get; set; }
         public bool HasStartFunction { get; set; }
         public int TimeInterval { get; set; }
+        public bool IsDisableAtWeekend { get; set; }
     }
 }

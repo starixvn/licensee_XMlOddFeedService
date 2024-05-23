@@ -23,7 +23,7 @@
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             const byte MillisecondsDelay = 10;
-            await Task.Delay(MillisecondsDelay).ConfigureAwait(false);
+            await Task.Delay(MillisecondsDelay);
 
             while (!stoppingToken.IsCancellationRequested)
             {
@@ -52,7 +52,7 @@
         {
             try
             {
-                if (jobSetting.IsEnabled && (!jobSetting.HasCheckUM || !IsUM()))
+                if (jobSetting.IsEnabled && (!jobSetting.HasCheckUM || !IsUM()) && !IsDisableAtWeekend())
                 {
                     await ExecuteJobAsync();
                 }
@@ -84,6 +84,12 @@
         {
             var maintanceTime = maintenanceService.GetUnderMaintenanceTime();
             return maintanceTime.IsUnderMaintenanceTime;
+        }
+
+        private bool IsDisableAtWeekend()
+        {
+            return jobSetting.IsDisableAtWeekend &&
+                (DateTimeOffset.Now.DayOfWeek == DayOfWeek.Thursday || DateTimeOffset.Now.DayOfWeek == DayOfWeek.Sunday);
         }
     }
 }
