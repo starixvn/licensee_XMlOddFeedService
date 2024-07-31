@@ -1,4 +1,14 @@
+ARG CI_REGISTRY_IMAGE
+
+FROM $CI_REGISTRY_IMAGE:builder AS deps
+
+RUN mkdir -p /src/packages
+
 FROM hub.nexdev.net/base/dotnet/core/sdk:8.0-alpine AS builder
+
+ENV NUGET_PACKAGES=/src/packages
+
+COPY --from=deps $NUGET_PACKAGES/. $NUGET_PACKAGES/
 
 WORKDIR /src
 
@@ -7,8 +17,7 @@ COPY ["OddsFeed.Models/OddsFeed.Models.csproj", "OddsFeed.Models/"]
 COPY ["OddsFeed.AutoJobs/OddsFeed.AutoJobs.csproj", "OddsFeed.AutoJobs/"]
 
 RUN dotnet nuget add source https://nuget.nexdev.net/api/v2
-RUN --mount=type=cache,target=/root/.nuget/packages \
-    dotnet restore -v n "OddsFeed.AutoJobs/OddsFeed.AutoJobs.csproj"
+RUN dotnet restore -v n -r linux-x64 "OddsFeed.AutoJobs/OddsFeed.AutoJobs.csproj"
 
 COPY ["OddsFeed.Core/", "OddsFeed.Core/"]
 COPY ["OddsFeed.Models/", "OddsFeed.Models/"]
@@ -16,8 +25,7 @@ COPY ["OddsFeed.AutoJobs/", "OddsFeed.AutoJobs/"]
 
 WORKDIR /src/OddsFeed.AutoJobs
 
-RUN --mount=type=cache,target=/root/.nuget/packages \
-    dotnet publish -r linux-x64 --self-contained false -o /app
+RUN dotnet publish -r linux-x64 --self-contained false -o /app
 
 FROM hub.nexdev.net/base/dotnet/core/aspnet:8.0-alpine AS base
 
