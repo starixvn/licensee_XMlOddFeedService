@@ -9,11 +9,10 @@
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.AspNetCore;
     using Fanex.Logging.Extensions.Database;
-    using Fanex.Logging.Sentry;
+    using Fanex.Logging.Sentry.RavenClient;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
@@ -24,12 +23,8 @@
     using OddsFeed.Core.Configurations;
     using OddsFeed.Core.Mapping;
     using OddsFeed.Core.Services;
-    using ONEbook.UM.AspNetCore;
-    using ONEbook.UM.Configurations;
-    using ONEbook.UM.Helpers;
-    using ONEbook.UM.Services;
-    using ONEbook.UM.Transport;
-    using Sentry;
+    using ONEbook.UM.DependencyInjection;
+    using SharpRaven;
     using StackExchange.Redis;
 
     public class Startup
@@ -84,16 +79,7 @@
 
         private void AddDI(IServiceCollection services)
         {
-            #region ONEbookUM
-
-            services.AddSingleton(new UMClientConfiguration().Initialize(Configuration));
-            services.AddSingleton<IUMCacheService, UMCacheService>();
-            services.AddSingleton<IUMRestClient, UMRestClient>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IHttpContextHelper, HttpContextHelper>();
-            services.AddSingleton<IMaintenanceService, MaintenanceService>();
-
-            #endregion ONEbookUM
+            services.AddOneBookUm(Configuration);
 
             services.AddSingleton<IDynamicRepository, DynamicRepository>();
 

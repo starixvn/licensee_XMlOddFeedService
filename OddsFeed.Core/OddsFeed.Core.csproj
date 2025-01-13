@@ -4,13 +4,12 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Fanex.Caching.Redis.AspNetCore" Version="2.2.4" />
-    <PackageReference Include="Fanex.Logging.Extensions.AspNetCore" Version="1.0.1" />
-    <PackageReference Include="Fanex.Logging.Sentry" Version="1.0.6" />
-    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="8.0.7" />
+    <PackageReference Include="Fanex.Logging.Extensions.AspNetCore" Version="1.1.0" />
+    <PackageReference Include="Fanex.Logging.Sentry.RavenClient" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="8.0.11" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.11" />
-    <PackageReference Include="ONEbook.UM.AspNetCore" Version="3.1.1.1" />
-    <PackageReference Include="ONEbook.UM.Transport" Version="3.1.2" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.15" />
+    <PackageReference Include="ONEbook.UM" Version="3.2.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OddsFeed.Models\OddsFeed.Models.csproj" />
